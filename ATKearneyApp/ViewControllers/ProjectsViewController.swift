@@ -25,6 +25,7 @@ class ProjectsViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.performSegue(withIdentifier: "gotoNewProject", sender: self)
     }
     
     // MARK: - Button actions

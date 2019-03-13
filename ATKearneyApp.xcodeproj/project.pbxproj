@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5E4F9B31F6CFE80036C94903 /* Pods_ATKearneyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */; };
+		BD3BABC92239A8CD004521F4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3BABC72239A8CD004521F4 /* UserCell.swift */; };
+		BD3BABCA2239A8CD004521F4 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3BABC82239A8CD004521F4 /* UserCell.xib */; };
 		BD7B690522395F2100C0DE35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B690422395F2100C0DE35 /* AppDelegate.swift */; };
 		BD7B690A22395F2100C0DE35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD7B690822395F2100C0DE35 /* Main.storyboard */; };
 		BD7B690C22395F2200C0DE35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD7B690B22395F2200C0DE35 /* Assets.xcassets */; };
@@ -23,12 +25,17 @@
 		BD82B7AB223987B5003825D8 /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82B7AA223987B5003825D8 /* NewProjectViewController.swift */; };
 		BD82B7AD22398A75003825D8 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82B7AC22398A75003825D8 /* UsersViewController.swift */; };
 		BD82B7AF22398B9F003825D8 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BD82B7AE22398B9F003825D8 /* backButton.png */; };
-		BD82B7B42239903D003825D8 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82B7B22239903D003825D8 /* UserTableViewCell.swift */; };
-		BD82B7B52239903D003825D8 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD82B7B32239903D003825D8 /* UserTableViewCell.xib */; };
+		BD82B7B42239903D003825D8 /* UserSelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82B7B22239903D003825D8 /* UserSelectableCell.swift */; };
+		BD82B7B52239903D003825D8 /* UserSelectableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD82B7B32239903D003825D8 /* UserSelectableCell.xib */; };
+		BD82FF4C22399984008F6304 /* CurrentSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82FF4B22399984008F6304 /* CurrentSelection.swift */; };
+		BD82FF4F22399E5D008F6304 /* checkON.png in Resources */ = {isa = PBXBuildFile; fileRef = BD82FF4D22399E5D008F6304 /* checkON.png */; };
+		BD82FF5022399E5D008F6304 /* checkOFF.png in Resources */ = {isa = PBXBuildFile; fileRef = BD82FF4E22399E5D008F6304 /* checkOFF.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATKearneyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD3BABC72239A8CD004521F4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		BD3BABC82239A8CD004521F4 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		BD7B690122395F2100C0DE35 /* ATKearneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATKearneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7B690422395F2100C0DE35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD7B690922395F2100C0DE35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,8 +53,11 @@
 		BD82B7AA223987B5003825D8 /* NewProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
 		BD82B7AC22398A75003825D8 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		BD82B7AE22398B9F003825D8 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
-		BD82B7B22239903D003825D8 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		BD82B7B32239903D003825D8 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		BD82B7B22239903D003825D8 /* UserSelectableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectableCell.swift; sourceTree = "<group>"; };
+		BD82B7B32239903D003825D8 /* UserSelectableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSelectableCell.xib; sourceTree = "<group>"; };
+		BD82FF4B22399984008F6304 /* CurrentSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSelection.swift; sourceTree = "<group>"; };
+		BD82FF4D22399E5D008F6304 /* checkON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkON.png; sourceTree = "<group>"; };
+		BD82FF4E22399E5D008F6304 /* checkOFF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkOFF.png; sourceTree = "<group>"; };
 		C6D672A18292CFB9EFD13DB9 /* Pods-ATKearneyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATKearneyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ATKearneyApp/Pods-ATKearneyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D99FF67ABA930557895509B0 /* Pods-ATKearneyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATKearneyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ATKearneyApp/Pods-ATKearneyApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +83,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BD3BABC42239A8A0004521F4 /* UserCell */ = {
+			isa = PBXGroup;
+			children = (
+				BD3BABC72239A8CD004521F4 /* UserCell.swift */,
+				BD3BABC82239A8CD004521F4 /* UserCell.xib */,
+			);
+			path = UserCell;
+			sourceTree = "<group>";
+		};
 		BD7B68F822395F2100C0DE35 = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +113,9 @@
 		BD7B690322395F2100C0DE35 /* ATKearneyApp */ = {
 			isa = PBXGroup;
 			children = (
-				BD82B792223961F0003825D8 /* App */,
 				BD82B7A022396D9B003825D8 /* CurrentUser.swift */,
+				BD82FF4B22399984008F6304 /* CurrentSelection.swift */,
+				BD82B792223961F0003825D8 /* App */,
 				BD82B78F223961C5003825D8 /* Firebase */,
 				BD82B7932239648E003825D8 /* ViewControllers */,
 				BD82B7B62239917E003825D8 /* Cells */,
@@ -149,6 +169,8 @@
 				BD82B7A822398715003825D8 /* profileButton.png */,
 				BD82B7A4223986C4003825D8 /* closeButton.png */,
 				BD82B7AE22398B9F003825D8 /* backButton.png */,
+				BD82FF4E22399E5D008F6304 /* checkOFF.png */,
+				BD82FF4D22399E5D008F6304 /* checkON.png */,
 				BD7B690B22395F2200C0DE35 /* Assets.xcassets */,
 				BD7B690D22395F2200C0DE35 /* LaunchScreen.storyboard */,
 			);
@@ -158,10 +180,19 @@
 		BD82B7B62239917E003825D8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				BD82B7B22239903D003825D8 /* UserTableViewCell.swift */,
-				BD82B7B32239903D003825D8 /* UserTableViewCell.xib */,
+				BD82FF512239A832008F6304 /* UserSelectableCell */,
+				BD3BABC42239A8A0004521F4 /* UserCell */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		BD82FF512239A832008F6304 /* UserSelectableCell */ = {
+			isa = PBXGroup;
+			children = (
+				BD82B7B22239903D003825D8 /* UserSelectableCell.swift */,
+				BD82B7B32239903D003825D8 /* UserSelectableCell.xib */,
+			);
+			path = UserSelectableCell;
 			sourceTree = "<group>";
 		};
 		ED56C1DE91837A34DED2AC26 /* Frameworks */ = {
@@ -232,12 +263,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD82B7B52239903D003825D8 /* UserTableViewCell.xib in Resources */,
+				BD82FF5022399E5D008F6304 /* checkOFF.png in Resources */,
+				BD3BABCA2239A8CD004521F4 /* UserCell.xib in Resources */,
+				BD82B7B52239903D003825D8 /* UserSelectableCell.xib in Resources */,
 				BD82B7A5223986C4003825D8 /* closeButton.png in Resources */,
 				BD82B7AF22398B9F003825D8 /* backButton.png in Resources */,
 				BD7B690F22395F2200C0DE35 /* LaunchScreen.storyboard in Resources */,
 				BD7B690C22395F2200C0DE35 /* Assets.xcassets in Resources */,
 				BD82B79F223969F6003825D8 /* GoogleService-Info.plist in Resources */,
+				BD82FF4F22399E5D008F6304 /* checkON.png in Resources */,
 				BD7B690A22395F2100C0DE35 /* Main.storyboard in Resources */,
 				BD82B7A922398716003825D8 /* profileButton.png in Resources */,
 			);
@@ -304,13 +338,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD82B7A322397E1B003825D8 /* LoginViewController.swift in Sources */,
-				BD82B7B42239903D003825D8 /* UserTableViewCell.swift in Sources */,
+				BD82B7B42239903D003825D8 /* UserSelectableCell.swift in Sources */,
 				BD82B7A122396D9B003825D8 /* CurrentUser.swift in Sources */,
 				BD82B79D223966CC003825D8 /* FirebaseManager.swift in Sources */,
 				BD82B7AB223987B5003825D8 /* NewProjectViewController.swift in Sources */,
 				BD82B797223964AF003825D8 /* ProjectsViewController.swift in Sources */,
 				BD82B7AD22398A75003825D8 /* UsersViewController.swift in Sources */,
 				BD7B690522395F2100C0DE35 /* AppDelegate.swift in Sources */,
+				BD82FF4C22399984008F6304 /* CurrentSelection.swift in Sources */,
+				BD3BABC92239A8CD004521F4 /* UserCell.swift in Sources */,
 				BD82B795223964A5003825D8 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

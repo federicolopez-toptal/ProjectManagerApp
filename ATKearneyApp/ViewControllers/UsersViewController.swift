@@ -21,18 +21,19 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     var users = [basicUser]()
     var filteredUsers = [basicUser]()
-    
+    var userIDs = Set<String>()
     
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
+        userIDs = CurrentSelection.shared.project.users
         
         usersList.tableFooterView = UIView()
         usersList.delegate = self
         usersList.dataSource = self
         
-        let nib = UINib.init(nibName: "UserTableViewCell", bundle: nil)
-        usersList.register(nib, forCellReuseIdentifier: "UserTableViewCell")
+        let nib = UINib.init(nibName: "UserSelectableCell", bundle: nil)
+        usersList.register(nib, forCellReuseIdentifier: "UserSelectableCell")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,11 +64,6 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         filterUsersWith("")
     }
 
-    // MARK: - Button actions
-    @IBAction func backButtonTap(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     // MARK: - UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -78,15 +74,25 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserSelectableCell", for: indexPath) as! UserSelectableCell
         
-        cell.nameLabel.text = filteredUsers[indexPath.row].name
+        let user = filteredUsers[indexPath.row]
+        cell.nameLabel.text = user.name
+        cell.setState( userIDs.contains(user.userID) )
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(">>", filteredUsers[indexPath.row].name)
+        let cell = tableView.cellForRow(at: indexPath) as! UserSelectableCell
+        cell.setState(!cell.isON)
+        
+        let user = filteredUsers[indexPath.row]
+        if(cell.isON) {
+            userIDs.insert(user.userID)
+        } else {
+            userIDs.remove(user.userID)
+        }
     }
     
     // UITextField
@@ -108,6 +114,16 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         }
         
         usersList.reloadData()
+    }
+    
+    // MARK: - Button actions
+    @IBAction func backButtonTap(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func saveButtonTap(_ sender: UIButton) {
+        CurrentSelection.shared.project.users = userIDs
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

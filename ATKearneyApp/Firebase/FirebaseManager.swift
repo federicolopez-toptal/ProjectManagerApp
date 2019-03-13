@@ -14,6 +14,7 @@ class FirebaseManager: NSObject {
     static let shared = FirebaseManager()
     
     private let USERS = "users_v2"
+    private let PROJECTS = "projects_v2"
     
     // MARK: - Users
     func createUser(email: String, password: String, values:[String: Any], callback: @escaping (Error?) ->() ) {
@@ -108,6 +109,49 @@ class FirebaseManager: NSObject {
             }
         }) { (error) in
             callback(nil, error)
+        }
+    }
+    
+    func getUsers(userIDs: Set<String>, callback: @escaping ([NSDictionary]?) -> ()) {
+        let DBref = Database.database().reference()
+        let dispatchGroup = DispatchGroup()
+        var result = [NSDictionary]()
+        
+        if(userIDs.isEmpty) {
+            callback(result)
+            return
+        }
+        
+        for userID in userIDs {
+            dispatchGroup.enter()
+            
+            DBref.child(USERS).child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+                if(snapshot.exists()) {
+                    let newDict = [
+                        "id": snapshot.key,
+                        "content": snapshot.value as! NSDictionary
+                        ] as [String : Any]
+                    
+                    result.append(newDict as NSDictionary)
+                }
+                
+                dispatchGroup.leave()
+            })
+        }
+        
+        dispatchGroup.notify(queue: .main, execute: {
+            print(result)
+            callback(result)
+        })
+    }
+    
+    // MARK: - Projects
+    func createProject(values: [String: Any], callback: @escaping (Error?) -> () ) {
+        let DBref = Database.database().reference()
+        
+        let newProject = DBref.child(PROJECTS).childByAutoId()
+        newProject.setValue(values){ (error, ref) in
+            callback(error)
         }
     }
     

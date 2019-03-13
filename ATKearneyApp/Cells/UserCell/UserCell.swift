@@ -1,5 +1,5 @@
 //
-//  UserTableViewCell.swift
+//  UserCell.swift
 //  ATKearneyApp
 //
 //  Created by Federico Lopez on 13/03/2019.
@@ -8,17 +8,14 @@
 
 import UIKit
 
-class UserTableViewCell: UITableViewCell {
+class UserCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     
+    // MARK: - Init
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
     
 }
