@@ -7,21 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E4F9B31F6CFE80036C94903 /* Pods_ATKearneyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */; };
 		BD7B690522395F2100C0DE35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B690422395F2100C0DE35 /* AppDelegate.swift */; };
-		BD7B690722395F2100C0DE35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B690622395F2100C0DE35 /* ViewController.swift */; };
 		BD7B690A22395F2100C0DE35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD7B690822395F2100C0DE35 /* Main.storyboard */; };
 		BD7B690C22395F2200C0DE35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD7B690B22395F2200C0DE35 /* Assets.xcassets */; };
 		BD7B690F22395F2200C0DE35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD7B690D22395F2200C0DE35 /* LaunchScreen.storyboard */; };
+		BD82B791223961D6003825D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD82B790223961D6003825D8 /* GoogleService-Info.plist */; };
+		BD82B795223964A5003825D8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82B794223964A5003825D8 /* BaseViewController.swift */; };
+		BD82B797223964AF003825D8 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82B796223964AF003825D8 /* ProjectsViewController.swift */; };
+		BD82B79B22396525003825D8 /* profileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BD82B79A22396525003825D8 /* profileIcon.png */; };
+		BD82B79D223966CC003825D8 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82B79C223966CC003825D8 /* FirebaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATKearneyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7B690122395F2100C0DE35 /* ATKearneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATKearneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7B690422395F2100C0DE35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BD7B690622395F2100C0DE35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BD7B690922395F2100C0DE35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BD7B690B22395F2200C0DE35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD7B690E22395F2200C0DE35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD7B691022395F2200C0DE35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD82B790223961D6003825D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BD82B794223964A5003825D8 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		BD82B796223964AF003825D8 /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
+		BD82B79A22396525003825D8 /* profileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileIcon.png; sourceTree = "<group>"; };
+		BD82B79C223966CC003825D8 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		C6D672A18292CFB9EFD13DB9 /* Pods-ATKearneyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATKearneyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ATKearneyApp/Pods-ATKearneyApp.debug.xcconfig"; sourceTree = "<group>"; };
+		D99FF67ABA930557895509B0 /* Pods-ATKearneyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATKearneyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ATKearneyApp/Pods-ATKearneyApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +41,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E4F9B31F6CFE80036C94903 /* Pods_ATKearneyApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		167FEE45308838AD344C684B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6D672A18292CFB9EFD13DB9 /* Pods-ATKearneyApp.debug.xcconfig */,
+				D99FF67ABA930557895509B0 /* Pods-ATKearneyApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BD7B68F822395F2100C0DE35 = {
 			isa = PBXGroup;
 			children = (
 				BD7B690322395F2100C0DE35 /* ATKearneyApp */,
 				BD7B690222395F2100C0DE35 /* Products */,
+				167FEE45308838AD344C684B /* Pods */,
+				ED56C1DE91837A34DED2AC26 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +78,66 @@
 		BD7B690322395F2100C0DE35 /* ATKearneyApp */ = {
 			isa = PBXGroup;
 			children = (
-				BD7B690422395F2100C0DE35 /* AppDelegate.swift */,
-				BD7B690622395F2100C0DE35 /* ViewController.swift */,
-				BD7B690822395F2100C0DE35 /* Main.storyboard */,
-				BD7B690B22395F2200C0DE35 /* Assets.xcassets */,
-				BD7B690D22395F2200C0DE35 /* LaunchScreen.storyboard */,
-				BD7B691022395F2200C0DE35 /* Info.plist */,
+				BD82B792223961F0003825D8 /* App */,
+				BD82B7932239648E003825D8 /* ViewControllers */,
+				BD82B78F223961C5003825D8 /* Firebase */,
+				BD82B798223964F7003825D8 /* Resources */,
 			);
 			path = ATKearneyApp;
+			sourceTree = "<group>";
+		};
+		BD82B78F223961C5003825D8 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				BD82B79C223966CC003825D8 /* FirebaseManager.swift */,
+				BD82B790223961D6003825D8 /* GoogleService-Info.plist */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		BD82B792223961F0003825D8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BD7B690422395F2100C0DE35 /* AppDelegate.swift */,
+				BD7B691022395F2200C0DE35 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BD82B7932239648E003825D8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BD82B794223964A5003825D8 /* BaseViewController.swift */,
+				BD82B796223964AF003825D8 /* ProjectsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BD82B798223964F7003825D8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BD7B690822395F2100C0DE35 /* Main.storyboard */,
+				BD82B79922396511003825D8 /* Files */,
+				BD7B690B22395F2200C0DE35 /* Assets.xcassets */,
+				BD7B690D22395F2200C0DE35 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BD82B79922396511003825D8 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD82B79A22396525003825D8 /* profileIcon.png */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		ED56C1DE91837A34DED2AC26 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +147,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD7B691322395F2200C0DE35 /* Build configuration list for PBXNativeTarget "ATKearneyApp" */;
 			buildPhases = (
+				5D6AE42F668566EF83FC944C /* [CP] Check Pods Manifest.lock */,
 				BD7B68FD22395F2100C0DE35 /* Sources */,
 				BD7B68FE22395F2100C0DE35 /* Frameworks */,
 				BD7B68FF22395F2100C0DE35 /* Resources */,
+				1CF06FE292D13D68C0462993 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,20 +201,77 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD7B690F22395F2200C0DE35 /* LaunchScreen.storyboard in Resources */,
+				BD82B791223961D6003825D8 /* GoogleService-Info.plist in Resources */,
 				BD7B690C22395F2200C0DE35 /* Assets.xcassets in Resources */,
 				BD7B690A22395F2100C0DE35 /* Main.storyboard in Resources */,
+				BD82B79B22396525003825D8 /* profileIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1CF06FE292D13D68C0462993 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ATKearneyApp/Pods-ATKearneyApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ATKearneyApp/Pods-ATKearneyApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D6AE42F668566EF83FC944C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ATKearneyApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BD7B68FD22395F2100C0DE35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD7B690722395F2100C0DE35 /* ViewController.swift in Sources */,
+				BD82B79D223966CC003825D8 /* FirebaseManager.swift in Sources */,
+				BD82B797223964AF003825D8 /* ProjectsViewController.swift in Sources */,
 				BD7B690522395F2100C0DE35 /* AppDelegate.swift in Sources */,
+				BD82B795223964A5003825D8 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,11 +415,13 @@
 		};
 		BD7B691422395F2200C0DE35 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6D672A18292CFB9EFD13DB9 /* Pods-ATKearneyApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SW8S5Y74E8;
-				INFOPLIST_FILE = ATKearneyApp/Info.plist;
+				INFOPLIST_FILE = ATKearneyApp/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,11 +435,13 @@
 		};
 		BD7B691522395F2200C0DE35 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D99FF67ABA930557895509B0 /* Pods-ATKearneyApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SW8S5Y74E8;
-				INFOPLIST_FILE = ATKearneyApp/Info.plist;
+				INFOPLIST_FILE = ATKearneyApp/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
