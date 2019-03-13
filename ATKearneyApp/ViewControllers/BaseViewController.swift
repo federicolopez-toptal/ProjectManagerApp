@@ -15,4 +15,9 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // MARK: - Interaction with UITextfields
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 }

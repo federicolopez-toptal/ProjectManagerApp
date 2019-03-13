@@ -17,16 +17,15 @@ class FirebaseManager: NSObject {
     
     // MARK: - Users
     func createUser(email: String, password: String, values:[String: Any], callback: @escaping (Error?) ->() ) {
+        CurrentUser.shared.empty()
         Auth.auth().createUser(withEmail: email, password: password){ (user, error) in
             if(error != nil) {
                 callback(error)
             } else {
                 if let userID = Auth.auth().currentUser?.uid {
                     let DBref = Database.database().reference()
-                    
                     DBref.child(self.USERS).child(userID).setValue(values)
-                    CurrentUser.shared.userID = userID
-                    CurrentUser.shared.setValues(values)
+                    CurrentUser.shared.fillWith(userID: userID, values: values)
                     
                     callback(nil)
                 }
@@ -36,6 +35,7 @@ class FirebaseManager: NSObject {
     }
     
     func login(email: String, password: String, callback: @escaping (NSDictionary?, Error?) -> () ) {
+        CurrentUser.shared.empty()
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if(error != nil) {
                 callback(nil, error)
@@ -45,9 +45,7 @@ class FirebaseManager: NSObject {
                     
                     DBref.child(self.USERS).child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
                         if let userDict = snapshot.value as? NSDictionary {
-                            CurrentUser.shared.userID = userID
-                            CurrentUser.shared.setValues(userDict as! [String : Any])
-                            
+                            CurrentUser.shared.fillWith(userID: userID, values: userDict as! [String: Any])                            
                             callback(userDict, nil)
                         } else {
                             callback(nil, nil)
@@ -63,18 +61,48 @@ class FirebaseManager: NSObject {
         
     }
     
+    func autoLogin(callback: @escaping (Error?) ->() ) {
+        CurrentUser.shared.empty()
+        if let userID = Auth.auth().currentUser?.uid {
+            getUser(userID: userID) { (userDict, error) in
+                if(error != nil) {
+                    callback(error)
+                } else {
+                    CurrentUser.shared.fillWith(userID: userID, values: userDict as! [String: Any])
+                    callback(nil)
+                }
+            }
+        } else {
+            callback(nil)
+        }
+    }
     
-    
-    
-    
+    func logout() {
+        CurrentUser.shared.empty()
+        try! Auth.auth().signOut()
+    }
     
     
     func getUser(userID: String, callback: @escaping (NSDictionary?, Error?) -> () ) {
         let DBref = Database.database().reference()
         
-        DBref.child("Users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+        DBref.child(USERS).child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
             if let userDict = snapshot.value as? NSDictionary {
                 callback(userDict, nil)
+            } else {
+                callback(nil, nil)
+            }
+        }) { (error) in
+            callback(nil, error)
+        }
+    }
+    
+    func getAllUsers(callback: @escaping (NSDictionary?, Error?) -> ()) {
+        let DBref = Database.database().reference()
+        
+        DBref.child(USERS).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let usersDict = snapshot.value as? NSDictionary {
+                callback(usersDict, nil)
             } else {
                 callback(nil, nil)
             }

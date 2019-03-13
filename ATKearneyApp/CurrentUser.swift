@@ -12,6 +12,7 @@ class CurrentUser {
     
     static let shared = CurrentUser()
     
+    var authenticated: Bool
     var userID: String
     var admin: Bool
     var email: String
@@ -19,6 +20,7 @@ class CurrentUser {
     var phone: String
     
     init() {
+        authenticated = false
         userID = ""
         admin = false
         email = ""
@@ -26,11 +28,36 @@ class CurrentUser {
         phone = ""
     }
     
+    func fillWith(userID: String, values: [String: Any]) {
+        authenticated = true
+        self.userID = userID
+        admin = values["admin"] as! Bool
+        email = values["email"] as! String
+        name = values["name"] as! String
+        phone = values["phone"] as! String
+    }
+    
+    func empty() {
+        authenticated = false
+        userID = ""
+        admin = false
+        email = ""
+        name = ""
+        phone = ""
+    }
+    
+    
+    
+    
     func setValues(_ values: [String: Any]) {
         admin = values["admin"] as! Bool
         email = values["email"] as! String
         name = values["name"] as! String
         phone = values["phone"] as! String
+    }
+    
+    func trace() {
+        print(userID, email, name)
     }
     
 }
