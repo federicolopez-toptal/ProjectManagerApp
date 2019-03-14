@@ -10,23 +10,43 @@ import UIKit
 
 class LoginViewController: BaseViewController {
 
+    @IBOutlet weak var loading: UIActivityIndicatorView!
+    
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
+        loading.startAnimating()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        /*
         FirebaseManager.shared.autoLogin{ (error) in
             if(error == nil && CurrentUser.shared.authenticated) {
+                self.loading.stopAnimating()
                 CurrentUser.shared.trace()
                 self.performSegue(withIdentifier: "gotoProjects", sender: self)
             } else {
                 //ADD: ALERT error auth
             }
         }
+        */
+ 
+        // Standard login
+        let email = "carlos.lopez@toptal.com"
+        let pass = "gato123"
+        FirebaseManager.shared.login(email: email, password: pass) { (user, error) in
+            if(error==nil) {
+                self.loading.stopAnimating()
+                CurrentUser.shared.trace()
+                self.performSegue(withIdentifier: "gotoProjects", sender: self)
+            }
+        }
     }
+    
+    
+    
     
     
     

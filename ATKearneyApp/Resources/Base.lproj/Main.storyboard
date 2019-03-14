@@ -18,6 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C8r-VB-B4o">
+                                <rect key="frame" x="0.0" y="91" width="375" height="576"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZL8-YS-Kfh">
                                 <rect key="frame" x="16" y="42" width="218" height="33"/>
                                 <constraints>
@@ -72,28 +76,48 @@
                                 </constraints>
                                 <state key="normal" image="profileButton.png"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbW-Nf-9LL">
+                                <rect key="frame" x="137.5" y="567" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="2hw-ZB-duX"/>
+                                    <constraint firstAttribute="width" constant="100" id="PHf-yG-uZ8"/>
+                                </constraints>
+                                <state key="normal" image="plusRedButton.png"/>
+                                <connections>
+                                    <action selector="createProjectButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="prC-Um-FS3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ZL8-YS-Kfh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="DhO-Pw-dCL"/>
                             <constraint firstItem="jXh-tU-WYm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="IKY-qV-ts1"/>
+                            <constraint firstItem="DbW-Nf-9LL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="IhN-Gy-FdZ"/>
                             <constraint firstItem="jXh-tU-WYm" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="KPi-vT-41a"/>
                             <constraint firstItem="ZL8-YS-Kfh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Mb0-dE-ihV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="C8r-VB-B4o" secondAttribute="bottom" id="PhD-M6-YQm"/>
+                            <constraint firstItem="C8r-VB-B4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V5e-Qg-Wsr"/>
+                            <constraint firstItem="C8r-VB-B4o" firstAttribute="top" secondItem="ZL8-YS-Kfh" secondAttribute="bottom" constant="16" id="YuN-o6-BnV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FrA-fM-u9N" secondAttribute="trailing" constant="16" id="hFB-mC-99F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DbW-Nf-9LL" secondAttribute="bottom" id="hlP-sN-TvV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C8r-VB-B4o" secondAttribute="trailing" id="mEK-FG-7Ob"/>
                             <constraint firstItem="FrA-fM-u9N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="vVg-tj-fCz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="fqJ-gI-X1t"/>
                     <connections>
-                        <outlet property="createProjectButton" destination="8jn-tP-zH2" id="Hrf-KO-EmG"/>
+                        <outlet property="createProjectButton" destination="8jn-tP-zH2" id="qan-6u-Y2F"/>
+                        <outlet property="createProjectCircleButton" destination="DbW-Nf-9LL" id="TnC-Ar-Fbo"/>
                         <outlet property="noDataView" destination="jXh-tU-WYm" id="K5Q-Qy-Zyv"/>
+                        <outlet property="projectsList" destination="C8r-VB-B4o" id="m5i-b7-d9T"/>
                         <segue destination="zTl-0I-3Xu" kind="show" identifier="gotoNewProject" id="5TC-rh-18m"/>
+                        <segue destination="xjq-sn-X3Q" kind="show" identifier="gotoDetails" id="Sw5-pT-MG3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2930" y="134"/>
+            <point key="canvasLocation" x="2928.8000000000002" y="133.5832083958021"/>
         </scene>
         <!--New Project View Controller-->
         <scene sceneID="AF3-vW-Xob">
@@ -318,11 +342,22 @@
                     <view key="view" contentMode="scaleToFill" id="mrW-8d-qD1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ziq-HB-1HX">
+                                <rect key="frame" x="177.5" y="333.5" width="20" height="20"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ziq-HB-1HX" firstAttribute="centerX" secondItem="tun-HU-NL2" secondAttribute="centerX" id="dCK-vX-D2d"/>
+                            <constraint firstItem="Ziq-HB-1HX" firstAttribute="centerY" secondItem="tun-HU-NL2" secondAttribute="centerY" id="tsO-RT-pSW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="tun-HU-NL2"/>
                     </view>
                     <navigationItem key="navigationItem" id="KPy-T5-Qur"/>
                     <connections>
+                        <outlet property="loading" destination="Ziq-HB-1HX" id="jYh-oE-Own"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="gotoProjects" id="m4n-PI-Xe6"/>
                     </connections>
                 </viewController>
@@ -347,10 +382,26 @@
             </objects>
             <point key="canvasLocation" x="1052" y="133.5832083958021"/>
         </scene>
+        <!--Project Details View Controller-->
+        <scene sceneID="eVY-AZ-bni">
+            <objects>
+                <viewController id="xjq-sn-X3Q" customClass="ProjectDetailsViewController" customModule="ATKearneyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ICe-cU-eZZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="yNm-dX-Yus"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zjU-4w-hTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3942" y="911"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backButton.png" width="100" height="100"/>
         <image name="closeButton.png" width="100" height="100"/>
+        <image name="plusRedButton.png" width="200" height="200"/>
         <image name="profileButton.png" width="100" height="100"/>
     </resources>
 </document>

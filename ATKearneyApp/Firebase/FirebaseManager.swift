@@ -188,6 +188,11 @@ class FirebaseManager: NSObject {
         let DBref = Database.database().reference()
         
         DBref.child(USERS).child(userID).child("projects").observeSingleEvent(of: .value, with: { (snapshot) in
+            if(!snapshot.exists()) {
+                callback([NSDictionary](), nil)
+                return
+            }
+            
             if let projectsDict = snapshot.value as? [String: Bool] {
                 let dispatchGroup = DispatchGroup()
                 var result = [NSDictionary]()
