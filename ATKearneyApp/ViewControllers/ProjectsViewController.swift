@@ -99,8 +99,10 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     
     // MARK: - Segue(s)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! ProjectDetailsViewController
-        destinationVC.projectDict = selectedProject
+        if(segue.identifier=="gotoDetails") {
+            let destinationVC = segue.destination as! ProjectDetailsViewController
+            destinationVC.projectDict = selectedProject
+        }
     }
 
 }
