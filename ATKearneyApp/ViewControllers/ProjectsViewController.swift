@@ -13,6 +13,8 @@ class ProjectsViewController: BaseViewController {
     @IBOutlet weak var noDataView: UIView!
     @IBOutlet weak var createProjectButton: UIButton!
     
+    var projects = [NSDictionary]()
+    
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,19 @@ class ProjectsViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.performSegue(withIdentifier: "gotoNewProject", sender: self)
+        
+        FirebaseManager.shared.getUserProjects(userID: CurrentUser.shared.userID) { (projects, error) in
+            if(error==nil) {
+                self.projects = projects!
+            }
+        }
+        
+        /*
+        FirebaseManager.shared.getUsers(userIDs:CurrentSelection.shared.project.users){ (usersArray) in
+            self.users = usersArray!
+            self.usersList.reloadData()
+        }
+         */
     }
     
     // MARK: - Button actions

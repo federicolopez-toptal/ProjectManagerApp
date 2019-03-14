@@ -46,16 +46,6 @@ class CurrentUser {
         phone = ""
     }
     
-    
-    
-    
-    func setValues(_ values: [String: Any]) {
-        admin = values["admin"] as! Bool
-        email = values["email"] as! String
-        name = values["name"] as! String
-        phone = values["phone"] as! String
-    }
-    
     func trace() {
         print(userID, email, name)
     }

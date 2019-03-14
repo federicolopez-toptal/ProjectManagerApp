@@ -62,7 +62,9 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
                 ] as [String : Any]
             
             FirebaseManager.shared.createProject(values: values){ (error) in
-                print(error)
+                if(error == nil) {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
         }
     }
@@ -80,7 +82,13 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
         let content = users[indexPath.row]["content"] as! NSDictionary
-        cell.nameLabel.text = content["name"] as! String
+        
+        let userID = users[indexPath.row]["id"] as! String
+        var cellText = content["name"] as! String
+        if(userID==CurrentUser.shared.userID) {
+            cellText += " (you!)"
+        }
+        cell.nameLabel.text = cellText
         
         return cell
     }

@@ -140,7 +140,6 @@ class FirebaseManager: NSObject {
         }
         
         dispatchGroup.notify(queue: .main, execute: {
-            print(result)
             callback(result)
         })
     }
@@ -151,7 +150,72 @@ class FirebaseManager: NSObject {
         
         let newProject = DBref.child(PROJECTS).childByAutoId()
         newProject.setValue(values){ (error, ref) in
-            callback(error)
+            if let projectID = ref.key {
+                let dispatchGroup = DispatchGroup()
+                let users = values["users"] as! [String: Bool]
+                
+                for (keyUserID, _) in users {
+                    dispatchGroup.enter()
+                    
+                    DBref.child(self.USERS).child(keyUserID).child("projects").observeSingleEvent(of: .value, with: { (snapshot) in
+                        if(snapshot.exists()) {
+                            var userCurrentProjects = snapshot.value as! [String: Bool]
+                            userCurrentProjects[projectID] = true   // add this new project to user
+
+                            DBref.child(self.USERS).child(keyUserID).child("projects").setValue(userCurrentProjects)
+                        } else {
+                            let userCurrentProjects = [
+                                projectID: true
+                            ]
+                            
+                            DBref.child(self.USERS).child(keyUserID).child("projects").setValue(userCurrentProjects)
+                        }
+                        
+                        dispatchGroup.leave()
+                    })
+                }
+                
+                dispatchGroup.notify(queue: .main, execute: {
+                    callback(error)
+                })
+            } else {
+                callback(error)
+            }
+        }
+    }
+    
+    func getUserProjects(userID: String, callback: @escaping ([NSDictionary]?, Error?) -> ()) {
+        let DBref = Database.database().reference()
+        
+        DBref.child(USERS).child(userID).child("projects").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let projectsDict = snapshot.value as? [String: Bool] {
+                let dispatchGroup = DispatchGroup()
+                var result = [NSDictionary]()
+                
+                for (keyProjectID, _) in projectsDict {
+                    dispatchGroup.enter()
+                    
+                    DBref.child(self.PROJECTS).child(keyProjectID).observeSingleEvent(of: .value, with: { (snapshot) in
+                        if(snapshot.exists()) {
+                            let newDict = [
+                                "id": snapshot.key,
+                                "content": snapshot.value as! NSDictionary
+                                ] as [String : Any]
+                            
+                            result.append(newDict as NSDictionary)
+                        }
+                        
+                        dispatchGroup.leave()
+                    })
+                }
+                
+                dispatchGroup.notify(queue: .main, execute: {
+                    callback(result, nil)
+                })
+                
+            }
+        }) { (error) in
+            callback(nil, error)
         }
     }
     

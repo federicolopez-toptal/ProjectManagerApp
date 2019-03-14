@@ -77,7 +77,12 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserSelectableCell", for: indexPath) as! UserSelectableCell
         
         let user = filteredUsers[indexPath.row]
-        cell.nameLabel.text = user.name
+        var cellText = user.name
+        if(user.userID==CurrentUser.shared.userID) {
+            cellText += " (you!)"
+        }
+        
+        cell.nameLabel.text = cellText
         cell.setState( userIDs.contains(user.userID) )
         
         return cell
