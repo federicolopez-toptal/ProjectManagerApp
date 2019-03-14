@@ -75,6 +75,12 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         }
         cell.nameLabel.text = cellText
         
+        if(CurrentSelection.shared.project.officers.contains(userID)) {
+            cell.projectOfficerLabel.isHidden = false
+        } else {
+            cell.projectOfficerLabel.isHidden = true
+        }
+        
         return cell
     }
     

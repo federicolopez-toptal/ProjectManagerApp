@@ -34,7 +34,7 @@ class LoginViewController: BaseViewController {
         */
  
         // Standard login
-        let email = "johnDoe@gmail.com"
+        let email = "carlos.lopez@toptal.com"
         let pass = "gato123"
         FirebaseManager.shared.login(email: email, password: pass) { (user, error) in
             if(error==nil) {

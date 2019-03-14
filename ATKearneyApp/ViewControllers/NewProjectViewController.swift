@@ -56,15 +56,21 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     // MARK: - misc
     func createProject() {
         if(!nameTextField.text!.isEmpty && !descriptionTextView.text.isEmpty && users.count>0) {
-            var pUsers = [String: Bool]()
+            var users = [String: Bool]()
             for userID in CurrentSelection.shared.project.users {
-                pUsers[userID] = true
+                users[userID] = true
+            }
+            
+            var officers = [String: Bool]()
+            for userID in CurrentSelection.shared.project.officers {
+                officers[userID] = true
             }
             
             let values = [
                 "name": nameTextField.text! as String,
                 "description": descriptionTextView.text! as String,
-                "users": pUsers
+                "users": users,
+                "projectOfficers": officers
                 ] as [String : Any]
             
             FirebaseManager.shared.createProject(values: values){ (error) in
@@ -81,15 +87,21 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
         if(!nameTextField.text!.isEmpty && !descriptionTextView.text.isEmpty && users.count>0) {
             let projectID = CurrentSelection.shared.project.projectID
             
-            var pUsers = [String: Bool]()
+            var users = [String: Bool]()
             for userID in CurrentSelection.shared.project.users {
-                pUsers[userID] = true
+                users[userID] = true
+            }
+            
+            var officers = [String: Bool]()
+            for userID in CurrentSelection.shared.project.officers {
+                officers[userID] = true
             }
             
             let values = [
                 "name": nameTextField.text! as String,
                 "description": descriptionTextView.text! as String,
-                "users": pUsers
+                "users": users,
+                "projectOfficers": officers
                 ] as [String : Any]
             
             let usersAdded = CurrentSelection.shared.project.users
@@ -145,6 +157,12 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
             cellText += " (you!)"
         }
         cell.nameLabel.text = cellText
+        
+        if(CurrentSelection.shared.project.officers.contains(userID)) {
+            cell.projectOfficerLabel.isHidden = false
+        } else {
+            cell.projectOfficerLabel.isHidden = true
+        }
         
         return cell
     }

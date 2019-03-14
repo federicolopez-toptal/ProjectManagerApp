@@ -13,12 +13,14 @@ struct Project {
     var name = ""
     var description = ""
     var users = Set<String>()
+    var officers = Set<String>()
     
     mutating func empty() {
         projectID = ""
         name = ""
         description = ""
         users = Set<String>()
+        officers = Set<String>()
     }
 }
 

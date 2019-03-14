@@ -132,6 +132,12 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func saveButtonTap(_ sender: UIButton) {
         CurrentSelection.shared.project.users = userIDs
+        
+        let difference = CurrentSelection.shared.project.officers.subtracting(userIDs)
+        for userID in difference {
+            CurrentSelection.shared.project.officers.remove(userID)
+        }
+        
         self.navigationController?.popViewController(animated: true)
     }
     
