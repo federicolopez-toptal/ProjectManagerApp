@@ -237,10 +237,13 @@
                         <viewLayoutGuide key="safeArea" id="nE8-Dc-uXm"/>
                     </view>
                     <connections>
+                        <outlet property="actionButton" destination="p38-b2-TUA" id="8pw-el-yey"/>
                         <outlet property="descriptionTextView" destination="Tc5-gR-HMN" id="d5F-mU-qpm"/>
                         <outlet property="nameTextField" destination="gQG-Rp-qlU" id="owY-LM-m8d"/>
+                        <outlet property="titleLabel" destination="eu5-GP-0Cs" id="mwc-g1-3zm"/>
                         <outlet property="usersList" destination="mQG-HS-bTV" id="Vfg-dV-wF8"/>
                         <segue destination="2vt-zY-x6x" kind="show" identifier="gotoUsers" id="fZv-tD-6RX"/>
+                        <segue destination="cKq-Jj-wgl" kind="show" identifier="gotoShowUser" id="bme-8G-Pjd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1I-YS-rQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -301,7 +304,7 @@
                                     <constraint firstAttribute="height" constant="30" id="kOQ-IJ-FPs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="SAVE">
+                                <state key="normal" title="APPLY">
                                     <color key="titleColor" red="0.51970928910000003" green="0.23232031710000001" blue="0.18708523020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
@@ -334,6 +337,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iyb-PS-fQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4838" y="134"/>
+        </scene>
+        <!--User In Project View Controller-->
+        <scene sceneID="W2v-vh-amg">
+            <objects>
+                <viewController id="cKq-Jj-wgl" customClass="UserInProjectViewController" customModule="ATKearneyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5lP-lA-Tcp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uqy-L0-xeg">
+                                <rect key="frame" x="16" y="33" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="8n3-fP-v2a"/>
+                                    <constraint firstAttribute="height" constant="50" id="nwf-JP-eMu"/>
+                                </constraints>
+                                <state key="normal" image="closeButton.png"/>
+                                <connections>
+                                    <action selector="closeButtonTap:" destination="zTl-0I-3Xu" eventType="touchUpInside" id="JMM-uF-JdZ"/>
+                                    <action selector="closeButtonTap:" destination="cKq-Jj-wgl" eventType="touchUpInside" id="tby-Rb-PT7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXc-nO-nEt">
+                                <rect key="frame" x="31" y="80" width="319" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IfD-me-Ggr">
+                                <rect key="frame" x="0.0" y="166" width="375" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Project officer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcM-ol-kTg">
+                                        <rect key="frame" x="21" y="29" width="108" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ju1-tR-6qA">
+                                        <rect key="frame" x="304" y="24" width="49" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Uqy-L0-xeg" firstAttribute="top" secondItem="h7d-dh-3sw" secondAttribute="top" constant="13" id="0ep-Pm-doc"/>
+                            <constraint firstItem="h7d-dh-3sw" firstAttribute="trailing" secondItem="KXc-nO-nEt" secondAttribute="trailing" constant="25" id="6yk-pU-V8C"/>
+                            <constraint firstItem="Uqy-L0-xeg" firstAttribute="leading" secondItem="h7d-dh-3sw" secondAttribute="leading" constant="16" id="bIf-e8-YaL"/>
+                            <constraint firstItem="KXc-nO-nEt" firstAttribute="leading" secondItem="h7d-dh-3sw" secondAttribute="leading" constant="31" id="jg5-5E-coi"/>
+                            <constraint firstItem="KXc-nO-nEt" firstAttribute="top" secondItem="h7d-dh-3sw" secondAttribute="top" constant="60" id="vzR-ax-a99"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="h7d-dh-3sw"/>
+                    </view>
+                    <connections>
+                        <outlet property="editView" destination="IfD-me-Ggr" id="peX-al-IM1"/>
+                        <outlet property="nameLabel" destination="KXc-nO-nEt" id="oZX-uY-Zud"/>
+                        <outlet property="projectOfficerSwitch" destination="ju1-tR-6qA" id="oyY-yZ-eAY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iRx-hp-0HM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4838" y="922"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Dbn-L2-pAT">
@@ -455,6 +523,7 @@
                         <outlet property="nameLabel" destination="7O9-Ph-BPC" id="eeG-QO-aYQ"/>
                         <outlet property="usersList" destination="NWQ-mm-v2Q" id="zqk-OC-rSJ"/>
                         <segue destination="zTl-0I-3Xu" kind="show" identifier="gotoEdit" id="bWA-Xa-GVb"/>
+                        <segue destination="cKq-Jj-wgl" kind="show" identifier="gotoShowUser" id="egf-bS-qtF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjU-4w-hTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -469,6 +538,7 @@
         <image name="profileButton.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="bme-8G-Pjd"/>
         <segue reference="bWA-Xa-GVb"/>
     </inferredMetricsTieBreakers>
 </document>

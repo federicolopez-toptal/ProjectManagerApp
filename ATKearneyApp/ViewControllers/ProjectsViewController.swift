@@ -16,7 +16,6 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var projectsList: UITableView!
     
     var projects = [NSDictionary]()
-    var selectedProject: NSDictionary?
     
     // MARK: - Init
     override func viewDidLoad() {
@@ -34,16 +33,25 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         projectsList.register(nib, forCellReuseIdentifier: "ProjectCell")
         
         createProjectButton.isHidden = !CurrentUser.shared.admin
-        createProjectCircleButton.isHidden = !CurrentUser.shared.admin
+        createProjectCircleButton.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        FirebaseManager.shared.getUserProjects(userID: CurrentUser.shared.userID) { (projects, error) in
-            if(error==nil) {
-                self.projects = projects!
-                self.reload()
+        if(CurrentUser.shared.admin){
+            FirebaseManager.shared.getAllProjects { (projects, error) in
+                if(error==nil) {
+                    self.projects = projects!
+                    self.reload()
+                }
+            }
+        } else {
+            FirebaseManager.shared.getUserProjects(userID: CurrentUser.shared.userID) { (projects, error) in
+                if(error==nil) {
+                    self.projects = projects!
+                    self.reload()
+                }
             }
         }
     }
@@ -59,6 +67,7 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
             noDataView.isHidden = false
         } else {
             noDataView.isHidden = true
+            createProjectCircleButton.isHidden = !CurrentUser.shared.admin
         }
         
         projectsList.reloadData()
@@ -93,16 +102,21 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedProject = projects[indexPath.row]
-        self.performSegue(withIdentifier: "gotoDetails", sender: self)
-    }
-    
-    // MARK: - Segue(s)
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier=="gotoDetails") {
-            let destinationVC = segue.destination as! ProjectDetailsViewController
-            destinationVC.projectDict = selectedProject
+        CurrentSelection.shared.project.empty()
+        
+        let projectDict = projects[indexPath.row]
+        CurrentSelection.shared.project.projectID = projectDict["id"] as! String
+        
+        let content = projectDict["content"] as! [String: Any]
+        CurrentSelection.shared.project.name = content["name"] as! String
+        CurrentSelection.shared.project.description = content["description"] as! String
+        
+        let users = content["users"] as! [String: Bool]
+        for (keyUserID, _) in users {
+            CurrentSelection.shared.project.users.insert(keyUserID)
         }
+        
+        self.performSegue(withIdentifier: "gotoDetails", sender: self)
     }
 
 }

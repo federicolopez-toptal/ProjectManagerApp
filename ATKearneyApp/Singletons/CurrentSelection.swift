@@ -8,19 +8,39 @@
 
 import UIKit
 
-struct basicProject {
+struct Project {
     var projectID = ""
+    var name = ""
+    var description = ""
     var users = Set<String>()
     
     mutating func empty() {
         projectID = ""
+        name = ""
+        description = ""
         users = Set<String>()
     }
 }
 
+struct User {
+    var userID = ""
+    var email  = ""
+    var name = ""
+    var phone = ""
+    
+    mutating func empty() {
+        userID = ""
+        email = ""
+        name = ""
+        phone = ""
+    }
+}
+
+
+
 class CurrentSelection {
     
     static let shared = CurrentSelection()
-
-    var project = basicProject()
+    var project = Project()
+    var user = User()
 }

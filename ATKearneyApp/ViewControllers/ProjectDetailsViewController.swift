@@ -14,9 +14,8 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var usersList: UITableView!
     
-    var projectDict: NSDictionary?
     var users = [NSDictionary]()
-    
+    var firstTime = true
     
     // MARK: - Init
     override func viewDidLoad() {
@@ -29,25 +28,21 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         
         let nib = UINib.init(nibName: "UserCell", bundle: nil)
         usersList.register(nib, forCellReuseIdentifier: "UserCell")
-        
-        let content = projectDict!["content"] as! [String: Any]
-        nameLabel.text! = content["name"] as! String
-        descriptionLabel.text! = content["description"] as! String
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let content = projectDict!["content"] as! [String: Any]
-        let projectUsers = content["users"] as! [String: Bool]
-        var usersToRequest = Set<String>()
-        for (keyUserID, _) in projectUsers {
-            usersToRequest.insert(keyUserID)
-        }
+        nameLabel.text! = CurrentSelection.shared.project.name
+        descriptionLabel.text! = CurrentSelection.shared.project.description
         
-        FirebaseManager.shared.getUsers(userIDs: usersToRequest) { (usersArray) in
-            self.users = usersArray!
-            self.usersList.reloadData()
+        if(firstTime) {
+            FirebaseManager.shared.getUsers(userIDs: CurrentSelection.shared.project.users) { (usersArray) in
+                self.users = usersArray!
+                self.usersList.reloadData()
+            }
+            
+            firstTime = false
         }
     }
 
@@ -88,9 +83,24 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let content = users[indexPath.row]["content"] as! NSDictionary
-        let name = content["name"] as! String
+        CurrentSelection.shared.user.empty()
         
-        print(name)
+        let userID = users[indexPath.row]["id"] as! String
+        CurrentSelection.shared.user.userID = userID
+        
+        let content = users[indexPath.row]["content"] as! NSDictionary
+        CurrentSelection.shared.user.name = content["name"] as! String
+        CurrentSelection.shared.user.email = content["email"] as! String
+        CurrentSelection.shared.user.phone = content["phone"] as! String
+        
+        self.performSegue(withIdentifier: "gotoShowUser", sender: self)
+    }
+    
+    // MARK: - Segue(s)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier=="gotoEdit") {
+            let destinationVC = segue.destination as! NewProjectViewController
+            destinationVC.editingProject = true
+        }
     }
 }
