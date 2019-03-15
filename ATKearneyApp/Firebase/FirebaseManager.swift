@@ -83,6 +83,12 @@ class FirebaseManager: NSObject {
         try! Auth.auth().signOut()
     }
     
+    func resetPassword(email: String, callback: @escaping (Error?) -> () ) {
+        Auth.auth().sendPasswordReset(withEmail: email){ (error) in
+            callback(error)
+        }
+    }
+    
     
     func getUser(userID: String, callback: @escaping (NSDictionary?, Error?) -> () ) {
         let DBref = Database.database().reference()

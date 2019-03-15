@@ -26,7 +26,7 @@ class RegisterViewController: BaseViewController {
         addFormBehavior(scrollview: scrollView, bottomContraint: bottomConstraint)
     }
     
-    // misc
+    // MARK: - misc
     func validateForm() -> Bool {
         if(!nameTextField.text!.isEmpty && !emailTextField.text!.isEmpty && !phoneTextField.text!.isEmpty && !passwordTextField.text!.isEmpty) {
             return true
@@ -35,7 +35,7 @@ class RegisterViewController: BaseViewController {
         }
     }
     
-    // Button actions
+    // MARK: - Button actions
     @IBAction func createAccountButtonTap(_ sender: UIButton) {
         // Create user
         let info = [
@@ -53,5 +53,11 @@ class RegisterViewController: BaseViewController {
             
         }
     }
+    
+    @IBAction func backButtonTap(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
 
 }

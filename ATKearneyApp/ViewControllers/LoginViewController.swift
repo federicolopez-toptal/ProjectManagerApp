@@ -60,48 +60,12 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func forgotPassButtonTap(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "gotoResetPass", sender: self)
     }
     
     @IBAction func createAccountButtonTap(_ sender: UIButton) {
         self.performSegue(withIdentifier: "gotoRegister", sender: self)
     }
     
-    
-    
-    
-    
-    
-    
-    func test() {
-        /*
-         // Create user
-         let email = "janeDoe@gmail.com"
-         let pass = "gato123"
-         let info = [
-         "admin": false,
-         "name": "Jane Doe",
-         "phone": "123",
-         "email": email
-         ] as [String : Any]
-         
-         FirebaseManager.shared.createUser(email: email, password: pass, info: info) { (error) in
-            if(error==nil) {
-                CurrentUser.shared.trace()
-            }
-            
-         }
-        */
-        
-        
-        
-        /*
-         // Login
-         let email = "carlos.lopez@toptal.com"
-         let pass = "gato123"
-         FirebaseManager.shared.login(email: email, password: pass) { (user, error) in
-            CurrentUser.shared.trace()
-         }
- */
-    }
     
 }
