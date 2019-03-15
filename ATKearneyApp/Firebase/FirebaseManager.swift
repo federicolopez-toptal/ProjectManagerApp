@@ -145,14 +145,20 @@ class FirebaseManager: NSObject {
     }
     
     // MARK: - Projects
-    func createProject(values: [String: Any], callback: @escaping (Error?) -> () ) {
+    //func createProject(values: [String: Any], callback: @escaping (Error?) -> () ) {
+    func createProject(info: [String: String], users: [String: Bool], officers: [String: Bool], callback: @escaping (Error?) -> () ) {
         let DBref = Database.database().reference()
         
+        let newItemContent = [
+            "info": info,
+            "users": users,
+            "officers": officers
+        ] as [String: Any]
+        
         let newProject = DBref.child(PROJECTS).childByAutoId()
-        newProject.setValue(values){ (error, ref) in
+        newProject.setValue(newItemContent){ (error, ref) in
             if let projectID = ref.key {
                 let dispatchGroup = DispatchGroup()
-                let users = values["users"] as! [String: Bool]
                 
                 for (keyUserID, _) in users {
                     dispatchGroup.enter()
@@ -252,52 +258,55 @@ class FirebaseManager: NSObject {
         }
     }
     
-    func editProject(projectID: String, values: [String: Any], usersAdded: Set<String>, usersRemoved: Set<String>,
-                     callback: @escaping (Error?) -> () ) {
+    //func editProject(projectID: String, values: [String: Any], usersAdded: Set<String>, usersRemoved: Set<String>, callback: @escaping (Error?) -> () ) {
+    
+    func editProject(projectID: String, info: [String: String], users: [String: Bool], officers: [String: Bool],
+                     usersAdded: Set<String>, usersRemoved: Set<String>,
+                     callback: @escaping (Bool) -> () )
+    {
+        
         let DBref = Database.database().reference()
         
-        DBref.child(self.PROJECTS).child(projectID).setValue(values){ (error, ref) in
-            if(error==nil){
+        DBref.child(PROJECTS).child(projectID).child("info").setValue(info)
+        DBref.child(PROJECTS).child(projectID).child("users").setValue(users)
+        DBref.child(PROJECTS).child(projectID).child("officers").setValue(officers)
+        
+        let dispatchGroup = DispatchGroup()
+        
+        // users added
+        for userID in usersAdded {
+            dispatchGroup.enter()
             
-                let dispatchGroup = DispatchGroup()
-                
-                // users added
-                for userID in usersAdded {
-                    dispatchGroup.enter()
+            DBref.child(self.USERS).child(userID).child("projects").observeSingleEvent(of: .value, with: { (snapshot) in
+                if(snapshot.exists()) {
+                    var userCurrentProjects = snapshot.value as! [String: Bool]
+                    userCurrentProjects[projectID] = true   // add this new project to user
                     
-                    DBref.child(self.USERS).child(userID).child("projects").observeSingleEvent(of: .value, with: { (snapshot) in
-                        if(snapshot.exists()) {
-                            var userCurrentProjects = snapshot.value as! [String: Bool]
-                            userCurrentProjects[projectID] = true   // add this new project to user
-                            
-                            DBref.child(self.USERS).child(userID).child("projects").setValue(userCurrentProjects)
-                        } else {
-                            let userCurrentProjects = [
-                                projectID: true
-                            ]
-                            
-                            DBref.child(self.USERS).child(userID).child("projects").setValue(userCurrentProjects)
-                        }
-                        
-                        dispatchGroup.leave()
-                    })
+                    DBref.child(self.USERS).child(userID).child("projects").setValue(userCurrentProjects)
+                } else {
+                    let userCurrentProjects = [
+                        projectID: true
+                    ]
+                    
+                    DBref.child(self.USERS).child(userID).child("projects").setValue(userCurrentProjects)
                 }
                 
-                // Users removed
-                for userID in usersRemoved {
-                    dispatchGroup.enter()
-                    DBref.child(self.USERS).child(userID).child("projects").child(projectID).removeValue()
-                    
-                    dispatchGroup.leave()
-                }
-                
-                
-                dispatchGroup.notify(queue: .main, execute: {
-                    callback(error)
-                })
-                
-            }
+                dispatchGroup.leave()
+            })
         }
+        
+        // Users removed
+        for userID in usersRemoved {
+            dispatchGroup.enter()
+            DBref.child(self.USERS).child(userID).child("projects").child(projectID).removeValue()
+            
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main, execute: {
+            callback(true)
+        })
+        
     }
     
     

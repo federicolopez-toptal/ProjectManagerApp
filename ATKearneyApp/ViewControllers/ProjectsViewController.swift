@@ -87,11 +87,12 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         
         let project = projects[indexPath.row]
         let content = project["content"] as! [String: Any]
+        let info = content["info"] as! [String: String]
         let users = content["users"] as! [String: Bool]
         let usersCount = users.keys.count
         
-        cell.nameLabel.text! = content["name"] as! String
-        cell.descriptionLabel.text! = content["description"] as! String
+        cell.nameLabel.text! = info["name"]! as String
+        cell.descriptionLabel.text! = info["description"]! as String
         cell.membersLabel.text = "\(usersCount) MEMBERS"
         
         return cell
@@ -108,15 +109,16 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         CurrentSelection.shared.project.projectID = projectDict["id"] as! String
         
         let content = projectDict["content"] as! [String: Any]
-        CurrentSelection.shared.project.name = content["name"] as! String
-        CurrentSelection.shared.project.description = content["description"] as! String
+        let info = content["info"] as! [String: String]
+        CurrentSelection.shared.project.name = info["name"]! as String
+        CurrentSelection.shared.project.description = info["description"]! as String
         
         let users = content["users"] as! [String: Bool]
         for (keyUserID, _) in users {
             CurrentSelection.shared.project.users.insert(keyUserID)
         }
         
-        let officers = content["projectOfficers"] as! [String: Bool]
+        let officers = content["officers"] as! [String: Bool]
         for (keyUserID, _) in officers {
             CurrentSelection.shared.project.officers.insert(keyUserID)
         }

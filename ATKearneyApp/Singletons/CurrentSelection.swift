@@ -41,7 +41,6 @@ struct User {
 
 
 class CurrentSelection {
-    
     static let shared = CurrentSelection()
     var project = Project()
     var user = User()

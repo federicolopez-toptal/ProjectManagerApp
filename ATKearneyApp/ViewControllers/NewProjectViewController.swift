@@ -56,6 +56,11 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     // MARK: - misc
     func createProject() {
         if(!nameTextField.text!.isEmpty && !descriptionTextView.text.isEmpty && users.count>0) {
+            let info = [
+                "name": nameTextField.text! as String,
+                "description": descriptionTextView.text! as String
+            ]
+            
             var users = [String: Bool]()
             for userID in CurrentSelection.shared.project.users {
                 users[userID] = true
@@ -66,14 +71,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
                 officers[userID] = true
             }
             
-            let values = [
-                "name": nameTextField.text! as String,
-                "description": descriptionTextView.text! as String,
-                "users": users,
-                "projectOfficers": officers
-                ] as [String : Any]
-            
-            FirebaseManager.shared.createProject(values: values){ (error) in
+            FirebaseManager.shared.createProject(info: info, users: users, officers: officers){ (error) in
                 if(error == nil) {
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -87,6 +85,11 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
         if(!nameTextField.text!.isEmpty && !descriptionTextView.text.isEmpty && users.count>0) {
             let projectID = CurrentSelection.shared.project.projectID
             
+            let info = [
+                "name": nameTextField.text! as String,
+                "description": descriptionTextView.text! as String
+            ]
+            
             var users = [String: Bool]()
             for userID in CurrentSelection.shared.project.users {
                 users[userID] = true
@@ -97,16 +100,9 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
                 officers[userID] = true
             }
             
-            let values = [
-                "name": nameTextField.text! as String,
-                "description": descriptionTextView.text! as String,
-                "users": users,
-                "projectOfficers": officers
-                ] as [String : Any]
-            
             let usersAdded = CurrentSelection.shared.project.users
-            FirebaseManager.shared.editProject(projectID: projectID, values: values, usersAdded: usersAdded, usersRemoved: usersRemoved) { (error) in
-                if(error==nil) {
+            FirebaseManager.shared.editProject(projectID: projectID, info: info, users: users, officers: officers, usersAdded: usersAdded, usersRemoved: usersRemoved){(success) in
+                if(success) {
                     CurrentSelection.shared.project.name = self.nameTextField.text!
                     CurrentSelection.shared.project.description = self.descriptionTextView.text!
                     
