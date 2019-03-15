@@ -343,10 +343,25 @@
             </objects>
             <point key="canvasLocation" x="4838" y="134"/>
         </scene>
-        <!--User In Project View Controller-->
+        <!--View Controller-->
+        <scene sceneID="fbh-kV-zr4">
+            <objects>
+                <viewController id="1ZA-Xk-Do1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L6g-Mf-S2n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="JXT-on-XLV"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zby-8s-Zr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5919" y="797"/>
+        </scene>
+        <!--User Details View Controller-->
         <scene sceneID="W2v-vh-amg">
             <objects>
-                <viewController id="cKq-Jj-wgl" customClass="UserInProjectViewController" customModule="ATKearneyApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cKq-Jj-wgl" customClass="UserDetailsViewController" customModule="ATKearneyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5lP-lA-Tcp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -390,6 +405,44 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvg-qZ-f1z">
+                                <rect key="frame" x="31" y="144" width="192" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBG-7M-qZr">
+                                <rect key="frame" x="31" y="178" width="192" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxA-L3-vbH">
+                                <rect key="frame" x="51" y="499" width="279" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Change password">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changePasswordTap:" destination="cKq-Jj-wgl" eventType="touchUpInside" id="mFO-dt-jM1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrX-wI-gVX">
+                                <rect key="frame" x="324" y="43" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="EDIT">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="editButtonTap:" destination="cKq-Jj-wgl" eventType="touchUpInside" id="79M-0Q-m3d"/>
+                                    <action selector="editButtonTap:" destination="xjq-sn-X3Q" eventType="touchUpInside" id="eyk-r3-lOn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -402,14 +455,35 @@
                         <viewLayoutGuide key="safeArea" id="h7d-dh-3sw"/>
                     </view>
                     <connections>
+                        <outlet property="changePasswordButton" destination="YxA-L3-vbH" id="avc-a3-VbE"/>
+                        <outlet property="editUserButton" destination="LrX-wI-gVX" id="yca-6Y-UL2"/>
+                        <outlet property="emailLabel" destination="Qvg-qZ-f1z" id="lwN-EM-jng"/>
                         <outlet property="nameLabel" destination="KXc-nO-nEt" id="oZX-uY-Zud"/>
                         <outlet property="officerView" destination="IfD-me-Ggr" id="06s-1Y-C7Z"/>
+                        <outlet property="phoneLabel" destination="VBG-7M-qZr" id="BKR-A3-C4b"/>
                         <outlet property="projectOfficerSwitch" destination="ju1-tR-6qA" id="oyY-yZ-eAY"/>
+                        <segue destination="1ZA-Xk-Do1" kind="show" identifier="gotoEdit" id="lvC-3Z-j4u"/>
+                        <segue destination="gqZ-2e-sKQ" kind="show" identifier="gotoPass" id="TEh-Be-QyB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iRx-hp-0HM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4838" y="1158"/>
+            <point key="canvasLocation" x="4837.6000000000004" y="1157.2713643178411"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XIl-7o-kIM">
+            <objects>
+                <viewController id="gqZ-2e-sKQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="92r-kn-DRt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wdX-te-XPR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xnV-EF-NOL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5919" y="1515"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="16W-JC-Iqb">

@@ -26,16 +26,14 @@ class LoginViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        /*
         FirebaseManager.shared.autoLogin{ (success, error) in
             if(error==nil && success) {
                 MyUser.shared.trace()
                 self.performSegue(withIdentifier: "gotoProjects", sender: self)
             }
         }
-        */
-        
-        FirebaseManager.shared.logout()
+
+        //FirebaseManager.shared.logout()
     }
     
     // misc

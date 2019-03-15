@@ -187,7 +187,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     // MARK: - Segue(s)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier=="gotoUser") {
-            let destinationVC = segue.destination as! UserInProjectViewController
+            let destinationVC = segue.destination as! UserDetailsViewController
             destinationVC.officerEditable = true
         }
     }

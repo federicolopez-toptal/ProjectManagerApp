@@ -65,6 +65,11 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func profileButtonTap(_ sender: UIButton) {
+        SelectedUser.shared.userID = MyUser.shared.userID
+        SelectedUser.shared.name = MyUser.shared.name
+        SelectedUser.shared.email = MyUser.shared.email
+        SelectedUser.shared.phone = MyUser.shared.phone
+        
         self.performSegue(withIdentifier: "gotoUser", sender: self)
     }
     
@@ -132,6 +137,14 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         }
         
         self.performSegue(withIdentifier: "gotoDetails", sender: self)
+    }
+    
+    // MARK: - Segue(s)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier=="gotoUser") {
+            let destinationVC = segue.destination as! UserDetailsViewController
+            destinationVC.canEditInfo = true
+        }
     }
 
 }
