@@ -414,27 +414,100 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ziq-HB-1HX">
-                                <rect key="frame" x="177.5" y="333.5" width="20" height="20"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZd-Kq-e0l">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZT3-e3-32d">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BUS-9k-Ref">
+                                                <rect key="frame" x="32" y="151" width="311" height="43"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="esj-lX-cSa">
+                                                <rect key="frame" x="32" y="202" width="311" height="43"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1U-2X-JoR">
+                                                <rect key="frame" x="32" y="262" width="311" height="48"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.51970928910000003" green="0.23232031710000001" blue="0.18708523020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Login">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="createProjectButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w2v-6g-xVe"/>
+                                                    <action selector="loginButtonTap:" destination="hz8-ya-loC" eventType="touchUpInside" id="XZn-be-8Yx"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPW-xk-spx">
+                                                <rect key="frame" x="32" y="324" width="311" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Forgot password?">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="forgotPassButtonTap:" destination="hz8-ya-loC" eventType="touchUpInside" id="Pl5-nG-6KJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mg3-fD-Wia">
+                                                <rect key="frame" x="32" y="432" width="311" height="48"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.43638959389999998" green="0.43638959389999998" blue="0.43638959389999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Create account">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="createAccountButtonTap:" destination="hz8-ya-loC" eventType="touchUpInside" id="YU9-op-RWy"/>
+                                                    <action selector="createProjectButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qbe-oI-KaQ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ZT3-e3-32d" firstAttribute="height" secondItem="VZd-Kq-e0l" secondAttribute="height" id="BTP-mL-1AX"/>
+                                    <constraint firstItem="ZT3-e3-32d" firstAttribute="top" secondItem="VZd-Kq-e0l" secondAttribute="top" id="FSC-vr-Av2"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZT3-e3-32d" secondAttribute="trailing" id="LPL-9v-qdd"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZT3-e3-32d" secondAttribute="bottom" id="MoH-bn-IVr"/>
+                                    <constraint firstItem="ZT3-e3-32d" firstAttribute="width" secondItem="VZd-Kq-e0l" secondAttribute="width" id="Uqv-Ly-ePs"/>
+                                    <constraint firstItem="ZT3-e3-32d" firstAttribute="leading" secondItem="VZd-Kq-e0l" secondAttribute="leading" id="bOh-dv-Z3d"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ziq-HB-1HX" firstAttribute="centerX" secondItem="tun-HU-NL2" secondAttribute="centerX" id="dCK-vX-D2d"/>
-                            <constraint firstItem="Ziq-HB-1HX" firstAttribute="centerY" secondItem="tun-HU-NL2" secondAttribute="centerY" id="tsO-RT-pSW"/>
+                            <constraint firstItem="VZd-Kq-e0l" firstAttribute="leading" secondItem="tun-HU-NL2" secondAttribute="leading" id="Bvr-1A-6wh"/>
+                            <constraint firstItem="tun-HU-NL2" firstAttribute="bottom" secondItem="VZd-Kq-e0l" secondAttribute="bottom" id="N7B-PP-a76"/>
+                            <constraint firstItem="tun-HU-NL2" firstAttribute="trailing" secondItem="VZd-Kq-e0l" secondAttribute="trailing" id="W6m-ZA-Eam"/>
+                            <constraint firstItem="tun-HU-NL2" firstAttribute="top" secondItem="VZd-Kq-e0l" secondAttribute="top" constant="20" id="rIx-26-DXd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tun-HU-NL2"/>
                     </view>
                     <navigationItem key="navigationItem" id="KPy-T5-Qur"/>
                     <connections>
-                        <outlet property="loading" destination="Ziq-HB-1HX" id="jYh-oE-Own"/>
+                        <outlet property="bottomConstraint" destination="MoH-bn-IVr" id="KOl-FG-IBa"/>
+                        <outlet property="passwordTextField" destination="esj-lX-cSa" id="0xi-tl-Yja"/>
+                        <outlet property="scrollView" destination="VZd-Kq-e0l" id="GzS-Ws-COh"/>
+                        <outlet property="userTextField" destination="BUS-9k-Ref" id="FMU-LG-fMN"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="gotoProjects" id="m4n-PI-Xe6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YmQ-KZ-4Kf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1991.2" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1991.2" y="132.68365817091455"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kji-Ru-XSu">
@@ -542,6 +615,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="bme-8G-Pjd"/>
-        <segue reference="bWA-Xa-GVb"/>
+        <segue reference="5TC-rh-18m"/>
     </inferredMetricsTieBreakers>
 </document>
