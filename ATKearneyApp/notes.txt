@@ -1,0 +1,8 @@
+NEXT:
+
+- Form > Edit profile
+- Form > Change pass
+- Tests > Crear varios proyectos, agregar/eliminar usuarios y officers
+
+- En todas las pantallas > Revisar las llamadas a Firebase e ir agregando validaciones y/o carteles
+- Charlar con Ismet sobre la estética final. Conseguir assets y tipografías

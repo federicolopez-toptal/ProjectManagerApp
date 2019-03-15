@@ -13,6 +13,7 @@
 		BD4DC9B9223C21AE00E14F2F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DC9B8223C21AE00E14F2F /* RegisterViewController.swift */; };
 		BD4DC9BB223C27C400E14F2F /* ResetPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DC9BA223C27C300E14F2F /* ResetPassViewController.swift */; };
 		BD4DC9BD223C476500E14F2F /* SelectedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DC9BC223C476500E14F2F /* SelectedUser.swift */; };
+		BD4DC9BF223C4F9100E14F2F /* notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BD4DC9BE223C4F9100E14F2F /* notes.txt */; };
 		BD7B690522395F2100C0DE35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B690422395F2100C0DE35 /* AppDelegate.swift */; };
 		BD7B690A22395F2100C0DE35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD7B690822395F2100C0DE35 /* Main.storyboard */; };
 		BD7B690C22395F2200C0DE35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD7B690B22395F2200C0DE35 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		BD4DC9B8223C21AE00E14F2F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BD4DC9BA223C27C300E14F2F /* ResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassViewController.swift; sourceTree = "<group>"; };
 		BD4DC9BC223C476500E14F2F /* SelectedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUser.swift; sourceTree = "<group>"; };
+		BD4DC9BE223C4F9100E14F2F /* notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
 		BD7B690122395F2100C0DE35 /* ATKearneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATKearneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7B690422395F2100C0DE35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD7B690922395F2100C0DE35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		BD7B690322395F2100C0DE35 /* ATKearneyApp */ = {
 			isa = PBXGroup;
 			children = (
+				BD4DC9BE223C4F9100E14F2F /* notes.txt */,
 				BD82B792223961F0003825D8 /* App */,
 				BDD38A522239F7D100819809 /* Singletons */,
 				BD82B78F223961C5003825D8 /* Firebase */,
@@ -311,6 +314,7 @@
 				BD82B7AF22398B9F003825D8 /* backButton.png in Resources */,
 				BD7B690F22395F2200C0DE35 /* LaunchScreen.storyboard in Resources */,
 				BD7B690C22395F2200C0DE35 /* Assets.xcassets in Resources */,
+				BD4DC9BF223C4F9100E14F2F /* notes.txt in Resources */,
 				BD82B79F223969F6003825D8 /* GoogleService-Info.plist in Resources */,
 				BD82FF4F22399E5D008F6304 /* checkON.png in Resources */,
 				BD7B690A22395F2100C0DE35 /* Main.storyboard in Resources */,
