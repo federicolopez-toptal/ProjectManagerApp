@@ -25,7 +25,7 @@ class LoginViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        /*
         FirebaseManager.shared.autoLogin{ (error) in
             
             if(error == nil && CurrentUser.shared.authenticated) {
@@ -33,8 +33,9 @@ class LoginViewController: BaseViewController {
                 self.performSegue(withIdentifier: "gotoProjects", sender: self)
             }
         }
+        */
         
-        //FirebaseManager.shared.logout()
+        FirebaseManager.shared.logout()
     }
     
     // misc
@@ -60,7 +61,9 @@ class LoginViewController: BaseViewController {
     
     @IBAction func forgotPassButtonTap(_ sender: UIButton) {
     }
+    
     @IBAction func createAccountButtonTap(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "gotoRegister", sender: self)
     }
     
     
