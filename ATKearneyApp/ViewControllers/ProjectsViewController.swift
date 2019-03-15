@@ -118,10 +118,12 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
             CurrentSelection.shared.project.users.insert(keyUserID)
         }
         
-        let officers = content["officers"] as! [String: Bool]
-        for (keyUserID, _) in officers {
-            CurrentSelection.shared.project.officers.insert(keyUserID)
+        if let officers = content["officers"] as? [String: Bool] {
+            for (keyUserID, _) in officers {
+                CurrentSelection.shared.project.officers.insert(keyUserID)
+            }
         }
+        
         
         self.performSegue(withIdentifier: "gotoDetails", sender: self)
     }
