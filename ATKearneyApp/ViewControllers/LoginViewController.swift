@@ -25,11 +25,11 @@ class LoginViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         /*
-        FirebaseManager.shared.autoLogin{ (error) in
-            
-            if(error == nil && CurrentUser.shared.authenticated) {
-                CurrentUser.shared.trace()
+        FirebaseManager.shared.autoLogin{ (success, error) in
+            if(error==nil && success) {
+                MyUser.shared.trace()
                 self.performSegue(withIdentifier: "gotoProjects", sender: self)
             }
         }
@@ -52,7 +52,7 @@ class LoginViewController: BaseViewController {
         if(validateForm()) {
             FirebaseManager.shared.login(email: userTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if(error==nil) {
-                    CurrentUser.shared.trace()
+                    MyUser.shared.trace()
                     self.performSegue(withIdentifier: "gotoProjects", sender: self)
                 }
             }

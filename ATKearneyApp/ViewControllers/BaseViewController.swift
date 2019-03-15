@@ -31,10 +31,12 @@ class BaseViewController: UIViewController {
         scrollview.subviews.first?.addGestureRecognizer(gesture)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if(formMode){
             addKeyboardObservers()
+        } else {
+            self.view.endEditing(true)
         }
     }
     
@@ -47,6 +49,10 @@ class BaseViewController: UIViewController {
     
     // MARK: - Gesture(s)
     @objc func viewOnTap(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     

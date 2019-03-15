@@ -26,7 +26,7 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        userIDs = CurrentSelection.shared.project.users
+        userIDs = SelectedProject.shared.users
         
         usersList.tableFooterView = UIView()
         usersList.delegate = self
@@ -80,7 +80,7 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         
         let user = filteredUsers[indexPath.row]
         var cellText = user.name
-        if(user.userID==CurrentUser.shared.userID) {
+        if(user.userID==MyUser.shared.userID) {
             cellText += " (you!)"
         }
         
@@ -133,11 +133,11 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func saveButtonTap(_ sender: UIButton) {
-        CurrentSelection.shared.project.users = userIDs
+        SelectedProject.shared.users = userIDs
         
-        let difference = CurrentSelection.shared.project.officers.subtracting(userIDs)
+        let difference = SelectedProject.shared.officers.subtracting(userIDs)
         for userID in difference {
-            CurrentSelection.shared.project.officers.remove(userID)
+            SelectedProject.shared.officers.remove(userID)
         }
         
         self.navigationController?.popViewController(animated: true)

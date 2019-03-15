@@ -11,10 +11,10 @@ import UIKit
 class UserInProjectViewController: BaseViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var editView: UIView!
+    @IBOutlet weak var officerView: UIView!
     @IBOutlet weak var projectOfficerSwitch: UISwitch!
     
-    var editingUser = false
+    var officerEditable = false
     var userID: String = ""
     
     
@@ -22,15 +22,15 @@ class UserInProjectViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userID = CurrentSelection.shared.user.userID
-        editView.backgroundColor = UIColor.white
-        nameLabel.text! = CurrentSelection.shared.user.name
+        userID = SelectedUser.shared.userID
+        officerView.backgroundColor = UIColor.white
+        nameLabel.text! = SelectedUser.shared.name
         
-        editView.isHidden = true
-        if(editingUser) {
-            editView.isHidden = false
-            let userID = CurrentSelection.shared.user.userID
-            projectOfficerSwitch.isOn = CurrentSelection.shared.project.officers.contains(userID)
+        officerView.isHidden = true
+        if(officerEditable) {
+            officerView.isHidden = false
+            let userID = SelectedUser.shared.userID
+            projectOfficerSwitch.isOn = SelectedProject.shared.officers.contains(userID)
         }
     }
     
@@ -41,9 +41,9 @@ class UserInProjectViewController: BaseViewController {
     
     @IBAction func projectOfficerValueChanged(_ sender: UISwitch) {
         if(sender.isOn) {
-            CurrentSelection.shared.project.officers.insert(userID)
+            SelectedProject.shared.officers.insert(userID)
         } else {
-            CurrentSelection.shared.project.officers.remove(userID)
+            SelectedProject.shared.officers.remove(userID)
         }
     }
     

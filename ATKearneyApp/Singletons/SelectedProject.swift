@@ -1,5 +1,5 @@
 //
-//  CurrentSelection.swift
+//  SelectedProject.swift
 //  ATKearneyApp
 //
 //  Created by Federico Lopez on 13/03/2019.
@@ -8,14 +8,16 @@
 
 import UIKit
 
-struct Project {
+class SelectedProject {
+    static let shared = SelectedProject()
+    
     var projectID = ""
     var name = ""
     var description = ""
     var users = Set<String>()
     var officers = Set<String>()
     
-    mutating func empty() {
+    func empty() {
         projectID = ""
         name = ""
         description = ""
@@ -24,24 +26,3 @@ struct Project {
     }
 }
 
-struct User {
-    var userID = ""
-    var email  = ""
-    var name = ""
-    var phone = ""
-    
-    mutating func empty() {
-        userID = ""
-        email = ""
-        name = ""
-        phone = ""
-    }
-}
-
-
-
-class CurrentSelection {
-    static let shared = CurrentSelection()
-    var project = Project()
-    var user = User()
-}

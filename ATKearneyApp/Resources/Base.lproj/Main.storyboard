@@ -75,6 +75,9 @@
                                     <constraint firstAttribute="width" constant="50" id="g4Q-WA-h92"/>
                                 </constraints>
                                 <state key="normal" image="profileButton.png"/>
+                                <connections>
+                                    <action selector="profileButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Bg-l7-uOL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbW-Nf-9LL">
                                 <rect key="frame" x="137.5" y="567" width="100" height="100"/>
@@ -111,8 +114,10 @@
                         <outlet property="createProjectCircleButton" destination="DbW-Nf-9LL" id="TnC-Ar-Fbo"/>
                         <outlet property="noDataView" destination="jXh-tU-WYm" id="K5Q-Qy-Zyv"/>
                         <outlet property="projectsList" destination="C8r-VB-B4o" id="m5i-b7-d9T"/>
+                        <outlet property="titleLabel" destination="ZL8-YS-Kfh" id="WEG-VP-bUe"/>
                         <segue destination="zTl-0I-3Xu" kind="show" identifier="gotoNewProject" id="5TC-rh-18m"/>
                         <segue destination="xjq-sn-X3Q" kind="show" identifier="gotoDetails" id="Sw5-pT-MG3"/>
+                        <segue destination="cKq-Jj-wgl" kind="show" identifier="gotoUser" id="AVg-OP-vJp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -243,7 +248,7 @@
                         <outlet property="titleLabel" destination="eu5-GP-0Cs" id="mwc-g1-3zm"/>
                         <outlet property="usersList" destination="mQG-HS-bTV" id="Vfg-dV-wF8"/>
                         <segue destination="2vt-zY-x6x" kind="show" identifier="gotoUsers" id="fZv-tD-6RX"/>
-                        <segue destination="cKq-Jj-wgl" kind="show" identifier="gotoShowUser" id="bme-8G-Pjd"/>
+                        <segue destination="cKq-Jj-wgl" kind="show" identifier="gotoUser" id="bme-8G-Pjd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1I-YS-rQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -365,7 +370,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IfD-me-Ggr">
-                                <rect key="frame" x="0.0" y="166" width="375" height="79"/>
+                                <rect key="frame" x="0.0" y="568" width="375" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Project officer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcM-ol-kTg">
@@ -397,14 +402,14 @@
                         <viewLayoutGuide key="safeArea" id="h7d-dh-3sw"/>
                     </view>
                     <connections>
-                        <outlet property="editView" destination="IfD-me-Ggr" id="peX-al-IM1"/>
                         <outlet property="nameLabel" destination="KXc-nO-nEt" id="oZX-uY-Zud"/>
+                        <outlet property="officerView" destination="IfD-me-Ggr" id="06s-1Y-C7Z"/>
                         <outlet property="projectOfficerSwitch" destination="ju1-tR-6qA" id="oyY-yZ-eAY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iRx-hp-0HM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4838" y="922"/>
+            <point key="canvasLocation" x="4838" y="1158"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="16W-JC-Iqb">
@@ -799,15 +804,16 @@
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="03T-yh-5fw" id="FC1-4W-9r0"/>
+                        <outlet property="editButton" destination="w18-AV-ldw" id="meQ-Qk-aFD"/>
                         <outlet property="nameLabel" destination="7O9-Ph-BPC" id="eeG-QO-aYQ"/>
                         <outlet property="usersList" destination="NWQ-mm-v2Q" id="zqk-OC-rSJ"/>
                         <segue destination="zTl-0I-3Xu" kind="show" identifier="gotoEdit" id="bWA-Xa-GVb"/>
-                        <segue destination="cKq-Jj-wgl" kind="show" identifier="gotoShowUser" id="egf-bS-qtF"/>
+                        <segue destination="cKq-Jj-wgl" kind="show" identifier="gotoUser" id="egf-bS-qtF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjU-4w-hTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3157.5999999999999" y="922.48875562218893"/>
+            <point key="canvasLocation" x="3177" y="1096"/>
         </scene>
     </scenes>
     <resources>
@@ -817,8 +823,8 @@
         <image name="profileButton.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="egf-bS-qtF"/>
-        <segue reference="bWA-Xa-GVb"/>
+        <segue reference="AVg-OP-vJp"/>
+        <segue reference="5TC-rh-18m"/>
         <segue reference="jcQ-0a-0Vu"/>
     </inferredMetricsTieBreakers>
 </document>

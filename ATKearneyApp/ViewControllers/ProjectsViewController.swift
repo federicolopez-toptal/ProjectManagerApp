@@ -14,6 +14,7 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var createProjectButton: UIButton!
     @IBOutlet weak var createProjectCircleButton: UIButton!
     @IBOutlet weak var projectsList: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var projects = [NSDictionary]()
     
@@ -32,14 +33,15 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         let nib = UINib.init(nibName: "ProjectCell", bundle: nil)
         projectsList.register(nib, forCellReuseIdentifier: "ProjectCell")
         
-        createProjectButton.isHidden = !CurrentUser.shared.admin
+        createProjectButton.isHidden = !MyUser.shared.admin
         createProjectCircleButton.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if(CurrentUser.shared.admin){
+        if(MyUser.shared.admin){
+            titleLabel.text! = "All projects"
             FirebaseManager.shared.getAllProjects { (projects, error) in
                 if(error==nil) {
                     self.projects = projects!
@@ -47,7 +49,8 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
                 }
             }
         } else {
-            FirebaseManager.shared.getUserProjects(userID: CurrentUser.shared.userID) { (projects, error) in
+            titleLabel.text! = "My projects"
+            FirebaseManager.shared.getUserProjects(userID: MyUser.shared.userID) { (projects, error) in
                 if(error==nil) {
                     self.projects = projects!
                     self.reload()
@@ -61,13 +64,17 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         self.performSegue(withIdentifier: "gotoNewProject", sender: self)
     }
     
+    @IBAction func profileButtonTap(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "gotoUser", sender: self)
+    }
+    
     // MARK: - misc
     func reload() {
         if(projects.count==0) {
             noDataView.isHidden = false
         } else {
             noDataView.isHidden = true
-            createProjectCircleButton.isHidden = !CurrentUser.shared.admin
+            createProjectCircleButton.isHidden = !MyUser.shared.admin
         }
         
         projectsList.reloadData()
@@ -103,24 +110,24 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        CurrentSelection.shared.project.empty()
+        SelectedProject.shared.empty()
         
         let projectDict = projects[indexPath.row]
-        CurrentSelection.shared.project.projectID = projectDict["id"] as! String
+        SelectedProject.shared.projectID = projectDict["id"] as! String
         
         let content = projectDict["content"] as! [String: Any]
         let info = content["info"] as! [String: String]
-        CurrentSelection.shared.project.name = info["name"]! as String
-        CurrentSelection.shared.project.description = info["description"]! as String
+        SelectedProject.shared.name = info["name"]! as String
+        SelectedProject.shared.description = info["description"]! as String
         
         let users = content["users"] as! [String: Bool]
         for (keyUserID, _) in users {
-            CurrentSelection.shared.project.users.insert(keyUserID)
+            SelectedProject.shared.users.insert(keyUserID)
         }
         
         if let officers = content["officers"] as? [String: Bool] {
             for (keyUserID, _) in officers {
-                CurrentSelection.shared.project.officers.insert(keyUserID)
+                SelectedProject.shared.officers.insert(keyUserID)
             }
         }
         

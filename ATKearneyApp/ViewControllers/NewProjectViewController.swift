@@ -32,12 +32,12 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
         if(editingProject) {
             titleLabel.text = "Edit project"
             actionButton.setTitle("Save changes", for: .normal)
-            nameTextField.text! = CurrentSelection.shared.project.name
-            descriptionTextView.text! = CurrentSelection.shared.project.description
+            nameTextField.text! = SelectedProject.shared.name
+            descriptionTextView.text! = SelectedProject.shared.description
             
-            usersCopy = CurrentSelection.shared.project.users
+            usersCopy = SelectedProject.shared.users
         } else {
-            CurrentSelection.shared.project.empty()
+            SelectedProject.shared.empty()
         }
         
         let nib = UINib.init(nibName: "UserCell", bundle: nil)
@@ -47,7 +47,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        FirebaseManager.shared.getUsers(userIDs:CurrentSelection.shared.project.users){ (usersArray) in
+        FirebaseManager.shared.getUsers(userIDs:SelectedProject.shared.users){ (usersArray) in
             self.users = usersArray!
             self.usersList.reloadData()
         }
@@ -62,12 +62,12 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
             ]
             
             var users = [String: Bool]()
-            for userID in CurrentSelection.shared.project.users {
+            for userID in SelectedProject.shared.users {
                 users[userID] = true
             }
             
             var officers = [String: Bool]()
-            for userID in CurrentSelection.shared.project.officers {
+            for userID in SelectedProject.shared.officers {
                 officers[userID] = true
             }
             
@@ -80,10 +80,10 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     }
     
     func editProject() {
-        let usersRemoved = usersCopy.subtracting(CurrentSelection.shared.project.users)
+        let usersRemoved = usersCopy.subtracting(SelectedProject.shared.users)
         
         if(!nameTextField.text!.isEmpty && !descriptionTextView.text.isEmpty && users.count>0) {
-            let projectID = CurrentSelection.shared.project.projectID
+            let projectID = SelectedProject.shared.projectID
             
             let info = [
                 "name": nameTextField.text! as String,
@@ -91,20 +91,20 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
             ]
             
             var users = [String: Bool]()
-            for userID in CurrentSelection.shared.project.users {
+            for userID in SelectedProject.shared.users {
                 users[userID] = true
             }
             
             var officers = [String: Bool]()
-            for userID in CurrentSelection.shared.project.officers {
+            for userID in SelectedProject.shared.officers {
                 officers[userID] = true
             }
             
-            let usersAdded = CurrentSelection.shared.project.users
+            let usersAdded = SelectedProject.shared.users
             FirebaseManager.shared.editProject(projectID: projectID, info: info, users: users, officers: officers, usersAdded: usersAdded, usersRemoved: usersRemoved){(success) in
                 if(success) {
-                    CurrentSelection.shared.project.name = self.nameTextField.text!
-                    CurrentSelection.shared.project.description = self.descriptionTextView.text!
+                    SelectedProject.shared.name = self.nameTextField.text!
+                    SelectedProject.shared.description = self.descriptionTextView.text!
                     
                     let lastIndex = (self.navigationController?.viewControllers.count)!-1
                     let prevVC = self.navigationController?.viewControllers[lastIndex-1] as! ProjectDetailsViewController
@@ -150,12 +150,12 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
         
         let userID = users[indexPath.row]["id"] as! String
         var cellText = info["name"] as! String
-        if(userID==CurrentUser.shared.userID) {
+        if(userID==MyUser.shared.userID) {
             cellText += " (you!)"
         }
         cell.nameLabel.text = cellText
         
-        if(CurrentSelection.shared.project.officers.contains(userID)) {
+        if(SelectedProject.shared.officers.contains(userID)) {
             cell.projectOfficerLabel.isHidden = false
         } else {
             cell.projectOfficerLabel.isHidden = true
@@ -169,26 +169,26 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        CurrentSelection.shared.user.empty()
+        SelectedUser.shared.empty()
         
         let userID = users[indexPath.row]["id"] as! String
-        CurrentSelection.shared.user.userID = userID
+        SelectedUser.shared.userID = userID
         
         let content = users[indexPath.row]["content"] as! NSDictionary
         let info = content["info"] as! NSDictionary
         
-        CurrentSelection.shared.user.name = info["name"] as! String
-        CurrentSelection.shared.user.email = info["email"] as! String
-        CurrentSelection.shared.user.phone = info["phone"] as! String
+        SelectedUser.shared.name = info["name"] as! String
+        SelectedUser.shared.email = info["email"] as! String
+        SelectedUser.shared.phone = info["phone"] as! String
         
-        self.performSegue(withIdentifier: "gotoShowUser", sender: self)
+        self.performSegue(withIdentifier: "gotoUser", sender: self)
     }
     
     // MARK: - Segue(s)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier=="gotoShowUser") {
+        if(segue.identifier=="gotoUser") {
             let destinationVC = segue.destination as! UserInProjectViewController
-            destinationVC.editingUser = true
+            destinationVC.officerEditable = true
         }
     }
     

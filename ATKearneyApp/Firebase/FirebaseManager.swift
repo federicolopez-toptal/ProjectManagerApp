@@ -18,7 +18,7 @@ class FirebaseManager: NSObject {
     
     // MARK: - Users
     func createUser(email: String, password: String, info:[String: Any], callback: @escaping (Error?) ->() ) {
-        CurrentUser.shared.empty()
+        MyUser.shared.empty()
         Auth.auth().createUser(withEmail: email, password: password){ (user, error) in
             if(error != nil) {
                 callback(error)
@@ -26,7 +26,7 @@ class FirebaseManager: NSObject {
                 if let userID = Auth.auth().currentUser?.uid {
                     let DBref = Database.database().reference()
                     DBref.child(self.USERS).child(userID).child("info").setValue(info)
-                    CurrentUser.shared.fillWith(userID: userID, info: info)
+                    MyUser.shared.fillWith(userID: userID, info: info)
                     
                     callback(nil)
                 }
@@ -36,7 +36,7 @@ class FirebaseManager: NSObject {
     }
     
     func login(email: String, password: String, callback: @escaping (NSDictionary?, Error?) -> () ) {
-        CurrentUser.shared.empty()
+        MyUser.shared.empty()
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if(error != nil) {
                 callback(nil, error)
@@ -46,7 +46,7 @@ class FirebaseManager: NSObject {
                     
                     DBref.child(self.USERS).child(userID).child("info").observeSingleEvent(of: .value, with: { (snapshot) in
                         if let userDict = snapshot.value as? NSDictionary {
-                            CurrentUser.shared.fillWith(userID: userID, info: userDict as! [String: Any])                            
+                            MyUser.shared.fillWith(userID: userID, info: userDict as! [String: Any])                            
                             callback(userDict, nil)
                         } else {
                             callback(nil, nil)
@@ -62,24 +62,24 @@ class FirebaseManager: NSObject {
         
     }
     
-    func autoLogin(callback: @escaping (Error?) ->() ) {
-        CurrentUser.shared.empty()
+    func autoLogin(callback: @escaping (Bool, Error?) ->() ) {
+        MyUser.shared.empty()
         if let userID = Auth.auth().currentUser?.uid {
             getUser(userID: userID) { (userDict, error) in
                 if(error != nil) {
-                    callback(error)
+                    callback(false, error)
                 } else {
-                    CurrentUser.shared.fillWith(userID: userID, info: userDict as! [String: Any])
-                    callback(nil)
+                    MyUser.shared.fillWith(userID: userID, info: userDict as! [String: Any])
+                    callback(true, nil)
                 }
             }
         } else {
-            callback(nil)
+            callback(false, nil)
         }
     }
     
     func logout() {
-        CurrentUser.shared.empty()
+        MyUser.shared.empty()
         try! Auth.auth().signOut()
     }
     

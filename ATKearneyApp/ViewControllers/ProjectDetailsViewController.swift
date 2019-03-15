@@ -14,6 +14,7 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var usersList: UITableView!
     
+    @IBOutlet weak var editButton: UIButton!
     var users = [NSDictionary]()
     var firstTime = true
     
@@ -33,11 +34,17 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        nameLabel.text! = CurrentSelection.shared.project.name
-        descriptionLabel.text! = CurrentSelection.shared.project.description
+        nameLabel.text! = SelectedProject.shared.name
+        descriptionLabel.text! = SelectedProject.shared.description
+        
+        if(MyUser.shared.admin || SelectedProject.shared.officers.contains(MyUser.shared.userID)) {
+            editButton.isHidden = false
+        } else {
+            editButton.isHidden = true
+        }
         
         if(firstTime) {
-            FirebaseManager.shared.getUsers(userIDs: CurrentSelection.shared.project.users) { (usersArray) in
+            FirebaseManager.shared.getUsers(userIDs: SelectedProject.shared.users) { (usersArray) in
                 self.users = usersArray!
                 self.usersList.reloadData()
             }
@@ -71,12 +78,12 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         
         let userID = users[indexPath.row]["id"] as! String
         var cellText = info["name"] as! String
-        if(userID==CurrentUser.shared.userID) {
+        if(userID==MyUser.shared.userID) {
             cellText += " (you!)"
         }
         cell.nameLabel.text = cellText
         
-        if(CurrentSelection.shared.project.officers.contains(userID)) {
+        if(SelectedProject.shared.officers.contains(userID)) {
             cell.projectOfficerLabel.isHidden = false
         } else {
             cell.projectOfficerLabel.isHidden = true
@@ -90,17 +97,19 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        CurrentSelection.shared.user.empty()
+        SelectedUser.shared.empty()
         
         let userID = users[indexPath.row]["id"] as! String
-        CurrentSelection.shared.user.userID = userID
+        SelectedUser.shared.userID = userID
         
         let content = users[indexPath.row]["content"] as! NSDictionary
-        CurrentSelection.shared.user.name = content["name"] as! String
-        CurrentSelection.shared.user.email = content["email"] as! String
-        CurrentSelection.shared.user.phone = content["phone"] as! String
+        let info = content["info"] as! NSDictionary
         
-        self.performSegue(withIdentifier: "gotoShowUser", sender: self)
+        SelectedUser.shared.name = info["name"] as! String
+        SelectedUser.shared.email = info["email"] as! String
+        SelectedUser.shared.phone = info["phone"] as! String
+        
+        self.performSegue(withIdentifier: "gotoUser", sender: self)
     }
     
     // MARK: - Segue(s)
