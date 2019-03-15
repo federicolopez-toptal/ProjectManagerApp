@@ -146,9 +146,10 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
         let content = users[indexPath.row]["content"] as! NSDictionary
+        let info = content["info"] as! NSDictionary
         
         let userID = users[indexPath.row]["id"] as! String
-        var cellText = content["name"] as! String
+        var cellText = info["name"] as! String
         if(userID==CurrentUser.shared.userID) {
             cellText += " (you!)"
         }
@@ -174,9 +175,11 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
         CurrentSelection.shared.user.userID = userID
         
         let content = users[indexPath.row]["content"] as! NSDictionary
-        CurrentSelection.shared.user.name = content["name"] as! String
-        CurrentSelection.shared.user.email = content["email"] as! String
-        CurrentSelection.shared.user.phone = content["phone"] as! String
+        let info = content["info"] as! NSDictionary
+        
+        CurrentSelection.shared.user.name = info["name"] as! String
+        CurrentSelection.shared.user.email = info["email"] as! String
+        CurrentSelection.shared.user.phone = info["phone"] as! String
         
         self.performSegue(withIdentifier: "gotoShowUser", sender: self)
     }

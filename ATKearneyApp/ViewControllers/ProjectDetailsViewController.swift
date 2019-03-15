@@ -67,9 +67,10 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
         let content = users[indexPath.row]["content"] as! NSDictionary
+        let info = content["info"] as! NSDictionary
         
         let userID = users[indexPath.row]["id"] as! String
-        var cellText = content["name"] as! String
+        var cellText = info["name"] as! String
         if(userID==CurrentUser.shared.userID) {
             cellText += " (you!)"
         }

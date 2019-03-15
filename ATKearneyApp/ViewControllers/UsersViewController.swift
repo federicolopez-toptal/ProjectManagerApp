@@ -52,7 +52,9 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         for(key, value) in source! {
             let strKey = key as! String
             let dict = value as! NSDictionary
-            let name = dict["name"] as! String
+            let info = dict["info"] as! NSDictionary
+            
+            let name = info["name"] as! String
             
             users.append( basicUser(userID: strKey, name: name) )
         }

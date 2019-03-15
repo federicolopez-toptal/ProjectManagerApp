@@ -87,7 +87,7 @@ class FirebaseManager: NSObject {
     func getUser(userID: String, callback: @escaping (NSDictionary?, Error?) -> () ) {
         let DBref = Database.database().reference()
         
-        DBref.child(USERS).child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+        DBref.child(USERS).child(userID).child("info").observeSingleEvent(of: .value, with: { (snapshot) in
             if let userDict = snapshot.value as? NSDictionary {
                 callback(userDict, nil)
             } else {
