@@ -17,7 +17,7 @@ class FirebaseManager: NSObject {
     private let PROJECTS = "projects_v2"
     
     // MARK: - Users
-    func createUser(email: String, password: String, values:[String: Any], callback: @escaping (Error?) ->() ) {
+    func createUser(email: String, password: String, info:[String: Any], callback: @escaping (Error?) ->() ) {
         CurrentUser.shared.empty()
         Auth.auth().createUser(withEmail: email, password: password){ (user, error) in
             if(error != nil) {
@@ -25,8 +25,8 @@ class FirebaseManager: NSObject {
             } else {
                 if let userID = Auth.auth().currentUser?.uid {
                     let DBref = Database.database().reference()
-                    DBref.child(self.USERS).child(userID).setValue(values)
-                    CurrentUser.shared.fillWith(userID: userID, values: values)
+                    DBref.child(self.USERS).child(userID).child("info").setValue(info)
+                    CurrentUser.shared.fillWith(userID: userID, info: info)
                     
                     callback(nil)
                 }
@@ -44,9 +44,9 @@ class FirebaseManager: NSObject {
                 if let userID = user?.user.uid {
                     let DBref = Database.database().reference()
                     
-                    DBref.child(self.USERS).child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+                    DBref.child(self.USERS).child(userID).child("info").observeSingleEvent(of: .value, with: { (snapshot) in
                         if let userDict = snapshot.value as? NSDictionary {
-                            CurrentUser.shared.fillWith(userID: userID, values: userDict as! [String: Any])                            
+                            CurrentUser.shared.fillWith(userID: userID, info: userDict as! [String: Any])                            
                             callback(userDict, nil)
                         } else {
                             callback(nil, nil)
@@ -69,7 +69,7 @@ class FirebaseManager: NSObject {
                 if(error != nil) {
                     callback(error)
                 } else {
-                    CurrentUser.shared.fillWith(userID: userID, values: userDict as! [String: Any])
+                    CurrentUser.shared.fillWith(userID: userID, info: userDict as! [String: Any])
                     callback(nil)
                 }
             }

@@ -33,6 +33,8 @@ class LoginViewController: BaseViewController {
         }
         */
  
+        
+        
         // Standard login
         let email = "carlos.lopez@toptal.com"
         let pass = "gato123"
@@ -44,6 +46,8 @@ class LoginViewController: BaseViewController {
             }
         }
     }
+        
+ 
     
     
     
@@ -51,24 +55,24 @@ class LoginViewController: BaseViewController {
     
     
     func test() {
-        
+        /*
          // Create user
          let email = "janeDoe@gmail.com"
          let pass = "gato123"
-         let fields = [
+         let info = [
          "admin": false,
          "name": "Jane Doe",
          "phone": "123",
          "email": email
          ] as [String : Any]
          
-         FirebaseManager.shared.createUser(email: email, password: pass, values: fields) { (error) in
+         FirebaseManager.shared.createUser(email: email, password: pass, info: info) { (error) in
             if(error==nil) {
                 CurrentUser.shared.trace()
             }
             
          }
-        
+        */
         
         
         

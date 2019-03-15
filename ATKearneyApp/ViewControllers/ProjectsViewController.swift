@@ -124,7 +124,6 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
             }
         }
         
-        
         self.performSegue(withIdentifier: "gotoDetails", sender: self)
     }
 

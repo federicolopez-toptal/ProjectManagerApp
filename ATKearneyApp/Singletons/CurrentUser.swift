@@ -28,13 +28,13 @@ class CurrentUser {
         phone = ""
     }
     
-    func fillWith(userID: String, values: [String: Any]) {
+    func fillWith(userID: String, info: [String: Any]) {
         authenticated = true
         self.userID = userID
-        admin = values["admin"] as! Bool
-        email = values["email"] as! String
-        name = values["name"] as! String
-        phone = values["phone"] as! String
+        admin = info["admin"] as! Bool
+        email = info["email"] as! String
+        name = info["name"] as! String
+        phone = info["phone"] as! String
     }
     
     func empty() {
