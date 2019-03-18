@@ -109,6 +109,18 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         SelectedUser.shared.email = info["email"] as! String
         SelectedUser.shared.phone = info["phone"] as! String
         
+        // Optional fields
+        if let role = info["role"] as? String {
+            SelectedUser.shared.role = role
+        } else {
+            SelectedUser.shared.role = ""
+        }
+        if let skills = info["skills"] as? String {
+            SelectedUser.shared.skills = skills
+        } else {
+            SelectedUser.shared.skills = ""
+        }
+        
         self.performSegue(withIdentifier: "gotoUser", sender: self)
     }
     

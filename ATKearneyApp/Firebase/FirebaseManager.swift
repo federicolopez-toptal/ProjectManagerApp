@@ -150,6 +150,24 @@ class FirebaseManager: NSObject {
         })
     }
     
+    func editUser(userID: String, info: [String: Any], callback: @escaping (Error?) -> () ) {
+        let DBref = Database.database().reference()
+        
+        DBref.child(USERS).child(userID).child("info").setValue(info) { (error, ref) in
+            callback(error)
+        }
+    }
+    
+    func editUserPassword(email: String, oldPassword: String, newPassword: String, callback: @escaping (Error?) -> () ) {
+        Auth.auth().signIn(withEmail: email, password: oldPassword) { (user, error) in
+            if(error==nil) {
+                Auth.auth().currentUser?.updatePassword(to: newPassword) { (error) in
+                    callback(error)
+                }
+            }
+        }
+    }
+    
     // MARK: - Projects
     //func createProject(values: [String: Any], callback: @escaping (Error?) -> () ) {
     func createProject(info: [String: String], users: [String: Bool], officers: [String: Bool], callback: @escaping (Error?) -> () ) {

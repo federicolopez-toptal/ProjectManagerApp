@@ -10,6 +10,8 @@
 		5E4F9B31F6CFE80036C94903 /* Pods_ATKearneyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */; };
 		BD3BABC92239A8CD004521F4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3BABC72239A8CD004521F4 /* UserCell.swift */; };
 		BD3BABCA2239A8CD004521F4 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3BABC82239A8CD004521F4 /* UserCell.xib */; };
+		BD4285642240177700E7D5EA /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4285632240177700E7D5EA /* EditUserViewController.swift */; };
+		BD428566224021B500E7D5EA /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD428565224021B500E7D5EA /* EditPasswordViewController.swift */; };
 		BD4DC9B9223C21AE00E14F2F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DC9B8223C21AE00E14F2F /* RegisterViewController.swift */; };
 		BD4DC9BB223C27C400E14F2F /* ResetPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DC9BA223C27C300E14F2F /* ResetPassViewController.swift */; };
 		BD4DC9BD223C476500E14F2F /* SelectedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4DC9BC223C476500E14F2F /* SelectedUser.swift */; };
@@ -45,6 +47,8 @@
 		A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATKearneyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD3BABC72239A8CD004521F4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		BD3BABC82239A8CD004521F4 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		BD4285632240177700E7D5EA /* EditUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
+		BD428565224021B500E7D5EA /* EditPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordViewController.swift; sourceTree = "<group>"; };
 		BD4DC9B8223C21AE00E14F2F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BD4DC9BA223C27C300E14F2F /* ResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassViewController.swift; sourceTree = "<group>"; };
 		BD4DC9BC223C476500E14F2F /* SelectedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUser.swift; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 				BD82B7AC22398A75003825D8 /* UsersViewController.swift */,
 				BDDBA3BF223AC43E005E96FF /* ProjectDetailsViewController.swift */,
 				BDDBA3C1223AF9D3005E96FF /* UserDetailsViewController.swift */,
+				BD4285632240177700E7D5EA /* EditUserViewController.swift */,
+				BD428565224021B500E7D5EA /* EditPasswordViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -396,8 +402,10 @@
 				BD82B797223964AF003825D8 /* ProjectsViewController.swift in Sources */,
 				BD82B7AD22398A75003825D8 /* UsersViewController.swift in Sources */,
 				BDC2D184223AB9E000B0D527 /* ProjectCell.swift in Sources */,
+				BD428566224021B500E7D5EA /* EditPasswordViewController.swift in Sources */,
 				BD7B690522395F2100C0DE35 /* AppDelegate.swift in Sources */,
 				BD82FF4C22399984008F6304 /* SelectedProject.swift in Sources */,
+				BD4285642240177700E7D5EA /* EditUserViewController.swift in Sources */,
 				BD3BABC92239A8CD004521F4 /* UserCell.swift in Sources */,
 				BD82B795223964A5003825D8 /* BaseViewController.swift in Sources */,
 			);
@@ -546,7 +554,7 @@
 			baseConfigurationReference = C6D672A18292CFB9EFD13DB9 /* Pods-ATKearneyApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SW8S5Y74E8;
 				INFOPLIST_FILE = ATKearneyApp/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
@@ -554,8 +562,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gatoLab.ATKearneyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gatoLab.ATKearneyPMO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "ATKearneyPMO DEV";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -566,7 +575,8 @@
 			baseConfigurationReference = D99FF67ABA930557895509B0 /* Pods-ATKearneyApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SW8S5Y74E8;
 				INFOPLIST_FILE = ATKearneyApp/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
@@ -574,8 +584,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gatoLab.ATKearneyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gatoLab.ATKearneyPMO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "ATKearneyPMO AppStore";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

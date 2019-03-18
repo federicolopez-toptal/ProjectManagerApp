@@ -16,10 +16,15 @@ class SelectedUser {
     var name = ""
     var phone = ""
     
+    var role = ""
+    var skills = ""
+    
     func empty() {
         userID = ""
         email = ""
         name = ""
         phone = ""
+        role = ""
+        skills = ""
     }
 }

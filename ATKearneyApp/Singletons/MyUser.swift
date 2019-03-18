@@ -18,12 +18,17 @@ class MyUser {
     var name: String
     var phone: String
     
+    var role: String
+    var skills: String
+    
     init() {
         userID = ""
         admin = false
         email = ""
         name = ""
         phone = ""
+        role = ""
+        skills = ""
     }
     
     func fillWith(userID: String, info: [String: Any]) {
@@ -32,6 +37,19 @@ class MyUser {
         email = info["email"] as! String
         name = info["name"] as! String
         phone = info["phone"] as! String
+        
+        // Optional fields
+        if let role = info["role"] as? String {
+            self.role = role
+        } else {
+            self.role = ""
+        }
+        
+        if let skills = info["skills"] as? String {
+            self.skills = skills
+        } else {
+            self.skills = ""
+        }
     }
     
     func empty() {
@@ -40,6 +58,8 @@ class MyUser {
         email = ""
         name = ""
         phone = ""
+        role = ""
+        skills = ""
     }
     
     func trace() {

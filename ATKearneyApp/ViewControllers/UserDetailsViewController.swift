@@ -13,8 +13,11 @@ class UserDetailsViewController: BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var roleLabel: UILabel!
+    @IBOutlet weak var skillsLabel: UILabel!
     @IBOutlet weak var officerView: UIView!
     @IBOutlet weak var projectOfficerSwitch: UISwitch!
+    @IBOutlet weak var logoutButton: UIButton!
     
     @IBOutlet weak var editUserButton: UIButton!
     @IBOutlet weak var changePasswordButton: UIButton!
@@ -32,17 +35,15 @@ class UserDetailsViewController: BaseViewController {
         userID = SelectedUser.shared.userID
         officerView.backgroundColor = UIColor.white
         
-        nameLabel.text! = SelectedUser.shared.name
-        emailLabel.text! = SelectedUser.shared.email
-        phoneLabel.text! = SelectedUser.shared.phone
-        
         officerView.isHidden = true
         editUserButton.isHidden = true
         changePasswordButton.isHidden = true
+        logoutButton.isHidden = true
         
         if(canEditInfo) {
             editUserButton.isHidden = false
             changePasswordButton.isHidden = false
+            logoutButton.isHidden = false
         }
         
         if(officerEditable) {
@@ -50,6 +51,16 @@ class UserDetailsViewController: BaseViewController {
             let userID = SelectedUser.shared.userID
             projectOfficerSwitch.isOn = SelectedProject.shared.officers.contains(userID)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        nameLabel.text! = SelectedUser.shared.name
+        emailLabel.text! = SelectedUser.shared.email
+        phoneLabel.text! = SelectedUser.shared.phone
+        roleLabel.text! = SelectedUser.shared.role
+        skillsLabel.text! = SelectedUser.shared.skills
     }
     
     // MARK: - Button actions
@@ -73,5 +84,13 @@ class UserDetailsViewController: BaseViewController {
         self.performSegue(withIdentifier: "gotoPass", sender: self)
     }
     
+    @IBAction func logoutButtonTap(_ sender: UIButton) {
+        FirebaseManager.shared.logout()
+        
+        let loginVC = self.navigationController?.viewControllers.first as! LoginViewController
+        loginVC.userTextField.text = ""
+        loginVC.passwordTextField.text = ""
+        self.navigationController?.popToViewController(loginVC, animated: true)
+    }
     
 }

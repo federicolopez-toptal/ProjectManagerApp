@@ -69,6 +69,8 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         SelectedUser.shared.name = MyUser.shared.name
         SelectedUser.shared.email = MyUser.shared.email
         SelectedUser.shared.phone = MyUser.shared.phone
+        SelectedUser.shared.role = MyUser.shared.role
+        SelectedUser.shared.skills = MyUser.shared.skills
         
         self.performSegue(withIdentifier: "gotoUser", sender: self)
     }
