@@ -9,6 +9,7 @@
 import UIKit
 
 let title_ERROR =           "Error"
+let title_SUCCES =          "Success"
 
 let text_NO_INTERNET =      "No internet connection available"
 let text_GENERIC_ERROR =    "An error occurred.\nPlease, try again later"
@@ -18,3 +19,6 @@ let text_INVALID_EMAIL =    "Invalid email"
 let text_LOGIN_ERROR =      "Wrong email and/or password"
 let text_SHORT_PASSWORD =   "Password too short\n(6 characters minimum)"
 let text_EMAIL_IN_USE =     "The email entered already belongs to an existing user"
+let text_USER_CREATED =     "User created successfully!"
+let text_EMAIL_SENT =       "Email sent successfully!"
+let text_EMAIL_NOT_FOUND =  "The email entered doesn't belong to any user"

@@ -51,6 +51,20 @@ func ALERT(_ title: String, _ text: String, viewController: UIViewController) {
     viewController.present(alert, animated: true)
 }
 
+func ALERT(_ title: String, _ text: String, viewController: UIViewController, callback: @escaping () -> ()) {
+    let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "Ok", style: .cancel) { (alertAction) in
+        print(alertAction)
+        callback()
+    }
+    
+    alert.addAction(okAction)
+    viewController.present(alert, animated: true) {
+        callback()
+    }
+}
+
+
 func ERROR_CODE(_ error: Error?) -> Int {
     var result = 0
     if let E = error as NSError? {

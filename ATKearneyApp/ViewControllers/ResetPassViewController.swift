@@ -23,13 +23,43 @@ class ResetPassViewController: BaseViewController {
         addFormBehavior(scrollview: scrollView, bottomContraint: bottomConstraint)
     }
 
+    // MARK: - Form validation
+    func validateForm() -> Bool {
+        if(emailTextField.text!.isEmpty) {
+            ALERT(title_ERROR, text_EMPTY_FIELDS, viewController: self)
+            return false
+        } else {
+            return true
+        }
+    }
+    
     // MARK: - Button actions
     @IBAction func resetPassButtonTap(_ sender: UIButton) {
-        FirebaseManager.shared.resetPassword(email: emailTextField.text!) { (error) in
-            if(error==nil) {
-                print("Email sent!")
+        if(validateForm()) {
+            showLoading(true)
+            
+            FirebaseManager.shared.resetPassword(email: emailTextField.text!) { (error) in
+                if(error==nil) {
+                    ALERT(title_SUCCES, text_EMAIL_SENT, viewController: self)
+                } else {
+                    var text = ""
+                    let errorCode = ERROR_CODE(error)
+                    
+                    switch(errorCode) {
+                    case 17011:
+                        text = text_EMAIL_NOT_FOUND
+                    case 17008:
+                        text = text_INVALID_EMAIL
+                    default:
+                        text = text_GENERIC_ERROR
+                    }
+                    ALERT(title_ERROR, text, viewController: self)
+                }
+                
+                self.showLoading(false)
             }
         }
+        
     }
     
     @IBAction func backButtonTap(_ sender: UIButton) {

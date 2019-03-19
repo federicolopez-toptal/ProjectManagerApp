@@ -54,7 +54,9 @@ class RegisterViewController: BaseViewController {
             
             FirebaseManager.shared.createUser(email: emailTextField.text!, password: passwordTextField.text!, info: info) { (error) in
                 if(error==nil) {
-                    self.performSegue(withIdentifier: "gotoProjects", sender: self)
+                    ALERT(title_SUCCES, text_USER_CREATED, viewController: self) {
+                        self.performSegue(withIdentifier: "gotoProjects", sender: self)
+                    }
                 } else {
                     var text = ""
                     let errorCode = ERROR_CODE(error)
@@ -62,6 +64,8 @@ class RegisterViewController: BaseViewController {
                     switch(errorCode) {
                         case 17007:
                             text = text_EMAIL_IN_USE
+                        case 17008:
+                            text = text_INVALID_EMAIL
                         default:
                             text = text_GENERIC_ERROR
                     }

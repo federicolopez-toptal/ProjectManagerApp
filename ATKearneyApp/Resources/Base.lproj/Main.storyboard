@@ -863,6 +863,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHg-RN-8Dq">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sn6-Yx-8FZ">
+                                                <rect key="frame" x="16" y="33" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="backButton.png"/>
+                                                <connections>
+                                                    <action selector="backButtonTap:" destination="utX-3t-YZn" eventType="touchUpInside" id="QwB-uo-D9o"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBt-N5-Wqj">
                                                 <rect key="frame" x="32" y="327" width="311" height="48"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -903,26 +911,12 @@
                                     <constraint firstItem="KHg-RN-8Dq" firstAttribute="width" secondItem="C2d-PD-cv5" secondAttribute="width" id="wZS-yp-WYA"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sn6-Yx-8FZ">
-                                <rect key="frame" x="16" y="33" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="Que-Ym-2ef"/>
-                                    <constraint firstAttribute="height" constant="50" id="Z6a-wj-upI"/>
-                                </constraints>
-                                <state key="normal" image="backButton.png"/>
-                                <connections>
-                                    <action selector="backButtonTap:" destination="utX-3t-YZn" eventType="touchUpInside" id="QwB-uo-D9o"/>
-                                    <action selector="backButtonTap:" destination="5kL-Lc-Ln7" eventType="touchUpInside" id="eDc-As-Amf"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1uU-mP-BzV" firstAttribute="trailing" secondItem="C2d-PD-cv5" secondAttribute="trailing" id="0J9-Lt-kFM"/>
-                            <constraint firstItem="Sn6-Yx-8FZ" firstAttribute="leading" secondItem="1uU-mP-BzV" secondAttribute="leading" constant="16" id="5wb-RP-Xd0"/>
                             <constraint firstItem="1uU-mP-BzV" firstAttribute="top" secondItem="C2d-PD-cv5" secondAttribute="top" constant="20" id="PkC-Gt-QrJ"/>
                             <constraint firstItem="1uU-mP-BzV" firstAttribute="bottom" secondItem="C2d-PD-cv5" secondAttribute="bottom" id="Vlz-MI-A9u"/>
-                            <constraint firstItem="Sn6-Yx-8FZ" firstAttribute="top" secondItem="1uU-mP-BzV" secondAttribute="top" constant="13" id="gRP-29-LJT"/>
                             <constraint firstItem="C2d-PD-cv5" firstAttribute="leading" secondItem="1uU-mP-BzV" secondAttribute="leading" id="kyY-ct-85U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1uU-mP-BzV"/>
