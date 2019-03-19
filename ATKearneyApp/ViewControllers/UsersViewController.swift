@@ -18,6 +18,7 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var usersList: UITableView!
     @IBOutlet weak var filterTextField: UITextField!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     var users = [basicUser]()
     var filteredUsers = [basicUser]()
@@ -32,19 +33,28 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         usersList.delegate = self
         usersList.dataSource = self
         
+        loading.stopAnimating()
         let nib = UINib.init(nibName: "UserSelectableCell", bundle: nil)
         usersList.register(nib, forCellReuseIdentifier: "UserSelectableCell")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        if(!INTERNET_AVAILABLE()) {
+            ALERT(title_ERROR, text_NO_INTERNET, viewController: self)
+            return
+        }
+        
+        loading.startAnimating()
         FirebaseManager.shared.getAllUsers { (usersDict, error) in
-            if(error != nil) {
-                //ADD alert error loading
-            } else {
+            if(error == nil) {
                 self.fillDataProvider(source: usersDict)
+            } else {
+                ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
             }
+            
+            self.loading.stopAnimating()
         }
     }
     

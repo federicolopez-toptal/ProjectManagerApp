@@ -16,10 +16,15 @@ class EditUserViewController: BaseViewController {
     @IBOutlet weak var roleTextField: UITextField!
     @IBOutlet weak var skillsTextField: UITextField!
     
+    @IBOutlet weak var scrollview: UIScrollView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollview.subviews.first!.backgroundColor = UIColor.white
+        addFormBehavior(scrollview: scrollview, bottomContraint: bottomConstraint)
         
         nameTextField.text! = MyUser.shared.name
         emailTextField.text! = MyUser.shared.email
@@ -46,6 +51,7 @@ class EditUserViewController: BaseViewController {
             "skills": skillsTextField.text!,
             ] as [String : Any]
         
+        showLoading(true)
         FirebaseManager.shared.editUser(userID: MyUser.shared.userID, info: info){ (error) in
             if(error==nil) {
                 let info = [
@@ -61,7 +67,11 @@ class EditUserViewController: BaseViewController {
                 SelectedUser.shared = MyUser.shared
                 
                 self.navigationController?.popViewController(animated: true)
+            } else {
+                ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
             }
+            
+            self.showLoading(false)
         }
     }
     

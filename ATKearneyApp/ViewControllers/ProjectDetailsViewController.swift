@@ -13,6 +13,7 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var usersList: UITableView!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     @IBOutlet weak var editButton: UIButton!
     var users = [NSDictionary]()
@@ -27,17 +28,16 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         usersList.dataSource = self
         usersList.separatorStyle = .none
         
+        loading.stopAnimating()
         let nib = UINib.init(nibName: "UserCell", bundle: nil)
         usersList.register(nib, forCellReuseIdentifier: "UserCell")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         nameLabel.text! = SelectedProject.shared.name
         descriptionLabel.text! = SelectedProject.shared.description
-        
-        
         
         if(MyUser.shared.admin || SelectedProject.shared.hasOfficer(userID: MyUser.shared.userID)) {
             editButton.isHidden = false
@@ -45,12 +45,19 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             editButton.isHidden = true
         }
         
+        if(!INTERNET_AVAILABLE()) {
+            ALERT(title_ERROR, text_NO_INTERNET, viewController: self)
+            return
+        }
+        
         if(firstTime) {
+            loading.startAnimating()
             FirebaseManager.shared.getUsers(userIDs: SelectedProject.shared.users) { (usersArray) in
                 self.users = usersArray!
                 self.usersList.reloadData()
             }
             
+            self.loading.stopAnimating()
             firstTime = false
         }
     }

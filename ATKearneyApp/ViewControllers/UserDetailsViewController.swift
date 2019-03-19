@@ -83,7 +83,7 @@ class UserDetailsViewController: BaseViewController {
         self.performSegue(withIdentifier: "gotoPass", sender: self)
     }
     
-    @IBAction func logoutButtonTap(_ sender: UIButton) {
+    @IBAction func logoutButtonTap(_ sender: UIButton) {        
         FirebaseManager.shared.logout()
         
         let loginVC = self.navigationController?.viewControllers.first as! LoginViewController

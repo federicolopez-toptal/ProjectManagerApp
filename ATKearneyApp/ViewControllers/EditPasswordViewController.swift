@@ -10,7 +10,7 @@ import UIKit
 
 class EditPasswordViewController: BaseViewController {
 
-    @IBOutlet weak var oldPasswordTextField: UITextField!
+    @IBOutlet weak var currentPasswordTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
     
     // MARK: - Init
@@ -24,11 +24,16 @@ class EditPasswordViewController: BaseViewController {
     }
     
     @IBAction func saveButtonTap(_ sender: UIButton) {
-        FirebaseManager.shared.editUserPassword(email: MyUser.shared.email, oldPassword: oldPasswordTextField.text!, newPassword: newPasswordTextField.text!){ (error) in
+        showLoading(true)
+        FirebaseManager.shared.editUserPassword(email: MyUser.shared.email, oldPassword: currentPasswordTextField.text!, newPassword: newPasswordTextField.text!){ (error) in
             
             if(error==nil) {
-                print("YEAH!")
+                ALERT(title_SUCCES, text_PASSWORD_CHANGED, viewController: self)
+            } else {
+                ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
             }
+            
+            self.showLoading(false)
         }
     }
     
