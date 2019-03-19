@@ -37,7 +37,9 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         nameLabel.text! = SelectedProject.shared.name
         descriptionLabel.text! = SelectedProject.shared.description
         
-        if(MyUser.shared.admin || SelectedProject.shared.officers.contains(MyUser.shared.userID)) {
+        
+        
+        if(MyUser.shared.admin || SelectedProject.shared.hasOfficer(userID: MyUser.shared.userID)) {
             editButton.isHidden = false
         } else {
             editButton.isHidden = true
@@ -83,7 +85,7 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         }
         cell.nameLabel.text = cellText
         
-        if(SelectedProject.shared.officers.contains(userID)) {
+        if(SelectedProject.shared.hasOfficer(userID: userID)) {
             cell.projectOfficerLabel.isHidden = false
         } else {
             cell.projectOfficerLabel.isHidden = true

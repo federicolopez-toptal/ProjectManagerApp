@@ -16,7 +16,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     @IBOutlet weak var usersList: UITableView!
     @IBOutlet weak var actionButton: UIButton!
     
-    var usersCopy = Set<String>()
+    var usersCopy = [String: String]()
     var users = [NSDictionary]()
     var editingProject = false
     
@@ -37,7 +37,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
             
             usersCopy = SelectedProject.shared.users
         } else {
-            SelectedProject.shared.empty()
+            SelectedProject.shared.reset()
         }
         
         let nib = UINib.init(nibName: "UserCell", bundle: nil)
@@ -61,17 +61,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
                 "description": descriptionTextView.text! as String
             ]
             
-            var users = [String: Bool]()
-            for userID in SelectedProject.shared.users {
-                users[userID] = true
-            }
-            
-            var officers = [String: Bool]()
-            for userID in SelectedProject.shared.officers {
-                officers[userID] = true
-            }
-            
-            FirebaseManager.shared.createProject(info: info, users: users, officers: officers){ (error) in
+            FirebaseManager.shared.createProject(info: info, users: SelectedProject.shared.users){ (error) in
                 if(error == nil) {
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -80,8 +70,8 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     }
     
     func editProject() {
-        let usersRemoved = usersCopy.subtracting(SelectedProject.shared.users)
-        
+        let usersToRemove = Project.subtract(from: usersCopy, subtracting: SelectedProject.shared.users)
+            
         if(!nameTextField.text!.isEmpty && !descriptionTextView.text.isEmpty && users.count>0) {
             let projectID = SelectedProject.shared.projectID
             
@@ -90,18 +80,9 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
                 "description": descriptionTextView.text! as String
             ]
             
-            var users = [String: Bool]()
-            for userID in SelectedProject.shared.users {
-                users[userID] = true
-            }
-            
-            var officers = [String: Bool]()
-            for userID in SelectedProject.shared.officers {
-                officers[userID] = true
-            }
-            
             let usersAdded = SelectedProject.shared.users
-            FirebaseManager.shared.editProject(projectID: projectID, info: info, users: users, officers: officers, usersAdded: usersAdded, usersRemoved: usersRemoved){(success) in
+            FirebaseManager.shared.editProject(projectID: projectID, info: info, users: SelectedProject.shared.users, usersToRemove: usersToRemove) { (success) in
+
                 if(success) {
                     SelectedProject.shared.name = self.nameTextField.text!
                     SelectedProject.shared.description = self.descriptionTextView.text!
@@ -155,7 +136,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
         }
         cell.nameLabel.text = cellText
         
-        if(SelectedProject.shared.officers.contains(userID)) {
+        if(SelectedProject.shared.hasOfficer(userID: userID)) {
             cell.projectOfficerLabel.isHidden = false
         } else {
             cell.projectOfficerLabel.isHidden = true

@@ -21,12 +21,12 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     var users = [basicUser]()
     var filteredUsers = [basicUser]()
-    var userIDs = Set<String>()
+    var usersCopy = [String: String]()
     
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        userIDs = SelectedProject.shared.users
+        usersCopy = SelectedProject.shared.users
         
         usersList.tableFooterView = UIView()
         usersList.delegate = self
@@ -85,7 +85,7 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         }
         
         cell.nameLabel.text = cellText
-        cell.setState( userIDs.contains(user.userID) )
+        cell.setState( usersCopy[user.userID] != nil )
         
         return cell
     }
@@ -100,9 +100,9 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         
         let user = filteredUsers[indexPath.row]
         if(cell.isON) {
-            userIDs.insert(user.userID)
+            usersCopy[user.userID] = SelectedProject.shared.roleForUser(userID: user.userID)
         } else {
-            userIDs.remove(user.userID)
+            usersCopy.removeValue(forKey: user.userID)
         }
     }
     
@@ -133,13 +133,7 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func saveButtonTap(_ sender: UIButton) {
-        SelectedProject.shared.users = userIDs
-        
-        let difference = SelectedProject.shared.officers.subtracting(userIDs)
-        for userID in difference {
-            SelectedProject.shared.officers.remove(userID)
-        }
-        
+        SelectedProject.shared.users = usersCopy        
         self.navigationController?.popViewController(animated: true)
     }
     

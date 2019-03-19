@@ -48,7 +48,7 @@ class UserDetailsViewController: BaseViewController {
         
         if(officerEditable) {
             officerView.isHidden = false
-            projectOfficerSwitch.isOn = SelectedProject.shared.officers.contains(userID)
+            projectOfficerSwitch.isOn = SelectedProject.shared.hasOfficer(userID: userID)
         }
     }
     
@@ -69,9 +69,9 @@ class UserDetailsViewController: BaseViewController {
     
     @IBAction func projectOfficerValueChanged(_ sender: UISwitch) {
         if(sender.isOn) {
-            SelectedProject.shared.officers.insert(userID)
+            SelectedProject.shared.addUser(userID: userID, role: Project.OFFICER)
         } else {
-            SelectedProject.shared.officers.remove(userID)
+            SelectedProject.shared.addUser(userID: userID, role: Project.REGULAR)
         }
     }
     

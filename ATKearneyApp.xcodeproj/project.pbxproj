@@ -42,6 +42,7 @@
 		BDDBA3C0223AC43E005E96FF /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBA3BF223AC43E005E96FF /* ProjectDetailsViewController.swift */; };
 		BDDBA3C2223AF9D3005E96FF /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDBA3C1223AF9D3005E96FF /* UserDetailsViewController.swift */; };
 		BDF7D4502240600600D276CE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF7D44F2240600600D276CE /* User.swift */; };
+		BDF7D45222406FD300D276CE /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF7D45122406FD300D276CE /* Project.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		BDDBA3BF223AC43E005E96FF /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
 		BDDBA3C1223AF9D3005E96FF /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		BDF7D44F2240600600D276CE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BDF7D45122406FD300D276CE /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		C6D672A18292CFB9EFD13DB9 /* Pods-ATKearneyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATKearneyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ATKearneyApp/Pods-ATKearneyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D99FF67ABA930557895509B0 /* Pods-ATKearneyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATKearneyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ATKearneyApp/Pods-ATKearneyApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -242,7 +244,6 @@
 			children = (
 				BD82B7A022396D9B003825D8 /* MyUser.swift */,
 				BD4DC9BC223C476500E14F2F /* SelectedUser.swift */,
-				BD82FF4B22399984008F6304 /* SelectedProject.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -251,6 +252,8 @@
 			isa = PBXGroup;
 			children = (
 				BDF7D44F2240600600D276CE /* User.swift */,
+				BDF7D45122406FD300D276CE /* Project.swift */,
+				BD82FF4B22399984008F6304 /* SelectedProject.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				BD4DC9BD223C476500E14F2F /* SelectedUser.swift in Sources */,
 				BD82B7A322397E1B003825D8 /* LoginViewController.swift in Sources */,
 				BDDBA3C2223AF9D3005E96FF /* UserDetailsViewController.swift in Sources */,
+				BDF7D45222406FD300D276CE /* Project.swift in Sources */,
 				BD82B7B42239903D003825D8 /* UserSelectableCell.swift in Sources */,
 				BD82B7A122396D9B003825D8 /* MyUser.swift in Sources */,
 				BD82B79D223966CC003825D8 /* FirebaseManager.swift in Sources */,

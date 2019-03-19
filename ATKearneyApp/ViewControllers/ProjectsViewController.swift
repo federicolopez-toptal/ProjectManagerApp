@@ -98,7 +98,7 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         let project = projects[indexPath.row]
         let content = project["content"] as! [String: Any]
         let info = content["info"] as! [String: String]
-        let users = content["users"] as! [String: Bool]
+        let users = content["users"] as! [String: String]
         let usersCount = users.keys.count
         
         cell.nameLabel.text! = info["name"]! as String
@@ -113,26 +113,8 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        SelectedProject.shared.empty()
-        
-        let projectDict = projects[indexPath.row]
-        SelectedProject.shared.projectID = projectDict["id"] as! String
-        
-        let content = projectDict["content"] as! [String: Any]
-        let info = content["info"] as! [String: String]
-        SelectedProject.shared.name = info["name"]! as String
-        SelectedProject.shared.description = info["description"]! as String
-        
-        let users = content["users"] as! [String: Bool]
-        for (keyUserID, _) in users {
-            SelectedProject.shared.users.insert(keyUserID)
-        }
-        
-        if let officers = content["officers"] as? [String: Bool] {
-            for (keyUserID, _) in officers {
-                SelectedProject.shared.officers.insert(keyUserID)
-            }
-        }
+        SelectedProject.shared.reset()
+        SelectedProject.shared.fillWith(dict: projects[indexPath.row])
         
         self.performSegue(withIdentifier: "gotoDetails", sender: self)
     }
