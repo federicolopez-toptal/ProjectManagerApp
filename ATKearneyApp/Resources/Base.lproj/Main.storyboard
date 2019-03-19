@@ -586,7 +586,6 @@
                                 <state key="normal" image="backButton.png"/>
                                 <connections>
                                     <action selector="backButonTap:" destination="gqZ-2e-sKQ" eventType="touchUpInside" id="BfY-o2-SXe"/>
-                                    <action selector="backButtonTap:" destination="1ZA-Xk-Do1" eventType="touchUpInside" id="8X5-Sl-Knb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uO2-Vi-MnP">

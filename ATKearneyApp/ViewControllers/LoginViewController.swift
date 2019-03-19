@@ -28,12 +28,9 @@ class LoginViewController: BaseViewController {
         
         FirebaseManager.shared.autoLogin{ (success, error) in
             if(error==nil && success) {
-                MyUser.shared.trace()
                 self.performSegue(withIdentifier: "gotoProjects", sender: self)
             }
         }
-
-        //FirebaseManager.shared.logout()
     }
     
     // misc
@@ -50,7 +47,6 @@ class LoginViewController: BaseViewController {
         if(validateForm()) {
             FirebaseManager.shared.login(email: userTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if(error==nil) {
-                    MyUser.shared.trace()
                     self.performSegue(withIdentifier: "gotoProjects", sender: self)
                 }
             }

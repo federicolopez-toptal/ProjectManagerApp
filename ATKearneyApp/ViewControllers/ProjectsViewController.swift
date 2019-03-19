@@ -57,6 +57,8 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
                 }
             }
         }
+        
+        MyUser.shared.traceAll()
     }
     
     // MARK: - Button actions
@@ -65,13 +67,7 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func profileButtonTap(_ sender: UIButton) {
-        SelectedUser.shared.userID = MyUser.shared.userID
-        SelectedUser.shared.name = MyUser.shared.name
-        SelectedUser.shared.email = MyUser.shared.email
-        SelectedUser.shared.phone = MyUser.shared.phone
-        SelectedUser.shared.role = MyUser.shared.role
-        SelectedUser.shared.skills = MyUser.shared.skills
-        
+        SelectedUser.shared = MyUser.shared
         self.performSegue(withIdentifier: "gotoUser", sender: self)
     }
     

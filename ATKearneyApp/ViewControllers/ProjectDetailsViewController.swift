@@ -97,29 +97,8 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        SelectedUser.shared.empty()
-        
-        let userID = users[indexPath.row]["id"] as! String
-        SelectedUser.shared.userID = userID
-        
-        let content = users[indexPath.row]["content"] as! NSDictionary
-        let info = content["info"] as! NSDictionary
-        
-        SelectedUser.shared.name = info["name"] as! String
-        SelectedUser.shared.email = info["email"] as! String
-        SelectedUser.shared.phone = info["phone"] as! String
-        
-        // Optional fields
-        if let role = info["role"] as? String {
-            SelectedUser.shared.role = role
-        } else {
-            SelectedUser.shared.role = ""
-        }
-        if let skills = info["skills"] as? String {
-            SelectedUser.shared.skills = skills
-        } else {
-            SelectedUser.shared.skills = ""
-        }
+        SelectedUser.shared.reset()
+        SelectedUser.shared.fillWith(info: users[indexPath.row])
         
         self.performSegue(withIdentifier: "gotoUser", sender: self)
     }

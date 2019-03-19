@@ -48,7 +48,6 @@ class UserDetailsViewController: BaseViewController {
         
         if(officerEditable) {
             officerView.isHidden = false
-            let userID = SelectedUser.shared.userID
             projectOfficerSwitch.isOn = SelectedProject.shared.officers.contains(userID)
         }
     }
@@ -59,8 +58,8 @@ class UserDetailsViewController: BaseViewController {
         nameLabel.text! = SelectedUser.shared.name
         emailLabel.text! = SelectedUser.shared.email
         phoneLabel.text! = SelectedUser.shared.phone
-        roleLabel.text! = SelectedUser.shared.role
-        skillsLabel.text! = SelectedUser.shared.skills
+        roleLabel.text = SelectedUser.shared.role
+        skillsLabel.text = SelectedUser.shared.skills
     }
     
     // MARK: - Button actions

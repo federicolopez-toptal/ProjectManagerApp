@@ -24,8 +24,8 @@ class EditUserViewController: BaseViewController {
         nameTextField.text! = MyUser.shared.name
         emailTextField.text! = MyUser.shared.email
         phoneTextField.text! = MyUser.shared.phone
-        roleTextField.text! = MyUser.shared.role
-        skillsTextField.text! = MyUser.shared.skills
+        roleTextField.text = MyUser.shared.role
+        skillsTextField.text = MyUser.shared.skills
         
         emailTextField.isEnabled = false
     }
@@ -48,13 +48,17 @@ class EditUserViewController: BaseViewController {
         
         FirebaseManager.shared.editUser(userID: MyUser.shared.userID, info: info){ (error) in
             if(error==nil) {
-                print("All ok")
-                
-                SelectedUser.shared.name = self.nameTextField.text!
-                SelectedUser.shared.email = self.emailTextField.text!
-                SelectedUser.shared.phone = self.phoneTextField.text!
-                SelectedUser.shared.role = self.roleTextField.text!
-                SelectedUser.shared.skills = self.skillsTextField.text!
+                let info = [
+                    "admin": MyUser.shared.admin,
+                    "name": self.nameTextField.text!,
+                    "email": self.emailTextField.text!,
+                    "phone": self.phoneTextField.text!,
+                    "role": self.roleTextField.text as Any,
+                    "skills": self.skillsTextField.text as Any
+                    ] as [String: Any]
+
+                MyUser.shared.fillWith(userID: MyUser.shared.userID, info: info)
+                SelectedUser.shared = MyUser.shared
                 
                 self.navigationController?.popViewController(animated: true)
             }

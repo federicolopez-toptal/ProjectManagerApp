@@ -18,7 +18,7 @@ class FirebaseManager: NSObject {
     
     // MARK: - Users
     func createUser(email: String, password: String, info:[String: Any], callback: @escaping (Error?) ->() ) {
-        MyUser.shared.empty()
+        MyUser.shared.reset()
         Auth.auth().createUser(withEmail: email, password: password){ (user, error) in
             if(error != nil) {
                 callback(error)
@@ -36,7 +36,7 @@ class FirebaseManager: NSObject {
     }
     
     func login(email: String, password: String, callback: @escaping (NSDictionary?, Error?) -> () ) {
-        MyUser.shared.empty()
+        MyUser.shared.reset()
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if(error != nil) {
                 callback(nil, error)
@@ -63,7 +63,7 @@ class FirebaseManager: NSObject {
     }
     
     func autoLogin(callback: @escaping (Bool, Error?) ->() ) {
-        MyUser.shared.empty()
+        MyUser.shared.reset()
         if let userID = Auth.auth().currentUser?.uid {
             getUser(userID: userID) { (userDict, error) in
                 if(error != nil) {
@@ -79,7 +79,7 @@ class FirebaseManager: NSObject {
     }
     
     func logout() {
-        MyUser.shared.empty()
+        MyUser.shared.reset()
         try! Auth.auth().signOut()
     }
     

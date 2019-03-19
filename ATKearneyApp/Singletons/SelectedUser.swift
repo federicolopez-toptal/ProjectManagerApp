@@ -9,22 +9,5 @@
 import UIKit
 
 class SelectedUser {
-    static let shared = SelectedUser()
-    
-    var userID = ""
-    var email  = ""
-    var name = ""
-    var phone = ""
-    
-    var role = ""
-    var skills = ""
-    
-    func empty() {
-        userID = ""
-        email = ""
-        name = ""
-        phone = ""
-        role = ""
-        skills = ""
-    }
+    static var shared = User()
 }

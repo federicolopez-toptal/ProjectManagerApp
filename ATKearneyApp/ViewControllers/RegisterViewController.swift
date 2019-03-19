@@ -47,7 +47,6 @@ class RegisterViewController: BaseViewController {
         
         FirebaseManager.shared.createUser(email: emailTextField.text!, password: passwordTextField.text!, info: info) { (error) in
             if(error==nil) {
-                MyUser.shared.trace()
                 self.performSegue(withIdentifier: "gotoProjects", sender: self)
             }
             
