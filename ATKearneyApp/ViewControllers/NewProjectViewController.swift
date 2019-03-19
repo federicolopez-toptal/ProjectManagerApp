@@ -56,9 +56,13 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     // MARK: - misc
     func createProject() {
         if(!nameTextField.text!.isEmpty && !descriptionTextView.text.isEmpty && users.count>0) {
+            
+            
             let info = [
                 "name": nameTextField.text! as String,
-                "description": descriptionTextView.text! as String
+                "description": descriptionTextView.text! as String,
+                "created": NOW(),
+                "edited": NOW()
             ]
             
             FirebaseManager.shared.createProject(info: info, users: SelectedProject.shared.users){ (error) in
@@ -70,17 +74,18 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     }
     
     func editProject() {
-        let usersToRemove = Project.subtract(from: usersCopy, subtracting: SelectedProject.shared.users)
+        let usersToRemove = SUBTRACT(from: usersCopy, subtracting: SelectedProject.shared.users)
             
         if(!nameTextField.text!.isEmpty && !descriptionTextView.text.isEmpty && users.count>0) {
             let projectID = SelectedProject.shared.projectID
             
             let info = [
                 "name": nameTextField.text! as String,
-                "description": descriptionTextView.text! as String
+                "description": descriptionTextView.text! as String,
+                "created": SelectedProject.shared.created,
+                "edited": NOW()
             ]
             
-            let usersAdded = SelectedProject.shared.users
             FirebaseManager.shared.editProject(projectID: projectID, info: info, users: SelectedProject.shared.users, usersToRemove: usersToRemove) { (success) in
 
                 if(success) {

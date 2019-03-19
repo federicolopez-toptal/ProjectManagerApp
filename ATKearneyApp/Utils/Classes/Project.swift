@@ -17,6 +17,8 @@ struct Project {
     var projectID = ""
     var name = ""
     var description = ""
+    var created = ""
+    var edited = ""
     var users = [String: String]()
     
     
@@ -55,6 +57,8 @@ struct Project {
         
         name = info["name"]! as String
         description = info["description"]! as String
+        created = info["created"]! as String
+        edited = info["edited"]! as String
         users = content["users"] as! [String: String]
     }
     
@@ -62,25 +66,13 @@ struct Project {
         projectID = ""
         name = ""
         description = ""
+        created = ""
+        edited = ""
         users = [String: String]()
     }
     
     mutating func addUser(userID: String, role: String) {
         users[userID] = role
     }
-    
-    // MARK: - misc
-    static func subtract(from: [String: String], subtracting: [String: String]) -> [String: String] {
-        var result = [String: String]()
-        
-        for (key, value) in from {
-            if( subtracting[key] == nil ) {
-                result[key] = value
-            }
-        }
-        
-        return result
-    }
-    
     
 }

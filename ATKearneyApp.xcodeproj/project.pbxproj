@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E4F9B31F6CFE80036C94903 /* Pods_ATKearneyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */; };
+		BD0E2F9F22412AC500BB7E57 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2F9E22412AC500BB7E57 /* Functions.swift */; };
 		BD3BABC92239A8CD004521F4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3BABC72239A8CD004521F4 /* UserCell.swift */; };
 		BD3BABCA2239A8CD004521F4 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3BABC82239A8CD004521F4 /* UserCell.xib */; };
 		BD4285642240177700E7D5EA /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4285632240177700E7D5EA /* EditUserViewController.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATKearneyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD0E2F9E22412AC500BB7E57 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		BD3BABC72239A8CD004521F4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		BD3BABC82239A8CD004521F4 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		BD4285632240177700E7D5EA /* EditUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BD0E2FA022412ACA00BB7E57 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BDF7D44F2240600600D276CE /* User.swift */,
+				BDF7D45122406FD300D276CE /* Project.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		BD3BABC42239A8A0004521F4 /* UserCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,8 +152,7 @@
 			children = (
 				BD4DC9BE223C4F9100E14F2F /* notes.txt */,
 				BD82B792223961F0003825D8 /* App */,
-				BDF7D44E22405FEF00D276CE /* Classes */,
-				BDD38A522239F7D100819809 /* Singletons */,
+				BDF7D44E22405FEF00D276CE /* Utils */,
 				BD82B78F223961C5003825D8 /* Firebase */,
 				BD82B7932239648E003825D8 /* ViewControllers */,
 				BD82B7B62239917E003825D8 /* Cells */,
@@ -244,18 +254,19 @@
 			children = (
 				BD82B7A022396D9B003825D8 /* MyUser.swift */,
 				BD4DC9BC223C476500E14F2F /* SelectedUser.swift */,
+				BD82FF4B22399984008F6304 /* SelectedProject.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
 		};
-		BDF7D44E22405FEF00D276CE /* Classes */ = {
+		BDF7D44E22405FEF00D276CE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BDF7D44F2240600600D276CE /* User.swift */,
-				BDF7D45122406FD300D276CE /* Project.swift */,
-				BD82FF4B22399984008F6304 /* SelectedProject.swift */,
+				BD0E2FA022412ACA00BB7E57 /* Classes */,
+				BDD38A522239F7D100819809 /* Singletons */,
+				BD0E2F9E22412AC500BB7E57 /* Functions.swift */,
 			);
-			path = Classes;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		ED56C1DE91837A34DED2AC26 /* Frameworks */ = {
@@ -418,6 +429,7 @@
 				BD82B797223964AF003825D8 /* ProjectsViewController.swift in Sources */,
 				BD82B7AD22398A75003825D8 /* UsersViewController.swift in Sources */,
 				BDC2D184223AB9E000B0D527 /* ProjectCell.swift in Sources */,
+				BD0E2F9F22412AC500BB7E57 /* Functions.swift in Sources */,
 				BD428566224021B500E7D5EA /* EditPasswordViewController.swift in Sources */,
 				BD7B690522395F2100C0DE35 /* AppDelegate.swift in Sources */,
 				BD82FF4C22399984008F6304 /* SelectedProject.swift in Sources */,

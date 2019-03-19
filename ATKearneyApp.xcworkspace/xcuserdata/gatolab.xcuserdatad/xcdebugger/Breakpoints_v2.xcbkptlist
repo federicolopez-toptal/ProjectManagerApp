@@ -250,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/LoginViewController.swift"
-            timestampString = "574655486.913595"
+            timestampString = "574699298.795208"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -474,7 +474,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/ProjectsViewController.swift"
-            timestampString = "574655486.916043"
+            timestampString = "574699298.79535"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
@@ -490,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/ProjectsViewController.swift"
-            timestampString = "574655486.916093"
+            timestampString = "574699298.795397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -570,28 +570,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/ProjectsViewController.swift"
-            timestampString = "574655486.916687"
+            timestampString = "574699298.795454"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
             endingLineNumber = "101"
             landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ATKearneyApp/ViewControllers/NewProjectViewController.swift"
-            timestampString = "574655486.916748"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "editProject()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -778,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/NewProjectViewController.swift"
-            timestampString = "574655486.918612"
+            timestampString = "574699298.795573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "createProject()"
             landmarkType = "7">
          </BreakpointContent>
@@ -794,7 +778,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/ProjectsViewController.swift"
-            timestampString = "574655486.918681"
+            timestampString = "574699298.795614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
@@ -810,7 +794,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/LoginViewController.swift"
-            timestampString = "574655486.918726"
+            timestampString = "574699298.795653"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -842,13 +826,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/NewProjectViewController.swift"
-            timestampString = "574655486.9190201"
+            timestampString = "574699298.79572"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
             endingLineNumber = "40"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ATKearneyApp/Utils/Functions.swift"
+            timestampString = "574699298.795761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "NOW()"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
