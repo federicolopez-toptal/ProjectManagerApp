@@ -21,7 +21,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0BV-3Y-BNi">
                         <rect key="frame" x="0.0" y="49" width="320" height="1"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="akE-Zg-KwZ"/>
                         </constraints>
@@ -34,10 +34,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Project officer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJH-W7-rnn">
-                        <rect key="frame" x="12" y="29" width="75" height="14"/>
+                        <rect key="frame" x="22" y="29" width="69" height="12"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="italicSystem" pointSize="10"/>
+                        <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -52,7 +52,7 @@
                 <outlet property="nameLabel" destination="Lfj-fP-XkG" id="Nl3-Zl-sNN"/>
                 <outlet property="projectOfficerLabel" destination="dJH-W7-rnn" id="bKr-Hq-zBp"/>
             </connections>
-            <point key="canvasLocation" x="129.59999999999999" y="153.82308845577214"/>
+            <point key="canvasLocation" x="-243" y="165"/>
         </tableViewCell>
     </objects>
 </document>

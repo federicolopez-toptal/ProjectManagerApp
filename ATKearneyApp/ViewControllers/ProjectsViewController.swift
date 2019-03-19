@@ -15,8 +15,10 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var createProjectCircleButton: UIButton!
     @IBOutlet weak var projectsList: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     var projects = [NSDictionary]()
+    
     
     // MARK: - Init
     override func viewDidLoad() {
@@ -35,28 +37,16 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         
         createProjectButton.isHidden = !MyUser.shared.admin
         createProjectCircleButton.isHidden = true
+        loading.stopAnimating()
+        
+        addReloadView(frame: projectsList.frame) {
+            self.loadData()
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if(MyUser.shared.admin){
-            titleLabel.text! = "All projects"
-            FirebaseManager.shared.getAllProjects { (projects, error) in
-                if(error==nil) {
-                    self.projects = projects!
-                    self.reload()
-                }
-            }
-        } else {
-            titleLabel.text! = "My projects"
-            FirebaseManager.shared.getUserProjects(userID: MyUser.shared.userID) { (projects, error) in
-                if(error==nil) {
-                    self.projects = projects!
-                    self.reload()
-                }
-            }
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
         
         MyUser.shared.traceAll()
     }
@@ -69,6 +59,38 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     @IBAction func profileButtonTap(_ sender: UIButton) {
         SelectedUser.shared = MyUser.shared
         self.performSegue(withIdentifier: "gotoUser", sender: self)
+    }
+    
+    // MARK: - Data
+    func loadData() {
+        loading.startAnimating()
+        if(MyUser.shared.admin){
+            titleLabel.text! = "All projects"
+            FirebaseManager.shared.getAllProjects { (projects, error) in
+                if(error==nil) {
+                    self.projects = projects!
+                    self.reload()
+                } else {
+                    ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
+                    self.showReloadView()
+                }
+                
+                self.loading.stopAnimating()
+            }
+        } else {
+            titleLabel.text! = "My projects"
+            FirebaseManager.shared.getUserProjects(userID: MyUser.shared.userID) { (projects, error) in
+                if(error==nil) {
+                    self.projects = projects!
+                    self.reload()
+                } else {
+                    ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
+                    self.showReloadView()
+                }
+                
+                self.loading.stopAnimating()
+            }
+        }
     }
     
     // MARK: - misc
@@ -115,7 +137,6 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         SelectedProject.shared.reset()
         SelectedProject.shared.fillWith(dict: projects[indexPath.row])
-        
         self.performSegue(withIdentifier: "gotoDetails", sender: self)
     }
     

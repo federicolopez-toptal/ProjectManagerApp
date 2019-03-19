@@ -22,3 +22,4 @@ let text_EMAIL_IN_USE =     "The email entered already belongs to an existing us
 let text_USER_CREATED =     "User created successfully!"
 let text_EMAIL_SENT =       "Email sent successfully!"
 let text_EMAIL_NOT_FOUND =  "The email entered doesn't belong to any user"
+let text_NO_USERS =         "You should add some users to the project"

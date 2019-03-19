@@ -13,13 +13,15 @@ class BaseViewController: UIViewController {
     private var formMode = false
     private var scrollViewBottomConstraint: NSLayoutConstraint?
     
+    private var reloadView: UIView?
+    private var reloadCallback: Any?
     
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    // MARK: - misc
+    // MARK: - Loading
     func showLoading(_ visibility: Bool) {
         self.view.endEditing(true)
         let navC = self.navigationController as! CustomNavigationController
@@ -33,6 +35,35 @@ class BaseViewController: UIViewController {
         } else {
             navC.showLoading(false)
         }
+    }
+    
+    // MARK: - Reload view
+    func addReloadView(frame: CGRect, callback: @escaping () -> () ) {
+        reloadCallback = callback
+        
+        reloadView = UIView(frame: frame)
+        reloadView!.backgroundColor = UIColor.white
+        self.view.addSubview(reloadView!)
+        reloadView?.isHidden = true
+        
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.backgroundColor = UIColor.darkGray
+        button.setTitle("Reload", for: .normal)
+        reloadView!.addSubview(button)
+        button.center = reloadView!.center
+        
+        button.addTarget(self, action: #selector(reloadButtonTap), for: .touchUpInside)
+    }
+    
+    func showReloadView() {
+        reloadView?.isHidden = false
+    }
+    
+    @objc func reloadButtonTap() {
+        reloadView?.isHidden = true
+        (reloadCallback as! () -> () )()
     }
     
     // MARK: - Form behavior stuff

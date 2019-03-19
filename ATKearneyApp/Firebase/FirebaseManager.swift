@@ -257,7 +257,7 @@ class FirebaseManager: NSObject {
                 return
             }
             
-            if let projectsDict = snapshot.value as? [String: Bool] {
+            if let projectsDict = snapshot.value as? [String: String] {
                 let dispatchGroup = DispatchGroup()
                 var result = [NSDictionary]()
                 

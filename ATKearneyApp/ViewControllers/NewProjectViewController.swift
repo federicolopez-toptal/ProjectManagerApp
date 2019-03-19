@@ -15,6 +15,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var usersList: UITableView!
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     var usersCopy = [String: String]()
     var users = [NSDictionary]()
@@ -40,23 +41,44 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
             SelectedProject.shared.reset()
         }
         
+        loading.stopAnimating()
         let nib = UINib.init(nibName: "UserCell", bundle: nil)
         usersList.register(nib, forCellReuseIdentifier: "UserCell")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        if(!INTERNET_AVAILABLE()) {
+            ALERT(title_ERROR, text_NO_INTERNET, viewController: self)
+            return
+        }
+        
+        loading.startAnimating()
         FirebaseManager.shared.getUsers(userIDs:SelectedProject.shared.users){ (usersArray) in
             self.users = usersArray!
             self.usersList.reloadData()
+            self.loading.stopAnimating()
+        }
+    }
+    
+    // MARK: - Form validation
+    func validateForm() -> Bool {
+        if(nameTextField.text!.isEmpty || descriptionTextView.text!.isEmpty) {
+            ALERT(title_ERROR, text_EMPTY_FIELDS, viewController: self)
+            return false
+        } else if (users.count==0) {
+            ALERT(title_ERROR, text_NO_USERS, viewController: self)
+            return false
+        } else {
+            return true
         }
     }
     
     // MARK: - misc
     func createProject() {
-        if(!nameTextField.text!.isEmpty && !descriptionTextView.text.isEmpty && users.count>0) {
-            
+        if(validateForm()) {
+            showLoading(true)
             
             let info = [
                 "name": nameTextField.text! as String,
@@ -68,15 +90,20 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
             FirebaseManager.shared.createProject(info: info, users: SelectedProject.shared.users){ (error) in
                 if(error == nil) {
                     self.navigationController?.popViewController(animated: true)
+                } else {
+                    ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
                 }
+                
+                self.showLoading(false)
             }
         }
     }
     
     func editProject() {
-        let usersToRemove = SUBTRACT(from: usersCopy, subtracting: SelectedProject.shared.users)
+        if(validateForm()) {
+            showLoading(true)
             
-        if(!nameTextField.text!.isEmpty && !descriptionTextView.text.isEmpty && users.count>0) {
+            let usersToRemove = SUBTRACT(from: usersCopy, subtracting: SelectedProject.shared.users)
             let projectID = SelectedProject.shared.projectID
             
             let info = [
@@ -87,7 +114,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
             ]
             
             FirebaseManager.shared.editProject(projectID: projectID, info: info, users: SelectedProject.shared.users, usersToRemove: usersToRemove) { (success) in
-
+                
                 if(success) {
                     SelectedProject.shared.name = self.nameTextField.text!
                     SelectedProject.shared.description = self.descriptionTextView.text!
@@ -96,7 +123,10 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
                     let prevVC = self.navigationController?.viewControllers[lastIndex-1] as! ProjectDetailsViewController
                     prevVC.firstTime = true
                     self.navigationController?.popViewController(animated: true)
+                } else {
+                    ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
                 }
+                self.showLoading(false)
             }
         }
 
