@@ -11,6 +11,7 @@
 		BD0E2F9F22412AC500BB7E57 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2F9E22412AC500BB7E57 /* Functions.swift */; };
 		BD0E2FA222413C7D00BB7E57 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2FA122413C7D00BB7E57 /* CustomNavigationController.swift */; };
 		BD0E2FA62241429C00BB7E57 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2FA52241429C00BB7E57 /* Reachability.swift */; };
+		BD0E2FA8224151DA00BB7E57 /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2FA7224151DA00BB7E57 /* Texts.swift */; };
 		BD3BABC92239A8CD004521F4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3BABC72239A8CD004521F4 /* UserCell.swift */; };
 		BD3BABCA2239A8CD004521F4 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3BABC82239A8CD004521F4 /* UserCell.xib */; };
 		BD4285642240177700E7D5EA /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4285632240177700E7D5EA /* EditUserViewController.swift */; };
@@ -53,6 +54,7 @@
 		BD0E2F9E22412AC500BB7E57 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		BD0E2FA122413C7D00BB7E57 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		BD0E2FA52241429C00BB7E57 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		BD0E2FA7224151DA00BB7E57 /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
 		BD3BABC72239A8CD004521F4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		BD3BABC82239A8CD004521F4 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		BD4285632240177700E7D5EA /* EditUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				BD4DC9BE223C4F9100E14F2F /* notes.txt */,
+				BD0E2FA7224151DA00BB7E57 /* Texts.swift */,
 				BD82B792223961F0003825D8 /* App */,
 				BDF7D44E22405FEF00D276CE /* Utils */,
 				BD82B78F223961C5003825D8 /* Firebase */,
@@ -444,6 +447,7 @@
 				BD0E2FA222413C7D00BB7E57 /* CustomNavigationController.swift in Sources */,
 				BDF7D45222406FD300D276CE /* Project.swift in Sources */,
 				BD82B7B42239903D003825D8 /* UserSelectableCell.swift in Sources */,
+				BD0E2FA8224151DA00BB7E57 /* Texts.swift in Sources */,
 				BD82B7A122396D9B003825D8 /* MyUser.swift in Sources */,
 				BD82B79D223966CC003825D8 /* FirebaseManager.swift in Sources */,
 				BDF7D4502240600600D276CE /* User.swift in Sources */,

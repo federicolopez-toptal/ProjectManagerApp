@@ -10,10 +10,6 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
-    let title_ERROR =           "Error"
-    let text_NO_INTERNET =      "No internet connection available"
-    let text_GENERIC_ERROR =    "An error occurred.\nPlease, try again later"
-    
     private var formMode = false
     private var scrollViewBottomConstraint: NSLayoutConstraint?
     

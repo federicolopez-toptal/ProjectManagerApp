@@ -10,10 +10,6 @@ import UIKit
 
 class LoginViewController: BaseViewController {
 
-    let text_EMPTY_FIELDS =     "Please, fill the empty fields"
-    let text_INVALID_EMAIL =    "Invalid email"
-    let text_LOGIN_ERROR =      "Wrong email and/or password"
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
@@ -66,16 +62,14 @@ class LoginViewController: BaseViewController {
 
                     switch(errorCode) {
                         case 17011, 17009:
-                        text = self.text_LOGIN_ERROR
+                            text = text_LOGIN_ERROR
                         case 17008:
-                        text = self.text_INVALID_EMAIL
+                            text = text_INVALID_EMAIL
                         default:
-                        text = self.text_GENERIC_ERROR
+                            text = text_GENERIC_ERROR
                     }
-                    
-                    ALERT(self.title_ERROR, text, viewController: self)
+                    ALERT(title_ERROR, text, viewController: self)
                 }
-                
                 self.showLoading(false)
             }
         }

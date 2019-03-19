@@ -650,7 +650,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7p-8R-nLP">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First &amp; last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iMh-HJ-Qgp">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yJ-e0-ojP">
+                                                <rect key="frame" x="16" y="33" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="backButton.png"/>
+                                                <connections>
+                                                    <action selector="backButtonTap:" destination="5kL-Lc-Ln7" eventType="touchUpInside" id="Bq3-Yr-MLa"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First &amp; Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iMh-HJ-Qgp">
                                                 <rect key="frame" x="32" y="144" width="311" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -658,7 +666,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kV7-i0-sZ8">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kV7-i0-sZ8">
                                                 <rect key="frame" x="32" y="198" width="311" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -666,7 +674,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VEt-ov-JYh">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VEt-ov-JYh">
                                                 <rect key="frame" x="32" y="249" width="311" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -714,23 +722,10 @@
                                     <constraint firstItem="H7p-8R-nLP" firstAttribute="top" secondItem="yGF-zv-YcA" secondAttribute="top" id="yF6-cS-3Iq"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yJ-e0-ojP">
-                                <rect key="frame" x="16" y="33" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="SlY-WE-F3i"/>
-                                    <constraint firstAttribute="height" constant="50" id="qDL-4D-GsL"/>
-                                </constraints>
-                                <state key="normal" image="backButton.png"/>
-                                <connections>
-                                    <action selector="backButtonTap:" destination="5kL-Lc-Ln7" eventType="touchUpInside" id="Bq3-Yr-MLa"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="0yJ-e0-ojP" firstAttribute="leading" secondItem="fQL-AH-WsK" secondAttribute="leading" constant="16" id="6vP-Qm-ukT"/>
                             <constraint firstItem="yGF-zv-YcA" firstAttribute="leading" secondItem="fQL-AH-WsK" secondAttribute="leading" id="FmU-Sy-dqM"/>
-                            <constraint firstItem="0yJ-e0-ojP" firstAttribute="top" secondItem="fQL-AH-WsK" secondAttribute="top" constant="13" id="USI-Vx-xyR"/>
                             <constraint firstItem="fQL-AH-WsK" firstAttribute="trailing" secondItem="yGF-zv-YcA" secondAttribute="trailing" id="d7o-6b-2of"/>
                             <constraint firstItem="fQL-AH-WsK" firstAttribute="bottom" secondItem="yGF-zv-YcA" secondAttribute="bottom" id="fvE-36-h9L"/>
                             <constraint firstItem="fQL-AH-WsK" firstAttribute="top" secondItem="yGF-zv-YcA" secondAttribute="top" constant="20" id="ofS-Fa-g1F"/>
@@ -1050,6 +1045,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="bme-8G-Pjd"/>
         <segue reference="bWA-Xa-GVb"/>
-        <segue reference="m4n-PI-Xe6"/>
+        <segue reference="jcQ-0a-0Vu"/>
     </inferredMetricsTieBreakers>
 </document>
