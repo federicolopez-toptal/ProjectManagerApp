@@ -11,5 +11,9 @@ NEXT:
 
 
 
+
+- Probar bien INTERNET_AVAILABLE
+- Contemplar un timeout en el loading?
+
 FUTURE FEATURE:
 - Delete project (an all the relations with its users)

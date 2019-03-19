@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5E4F9B31F6CFE80036C94903 /* Pods_ATKearneyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */; };
 		BD0E2F9F22412AC500BB7E57 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2F9E22412AC500BB7E57 /* Functions.swift */; };
+		BD0E2FA222413C7D00BB7E57 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2FA122413C7D00BB7E57 /* CustomNavigationController.swift */; };
+		BD0E2FA62241429C00BB7E57 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2FA52241429C00BB7E57 /* Reachability.swift */; };
 		BD3BABC92239A8CD004521F4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3BABC72239A8CD004521F4 /* UserCell.swift */; };
 		BD3BABCA2239A8CD004521F4 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3BABC82239A8CD004521F4 /* UserCell.xib */; };
 		BD4285642240177700E7D5EA /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4285632240177700E7D5EA /* EditUserViewController.swift */; };
@@ -49,6 +51,8 @@
 /* Begin PBXFileReference section */
 		A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATKearneyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0E2F9E22412AC500BB7E57 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		BD0E2FA122413C7D00BB7E57 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		BD0E2FA52241429C00BB7E57 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BD3BABC72239A8CD004521F4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		BD3BABC82239A8CD004521F4 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		BD4285632240177700E7D5EA /* EditUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
@@ -111,13 +115,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		BD0E2FA022412ACA00BB7E57 /* Classes */ = {
+		BD0E2FA022412ACA00BB7E57 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				BDF7D44F2240600600D276CE /* User.swift */,
 				BDF7D45122406FD300D276CE /* Project.swift */,
 			);
-			path = Classes;
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		BD0E2FA322413C8E00BB7E57 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BD0E2FA122413C7D00BB7E57 /* CustomNavigationController.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		BD0E2FA42241428A00BB7E57 /* Third party */ = {
+			isa = PBXGroup;
+			children = (
+				BD0E2FA52241429C00BB7E57 /* Reachability.swift */,
+			);
+			path = "Third party";
 			sourceTree = "<group>";
 		};
 		BD3BABC42239A8A0004521F4 /* UserCell */ = {
@@ -262,8 +282,10 @@
 		BDF7D44E22405FEF00D276CE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BD0E2FA022412ACA00BB7E57 /* Classes */,
+				BD0E2FA022412ACA00BB7E57 /* Entities */,
+				BD0E2FA322413C8E00BB7E57 /* Components */,
 				BDD38A522239F7D100819809 /* Singletons */,
+				BD0E2FA42241428A00BB7E57 /* Third party */,
 				BD0E2F9E22412AC500BB7E57 /* Functions.swift */,
 			);
 			path = Utils;
@@ -419,6 +441,7 @@
 				BD4DC9BD223C476500E14F2F /* SelectedUser.swift in Sources */,
 				BD82B7A322397E1B003825D8 /* LoginViewController.swift in Sources */,
 				BDDBA3C2223AF9D3005E96FF /* UserDetailsViewController.swift in Sources */,
+				BD0E2FA222413C7D00BB7E57 /* CustomNavigationController.swift in Sources */,
 				BDF7D45222406FD300D276CE /* Project.swift in Sources */,
 				BD82B7B42239903D003825D8 /* UserSelectableCell.swift in Sources */,
 				BD82B7A122396D9B003825D8 /* MyUser.swift in Sources */,
@@ -427,6 +450,7 @@
 				BD4DC9B9223C21AE00E14F2F /* RegisterViewController.swift in Sources */,
 				BD82B7AB223987B5003825D8 /* NewProjectViewController.swift in Sources */,
 				BD82B797223964AF003825D8 /* ProjectsViewController.swift in Sources */,
+				BD0E2FA62241429C00BB7E57 /* Reachability.swift in Sources */,
 				BD82B7AD22398A75003825D8 /* UsersViewController.swift in Sources */,
 				BDC2D184223AB9E000B0D527 /* ProjectCell.swift in Sources */,
 				BD0E2F9F22412AC500BB7E57 /* Functions.swift in Sources */,

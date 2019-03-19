@@ -10,11 +10,16 @@ import UIKit
 
 class LoginViewController: BaseViewController {
 
+    let text_EMPTY_FIELDS =     "Please, fill the empty fields"
+    let text_INVALID_EMAIL =    "Invalid email"
+    let text_LOGIN_ERROR =      "Wrong email and/or password"
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     
     // MARK: - Init
     override func viewDidLoad() {
@@ -23,32 +28,55 @@ class LoginViewController: BaseViewController {
         addFormBehavior(scrollview: scrollView, bottomContraint: bottomConstraint)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        FirebaseManager.shared.autoLogin{ (success, error) in
-            if(error==nil && success) {
-                self.performSegue(withIdentifier: "gotoProjects", sender: self)
+        if(FirebaseManager.shared.shouldPerformAutoLogin()) {
+            showLoading(true)
+            FirebaseManager.shared.autoLogin{ (success, error) in
+                if(error==nil && success) {
+                    self.performSegue(withIdentifier: "gotoProjects", sender: self)
+                }
+                
+                self.showLoading(false)
             }
         }
     }
     
-    // misc
+    // MARK: - Form validation
     func validateForm() -> Bool {
-        if(!userTextField.text!.isEmpty && !passwordTextField.text!.isEmpty) {
-            return true
-        } else {
+        if(emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty) {
+            ALERT(title_ERROR, text_EMPTY_FIELDS, viewController: self)
             return false
+        } else {
+            return true
         }
     }
     
     // MARK: - Button actions
     @IBAction func loginButtonTap(_ sender: UIButton) {
         if(validateForm()) {
-            FirebaseManager.shared.login(email: userTextField.text!, password: passwordTextField.text!) { (user, error) in
+            showLoading(true)
+            FirebaseManager.shared.login(email: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if(error==nil) {
                     self.performSegue(withIdentifier: "gotoProjects", sender: self)
+                } else {
+                    var text = ""
+                    let errorCode = ERROR_CODE(error)
+
+                    switch(errorCode) {
+                        case 17011, 17009:
+                        text = self.text_LOGIN_ERROR
+                        case 17008:
+                        text = self.text_INVALID_EMAIL
+                        default:
+                        text = self.text_GENERIC_ERROR
+                    }
+                    
+                    ALERT(self.title_ERROR, text, viewController: self)
                 }
+                
+                self.showLoading(false)
             }
         }
     }

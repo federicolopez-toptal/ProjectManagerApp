@@ -10,16 +10,34 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
+    let title_ERROR =           "Error"
+    let text_NO_INTERNET =      "No internet connection available"
+    let text_GENERIC_ERROR =    "An error occurred.\nPlease, try again later"
+    
     private var formMode = false
     private var scrollViewBottomConstraint: NSLayoutConstraint?
+    
     
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    
-    
+    // MARK: - misc
+    func showLoading(_ visibility: Bool) {
+        self.view.endEditing(true)
+        let navC = self.navigationController as! CustomNavigationController
+        
+        if(visibility) {
+            if( INTERNET_AVAILABLE() ){
+                navC.showLoading(true)
+            } else {
+                ALERT(title_ERROR, text_NO_INTERNET, viewController: self)
+            }
+        } else {
+            navC.showLoading(false)
+        }
+    }
     
     // MARK: - Form behavior stuff
     func addFormBehavior(scrollview: UIScrollView, bottomContraint: NSLayoutConstraint) {

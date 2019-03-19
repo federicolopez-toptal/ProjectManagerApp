@@ -87,7 +87,7 @@ class UserDetailsViewController: BaseViewController {
         FirebaseManager.shared.logout()
         
         let loginVC = self.navigationController?.viewControllers.first as! LoginViewController
-        loginVC.userTextField.text = ""
+        loginVC.emailTextField.text = ""
         loginVC.passwordTextField.text = ""
         self.navigationController?.popToViewController(loginVC, animated: true)
     }

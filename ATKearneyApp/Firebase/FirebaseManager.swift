@@ -62,6 +62,14 @@ class FirebaseManager: NSObject {
         
     }
     
+    func shouldPerformAutoLogin() -> Bool {
+        if (Auth.auth().currentUser != nil) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func autoLogin(callback: @escaping (Bool, Error?) ->() ) {
         MyUser.shared.reset()
         if let userID = Auth.auth().currentUser?.uid {

@@ -765,7 +765,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZT3-e3-32d">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BUS-9k-Ref">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BUS-9k-Ref">
                                                 <rect key="frame" x="32" y="151" width="311" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -842,9 +842,9 @@
                     <navigationItem key="navigationItem" id="KPy-T5-Qur"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="MoH-bn-IVr" id="KOl-FG-IBa"/>
+                        <outlet property="emailTextField" destination="BUS-9k-Ref" id="FMU-LG-fMN"/>
                         <outlet property="passwordTextField" destination="esj-lX-cSa" id="0xi-tl-Yja"/>
                         <outlet property="scrollView" destination="VZd-Kq-e0l" id="GzS-Ws-COh"/>
-                        <outlet property="userTextField" destination="BUS-9k-Ref" id="FMU-LG-fMN"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="gotoProjects" id="m4n-PI-Xe6"/>
                         <segue destination="5kL-Lc-Ln7" kind="show" identifier="gotoRegister" id="dn6-Rs-UWn"/>
                         <segue destination="utX-3t-YZn" kind="show" identifier="gotoResetPass" id="6If-QM-3BD"/>
@@ -942,10 +942,10 @@
             </objects>
             <point key="canvasLocation" x="1989.5999999999999" y="921.58920539730138"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Custom Navigation Controller-->
         <scene sceneID="kji-Ru-XSu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="CPi-4J-Ays" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="CPi-4J-Ays" customClass="CustomNavigationController" customModule="ATKearneyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aJZ-zP-LVr">
                         <autoresizingMask key="autoresizingMask"/>
@@ -1050,6 +1050,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="bme-8G-Pjd"/>
         <segue reference="bWA-Xa-GVb"/>
-        <segue reference="jcQ-0a-0Vu"/>
+        <segue reference="m4n-PI-Xe6"/>
     </inferredMetricsTieBreakers>
 </document>
