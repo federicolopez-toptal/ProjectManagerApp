@@ -13,6 +13,7 @@ struct basicUser {
     var userID = ""
     var name = ""
     var email = ""
+    var photoLastUpdate: String?
 }
 
 class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
@@ -67,8 +68,9 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
             
             let name = info["name"] as! String
             let email = info["email"] as! String
+            let photoLastUpdate = info["photoLastUpdate"] as? String
             
-            users.append( basicUser(userID: strKey, name: name, email: email) )
+            users.append( basicUser(userID: strKey, name: name, email: email, photoLastUpdate: photoLastUpdate) )
         }
         // Users sorted by name!
         users = users.sorted { (obj1: basicUser, obj2: basicUser) -> Bool in
@@ -104,6 +106,8 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         } else {
             cell.roleLabel.text = "Client"
         }
+        
+        FirebaseManager.shared.userPhoto(userID: user.userID, lastUpdate: user.photoLastUpdate, to: cell.photoImageView)
         
         return cell
     }

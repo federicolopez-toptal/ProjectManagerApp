@@ -10,6 +10,7 @@ import UIKit
 
 class UserDetailsViewController: BaseViewController {
 
+    @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userTypeLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -30,17 +31,14 @@ class UserDetailsViewController: BaseViewController {
     
     
     
-    
-    
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
         
         userID = SelectedUser.shared.userID
         officerView.backgroundColor = UIColor.white
-        
-        
-        
+        photoImageView.setCircular()
+
         officerView.isHidden = true
         editUserButton.isHidden = true
         changePasswordButton.isHidden = true
@@ -77,6 +75,8 @@ class UserDetailsViewController: BaseViewController {
         phoneLabel.text! = SelectedUser.shared.phone
         roleLabel.text = SelectedUser.shared.role
         skillsLabel.text = SelectedUser.shared.skills
+        
+        FirebaseManager.shared.userPhoto(userID: SelectedUser.shared.userID, lastUpdate: SelectedUser.shared.photoLastUpdate, to: photoImageView)
     }
     
     // MARK: - Button actions

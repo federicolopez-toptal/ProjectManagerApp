@@ -1,11 +1,5 @@
-NEXT:
-
-
-
 
 - Tests > Crear varios proyectos, agregar/eliminar usuarios y officers
-
-- En todas las pantallas > Revisar las llamadas a Firebase e ir agregando validaciones y/o carteles
 - Charlar con Ismet sobre la estética final. Conseguir assets y tipografías
 
 
@@ -15,6 +9,7 @@ NEXT:
 - Probar bien INTERNET_AVAILABLE
 - Contemplar un timeout en el loading?
 - Edit profile / Change email
+
 
 FUTURE FEATURE:
 - Delete project (an all the relations with its users)

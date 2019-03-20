@@ -18,6 +18,7 @@ struct User {
     
     var role: String?
     var skills: String?
+    var photoLastUpdate: String?
     
 
     // MARK: - Edit info
@@ -27,8 +28,10 @@ struct User {
         email = ""
         name = ""
         phone = ""
+        
         role = nil
         skills = nil
+        photoLastUpdate = nil
     }
     
     mutating func fillWith(info: NSDictionary) {
@@ -45,6 +48,7 @@ struct User {
         // Optional fields
         role = info["role"] as? String
         skills = info["skills"] as? String
+        photoLastUpdate = info["photoLastUpdate"] as? String
     }
     
     mutating func fillWith(userID: String, info: [String: Any]) {
@@ -57,6 +61,7 @@ struct User {
         // Optional fields
         role = info["role"] as? String
         skills = info["skills"] as? String
+        photoLastUpdate = info["photoLastUpdate"] as? String
     }
     
     // MARK: - misc
@@ -76,6 +81,10 @@ struct User {
             text += " \(skills)"
         }
         print(text)
+        
+        if let photoLastUpdate = self.photoLastUpdate {
+            print("Photo last update: ", photoLastUpdate)
+        }
         
         if(admin){
             print("user IS ADMIN")

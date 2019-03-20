@@ -27,19 +27,23 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfj-fP-XkG">
-                        <rect key="frame" x="12" y="11" width="292" height="21"/>
+                        <rect key="frame" x="62" y="11" width="292" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="xxxxxxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJH-W7-rnn">
-                        <rect key="frame" x="22" y="29" width="242" height="12"/>
+                        <rect key="frame" x="72" y="29" width="242" height="12"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="italicSystem" pointSize="10"/>
                         <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bBA-vP-wkD">
+                        <rect key="frame" x="9" y="4" width="40" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="0BV-3Y-BNi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2Ra-aG-7cO"/>
@@ -50,9 +54,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nameLabel" destination="Lfj-fP-XkG" id="Nl3-Zl-sNN"/>
+                <outlet property="photoImageView" destination="bBA-vP-wkD" id="YJ5-cB-kA8"/>
                 <outlet property="roleLabel" destination="dJH-W7-rnn" id="iHc-xG-M6x"/>
             </connections>
-            <point key="canvasLocation" x="-243.19999999999999" y="164.6176911544228"/>
+            <point key="canvasLocation" x="-530" y="30"/>
         </tableViewCell>
     </objects>
 </document>

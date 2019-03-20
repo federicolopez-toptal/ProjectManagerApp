@@ -10,6 +10,7 @@ import UIKit
 
 class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var noDataView: UIView!
     @IBOutlet weak var createProjectButton: UIButton!
     @IBOutlet weak var createProjectCircleButton: UIButton!
@@ -39,6 +40,7 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         createProjectCircleButton.isHidden = true
         loading.stopAnimating()
         
+        photoButton.setCircular()
         addReloadView(frame: projectsList.frame) {
             self.loadData()
         }
@@ -47,6 +49,7 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
+        FirebaseManager.shared.userPhoto(userID: MyUser.shared.userID, lastUpdate: MyUser.shared.photoLastUpdate, to: photoButton)
         
         MyUser.shared.traceAll()
     }

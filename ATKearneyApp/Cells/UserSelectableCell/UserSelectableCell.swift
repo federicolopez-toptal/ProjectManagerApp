@@ -13,12 +13,14 @@ class UserSelectableCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var checkImageView: UIImageView!
     @IBOutlet weak var roleLabel: UILabel!
+    @IBOutlet weak var photoImageView: UIImageView!
     
     var isON = false
     
     // MARK: - Init
     override func awakeFromNib() {
         super.awakeFromNib()
+        photoImageView.setCircular()
         self.selectionStyle = .none
     }
     

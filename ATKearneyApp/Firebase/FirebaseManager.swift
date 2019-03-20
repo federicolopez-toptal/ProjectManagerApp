@@ -9,12 +9,16 @@
 import UIKit
 import Firebase
 
+
 class FirebaseManager: NSObject {
     
     static let shared = FirebaseManager()
     
     private let USERS = "users_v2"
     private let PROJECTS = "projects_v2"
+    
+    private let BUCKET = "atk-pmo-v2.appspot.com"
+    
     
     // MARK: - Users
     func createUser(email: String, password: String, info:[String: Any], callback: @escaping (Error?) ->() ) {
@@ -173,6 +177,101 @@ class FirebaseManager: NSObject {
                     callback(error)
                 }
             }
+        }
+    }
+    
+    // MARK: - Files
+    func uploadUserPhoto(userID: String, photo: UIImage, time: String, callback: @escaping (Error?) -> () ) {
+        let storageRef = Storage.storage().reference().child("profilePhotos").child("\(userID).jpg")
+        
+        if let data = photo.jpegData(compressionQuality: 0.9) {
+            storageRef.putData(data, metadata: nil) { (metadata, error) in
+                if(error==nil) {
+                    print(metadata!)
+                    
+                    let DBref = Database.database().reference()
+                    DBref.child(self.USERS).child(userID).child("info").child("photoLastUpdate").setValue(time)
+                    
+                    // save this picture locally, to avoid re-download
+                    let filePath = FILE_IN_DOCS(filename: "\(userID)_\(time).jpg")
+                    let fileURL = URL(fileURLWithPath: filePath)
+                    do {
+                        try data.write(to: fileURL)
+                    } catch {
+                        // Can't save it
+                    }
+                    
+                    callback(error)
+                } else {
+                    callback(error)
+                }
+            }
+        }
+    }
+    
+    func userPhoto(userID: String, lastUpdate: String?, to view: UIView) {
+        if let lastUpdate = lastUpdate {
+            
+            // 1. Try to load the image locally
+            print( DOCS_PATH() )
+            var imageLoaded = false
+            let filePath = FILE_IN_DOCS(filename: "\(userID)_\(lastUpdate).jpg")
+            if( FileManager.default.fileExists(atPath: filePath) ) {
+                var data: Data?
+                do {
+                    data = try Data(contentsOf: URL(fileURLWithPath: filePath))
+                    if(data != nil) {
+                        imageLoaded = true
+                        let image = UIImage(data: data!)
+                        setImage(image!, to: view)
+                    } else {
+                        imageLoaded = false
+                    }
+                } catch {
+                    imageLoaded = false
+                }
+            }
+            
+            if(!imageLoaded) {
+                // Download user profile picture
+                let storageRef = Storage.storage().reference(forURL: "gs://\(BUCKET)/profilePhotos/\(userID).jpg")
+                storageRef.getData(maxSize: MBs(1.5)) { (data, error) in
+                    if let data = data {
+                        // Save it locally
+                        var fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                        print(fileURL!.absoluteString.replacingOccurrences(of: "file://", with: ""))
+                        
+                        fileURL?.appendPathComponent("\(userID)_\(lastUpdate).jpg")
+                        print(fileURL!.absoluteString)
+                        
+                        do {
+                            try data.write(to: fileURL!)
+                        } catch {
+                            // Can't save it
+                        }
+                        
+                        // show image
+                        let image = UIImage(data: data)
+                        self.setImage(image!, to: view)
+                    } else {
+                        self.setImage(self.defaultUserPhoto(), to: view)
+                    }
+                }
+            }
+        } else {
+            setImage(defaultUserPhoto(), to: view)
+        }
+    }
+    
+    private func defaultUserPhoto() -> UIImage {
+        return UIImage(named: "profileIcon.png")!
+    }
+    
+    private func setImage(_ image: UIImage, to view: UIView) {
+        if(view is UIButton) {
+            (view as! UIButton).setImage(image, for: .normal)
+        } else if(view is UIImageView) {
+            (view as! UIImageView).image = image
         }
     }
     

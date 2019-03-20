@@ -103,6 +103,9 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             }
         }
         
+        let photoLastUpdate = info["photoLastUpdate"] as? String
+        FirebaseManager.shared.userPhoto(userID: userID, lastUpdate: photoLastUpdate, to: cell.photoImageView)
+        
         return cell
     }
     

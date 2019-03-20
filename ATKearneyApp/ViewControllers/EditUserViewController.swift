@@ -8,8 +8,10 @@
 
 import UIKit
 
-class EditUserViewController: BaseViewController {
 
+class EditUserViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -18,6 +20,10 @@ class EditUserViewController: BaseViewController {
     
     @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    var photoChanged = false
+    var firstTime = true
+    
     
     // MARK: - Init
     override func viewDidLoad() {
@@ -33,8 +39,18 @@ class EditUserViewController: BaseViewController {
         skillsTextField.text = MyUser.shared.skills
         
         emailTextField.isEnabled = false
+        photoButton.setCircular()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if(firstTime) {
+            FirebaseManager.shared.userPhoto(userID: MyUser.shared.userID,
+                                             lastUpdate: MyUser.shared.photoLastUpdate, to: photoButton)
+            firstTime = false
+        }
+        
+    }
     
     // MARK: - Button actions
     @IBAction func backButtonTap(_ sender: UIButton) {
@@ -49,6 +65,7 @@ class EditUserViewController: BaseViewController {
             "phone": phoneTextField.text!,
             "role": roleTextField.text!,
             "skills": skillsTextField.text!,
+            "photoLastUpdate": MyUser.shared.photoLastUpdate as Any
             ] as [String : Any]
         
         showLoading(true)
@@ -60,19 +77,98 @@ class EditUserViewController: BaseViewController {
                     "email": self.emailTextField.text!,
                     "phone": self.phoneTextField.text!,
                     "role": self.roleTextField.text as Any,
-                    "skills": self.skillsTextField.text as Any
+                    "skills": self.skillsTextField.text as Any,
+                    "photoLastUpdate": MyUser.shared.photoLastUpdate as Any
                     ] as [String: Any]
 
                 MyUser.shared.fillWith(userID: MyUser.shared.userID, info: info)
                 SelectedUser.shared = MyUser.shared
                 
-                self.navigationController?.popViewController(animated: true)
+                if(self.photoChanged) {
+                    let time = NOW()
+                    FirebaseManager.shared.uploadUserPhoto(userID: MyUser.shared.userID, photo: self.photoButton.imageView!.image!, time: time) { (error) in
+                        if(error != nil) {
+                            ALERT(title_ERROR, text_ERROR_PHOTO_SAVE, viewController: self)
+                        }
+                        
+                        MyUser.shared.photoLastUpdate = time
+                        SelectedUser.shared = MyUser.shared
+
+                        self.showLoading(false)
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                } else {
+                    self.showLoading(false)
+                    self.navigationController?.popViewController(animated: true)
+                }
             } else {
                 ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
             }
-            
-            self.showLoading(false)
         }
     }
     
+    @IBAction func photoButtonTap(_ sender: UIButton) {
+        let text = "Profile photo change"
+        let alert = UIAlertController(title: nil, message: text, preferredStyle: .actionSheet)
+        
+        let photoAction = UIAlertAction(title: "Take photo", style: .default) { (alertAction) in
+            self.takePhoto()
+        }
+        let libAction = UIAlertAction(title: "Select from library", style: .default) { (alertAction) in
+            self.selectImageFromLibrary()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addAction(photoAction)
+        alert.addAction(libAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true) {
+        }
+    }
+    
+    // MARK: - Photo & images
+    func takePhoto() {
+        if(UIImagePickerController.isSourceTypeAvailable(.camera)) {
+            if(PERMISSIONS_FOR_CAMERA()) {
+                let picker = UIImagePickerController()
+                picker.allowsEditing = true
+                picker.sourceType = .camera
+                picker.cameraCaptureMode = .photo
+                
+                picker.delegate = self
+                self.present(picker, animated: true)
+            } else {
+                ALERT(title_ERROR, text_NO_PERMISSIONS, viewController: self)
+            }
+        } else {
+            ALERT(title_ERROR, text_NO_CAMERA, viewController: self)
+        }
+    }
+    
+    func selectImageFromLibrary() {
+        if(UIImagePickerController.isSourceTypeAvailable(.photoLibrary)) {
+            let picker = UIImagePickerController()
+            picker.allowsEditing = true
+            picker.sourceType = .photoLibrary
+            
+            picker.delegate = self
+            self.present(picker, animated: true)
+        } else {
+            ALERT(title_ERROR, text_NO_CAMERA, viewController: self)
+        }
+    }
+    
+    // MARK: - UIImagePickerController
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
+        photoButton.setImage(image, for: .normal)
+        
+        photoChanged = true
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
+
+
