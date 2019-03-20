@@ -48,7 +48,10 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        loadData()
+    }
+    
+    func loadData() {
         if(!INTERNET_AVAILABLE()) {
             ALERT(title_ERROR, text_NO_INTERNET, viewController: self)
             return
@@ -194,6 +197,26 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
         SelectedUser.shared.fillWith(info: users[indexPath.row])
         
         self.performSegue(withIdentifier: "gotoUser", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .default, title: "Remove") { (action, indexPath) in
+            let userID = self.users[indexPath.row]["id"] as! String
+            self.removeUser(userID: userID)
+        }
+        
+        return [deleteAction]
+    }
+    
+    func removeUser(userID: String) {
+        for (key, _) in SelectedProject.shared.users {
+            if(key==userID) {
+                SelectedProject.shared.users.removeValue(forKey: key)
+                break
+            }
+        }
+        
+        loadData()
     }
     
     // MARK: - Segue(s)
