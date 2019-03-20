@@ -12,6 +12,7 @@ class UserSelectableCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var checkImageView: UIImageView!
+    @IBOutlet weak var roleLabel: UILabel!
     
     var isON = false
     

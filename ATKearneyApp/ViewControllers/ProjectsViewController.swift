@@ -144,7 +144,9 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier=="gotoUser") {
             let destinationVC = segue.destination as! UserDetailsViewController
-            destinationVC.canEditInfo = true
+            destinationVC.canEditMyProfile = true
+            destinationVC.profileInProject = false
+            destinationVC.officerRoleEditable = false
         }
     }
 

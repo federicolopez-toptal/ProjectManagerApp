@@ -33,8 +33,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Project officer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJH-W7-rnn">
-                        <rect key="frame" x="22" y="29" width="69" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="xxxxxxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJH-W7-rnn">
+                        <rect key="frame" x="22" y="29" width="242" height="12"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="italicSystem" pointSize="10"/>
                         <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,9 +50,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nameLabel" destination="Lfj-fP-XkG" id="Nl3-Zl-sNN"/>
-                <outlet property="projectOfficerLabel" destination="dJH-W7-rnn" id="bKr-Hq-zBp"/>
+                <outlet property="roleLabel" destination="dJH-W7-rnn" id="iHc-xG-M6x"/>
             </connections>
-            <point key="canvasLocation" x="-243" y="165"/>
+            <point key="canvasLocation" x="-243.19999999999999" y="164.6176911544228"/>
         </tableViewCell>
     </objects>
 </document>

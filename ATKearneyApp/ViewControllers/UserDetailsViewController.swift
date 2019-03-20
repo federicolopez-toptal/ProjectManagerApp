@@ -11,6 +11,7 @@ import UIKit
 class UserDetailsViewController: BaseViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userTypeLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var roleLabel: UILabel!
@@ -22,10 +23,13 @@ class UserDetailsViewController: BaseViewController {
     @IBOutlet weak var editUserButton: UIButton!
     @IBOutlet weak var changePasswordButton: UIButton!
     
-    
-    var officerEditable = false
-    var canEditInfo = false
+    var profileInProject = false
+    var officerRoleEditable = false
+    var canEditMyProfile = false
     var userID: String = ""
+    
+    
+    
     
     
     // MARK: - Init
@@ -35,25 +39,38 @@ class UserDetailsViewController: BaseViewController {
         userID = SelectedUser.shared.userID
         officerView.backgroundColor = UIColor.white
         
+        
+        
         officerView.isHidden = true
         editUserButton.isHidden = true
         changePasswordButton.isHidden = true
         logoutButton.isHidden = true
         
-        if(canEditInfo) {
+        if(canEditMyProfile) {
             editUserButton.isHidden = false
             changePasswordButton.isHidden = false
             logoutButton.isHidden = false
         }
         
-        if(officerEditable) {
+        if(profileInProject) {
             officerView.isHidden = false
             projectOfficerSwitch.isOn = SelectedProject.shared.hasOfficer(userID: userID)
         }
+        projectOfficerSwitch.isEnabled = officerRoleEditable
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if(SelectedUser.shared.admin) {
+            userTypeLabel.text = "Admin"
+        } else {
+            if( IS_ATK_MEMBER(email: SelectedUser.shared.email) ) {
+                userTypeLabel.text = "ATK member"
+            } else {
+                userTypeLabel.text = "Client"
+            }
+        }
         
         nameLabel.text! = SelectedUser.shared.name
         emailLabel.text! = SelectedUser.shared.email

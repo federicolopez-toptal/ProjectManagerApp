@@ -64,7 +64,6 @@ func ALERT(_ title: String, _ text: String, viewController: UIViewController, ca
     }
 }
 
-
 func ERROR_CODE(_ error: Error?) -> Int {
     var result = 0
     if let E = error as NSError? {
@@ -73,4 +72,8 @@ func ERROR_CODE(_ error: Error?) -> Int {
     }
     
     return result
+}
+
+func IS_ATK_MEMBER(email: String) -> Bool {
+    return email.contains("@atkearney.com")
 }

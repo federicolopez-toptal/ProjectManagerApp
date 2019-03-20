@@ -26,6 +26,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="xxxxxxxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iH-N6-bY4">
+                        <rect key="frame" x="31" y="38" width="250" height="12"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="italicSystem" pointSize="10"/>
+                        <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkOFF.png" translatesAutoresizingMaskIntoConstraints="NO" id="ROx-bw-FtC">
                         <rect key="frame" x="337" y="3" width="50" height="50"/>
                         <constraints>
@@ -43,6 +50,7 @@
             <connections>
                 <outlet property="checkImageView" destination="ROx-bw-FtC" id="B1O-OA-Lzm"/>
                 <outlet property="nameLabel" destination="0xK-I9-21t" id="9YJ-au-deM"/>
+                <outlet property="roleLabel" destination="9iH-N6-bY4" id="O0l-Bk-Lty"/>
             </connections>
             <point key="canvasLocation" x="-263.19999999999999" y="154.72263868065968"/>
         </tableViewCell>

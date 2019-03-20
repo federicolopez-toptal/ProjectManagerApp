@@ -12,6 +12,7 @@ import UIKit
 struct basicUser {
     var userID = ""
     var name = ""
+    var email = ""
 }
 
 class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
@@ -65,8 +66,9 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
             let info = dict["info"] as! NSDictionary
             
             let name = info["name"] as! String
+            let email = info["email"] as! String
             
-            users.append( basicUser(userID: strKey, name: name) )
+            users.append( basicUser(userID: strKey, name: name, email: email) )
         }
         // Users sorted by name!
         users = users.sorted { (obj1: basicUser, obj2: basicUser) -> Bool in
@@ -96,6 +98,12 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         
         cell.nameLabel.text = cellText
         cell.setState( usersCopy[user.userID] != nil )
+        
+        if( IS_ATK_MEMBER(email: user.email) ) {
+            cell.roleLabel.text = "ATK member"
+        } else {
+            cell.roleLabel.text = "Client"
+        }
         
         return cell
     }

@@ -172,9 +172,14 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
         cell.nameLabel.text = cellText
         
         if(SelectedProject.shared.hasOfficer(userID: userID)) {
-            cell.projectOfficerLabel.isHidden = false
+            cell.roleLabel.text = "Project officer"
         } else {
-            cell.projectOfficerLabel.isHidden = true
+            let email = info["email"] as! String
+            if( IS_ATK_MEMBER(email: email) ) {
+                cell.roleLabel.text = "ATK member"
+            } else {
+                cell.roleLabel.text = "Client"
+            }
         }
         
         return cell
@@ -195,7 +200,9 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier=="gotoUser") {
             let destinationVC = segue.destination as! UserDetailsViewController
-            destinationVC.officerEditable = true
+            destinationVC.canEditMyProfile = false
+            destinationVC.profileInProject = true
+            destinationVC.officerRoleEditable = true
         }
     }
     

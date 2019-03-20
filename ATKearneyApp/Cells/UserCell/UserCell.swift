@@ -11,7 +11,7 @@ import UIKit
 class UserCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var projectOfficerLabel: UILabel!
+    @IBOutlet weak var roleLabel: UILabel!
     
     // MARK: - Init
     override func awakeFromNib() {
