@@ -34,10 +34,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkOFF.png" translatesAutoresizingMaskIntoConstraints="NO" id="ROx-bw-FtC">
-                        <rect key="frame" x="337" y="3" width="50" height="50"/>
+                        <rect key="frame" x="347" y="9" width="39" height="39"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="OiL-IC-cF6"/>
-                            <constraint firstAttribute="height" constant="50" id="chf-c9-GKQ"/>
+                            <constraint firstAttribute="width" constant="39" id="OiL-IC-cF6"/>
+                            <constraint firstAttribute="height" constant="39" id="chf-c9-GKQ"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rzm-Om-qno">
@@ -46,7 +46,7 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="ROx-bw-FtC" secondAttribute="trailing" constant="4" id="BJT-eY-Ss1"/>
+                    <constraint firstAttribute="trailing" secondItem="ROx-bw-FtC" secondAttribute="trailing" constant="5" id="BJT-eY-Ss1"/>
                     <constraint firstItem="ROx-bw-FtC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="P0r-Rf-LzC"/>
                 </constraints>
             </tableViewCellContentView>
@@ -57,7 +57,7 @@
                 <outlet property="photoImageView" destination="rzm-Om-qno" id="UwQ-Ws-FCe"/>
                 <outlet property="roleLabel" destination="9iH-N6-bY4" id="O0l-Bk-Lty"/>
             </connections>
-            <point key="canvasLocation" x="-588" y="201"/>
+            <point key="canvasLocation" x="-588" y="200.59970014992504"/>
         </tableViewCell>
     </objects>
     <resources>

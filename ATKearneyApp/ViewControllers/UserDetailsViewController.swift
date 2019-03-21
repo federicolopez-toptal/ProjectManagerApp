@@ -19,6 +19,7 @@ class UserDetailsViewController: BaseViewController {
     @IBOutlet weak var skillsLabel: UILabel!
     @IBOutlet weak var officerView: UIView!
     @IBOutlet weak var projectOfficerSwitch: UISwitch!
+    @IBOutlet weak var officerStatusLabel: UILabel!
     @IBOutlet weak var logoutButton: UIButton!
     
     @IBOutlet weak var editUserButton: UIButton!
@@ -38,7 +39,10 @@ class UserDetailsViewController: BaseViewController {
         userID = SelectedUser.shared.userID
         officerView.backgroundColor = UIColor.white
         photoImageView.setCircular()
+        projectOfficerSwitch.backgroundColor = UIColor.darkGray
+        projectOfficerSwitch.layer.cornerRadius = 16.0;
 
+        
         officerView.isHidden = true
         editUserButton.isHidden = true
         changePasswordButton.isHidden = true
@@ -53,6 +57,20 @@ class UserDetailsViewController: BaseViewController {
         if(profileInProject) {
             officerView.isHidden = false
             projectOfficerSwitch.isOn = SelectedProject.shared.hasOfficer(userID: userID)
+            
+            if(projectOfficerSwitch.isOn) {
+                officerStatusLabel.text = "YES"
+            } else {
+                officerStatusLabel.text = "NO"
+            }
+            
+            if(officerRoleEditable) {
+                projectOfficerSwitch.isHidden = false
+                officerStatusLabel.isHidden = true
+            } else {
+                projectOfficerSwitch.isHidden = true
+                officerStatusLabel.isHidden = false
+            }
         }
         projectOfficerSwitch.isEnabled = officerRoleEditable
     }
@@ -75,6 +93,13 @@ class UserDetailsViewController: BaseViewController {
         phoneLabel.text! = SelectedUser.shared.phone
         roleLabel.text = SelectedUser.shared.role
         skillsLabel.text = SelectedUser.shared.skills
+        
+        if(roleLabel.text!.isEmpty) {
+            roleLabel.text = "..."
+        }
+        if(skillsLabel.text!.isEmpty) {
+            skillsLabel.text = "..."
+        }
         
         FirebaseManager.shared.userPhoto(userID: SelectedUser.shared.userID, lastUpdate: SelectedUser.shared.photoLastUpdate, to: photoImageView)
     }
