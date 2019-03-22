@@ -81,8 +81,13 @@ class FirebaseManager: NSObject {
                 if(error != nil) {
                     callback(false, error)
                 } else {
-                    MyUser.shared.fillWith(userID: userID, info: userDict as! [String: Any])
-                    callback(true, nil)
+                    if(userDict==nil) {
+                        callback(false, nil)
+                    } else {
+                        MyUser.shared.fillWith(userID: userID, info: userDict as! [String: Any])
+                        callback(true, nil)
+                    }
+                    
                 }
             }
         } else {

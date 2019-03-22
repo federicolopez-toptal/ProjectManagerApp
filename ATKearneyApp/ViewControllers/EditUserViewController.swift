@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CropViewController
 
 
-class EditUserViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditUserViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CropViewControllerDelegate {
 
     @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
@@ -49,7 +50,11 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
                                              lastUpdate: MyUser.shared.photoLastUpdate, to: photoButton)
             firstTime = false
         }
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        photoButton.setCircular()
     }
     
     // MARK: - Button actions
@@ -132,7 +137,7 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
         if(UIImagePickerController.isSourceTypeAvailable(.camera)) {
             if(PERMISSIONS_FOR_CAMERA()) {
                 let picker = UIImagePickerController()
-                picker.allowsEditing = true
+                picker.allowsEditing = false
                 picker.sourceType = .camera
                 picker.cameraCaptureMode = .photo
                 
@@ -149,7 +154,7 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
     func selectImageFromLibrary() {
         if(UIImagePickerController.isSourceTypeAvailable(.photoLibrary)) {
             let picker = UIImagePickerController()
-            picker.allowsEditing = true
+            picker.allowsEditing = false
             picker.sourceType = .photoLibrary
             
             picker.delegate = self
@@ -160,12 +165,29 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
     }
     
     // MARK: - UIImagePickerController
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
-        photoButton.setImage(image, for: .normal)
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:
+        [UIImagePickerController.InfoKey : Any]) {
         
-        photoChanged = true
+        self.dismiss(animated: false, completion: nil)
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        self.presentCropViewController(image: image)
+    }
+    
+    // MARK: - CropViewController
+    func presentCropViewController(image: UIImage) {
+        
+        let cropViewController: CropViewController
+        cropViewController = CropViewController(croppingStyle: .circular, image: image)
+        cropViewController.title = "Profile photo"
+        cropViewController.delegate = self
+        self.present(cropViewController, animated: true, completion: nil)
+    }
+    
+    func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
         self.dismiss(animated: true, completion: nil)
+        
+        photoButton.setImage(image, for: .normal)
+        photoChanged = true
     }
     
     

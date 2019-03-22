@@ -94,10 +94,18 @@ class UserDetailsViewController: BaseViewController {
         roleLabel.text = SelectedUser.shared.role
         skillsLabel.text = SelectedUser.shared.skills
         
-        if(roleLabel.text!.isEmpty) {
+        if let roleText = roleLabel.text {
+            if(roleText.isEmpty) {
+                roleLabel.text = "..."
+            }
+        } else {
             roleLabel.text = "..."
         }
-        if(skillsLabel.text!.isEmpty) {
+        if let skillsText = skillsLabel.text {
+            if(skillsText.isEmpty) {
+                skillsLabel.text = "..."
+            }
+        } else {
             skillsLabel.text = "..."
         }
         

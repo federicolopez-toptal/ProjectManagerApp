@@ -92,8 +92,10 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         }
         cell.nameLabel.text = cellText
         
+        cell.roleLabel.textColor = UIColor.gray
         if(SelectedProject.shared.hasOfficer(userID: userID)) {
             cell.roleLabel.text = "Project officer"
+            cell.roleLabel.textColor = UIColor.red
         } else {
             let email = info["email"] as! String
             if( IS_ATK_MEMBER(email: email) ) {

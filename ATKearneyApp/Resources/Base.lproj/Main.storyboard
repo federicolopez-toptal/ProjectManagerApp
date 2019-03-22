@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C8r-VB-B4o">
-                                <rect key="frame" x="16" y="107" width="343" height="560"/>
+                                <rect key="frame" x="16" y="116" width="343" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZL8-YS-Kfh">
@@ -92,10 +92,10 @@
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEz-uX-5nr">
-                                <rect key="frame" x="313" y="53" width="40" height="40"/>
+                                <rect key="frame" x="304" y="46" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="78P-6P-mYq"/>
-                                    <constraint firstAttribute="width" constant="40" id="sZc-vf-PPX"/>
+                                    <constraint firstAttribute="height" constant="55" id="78P-6P-mYq"/>
+                                    <constraint firstAttribute="width" constant="55" id="sZc-vf-PPX"/>
                                 </constraints>
                                 <state key="normal" image="profileIcon.png"/>
                                 <connections>
@@ -114,9 +114,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DbW-Nf-9LL" secondAttribute="bottom" id="JxO-Yy-Yrc"/>
                             <constraint firstItem="ZL8-YS-Kfh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="37" id="PuX-sa-FwC"/>
                             <constraint firstItem="9D8-Tz-3YP" firstAttribute="leading" secondItem="ZL8-YS-Kfh" secondAttribute="trailing" constant="15.5" id="TX6-us-h6X"/>
-                            <constraint firstItem="C8r-VB-B4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="87" id="jZt-Ph-Pkq"/>
-                            <constraint firstItem="aEz-uX-5nr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="33" id="k9m-9m-W4n"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aEz-uX-5nr" secondAttribute="trailing" constant="22" id="lzV-gT-OGW"/>
+                            <constraint firstItem="C8r-VB-B4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="96" id="jZt-Ph-Pkq"/>
+                            <constraint firstItem="aEz-uX-5nr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="26" id="k9m-9m-W4n"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aEz-uX-5nr" secondAttribute="trailing" constant="16" id="lzV-gT-OGW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C8r-VB-B4o" secondAttribute="trailing" constant="16" id="mQ8-db-Mvw"/>
                             <constraint firstItem="jXh-tU-WYm" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ntz-08-bF6"/>
                         </constraints>
@@ -409,7 +409,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Role (example: developer)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D3y-xf-yo0">
                                                 <rect key="frame" x="32" y="427" width="311" height="43"/>
@@ -419,7 +419,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z9u-bd-U7c">
                                                 <rect key="frame" x="32" y="305" width="311" height="43"/>
@@ -455,7 +455,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bR3-xb-Ecc">
                                                 <rect key="frame" x="150.5" y="164" width="75" height="75"/>
@@ -881,7 +881,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kV7-i0-sZ8">
                                                 <rect key="frame" x="32" y="221" width="311" height="43"/>
@@ -1342,8 +1342,8 @@
         <image name="profileIcon.png" width="68" height="68"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="egf-bS-qtF"/>
-        <segue reference="bWA-Xa-GVb"/>
+        <segue reference="AVg-OP-vJp"/>
+        <segue reference="5TC-rh-18m"/>
         <segue reference="jcQ-0a-0Vu"/>
     </inferredMetricsTieBreakers>
 </document>
