@@ -40,7 +40,7 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
         skillsTextField.text = MyUser.shared.skills
         
         emailTextField.isEnabled = false
-        photoButton.setCircular()
+        photoButton.setCircularWithRadius(35.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,11 +50,6 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
                                              lastUpdate: MyUser.shared.photoLastUpdate, to: photoButton)
             firstTime = false
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        photoButton.setCircular()
     }
     
     // MARK: - Button actions

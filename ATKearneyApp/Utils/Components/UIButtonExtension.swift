@@ -12,4 +12,8 @@ extension UIButton {
     func setCircular() {
         self.imageView?.layer.cornerRadius = self.frame.width/2
     }
+    
+    func setCircularWithRadius(_ radius: CGFloat) {
+        self.imageView?.layer.cornerRadius = radius
+    }
 }

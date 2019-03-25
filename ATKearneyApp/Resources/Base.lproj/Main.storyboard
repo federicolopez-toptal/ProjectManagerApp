@@ -1292,31 +1292,42 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NWQ-mm-v2Q">
-                                <rect key="frame" x="29" y="159" width="324" height="508"/>
+                                <rect key="frame" x="29" y="319" width="324" height="348"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lUj-UN-qfG">
                                 <rect key="frame" x="225" y="93" width="20" height="20"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAl-Ce-D7L">
+                                <rect key="frame" x="0.0" y="155" width="375" height="156"/>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="156" id="q0S-kk-679"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="lUj-UN-qfG" firstAttribute="leading" secondItem="7O9-Ph-BPC" secondAttribute="trailing" constant="15.5" id="4zC-qO-yO4"/>
-                            <constraint firstItem="yNm-dX-Yus" firstAttribute="trailing" secondItem="NWQ-mm-v2Q" secondAttribute="trailing" constant="22" id="74i-XU-xkF"/>
                             <constraint firstItem="03T-yh-5fw" firstAttribute="leading" secondItem="yNm-dX-Yus" secondAttribute="leading" constant="29" id="Deu-sH-1yu"/>
-                            <constraint firstItem="yNm-dX-Yus" firstAttribute="bottom" secondItem="NWQ-mm-v2Q" secondAttribute="bottom" id="GOw-ow-7uf"/>
+                            <constraint firstItem="NWQ-mm-v2Q" firstAttribute="top" secondItem="aAl-Ce-D7L" secondAttribute="bottom" constant="8" id="Lqg-cr-KSP"/>
                             <constraint firstItem="w18-AV-ldw" firstAttribute="top" secondItem="yNm-dX-Yus" secondAttribute="top" constant="23" id="Peq-F2-bO4"/>
+                            <constraint firstItem="NWQ-mm-v2Q" firstAttribute="leading" secondItem="yNm-dX-Yus" secondAttribute="leading" constant="29" id="RBn-Vs-yMN"/>
                             <constraint firstItem="lUj-UN-qfG" firstAttribute="centerY" secondItem="7O9-Ph-BPC" secondAttribute="centerY" id="RKq-iM-HwZ"/>
                             <constraint firstItem="otq-Sn-nDb" firstAttribute="top" secondItem="yNm-dX-Yus" secondAttribute="top" constant="13" id="TyH-YN-X5b"/>
                             <constraint firstItem="otq-Sn-nDb" firstAttribute="leading" secondItem="yNm-dX-Yus" secondAttribute="leading" constant="16" id="VZG-fW-ho5"/>
+                            <constraint firstItem="yNm-dX-Yus" firstAttribute="bottom" secondItem="NWQ-mm-v2Q" secondAttribute="bottom" id="a3Y-z0-Uf4"/>
                             <constraint firstItem="7O9-Ph-BPC" firstAttribute="top" secondItem="otq-Sn-nDb" secondAttribute="bottom" constant="2" id="e3V-Xb-ovZ"/>
                             <constraint firstItem="03T-yh-5fw" firstAttribute="top" secondItem="7O9-Ph-BPC" secondAttribute="bottom" constant="6" id="fkq-rQ-pUD"/>
                             <constraint firstItem="7O9-Ph-BPC" firstAttribute="leading" secondItem="yNm-dX-Yus" secondAttribute="leading" constant="29" id="gLx-Q4-ySR"/>
-                            <constraint firstItem="NWQ-mm-v2Q" firstAttribute="leading" secondItem="yNm-dX-Yus" secondAttribute="leading" constant="29" id="hIf-Kw-83y"/>
                             <constraint firstItem="yNm-dX-Yus" firstAttribute="trailing" secondItem="w18-AV-ldw" secondAttribute="trailing" constant="16" id="jW3-R5-rJ5"/>
-                            <constraint firstItem="NWQ-mm-v2Q" firstAttribute="top" secondItem="03T-yh-5fw" secondAttribute="bottom" constant="14" id="ozc-Sc-GUr"/>
+                            <constraint firstItem="NWQ-mm-v2Q" firstAttribute="top" secondItem="aAl-Ce-D7L" secondAttribute="bottom" constant="8" id="mbw-bM-L36"/>
+                            <constraint firstItem="aAl-Ce-D7L" firstAttribute="top" secondItem="03T-yh-5fw" secondAttribute="bottom" constant="10" id="ms0-Pc-Sqh"/>
+                            <constraint firstItem="yNm-dX-Yus" firstAttribute="trailing" secondItem="NWQ-mm-v2Q" secondAttribute="trailing" constant="22" id="nVt-FB-JNx"/>
+                            <constraint firstItem="yNm-dX-Yus" firstAttribute="trailing" secondItem="aAl-Ce-D7L" secondAttribute="trailing" id="s0F-Cw-HEk"/>
                             <constraint firstItem="yNm-dX-Yus" firstAttribute="trailing" secondItem="03T-yh-5fw" secondAttribute="trailing" constant="22" id="tXf-xX-lre"/>
+                            <constraint firstItem="aAl-Ce-D7L" firstAttribute="leading" secondItem="yNm-dX-Yus" secondAttribute="leading" id="wZH-uu-vjT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yNm-dX-Yus"/>
                     </view>
@@ -1342,8 +1353,8 @@
         <image name="profileIcon.png" width="68" height="68"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AVg-OP-vJp"/>
-        <segue reference="5TC-rh-18m"/>
+        <segue reference="egf-bS-qtF"/>
+        <segue reference="bWA-Xa-GVb"/>
         <segue reference="jcQ-0a-0Vu"/>
     </inferredMetricsTieBreakers>
 </document>

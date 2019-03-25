@@ -17,7 +17,7 @@ class FirebaseManager: NSObject {
     private let USERS = "users_v2"
     private let PROJECTS = "projects_v2"
     
-    private let BUCKET = "atk-pmo-v2.appspot.com"
+    private let BUCKET = "atk-pmo-v3.appspot.com"
     
     
     // MARK: - Users

@@ -10,6 +10,14 @@
 - Contemplar un timeout en el loading?
 - Edit profile / Change email
 
+- log out: Preguntar antes
+- Listado de proyectos: agregar fotitos
+- New/Edit project: Si no hay usuarios, mostrar panel (empty)
+- Listado de usuarios (manage users): Cambiar el grafico del check
+
+
+
+
 
 FUTURE FEATURE:
 - Delete project (an all the relations with its users)

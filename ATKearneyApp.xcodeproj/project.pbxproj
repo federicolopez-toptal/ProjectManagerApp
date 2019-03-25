@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E4F9B31F6CFE80036C94903 /* Pods_ATKearneyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */; };
+		BD0C6D7422492A6A0096ECF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD0C6D7322492A6A0096ECF8 /* GoogleService-Info.plist */; };
 		BD0E2F9F22412AC500BB7E57 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2F9E22412AC500BB7E57 /* Functions.swift */; };
 		BD0E2FA222413C7D00BB7E57 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2FA122413C7D00BB7E57 /* CustomNavigationController.swift */; };
 		BD0E2FA62241429C00BB7E57 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2FA52241429C00BB7E57 /* Reachability.swift */; };
@@ -27,7 +28,7 @@
 		BD82B795223964A5003825D8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82B794223964A5003825D8 /* BaseViewController.swift */; };
 		BD82B797223964AF003825D8 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82B796223964AF003825D8 /* ProjectsViewController.swift */; };
 		BD82B79D223966CC003825D8 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82B79C223966CC003825D8 /* FirebaseManager.swift */; };
-		BD82B79F223969F6003825D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD82B79E223969F6003825D8 /* GoogleService-Info.plist */; };
+		BD82B79F223969F6003825D8 /* V2 GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD82B79E223969F6003825D8 /* V2 GoogleService-Info.plist */; };
 		BD82B7A122396D9B003825D8 /* MyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82B7A022396D9B003825D8 /* MyUser.swift */; };
 		BD82B7A322397E1B003825D8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82B7A222397E1B003825D8 /* LoginViewController.swift */; };
 		BD82B7A5223986C4003825D8 /* closeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BD82B7A4223986C4003825D8 /* closeButton.png */; };
@@ -69,6 +70,7 @@
 
 /* Begin PBXFileReference section */
 		A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATKearneyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD0C6D7322492A6A0096ECF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BD0E2F9E22412AC500BB7E57 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		BD0E2FA122413C7D00BB7E57 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		BD0E2FA52241429C00BB7E57 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -90,7 +92,7 @@
 		BD82B794223964A5003825D8 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BD82B796223964AF003825D8 /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
 		BD82B79C223966CC003825D8 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
-		BD82B79E223969F6003825D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BD82B79E223969F6003825D8 /* V2 GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "V2 GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BD82B7A022396D9B003825D8 /* MyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUser.swift; sourceTree = "<group>"; };
 		BD82B7A222397E1B003825D8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BD82B7A4223986C4003825D8 /* closeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeButton.png; sourceTree = "<group>"; };
@@ -226,7 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				BD82B79C223966CC003825D8 /* FirebaseManager.swift */,
-				BD82B79E223969F6003825D8 /* GoogleService-Info.plist */,
+				BD0C6D7322492A6A0096ECF8 /* GoogleService-Info.plist */,
+				BD82B79E223969F6003825D8 /* V2 GoogleService-Info.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -439,9 +442,10 @@
 				BD82B7A5223986C4003825D8 /* closeButton.png in Resources */,
 				BD82B7AF22398B9F003825D8 /* backButton.png in Resources */,
 				BD7B690F22395F2200C0DE35 /* LaunchScreen.storyboard in Resources */,
+				BD0C6D7422492A6A0096ECF8 /* GoogleService-Info.plist in Resources */,
 				BD7B690C22395F2200C0DE35 /* Assets.xcassets in Resources */,
 				BD4DC9BF223C4F9100E14F2F /* notes.txt in Resources */,
-				BD82B79F223969F6003825D8 /* GoogleService-Info.plist in Resources */,
+				BD82B79F223969F6003825D8 /* V2 GoogleService-Info.plist in Resources */,
 				BD82FF4F22399E5D008F6304 /* checkON.png in Resources */,
 				BDF901762243E72400F83E55 /* 40_x1.png in Resources */,
 				BDF901822243E72400F83E55 /* 1024_x1.png in Resources */,
