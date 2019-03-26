@@ -119,7 +119,8 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
         let info = [
             "projectID": SelectedProject.shared.projectID ,
             "title": SelectedSurvey.shared.title,
-            "description": description
+            "description": description,
+            "created": NOW()
         ]
         
         var questions = [String: Any]()
@@ -139,7 +140,20 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
             if(error != nil) {
                 ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
             } else {
-                print("All ok!")
+                ALERT(title_SUCCES, text_SURVEY_CREATED, viewController: self){
+                    var destination: UIViewController?
+                    
+                    for VC in self.navigationController!.viewControllers {
+                        if(VC is ProjectDetailsViewController) {
+                            destination = VC
+                            break
+                        }
+                    }
+                    
+                    if let VC = destination {
+                        self.navigationController?.popToViewController(VC, animated: true)
+                    }
+                }
             }
             
             self.showLoading(false)

@@ -20,6 +20,7 @@ struct Project {
     var created = ""
     var edited = ""
     var users = [String: String]()
+    var surveys = [String: Bool]()
     
     
     // MARK: - Some queries
@@ -60,6 +61,7 @@ struct Project {
         created = info["created"]! as String
         edited = info["edited"]! as String
         users = content["users"] as! [String: String]
+        surveys = content["surveys"] as! [String: Bool]
     }
     
     mutating func reset() {
@@ -69,6 +71,7 @@ struct Project {
         created = ""
         edited = ""
         users = [String: String]()
+        surveys = [String: Bool]()
     }
     
     mutating func addUser(userID: String, role: String) {

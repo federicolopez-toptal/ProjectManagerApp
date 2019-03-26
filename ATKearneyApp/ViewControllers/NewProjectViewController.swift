@@ -116,7 +116,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
                 "edited": NOW()
             ]
             
-            FirebaseManager.shared.editProject(projectID: projectID, info: info, users: SelectedProject.shared.users, usersToRemove: usersToRemove) { (success) in
+            FirebaseManager.shared.editProject(projectID: projectID, info: info, users: SelectedProject.shared.users, usersToRemove: usersToRemove, surveys: SelectedProject.shared.surveys) { (success) in
                 
                 if(success) {
                     SelectedProject.shared.name = self.nameTextField.text!

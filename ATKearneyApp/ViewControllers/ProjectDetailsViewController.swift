@@ -18,8 +18,11 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     
     @IBOutlet weak var surveyView: UIView!
     @IBOutlet weak var createSurveyButton: UIButton!
+    @IBOutlet weak var loadingSurvey: UIActivityIndicatorView!
+    @IBOutlet weak var surveysList: UITableView!
     
     var users = [NSDictionary]()
+    var surveys = [NSDictionary]()
     var firstTime = true
     
     // MARK: - Init
@@ -31,11 +34,20 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         usersList.dataSource = self
         usersList.separatorStyle = .none
         
-        surveyView.backgroundColor = UIColor.white
+        surveysList.tableFooterView = UIView()
+        surveysList.delegate = self
+        surveysList.dataSource = self
+        surveysList.separatorStyle = .none
         
+        surveyView.backgroundColor = UIColor.white
         loading.stopAnimating()
+        loadingSurvey.stopAnimating()
+        
         let nib = UINib.init(nibName: "UserCell", bundle: nil)
         usersList.register(nib, forCellReuseIdentifier: "UserCell")
+        
+        let nib2 = UINib.init(nibName: "SurveyCell", bundle: nil)
+        surveysList.register(nib2, forCellReuseIdentifier: "SurveyCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,10 +71,27 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         
         if(firstTime) {
             loading.startAnimating()
-            FirebaseManager.shared.getUsers(userIDs: SelectedProject.shared.users) { (usersArray) in
-                self.users = usersArray!
+            FirebaseManager.shared.getUsers(userIDs: SelectedProject.shared.users) { (usersDict) in
+                self.users = usersDict!
                 self.usersList.reloadData()
                 self.loading.stopAnimating()
+            }
+            
+            loadingSurvey.startAnimating()
+            if(MyUser.shared.admin || SelectedProject.shared.hasOfficer(userID: MyUser.shared.userID)) {
+                // get all surveys for this project (I'm an admin or project officer)
+                FirebaseManager.shared.getSurveysForProject(SelectedProject.shared.projectID) { (surveysDict, error) in
+                    self.surveys = surveysDict!
+                    self.surveysList.reloadData()
+                    self.loadingSurvey.stopAnimating()
+                }
+            } else {
+                // get surveys which includes my user
+                FirebaseManager.shared.getSurveysForUser(MyUser.shared.userID) { (surveysDict, error) in
+                    self.surveys = surveysDict!
+                    self.surveysList.reloadData()
+                    self.loadingSurvey.stopAnimating()
+                }
             }
 
             firstTime = false
@@ -89,49 +118,76 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        if(tableView == usersList) {
+            return users.count
+        } else if (tableView == surveysList) {
+            return surveys.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
-        let content = users[indexPath.row]["content"] as! NSDictionary
-        let info = content["info"] as! NSDictionary
+        if(tableView == usersList) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
+            let content = users[indexPath.row]["content"] as! NSDictionary
+            let info = content["info"] as! NSDictionary
         
-        let userID = users[indexPath.row]["id"] as! String
-        var cellText = info["name"] as! String
-        if(userID==MyUser.shared.userID) {
-            cellText += " (you!)"
-        }
-        cell.nameLabel.text = cellText
-        
-        cell.roleLabel.textColor = UIColor.gray
-        if(SelectedProject.shared.hasOfficer(userID: userID)) {
-            cell.roleLabel.text = "Project officer"
-            cell.roleLabel.textColor = UIColor.red
-        } else {
-            let email = info["email"] as! String
-            if( IS_ATK_MEMBER(email: email) ) {
-                cell.roleLabel.text = "ATK member"
-            } else {
-                cell.roleLabel.text = "Client"
+            let userID = users[indexPath.row]["id"] as! String
+            var cellText = info["name"] as! String
+            if(userID==MyUser.shared.userID) {
+                cellText += " (you!)"
             }
+            cell.nameLabel.text = cellText
+        
+            cell.roleLabel.textColor = UIColor.gray
+            if(SelectedProject.shared.hasOfficer(userID: userID)) {
+                cell.roleLabel.text = "Project officer"
+                cell.roleLabel.textColor = UIColor.red
+            } else {
+                let email = info["email"] as! String
+                if( IS_ATK_MEMBER(email: email) ) {
+                    cell.roleLabel.text = "ATK member"
+                } else {
+                    cell.roleLabel.text = "Client"
+                }
+            }
+        
+            let photoLastUpdate = info["photoLastUpdate"] as? String
+            FirebaseManager.shared.userPhoto(userID: userID, lastUpdate: photoLastUpdate, to: cell.photoImageView)
+        
+            return cell
+        } else if (tableView == surveysList) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SurveyCell", for: indexPath) as! SurveyCell
+            let content = surveys[indexPath.row]["content"] as! NSDictionary
+            let info = content["info"] as! NSDictionary
+            
+            let title = info["title"] as! String
+            cell.titleLabel.text = title
+            
+            return cell
         }
-        
-        let photoLastUpdate = info["photoLastUpdate"] as? String
-        FirebaseManager.shared.userPhoto(userID: userID, lastUpdate: photoLastUpdate, to: cell.photoImageView)
-        
-        return cell
+    
+        return tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(tableView == usersList) {
+            return 50
+        } else if (tableView == surveysList) {
+            return 45
+        }
+        
         return 50
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        SelectedUser.shared.reset()
-        SelectedUser.shared.fillWith(info: users[indexPath.row])
+        if(tableView == usersList ){
+            SelectedUser.shared.reset()
+            SelectedUser.shared.fillWith(info: users[indexPath.row])
         
-        self.performSegue(withIdentifier: "gotoUser", sender: self)
+            self.performSegue(withIdentifier: "gotoUser", sender: self)
+        }
     }
     
     // MARK: - Segue(s)

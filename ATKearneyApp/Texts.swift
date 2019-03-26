@@ -29,3 +29,4 @@ let text_NO_PERMISSIONS =   "The app doesn't have permissions to access this fea
 let text_ERROR_PHOTO_SAVE = "There was an error uploading your photo. Try again later"
 let text_QUESTIONS_LIMIT =  "You can add up to \(SURVEYS_MAX_QUESTIONS) questions per survey"
 let text_QUESTIONS_MIN =    "Can't delete question. A survey should have, at least, one question"
+let text_SURVEY_CREATED =   "Survey created succesfully!"

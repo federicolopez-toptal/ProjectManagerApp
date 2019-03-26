@@ -394,7 +394,7 @@ class FirebaseManager: NSObject {
     }
     
     func editProject(projectID: String, info: [String: String], users: [String: String],
-                     usersToRemove: [String: String], callback: @escaping (Bool) -> () ) {
+                     usersToRemove: [String: String], surveys: [String: Bool], callback: @escaping (Bool) -> () ) {
         
         let DBref = Database.database().reference()
         
@@ -425,9 +425,14 @@ class FirebaseManager: NSObject {
         }
         
         // Users to remove
-        for (key, _) in usersToRemove {
+        for (keyUserID, _) in usersToRemove {
             dispatchGroup.enter()
-            DBref.child(self.USERS).child(key).child("projects").child(projectID).removeValue()
+            DBref.child(self.USERS).child(keyUserID).child("projects").child(projectID).removeValue()
+            
+            for(keySurveyID, _) in surveys {
+                DBref.child(self.USERS).child(keyUserID).child("surveys").child(keySurveyID).removeValue()
+            }
+            
             
             dispatchGroup.leave()
         }
@@ -496,7 +501,86 @@ class FirebaseManager: NSObject {
                 callback(error)
             }
         }
+    }
+    
+    func getSurveysForProject(_ projectID: String, callback: @escaping ([NSDictionary]?, Error?) -> ()) {
+        let DBref = Database.database().reference()
         
+        DBref.child(PROJECTS).child(projectID).child("surveys").observeSingleEvent(of: .value, with: { (snapshot) in
+            if(!snapshot.exists()) {
+                callback([NSDictionary](), nil)
+                return
+            }
+            
+            if let surveysDict = snapshot.value as? [String: Bool] {
+                let dispatchGroup = DispatchGroup()
+                var result = [NSDictionary]()
+                
+                for (keySurveyID, _) in surveysDict {
+                    dispatchGroup.enter()
+                    
+                    DBref.child(self.SURVEYS).child(keySurveyID).observeSingleEvent(of: .value, with: { (snapshot) in
+                        if(snapshot.exists()) {
+                            let newDict = [
+                                "id": snapshot.key,
+                                "content": snapshot.value as! NSDictionary
+                                ] as [String : Any]
+                            
+                            result.append(newDict as NSDictionary)
+                        }
+                        
+                        dispatchGroup.leave()
+                    })
+                }
+                
+                dispatchGroup.notify(queue: .main, execute: {
+                    callback(result, nil)
+                })
+                
+            }
+        }) { (error) in
+            callback(nil, error)
+        }
+    }
+    
+    func getSurveysForUser(_ userID: String, callback: @escaping ([NSDictionary]?, Error?) -> ()) {
+        let DBref = Database.database().reference()
+        
+        DBref.child(USERS).child(userID).child("surveys").observeSingleEvent(of: .value, with: { (snapshot) in
+            if(!snapshot.exists()) {
+                callback([NSDictionary](), nil)
+                return
+            }
+            
+            if let surveysDict = snapshot.value as? [String: Bool] {
+                let dispatchGroup = DispatchGroup()
+                var result = [NSDictionary]()
+                
+                for (keySurveyID, _) in surveysDict {
+                    dispatchGroup.enter()
+                    
+                    DBref.child(self.SURVEYS).child(keySurveyID).observeSingleEvent(of: .value, with: { (snapshot) in
+                        if(snapshot.exists()) {
+                            let newDict = [
+                                "id": snapshot.key,
+                                "content": snapshot.value as! NSDictionary
+                                ] as [String : Any]
+                            
+                            result.append(newDict as NSDictionary)
+                        }
+                        
+                        dispatchGroup.leave()
+                    })
+                }
+                
+                dispatchGroup.notify(queue: .main, execute: {
+                    callback(result, nil)
+                })
+                
+            }
+        }) { (error) in
+            callback(nil, error)
+        }
     }
     
     

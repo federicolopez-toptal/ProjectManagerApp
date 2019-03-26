@@ -1384,6 +1384,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Xc6-zO-Kvw">
+                                        <rect key="frame" x="107" y="13" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvk-5I-yPW">
                                         <rect key="frame" x="245" y="7" width="114" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1395,6 +1400,11 @@
                                             <action selector="createSurveyButtonTap:" destination="xjq-sn-X3Q" eventType="touchUpInside" id="uxR-SA-4zl"/>
                                         </connections>
                                     </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="btm-Si-8dT">
+                                        <rect key="frame" x="29" y="40" width="321" height="136"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1431,8 +1441,10 @@
                         <outlet property="descriptionLabel" destination="03T-yh-5fw" id="FC1-4W-9r0"/>
                         <outlet property="editButton" destination="w18-AV-ldw" id="meQ-Qk-aFD"/>
                         <outlet property="loading" destination="lUj-UN-qfG" id="NPZ-k3-zmQ"/>
+                        <outlet property="loadingSurvey" destination="Xc6-zO-Kvw" id="Fti-SG-h2F"/>
                         <outlet property="nameLabel" destination="7O9-Ph-BPC" id="eeG-QO-aYQ"/>
                         <outlet property="surveyView" destination="aAl-Ce-D7L" id="tzg-VO-7Mh"/>
+                        <outlet property="surveysList" destination="btm-Si-8dT" id="Pqa-XP-kfp"/>
                         <outlet property="usersList" destination="NWQ-mm-v2Q" id="zqk-OC-rSJ"/>
                         <segue destination="zTl-0I-3Xu" kind="show" identifier="gotoEdit" id="bWA-Xa-GVb"/>
                         <segue destination="cKq-Jj-wgl" kind="show" identifier="gotoUser" id="egf-bS-qtF"/>
@@ -1839,7 +1851,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Tu-mV-SlK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3176.8000000000002" y="2565.5172413793107"/>
+            <point key="canvasLocation" x="3177" y="3166"/>
         </scene>
     </scenes>
     <resources>
