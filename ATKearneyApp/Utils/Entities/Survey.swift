@@ -10,16 +10,16 @@ import UIKit
 
 
 struct Question {
-    enum QuestionType {
-        case text
-        case yes_no
-        case multiple
-        case scale
+    enum QuestionType: String {
+        case text = "text"
+        case yes_no = "yesNo"
+        case multiple = "multiple"
+        case scale = "scale"
     }
     
     var text: String
     var type: QuestionType
-    var settings: [String]
+    var options: [String]
 }
 
 
@@ -35,6 +35,6 @@ struct Survey {
         surveyID = ""
         title = ""
         description = ""
-        questions = [ Question(text: "", type: .text, settings: []) ]
+        questions = [ Question(text: "", type: .text, options: []) ]
     }
 }

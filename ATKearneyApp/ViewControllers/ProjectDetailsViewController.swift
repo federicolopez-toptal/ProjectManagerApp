@@ -62,9 +62,9 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             FirebaseManager.shared.getUsers(userIDs: SelectedProject.shared.users) { (usersArray) in
                 self.users = usersArray!
                 self.usersList.reloadData()
+                self.loading.stopAnimating()
             }
-            
-            self.loading.stopAnimating()
+
             firstTime = false
         }
     }

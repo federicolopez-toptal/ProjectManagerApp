@@ -16,6 +16,7 @@ class FirebaseManager: NSObject {
     
     private let USERS = "users_v2"
     private let PROJECTS = "projects_v2"
+    private let SURVEYS = "surveys_v2"
     
     private let BUCKET = "atk-pmo-v3.appspot.com"
     
@@ -437,8 +438,67 @@ class FirebaseManager: NSObject {
         
     }
     
+    // MARK: - Surveys
+    func createSurvey(info: [String: String], questions: [String: Any], users: Set<String>, callback: @escaping (Error?) -> ())  {
+        let DBref = Database.database().reference()
+        
+        let newItemContent = [
+            "info": info,
+            "questions": questions
+            ] as [String: Any]
+        
+        let newSurvey = DBref.child(SURVEYS).childByAutoId()
+        newSurvey.setValue(newItemContent){ (error, ref) in
+            if let surveyID = ref.key {
+                // Surveys in a project
+                let projectID = info["projectID"]!
+                DBref.child(self.PROJECTS).child(projectID).child("surveys").observeSingleEvent(of: .value, with: { (snapshot) in
+                    if(snapshot.exists()) {
+                        var projectSurveys = snapshot.value as! [String: Bool]
+                        projectSurveys[surveyID] = true
+                        
+                        DBref.child(self.PROJECTS).child(projectID).child("surveys").setValue(projectSurveys)
+                    } else {
+                        let projectSurveys = [
+                            surveyID: true
+                        ]
+                        
+                        DBref.child(self.PROJECTS).child(projectID).child("surveys").setValue(projectSurveys)
+                    }
+                    
+                    // Surveys in users
+                    let dispatchGroup = DispatchGroup()
+                    for userID in users {
+                        dispatchGroup.enter()
+                        
+                        DBref.child(self.USERS).child(userID).child("surveys").observeSingleEvent(of: .value, with: { (snapshot) in
+                            if(snapshot.exists()) {
+                                var userSurveys = snapshot.value as! [String: Bool]
+                                userSurveys[surveyID] = true
+                                DBref.child(self.USERS).child(userID).child("surveys").setValue(userSurveys)
+                            } else {
+                                let userSurveys = [
+                                    surveyID: true
+                                ]
+                                
+                                DBref.child(self.USERS).child(userID).child("surveys").setValue(userSurveys)
+                            }
+                            
+                            dispatchGroup.leave()
+                        })
+                    }
+                    
+                    dispatchGroup.notify(queue: .main, execute: {
+                        callback(error)
+                    })
+                })
+            } else {
+                callback(error)
+            }
+        }
+        
+    }
     
     
-    
-    
+
 }

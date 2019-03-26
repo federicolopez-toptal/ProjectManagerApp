@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719123"
+            timestampString = "575320638.270283"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "createUser(email:password:info:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719193"
+            timestampString = "575320638.271026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "login(email:password:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719241"
+            timestampString = "575320638.271391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "login(email:password:callback:)"
             landmarkType = "7">
             <Locations>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719309"
+            timestampString = "575320638.271769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "login(email:password:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719352"
+            timestampString = "575320638.272071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "login(email:password:callback:)"
             landmarkType = "7">
             <Locations>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719408"
+            timestampString = "575320638.2724119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "login(email:password:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719476"
+            timestampString = "575320638.272813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "login(email:password:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719517"
+            timestampString = "575320638.2731431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "autoLogin(callback:)"
             landmarkType = "7">
             <Locations>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719619"
+            timestampString = "575320638.2735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "autoLogin(callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719667"
+            timestampString = "575320638.273827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "autoLogin(callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719707"
+            timestampString = "575320638.2741441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "getUser(userID:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.7197731"
+            timestampString = "575320638.2744499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "getUser(userID:callback:)"
             landmarkType = "7">
             <Locations>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719821"
+            timestampString = "575320638.274762"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "getUser(userID:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,7 +394,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719942"
+            timestampString = "575320638.275136"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "createProject(info:users:callback:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
+            timestampString = "575320638.275443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "302"
@@ -410,27 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.719993"
+            timestampString = "575320638.275712"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
-            landmarkName = "createProject(info:users:callback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720052"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
             landmarkName = "getUserProjects(userID:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/ProjectsViewController.swift"
-            timestampString = "574817268.6818"
+            timestampString = "575311569.46263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
@@ -458,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/ProjectsViewController.swift"
-            timestampString = "574817268.681859"
+            timestampString = "575311569.462697"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
@@ -474,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720122"
+            timestampString = "575320638.276073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
             landmarkName = "getUserProjects(userID:callback:)"
             landmarkType = "7">
             <Locations>
@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720167"
+            timestampString = "575320638.276413"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
             landmarkName = "getUserProjects(userID:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -538,7 +538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/ProjectsViewController.swift"
-            timestampString = "574817268.682073"
+            timestampString = "575311569.462761"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720222"
+            timestampString = "575320638.276804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "getAllProjects(callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720264"
+            timestampString = "575320638.277132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "getAllProjects(callback:)"
             landmarkType = "7">
             <Locations>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720307"
+            timestampString = "575320638.277485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "getAllProjects(callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,23 +634,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720351"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
-            landmarkName = "getAllProjects(callback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720391"
+            timestampString = "575320638.277822"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "340"
@@ -666,11 +650,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720448"
+            timestampString = "575320638.278186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
+            landmarkName = "getAllProjects(callback:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
+            timestampString = "575320638.27852"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "getAllProjects(callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,7 +682,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/ProjectDetailsViewController.swift"
-            timestampString = "575308748.06575"
+            timestampString = "575320638.278903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
@@ -714,7 +714,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/UsersViewController.swift"
-            timestampString = "574817268.682932"
+            timestampString = "575320638.27902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
@@ -730,7 +730,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/ProjectsViewController.swift"
-            timestampString = "574817268.6829849"
+            timestampString = "575311569.464184"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720615"
+            timestampString = "575320638.2791229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "autoLogin(callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -762,7 +762,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/NewProjectViewController.swift"
-            timestampString = "574974359.3641289"
+            timestampString = "575313213.7531379"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -794,7 +794,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/BaseViewController.swift"
-            timestampString = "575308748.06586"
+            timestampString = "575320638.279496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720764"
+            timestampString = "575320638.2796021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "getUserProjects(userID:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -842,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720845"
+            timestampString = "575320638.279937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "uploadUserPhoto(userID:photo:time:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -858,11 +858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720883"
+            timestampString = "575320638.280237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "uploadUserPhoto(userID:photo:time:callback:)"
             landmarkType = "7">
             <Locations>
@@ -906,11 +906,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.720922"
+            timestampString = "575320638.280557"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "uploadUserPhoto(userID:photo:time:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -922,7 +922,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/ProjectsViewController.swift"
-            timestampString = "574817268.683565"
+            timestampString = "575311569.464485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -938,11 +938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.7209899"
+            timestampString = "575320638.2808729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "userPhoto(userID:lastUpdate:to:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -954,27 +954,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.721046"
+            timestampString = "575320638.281204"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "userPhoto(userID:lastUpdate:to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
+            timestampString = "575320638.281551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "224"
             endingLineNumber = "224"
-            landmarkName = "userPhoto(userID:lastUpdate:to:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.721085"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
             landmarkName = "userPhoto(userID:lastUpdate:to:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1018,11 +1018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.72122"
+            timestampString = "575320638.281872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "uploadUserPhoto(userID:photo:time:callback:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1034,11 +1034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/Firebase/FirebaseManager.swift"
-            timestampString = "575232719.721276"
+            timestampString = "575320638.282176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "userPhoto(userID:lastUpdate:to:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1050,7 +1050,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/ProjectDetailsViewController.swift"
-            timestampString = "575308748.066012"
+            timestampString = "575320638.282463"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -1066,12 +1066,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ATKearneyApp/ViewControllers/BaseViewController.swift"
-            timestampString = "575308748.066052"
+            timestampString = "575320638.282563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
             endingLineNumber = "73"
             landmarkName = "addFormBehavior(scrollview:bottomContraint:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ATKearneyApp/ViewControllers/SurveyUsersViewController.swift"
+            timestampString = "575320638.282644"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "createButtonTap(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ATKearneyApp/ViewControllers/SurveyUsersViewController.swift"
+            timestampString = "575320638.282761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "createDictFrom(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ATKearneyApp/ViewControllers/SurveyUsersViewController.swift"
+            timestampString = "575320638.282804"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "createDictFrom(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ATKearneyApp/ViewControllers/SurveyUsersViewController.swift"
+            timestampString = "575320638.2828619"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "createButtonTap(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
