@@ -22,8 +22,9 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var nextStepButton: UIButton!
     
     @IBOutlet weak var yesNoView: UIView!
-    @IBOutlet weak var multipleView: UIView!
-    @IBOutlet weak var addAnotherView: UIView!
+    @IBOutlet weak var multipleOptionsView: UIView!
+    @IBOutlet weak var addAnotherOptionView: UIView!
+    @IBOutlet weak var scaleView: UIView!
     
     
     
@@ -34,13 +35,14 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
         super.viewDidLoad()
         SelectedSurvey.shared.reset()
         
-        //scrollView.subviews.first!.backgroundColor = UIColor.white
+        scrollView.subviews.first!.backgroundColor = UIColor.white
         addFormBehavior(scrollview: scrollView, bottomContraint: bottomConstraint)
-        addAnotherView.backgroundColor = UIColor.white
+        addAnotherOptionView.backgroundColor = UIColor.white
         
         placeSettingsView(yesNoView)
-        placeSettingsView(multipleView)
-        multipleView.clipsToBounds = true
+        placeSettingsView(multipleOptionsView)
+        placeSettingsView(scaleView)
+        multipleOptionsView.clipsToBounds = true
     }
     func placeSettingsView(_ view: UIView) {
         var mFrame = view.frame
@@ -79,22 +81,28 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
             placeNextButtonBelow(view: yesNoView)
             fill_yesNoFieldsWithQuestion(Q)
             yesNoView.isHidden = false
-            multipleView.isHidden = true
+            multipleOptionsView.isHidden = true
+            scaleView.isHidden = true
         case .multiple:
             responseTypeButton.setTitle("Response type: Multiple options", for: .normal)
             fill_multipleFieldsWithQuestion(Q)
-            placeNextButtonBelow(view: multipleView)
+            placeNextButtonBelow(view: multipleOptionsView)
             yesNoView.isHidden = true
-            multipleView.isHidden = false
+            multipleOptionsView.isHidden = false
+            scaleView.isHidden = true
         case .scale:
             responseTypeButton.setTitle("Response type: Scale", for: .normal)
+            fill_scaleFieldsWithQuestion(Q)
+            placeNextButtonBelow(view: scaleView)
             yesNoView.isHidden = true
-            multipleView.isHidden = true
+            multipleOptionsView.isHidden = true
+            scaleView.isHidden = false
         default: // Text
             responseTypeButton.setTitle("Response type: Text", for: .normal)
             placeNextButtonBelow(view: responseTypeButton)
             yesNoView.isHidden = true
-            multipleView.isHidden = true
+            multipleOptionsView.isHidden = true
+            scaleView.isHidden = true
         }
     }
     func placeNextButtonBelow(view: UIView) {
@@ -108,6 +116,7 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
                                    height: nextStepButton.frame.origin.y + nextStepButton.frame.height + margin)
         
         scrollView.contentSize = contentView.frame.size
+
     }
     
     func fill_yesNoFieldsWithQuestion(_ question: Question) {
@@ -117,26 +126,31 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
     }
     func fill_multipleFieldsWithQuestion(_ question: Question) {
         for (index, value) in question.settings.enumerated() {
-            (multipleView.subviews[index] as! UITextField).text = value
+            (multipleOptionsView.subviews[index] as! UITextField).text = value
         }
         
-        let view = multipleView.subviews[question.settings.count-1]
+        let view = multipleOptionsView.subviews[question.settings.count-1]
         
-        var mFrame = addAnotherView.frame
+        var mFrame = addAnotherOptionView.frame
         mFrame.origin.y = view.frame.origin.y + view.frame.size.height
-        addAnotherView.frame = mFrame
-        addAnotherView.superview?.bringSubviewToFront(addAnotherView)
+        addAnotherOptionView.frame = mFrame
+        addAnotherOptionView.superview?.bringSubviewToFront(addAnotherOptionView)
         
         if(SelectedSurvey.shared.questions[currentQuestion].settings.count==5) {
-            mFrame = multipleView.frame
+            mFrame = multipleOptionsView.frame
             mFrame.size.height = view.frame.origin.y + view.frame.size.height
-            multipleView.frame = mFrame
-            addAnotherView.isHidden = true
+            multipleOptionsView.frame = mFrame
+            addAnotherOptionView.isHidden = true
         } else {
-            mFrame = multipleView.frame
-            mFrame.size.height = addAnotherView.frame.origin.y + addAnotherView.frame.size.height
-            multipleView.frame = mFrame
-            addAnotherView.isHidden = false
+            mFrame = multipleOptionsView.frame
+            mFrame.size.height = addAnotherOptionView.frame.origin.y + addAnotherOptionView.frame.size.height
+            multipleOptionsView.frame = mFrame
+            addAnotherOptionView.isHidden = false
+        }
+    }
+    func fill_scaleFieldsWithQuestion(_ question: Question) {
+        for (index, value) in question.settings.enumerated() {
+            (scaleView.subviews[index] as! UITextField).text = value
         }
     }
     
@@ -180,6 +194,8 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
             SelectedSurvey.shared.questions[currentQuestion].settings = ["Yes", "No"]
         } else if(type == .multiple) {
             SelectedSurvey.shared.questions[currentQuestion].settings = ["First option", "Second option"]
+        } else if(type == .scale) {
+            SelectedSurvey.shared.questions[currentQuestion].settings = ["Minimum", "Maximum"]
         }
         
         refreshQuestion()
@@ -194,11 +210,11 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
             refreshQuestionsSelector()
             refreshQuestion()
         } else {
-            ALERT(title_ERROR, text_MAX_QUESTIONS, viewController: self)
+            ALERT(title_ERROR, text_QUESTIONS_LIMIT, viewController: self)
         }
     }
     
-    @IBAction func addAnotherButtonTap(_ sender: UIButton) {
+    @IBAction func addAnotherOptionButtonTap(_ sender: UIButton) {
         let count = SelectedSurvey.shared.questions[currentQuestion].settings.count+1
         
         var text = "Third option"
@@ -223,9 +239,51 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
             currentQuestion -= 1
             refreshQuestionsSelector()
             refreshQuestion()
+        } else {
+            ALERT(title_ERROR, text_QUESTIONS_MIN, viewController: self)
         }
     }
     
+    @IBAction func nextButtonTap(_ sender: UIButton) {
+        // Validations
+        if(titleTextField.text!.isEmpty) {
+            ALERT(title_ERROR, text_EMPTY_FIELDS, viewController: self)
+            return
+        }
+        
+        // Questions text should not be empty
+        var found = false
+        for Q in SelectedSurvey.shared.questions {
+            if(Q.text.isEmpty) {
+                found = true
+                break
+            }
+        }
+        if(found) {
+            ALERT(title_ERROR, text_EMPTY_FIELDS, viewController: self)
+            return
+        }
+        
+        // Question options should not be empty
+        found = false
+        for Q in SelectedSurvey.shared.questions {
+            for S in Q.settings {
+                if(S.isEmpty) {
+                    found = true
+                    break
+                }
+            }
+            if(found) {
+                break
+            }
+        }
+        if(found) {
+            ALERT(title_ERROR, text_EMPTY_FIELDS, viewController: self)
+            return
+        }
+        
+        print("YEAH!")
+    }
     
     
     // MARK: - Other events
@@ -242,7 +300,7 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
     @IBAction func textFieldsChanged(_ sender: UITextField) {
         if(sender.superview==yesNoView) {
             SelectedSurvey.shared.questions[currentQuestion].settings[sender.tag] = sender.text!
-        } else if(sender.superview==multipleView) {
+        } else if(sender.superview==multipleOptionsView) {
             SelectedSurvey.shared.questions[currentQuestion].settings[sender.tag] = sender.text!
         }
     }

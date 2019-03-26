@@ -6,6 +6,5 @@
 //  Copyright © 2019 Federico Lopez. All rights reserved.
 //
 
-import UIKit
 
 let SURVEYS_MAX_QUESTIONS = 3

@@ -120,6 +120,8 @@ class BaseViewController: UIViewController {
         
         print(bottomConstraintConstant)
         if(n.name==UIResponder.keyboardWillShowNotification){
+            print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+            print("Keyboard height: ", H)
             scrollViewBottomConstraint!.constant = H
         } else if(n.name==UIResponder.keyboardWillHideNotification) {
             scrollViewBottomConstraint!.constant = bottomConstraintConstant

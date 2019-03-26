@@ -16,7 +16,8 @@
 - Listado de usuarios (manage users): Cambiar el grafico del check
 - Implementar el nuevo TextView (con placeHolder) en todos los forms
 
-
+TO FIX:
+- Keyboard height para iPhoneX
 
 
 FUTURE FEATURE:

@@ -14,8 +14,9 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var usersList: UITableView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
-    
     @IBOutlet weak var editButton: UIButton!
+    
+    @IBOutlet weak var surveyView: UIView!
     @IBOutlet weak var createSurveyButton: UIButton!
     
     var users = [NSDictionary]()
@@ -29,6 +30,8 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         usersList.delegate = self
         usersList.dataSource = self
         usersList.separatorStyle = .none
+        
+        surveyView.backgroundColor = UIColor.white
         
         loading.stopAnimating()
         let nib = UINib.init(nibName: "UserCell", bundle: nil)
