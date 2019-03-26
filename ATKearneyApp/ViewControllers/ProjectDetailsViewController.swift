@@ -16,6 +16,8 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var createSurveyButton: UIButton!
+    
     var users = [NSDictionary]()
     var firstTime = true
     
@@ -41,8 +43,10 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         
         if(MyUser.shared.admin || SelectedProject.shared.hasOfficer(userID: MyUser.shared.userID)) {
             editButton.isHidden = false
+            createSurveyButton.isHidden = false
         } else {
             editButton.isHidden = true
+            createSurveyButton.isHidden = true
         }
         
         if(!INTERNET_AVAILABLE()) {
@@ -70,6 +74,11 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     @IBAction func editButtonTap(_ sender: Any) {
         self.performSegue(withIdentifier: "gotoEdit", sender: self)
     }
+    
+    @IBAction func createSurveyButtonTap(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "gotoNewSurvey", sender: self)
+    }
+    
     
     // MARK: - UITableView
     func numberOfSections(in tableView: UITableView) -> Int {

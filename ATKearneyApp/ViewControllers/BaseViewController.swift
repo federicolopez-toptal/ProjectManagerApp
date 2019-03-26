@@ -12,6 +12,7 @@ class BaseViewController: UIViewController {
 
     private var formMode = false
     private var scrollViewBottomConstraint: NSLayoutConstraint?
+    private var bottomConstraintConstant: CGFloat = 0.0
     
     private var reloadView: UIView?
     private var reloadCallback: Any?
@@ -70,6 +71,7 @@ class BaseViewController: UIViewController {
     func addFormBehavior(scrollview: UIScrollView, bottomContraint: NSLayoutConstraint) {
         formMode = true
         scrollViewBottomConstraint = bottomContraint
+        bottomConstraintConstant = bottomContraint.constant
         scrollview.contentInsetAdjustmentBehavior = .never
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(viewOnTap(sender:)))
@@ -115,10 +117,12 @@ class BaseViewController: UIViewController {
     @objc func keyboardEvent(n: Notification) {
         let H = getKeyboardHeight(fromNotification: n)
         
+        
+        print(bottomConstraintConstant)
         if(n.name==UIResponder.keyboardWillShowNotification){
             scrollViewBottomConstraint!.constant = H
         } else if(n.name==UIResponder.keyboardWillHideNotification) {
-            scrollViewBottomConstraint!.constant = 0
+            scrollViewBottomConstraint!.constant = bottomConstraintConstant
         }
         
         view.layoutIfNeeded()

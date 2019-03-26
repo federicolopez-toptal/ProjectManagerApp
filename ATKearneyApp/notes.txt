@@ -14,7 +14,7 @@
 - Listado de proyectos: agregar fotitos
 - New/Edit project: Si no hay usuarios, mostrar panel (empty)
 - Listado de usuarios (manage users): Cambiar el grafico del check
-
+- Implementar el nuevo TextView (con placeHolder) en todos los forms
 
 
 
