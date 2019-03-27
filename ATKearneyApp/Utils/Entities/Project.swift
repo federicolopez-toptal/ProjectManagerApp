@@ -61,7 +61,11 @@ struct Project {
         created = info["created"]! as String
         edited = info["edited"]! as String
         users = content["users"] as! [String: String]
-        surveys = content["surveys"] as! [String: Bool]
+        
+        surveys = [String: Bool]()
+        if let surveys = content["surveys"] as? [String: Bool] {
+            self.surveys = surveys
+        }
     }
     
     mutating func reset() {

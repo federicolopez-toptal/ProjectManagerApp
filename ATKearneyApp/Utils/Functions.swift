@@ -111,3 +111,62 @@ func DELAY(time: Double, callback: @escaping () -> () ) {
         callback()
     }
 }
+
+func CHANGE_LABEL_HEIGHT(label: UILabel, text: String) {
+    let tmpLabel = UILabel(frame: CGRect(x: 0, y: 0, width: label.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
+    tmpLabel.numberOfLines = 0
+    tmpLabel.lineBreakMode = .byWordWrapping
+    tmpLabel.font = label.font
+    tmpLabel.text = text
+    tmpLabel.sizeToFit()
+    
+    label.lineBreakMode = .byWordWrapping
+    var mFrame = label.frame
+    mFrame.size.height = tmpLabel.frame.size.height
+    label.frame = mFrame
+    
+    label.text = text
+}
+
+func CHANGE_LABEL_HEIGHT(label: UILabel, text: String, placeBelow: UIView, margin: CGFloat) {
+    CHANGE_LABEL_HEIGHT(label: label, text: text)
+    PLACE(label, below: placeBelow, margin: margin)
+}
+
+func PLACE(_ view: UIView, below: UIView, margin: CGFloat) {
+    var mFrame = view.frame
+    mFrame.origin.y = BOTTOM(view: below) + margin
+    view.frame = mFrame
+}
+
+func BOTTOM(view: UIView) -> CGFloat {
+    return (view.frame.origin.y + view.frame.size.height)
+}
+
+func CHANGE_HEIGHT(view: UIView, _ newHeight: CGFloat) {
+    var mFrame = view.frame
+    mFrame.size.height = newHeight
+    view.frame = mFrame
+}
+
+func COLOR_FROM_HEX(_ hex: String) -> UIColor {
+    var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+    
+    if (cString.hasPrefix("#")) {
+        cString.remove(at: cString.startIndex)
+    }
+    
+    if ((cString.count) != 6) {
+        return UIColor.gray
+    }
+    
+    var rgbValue:UInt32 = 0
+    Scanner(string: cString).scanHexInt32(&rgbValue)
+    
+    return UIColor(
+        red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+        green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+        blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+        alpha: CGFloat(1.0)
+    )
+}

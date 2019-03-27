@@ -10,7 +10,6 @@
 		5E4F9B31F6CFE80036C94903 /* Pods_ATKearneyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */; };
 		BD0C6D7422492A6A0096ECF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD0C6D7322492A6A0096ECF8 /* GoogleService-Info.plist */; };
 		BD0C6D762249445C0096ECF8 /* NewSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0C6D752249445B0096ECF8 /* NewSurveyViewController.swift */; };
-		BD0C6D7822494C270096ECF8 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0C6D7722494C270096ECF8 /* KMPlaceholderTextView.swift */; };
 		BD0E2F9F22412AC500BB7E57 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2F9E22412AC500BB7E57 /* Functions.swift */; };
 		BD0E2FA222413C7D00BB7E57 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2FA122413C7D00BB7E57 /* CustomNavigationController.swift */; };
 		BD0E2FA62241429C00BB7E57 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2FA52241429C00BB7E57 /* Reachability.swift */; };
@@ -49,6 +48,7 @@
 		BD8C69892242A63D00A25ED4 /* profileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BD8C69882242A63C00A25ED4 /* profileIcon.png */; };
 		BD8C698B2242A86900A25ED4 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8C698A2242A86900A25ED4 /* UIButtonExtension.swift */; };
 		BD8C698D2242EFEE00A25ED4 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8C698C2242EFEE00A25ED4 /* UIImageViewExtension.swift */; };
+		BD8ED511224B99E5009059E9 /* AnwserSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8ED510224B99E5009059E9 /* AnwserSurveyViewController.swift */; };
 		BDAAAEC22249D2B100F21229 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAAAEC12249D2B100F21229 /* Values.swift */; };
 		BDC2D184223AB9E000B0D527 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2D182223AB9E000B0D527 /* ProjectCell.swift */; };
 		BDC2D185223AB9E000B0D527 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC2D183223AB9E000B0D527 /* ProjectCell.xib */; };
@@ -80,7 +80,6 @@
 		A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATKearneyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0C6D7322492A6A0096ECF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BD0C6D752249445B0096ECF8 /* NewSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSurveyViewController.swift; sourceTree = "<group>"; };
-		BD0C6D7722494C270096ECF8 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		BD0E2F9E22412AC500BB7E57 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		BD0E2FA122413C7D00BB7E57 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		BD0E2FA52241429C00BB7E57 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -121,6 +120,7 @@
 		BD8C69882242A63C00A25ED4 /* profileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileIcon.png; sourceTree = "<group>"; };
 		BD8C698A2242A86900A25ED4 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		BD8C698C2242EFEE00A25ED4 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		BD8ED510224B99E5009059E9 /* AnwserSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnwserSurveyViewController.swift; sourceTree = "<group>"; };
 		BDAAAEC12249D2B100F21229 /* Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Values.swift; sourceTree = "<group>"; };
 		BDC2D182223AB9E000B0D527 /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		BDC2D183223AB9E000B0D527 /* ProjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
@@ -187,7 +187,6 @@
 				BD0E2FA122413C7D00BB7E57 /* CustomNavigationController.swift */,
 				BD8C698A2242A86900A25ED4 /* UIButtonExtension.swift */,
 				BD8C698C2242EFEE00A25ED4 /* UIImageViewExtension.swift */,
-				BD0C6D7722494C270096ECF8 /* KMPlaceholderTextView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -278,6 +277,7 @@
 				BD428565224021B500E7D5EA /* EditPasswordViewController.swift */,
 				BD0C6D752249445B0096ECF8 /* NewSurveyViewController.swift */,
 				BDC64AD4224A8B22000E1831 /* SurveyUsersViewController.swift */,
+				BD8ED510224B99E5009059E9 /* AnwserSurveyViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -570,7 +570,6 @@
 				BD0E2FA8224151DA00BB7E57 /* Texts.swift in Sources */,
 				BD82B7A122396D9B003825D8 /* MyUser.swift in Sources */,
 				BD82B79D223966CC003825D8 /* FirebaseManager.swift in Sources */,
-				BD0C6D7822494C270096ECF8 /* KMPlaceholderTextView.swift in Sources */,
 				BDF7D4502240600600D276CE /* User.swift in Sources */,
 				BD4DC9B9223C21AE00E14F2F /* RegisterViewController.swift in Sources */,
 				BD0C6D762249445C0096ECF8 /* NewSurveyViewController.swift in Sources */,
@@ -589,6 +588,7 @@
 				BD4285642240177700E7D5EA /* EditUserViewController.swift in Sources */,
 				BD3BABC92239A8CD004521F4 /* UserCell.swift in Sources */,
 				BD82B795223964A5003825D8 /* BaseViewController.swift in Sources */,
+				BD8ED511224B99E5009059E9 /* AnwserSurveyViewController.swift in Sources */,
 				BDC64AD9224ABCAF000E1831 /* SurveyCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

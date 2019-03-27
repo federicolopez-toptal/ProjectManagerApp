@@ -430,6 +430,7 @@ class FirebaseManager: NSObject {
             DBref.child(self.USERS).child(keyUserID).child("projects").child(projectID).removeValue()
             
             for(keySurveyID, _) in surveys {
+                DBref.child(self.SURVEYS).child(keySurveyID).child("users").child(keyUserID).removeValue()
                 DBref.child(self.USERS).child(keyUserID).child("surveys").child(keySurveyID).removeValue()
             }
             
@@ -447,9 +448,15 @@ class FirebaseManager: NSObject {
     func createSurvey(info: [String: String], questions: [String: Any], users: Set<String>, callback: @escaping (Error?) -> ())  {
         let DBref = Database.database().reference()
         
+        var usersDict = [String: Bool]()
+        for userID in users {
+            usersDict[userID] = true
+        }
+        
         let newItemContent = [
             "info": info,
-            "questions": questions
+            "questions": questions,
+            "users": usersDict
             ] as [String: Any]
         
         let newSurvey = DBref.child(SURVEYS).childByAutoId()
@@ -556,13 +563,14 @@ class FirebaseManager: NSObject {
                 let dispatchGroup = DispatchGroup()
                 var result = [NSDictionary]()
                 
-                for (keySurveyID, _) in surveysDict {
+                for (keySurveyID, answered) in surveysDict {
                     dispatchGroup.enter()
                     
                     DBref.child(self.SURVEYS).child(keySurveyID).observeSingleEvent(of: .value, with: { (snapshot) in
                         if(snapshot.exists()) {
                             let newDict = [
                                 "id": snapshot.key,
+                                "shouldAnswer": answered,
                                 "content": snapshot.value as! NSDictionary
                                 ] as [String : Any]
                             
@@ -583,6 +591,14 @@ class FirebaseManager: NSObject {
         }
     }
     
-    
+    func answerSurvey(surveyID: String, userID: String, info: [String: Any], callback: @escaping (Error?) -> () ) {
+        let DBref = Database.database().reference()
+        
+        DBref.child(USERS).child(userID).child("surveys").child(surveyID).setValue(false) { (error, ref) in
+            DBref.child(self.SURVEYS).child(surveyID).child("answers").child(userID).setValue(info){ (error, ref) in
+                callback(error)
+            }
+        }
+    }
 
 }

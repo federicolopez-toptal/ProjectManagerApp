@@ -86,6 +86,12 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
         let photoLastUpdate = info["photoLastUpdate"] as? String
         FirebaseManager.shared.userPhoto(userID: userID, lastUpdate: photoLastUpdate, to: cell.photoImageView)
         
+        if( SelectedProject.shared.hasOfficer(userID: userID) ) {
+            cell.checkImageView.isHidden = true
+        } else {
+            cell.checkImageView.isHidden = false
+        }
+        
         return cell
     }
     
@@ -97,12 +103,18 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
         let cell = tableView.cellForRow(at: indexPath) as! UserSelectableCell
         let userID = users[indexPath.row]["id"] as! String
         
-        cell.setState(!cell.isON)
-        if(cell.isON) {
-            selectedUsers.insert(userID)
+        if( SelectedProject.shared.hasOfficer(userID: userID) ) {
+            //
         } else {
-            selectedUsers.remove(userID)
+            cell.checkImageView.isHidden = false
+            cell.setState(!cell.isON)
+            if(cell.isON) {
+                selectedUsers.insert(userID)
+            } else {
+                selectedUsers.remove(userID)
+            }
         }
+        
     }
     
     // MARK: - Button actions
@@ -120,7 +132,8 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
             "projectID": SelectedProject.shared.projectID ,
             "title": SelectedSurvey.shared.title,
             "description": description,
-            "created": NOW()
+            "created": NOW(),
+            "expires": NOW()
         ]
         
         var questions = [String: Any]()
@@ -151,6 +164,7 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
                     }
                     
                     if let VC = destination {
+                        (VC as! ProjectDetailsViewController).firstTime = true
                         self.navigationController?.popToViewController(VC, animated: true)
                     }
                 }

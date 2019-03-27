@@ -17,9 +17,11 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     @IBOutlet weak var editButton: UIButton!
     
     @IBOutlet weak var surveyView: UIView!
+    @IBOutlet weak var surveyLabel: UILabel!
     @IBOutlet weak var createSurveyButton: UIButton!
     @IBOutlet weak var loadingSurvey: UIActivityIndicatorView!
     @IBOutlet weak var surveysList: UITableView!
+    @IBOutlet weak var noSurveysLabel: UILabel!
     
     var users = [NSDictionary]()
     var surveys = [NSDictionary]()
@@ -71,24 +73,41 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         
         if(firstTime) {
             loading.startAnimating()
-            FirebaseManager.shared.getUsers(userIDs: SelectedProject.shared.users) { (usersDict) in
-                self.users = usersDict!
+            FirebaseManager.shared.getUsers(userIDs: SelectedProject.shared.users) { (usersArray) in
+                self.users = usersArray!
                 self.usersList.reloadData()
                 self.loading.stopAnimating()
             }
             
+            // Load surveys
+            noSurveysLabel.isHidden = true
             loadingSurvey.startAnimating()
             if(MyUser.shared.admin || SelectedProject.shared.hasOfficer(userID: MyUser.shared.userID)) {
                 // get all surveys for this project (I'm an admin or project officer)
-                FirebaseManager.shared.getSurveysForProject(SelectedProject.shared.projectID) { (surveysDict, error) in
-                    self.surveys = surveysDict!
+                FirebaseManager.shared.getSurveysForProject(SelectedProject.shared.projectID) { (surveysArray, error) in
+                    self.surveys = surveysArray!
                     self.surveysList.reloadData()
                     self.loadingSurvey.stopAnimating()
                 }
             } else {
+                surveyLabel.text = "Surveys to answer"
+                
                 // get surveys which includes my user
-                FirebaseManager.shared.getSurveysForUser(MyUser.shared.userID) { (surveysDict, error) in
-                    self.surveys = surveysDict!
+                surveys = [NSDictionary]()
+                FirebaseManager.shared.getSurveysForUser(MyUser.shared.userID) { (surveysArray, error) in
+                    
+                    // Show only surveys that needs to be answered
+                    for dict in surveysArray! {
+                        let shouldAnswer = dict["shouldAnswer"] as! Bool
+                        if(shouldAnswer) {
+                            self.surveys.append(dict)
+                        }
+                    }
+                    
+                    if(self.surveys.count==0) {
+                        self.noSurveysLabel.isHidden = false
+                        self.noSurveysLabel.text = "No surveys for now..."
+                    }
                     self.surveysList.reloadData()
                     self.loadingSurvey.stopAnimating()
                 }
@@ -175,7 +194,7 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         if(tableView == usersList) {
             return 50
         } else if (tableView == surveysList) {
-            return 45
+            return 55
         }
         
         return 50
@@ -185,8 +204,15 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         if(tableView == usersList ){
             SelectedUser.shared.reset()
             SelectedUser.shared.fillWith(info: users[indexPath.row])
-        
             self.performSegue(withIdentifier: "gotoUser", sender: self)
+        } else if(tableView == surveysList) {
+            SelectedSurvey.shared.fillWith(dict: surveys[indexPath.row])
+            
+            if(MyUser.shared.admin || SelectedProject.shared.hasOfficer(userID: MyUser.shared.userID)) {
+                print("RESULTS!")
+            } else {
+                self.performSegue(withIdentifier: "gotoAnswer", sender: self)
+            }
         }
     }
     

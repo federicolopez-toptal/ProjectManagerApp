@@ -43,10 +43,15 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
         placeSettingsView(multipleOptionsView)
         placeSettingsView(scaleView)
         multipleOptionsView.clipsToBounds = true
+        
+        /*
+        descriptionTextView.placeholder = "Description (Optional)"
+        questionTextView.placeholder = "Type your question (required)"
+ */
     }
     func placeSettingsView(_ view: UIView) {
         var mFrame = view.frame
-        mFrame.origin.y = responseTypeButton.frame.origin.y + responseTypeButton.frame.size.height + 30.0
+        mFrame.origin.y = responseTypeButton.frame.origin.y + responseTypeButton.frame.size.height + 40.0
         view.frame = mFrame
     }
     
@@ -77,28 +82,28 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
         
         switch Q.type {
         case .yes_no:
-            responseTypeButton.setTitle("Response type: Yes/No", for: .normal)
+            responseTypeButton.setTitle("Type: Yes/No", for: .normal)
             placeNextButtonBelow(view: yesNoView)
             fill_yesNoFieldsWithQuestion(Q)
             yesNoView.isHidden = false
             multipleOptionsView.isHidden = true
             scaleView.isHidden = true
         case .multiple:
-            responseTypeButton.setTitle("Response type: Multiple options", for: .normal)
+            responseTypeButton.setTitle("Type: Multiple options", for: .normal)
             fill_multipleFieldsWithQuestion(Q)
             placeNextButtonBelow(view: multipleOptionsView)
             yesNoView.isHidden = true
             multipleOptionsView.isHidden = false
             scaleView.isHidden = true
         case .scale:
-            responseTypeButton.setTitle("Response type: Scale", for: .normal)
+            responseTypeButton.setTitle("Type: Scale", for: .normal)
             fill_scaleFieldsWithQuestion(Q)
             placeNextButtonBelow(view: scaleView)
             yesNoView.isHidden = true
             multipleOptionsView.isHidden = true
             scaleView.isHidden = false
         default: // Text
-            responseTypeButton.setTitle("Response type: Text", for: .normal)
+            responseTypeButton.setTitle("Type: Text", for: .normal)
             placeNextButtonBelow(view: responseTypeButton)
             yesNoView.isHidden = true
             multipleOptionsView.isHidden = true
@@ -106,7 +111,7 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
         }
     }
     func placeNextButtonBelow(view: UIView) {
-        let margin: CGFloat = 30.0
+        let margin: CGFloat = 60.0
         var mFrame = nextStepButton.frame
         
         mFrame.origin.y = view.frame.origin.y + view.frame.size.height + margin

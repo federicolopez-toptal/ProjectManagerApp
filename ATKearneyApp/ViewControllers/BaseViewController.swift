@@ -13,6 +13,7 @@ class BaseViewController: UIViewController {
     private var formMode = false
     private var scrollViewBottomConstraint: NSLayoutConstraint?
     private var bottomConstraintConstant: CGFloat = 0.0
+    private var safeAreaBottom: CGFloat = 0.0
     
     private var reloadView: UIView?
     private var reloadCallback: Any?
@@ -20,6 +21,9 @@ class BaseViewController: UIViewController {
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let window = UIApplication.shared.keyWindow
+        safeAreaBottom = window!.safeAreaInsets.bottom
     }
     
     // MARK: - Loading
@@ -120,9 +124,7 @@ class BaseViewController: UIViewController {
         
         print(bottomConstraintConstant)
         if(n.name==UIResponder.keyboardWillShowNotification){
-            print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-            print("Keyboard height: ", H)
-            scrollViewBottomConstraint!.constant = H
+            scrollViewBottomConstraint!.constant = (H - safeAreaBottom)
         } else if(n.name==UIResponder.keyboardWillHideNotification) {
             scrollViewBottomConstraint!.constant = bottomConstraintConstant
         }
