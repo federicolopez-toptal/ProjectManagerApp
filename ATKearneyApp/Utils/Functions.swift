@@ -121,6 +121,7 @@ func CHANGE_LABEL_HEIGHT(label: UILabel, text: String) {
     tmpLabel.sizeToFit()
     
     label.lineBreakMode = .byWordWrapping
+    label.numberOfLines = 0
     var mFrame = label.frame
     mFrame.size.height = tmpLabel.frame.size.height
     label.frame = mFrame

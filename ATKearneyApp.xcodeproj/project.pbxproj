@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E4F9B31F6CFE80036C94903 /* Pods_ATKearneyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */; };
+		BD018F09224D022D00EEDB22 /* SurveyResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD018F08224D022D00EEDB22 /* SurveyResultsViewController.swift */; };
 		BD0C6D7422492A6A0096ECF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD0C6D7322492A6A0096ECF8 /* GoogleService-Info.plist */; };
 		BD0C6D762249445C0096ECF8 /* NewSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0C6D752249445B0096ECF8 /* NewSurveyViewController.swift */; };
 		BD0E2F9F22412AC500BB7E57 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2F9E22412AC500BB7E57 /* Functions.swift */; };
@@ -78,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		A43309481B9FA4BFDA12D4FC /* Pods_ATKearneyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATKearneyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD018F08224D022D00EEDB22 /* SurveyResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyResultsViewController.swift; sourceTree = "<group>"; };
 		BD0C6D7322492A6A0096ECF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BD0C6D752249445B0096ECF8 /* NewSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSurveyViewController.swift; sourceTree = "<group>"; };
 		BD0E2F9E22412AC500BB7E57 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				BD0C6D752249445B0096ECF8 /* NewSurveyViewController.swift */,
 				BDC64AD4224A8B22000E1831 /* SurveyUsersViewController.swift */,
 				BD8ED510224B99E5009059E9 /* AnwserSurveyViewController.swift */,
+				BD018F08224D022D00EEDB22 /* SurveyResultsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				BD428566224021B500E7D5EA /* EditPasswordViewController.swift in Sources */,
 				BD7B690522395F2100C0DE35 /* AppDelegate.swift in Sources */,
 				BD82FF4C22399984008F6304 /* SelectedProject.swift in Sources */,
+				BD018F09224D022D00EEDB22 /* SurveyResultsViewController.swift in Sources */,
 				BD4285642240177700E7D5EA /* EditUserViewController.swift in Sources */,
 				BD3BABC92239A8CD004521F4 /* UserCell.swift in Sources */,
 				BD82B795223964A5003825D8 /* BaseViewController.swift in Sources */,

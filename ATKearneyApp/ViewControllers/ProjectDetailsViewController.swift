@@ -86,6 +86,12 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
                 // get all surveys for this project (I'm an admin or project officer)
                 FirebaseManager.shared.getSurveysForProject(SelectedProject.shared.projectID) { (surveysArray, error) in
                     self.surveys = surveysArray!
+                    
+                    if(self.surveys.count==0) {
+                        self.noSurveysLabel.isHidden = false
+                        self.noSurveysLabel.text = "No surveys for this project"
+                    }
+                    
                     self.surveysList.reloadData()
                     self.loadingSurvey.stopAnimating()
                 }
@@ -207,9 +213,8 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             self.performSegue(withIdentifier: "gotoUser", sender: self)
         } else if(tableView == surveysList) {
             SelectedSurvey.shared.fillWith(dict: surveys[indexPath.row])
-            
             if(MyUser.shared.admin || SelectedProject.shared.hasOfficer(userID: MyUser.shared.userID)) {
-                print("RESULTS!")
+                self.performSegue(withIdentifier: "gotoResults", sender: self)
             } else {
                 self.performSegue(withIdentifier: "gotoAnswer", sender: self)
             }

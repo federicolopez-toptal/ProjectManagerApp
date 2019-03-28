@@ -9,6 +9,13 @@
 import UIKit
 
 
+struct Answers {
+    var userID: String
+    var isATKMember: Bool
+    var info: [Any]
+}
+
+
 struct Question {
     enum QuestionType: String {
         case text = "text"
@@ -31,6 +38,7 @@ struct Survey {
     var description: String?
     var created = ""
     var questions = [Question]()
+    var answers = [Answers]()
     
     mutating func reset() {
         surveyID = ""
@@ -42,8 +50,8 @@ struct Survey {
     
     mutating func fillWith(dict: NSDictionary) {
         surveyID = dict["id"] as! String
-        
         let content = dict["content"] as! [String: Any]
+        
         let info = content["info"] as! [String: String]
         let questions = content["questions"] as! [NSDictionary]
         
@@ -51,6 +59,7 @@ struct Survey {
         description = info["description"]
         created = info["created"]! as String
         
+        // Questions
         self.questions = [Question]()
         for Q in questions {
             let text = Q["text"] as! String
@@ -62,6 +71,26 @@ struct Survey {
             } else {
                 self.questions.append( Question(text: text, type: type!, options: []) )
             }
+        }
+        
+        // Answers
+        self.answers = [Answers]()
+        if let answersDict = content["answers"] as? [String: Any] {
+            for (keyUserID, value) in answersDict {
+                let answerContent = value as! [String: Any]
+                let ATKm = answerContent["ATKMember"] as! Bool
+                
+                var info = [Any]()
+                let infoArray = answerContent["info"] as! [Any]
+                for I in infoArray {
+                    info.append(I)
+                }
+                
+                let newA = Answers(userID: keyUserID, isATKMember: ATKm, info: info)
+                self.answers.append(newA)
+            }
+        } else {
+            self.answers = [Answers]()
         }
     }
     
