@@ -26,6 +26,7 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var addAnotherOptionView: UIView!
     @IBOutlet weak var scaleView: UIView!
     
+    var qSelector = UIView()
     
     
     private var currentQuestion = 0
@@ -60,22 +61,90 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
         
         titleTextField.text = SelectedSurvey.shared.title
         descriptionTextView.text = SelectedSurvey.shared.description
+        buildQuestionSelector()
         
         refreshQuestionsSelector()
         refreshQuestion()
     }
     
+    func buildQuestionSelector() {
+        let X = descriptionTextView.frame.origin.x
+        let W = descriptionTextView.frame.size.width
+        let Y = questionsSelector.frame.origin.y - 10.0
+        
+        qSelector = UIView(frame: CGRect(x: X, y: Y, width: W, height: 40))
+        contentView.addSubview(qSelector)
+    }
+    
     
     // MARK: - Questions
     func refreshQuestionsSelector() {
+        // OLD components
         questionsSelector.removeAllSegments()
         for (index, _) in SelectedSurvey.shared.questions.enumerated() {
             questionsSelector.insertSegment(withTitle: "Question \(index+1)", at: index, animated: false)
         }
+        
+        // NEW components
+        qSelector.subviews.forEach({ $0.removeFromSuperview() })
+        
+        let W = qSelector.frame.size.width/2
+        let qCount = SelectedSurvey.shared.questions.count
+        
+        if(qCount==1) {
+            let qButton = UIButton(type: .custom)
+            qButton.frame = CGRect(x: 0, y: 0, width: W-5.0, height: 40)
+            qButton.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
+            qButton.setTitle(" Question 1", for: .disabled)
+            qButton.setTitleColor(UIColor.black, for: .disabled)
+            qButton.contentHorizontalAlignment = .left
+            qButton.titleLabel!.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+            qButton.isEnabled = false
+            qSelector.addSubview(qButton)
+            
+            let addButton = UIButton(type: .custom)
+            addButton.frame = CGRect(x: W + 5.0, y: 0, width: W-5.0, height: 40)
+            addButton.setTitle("ADD QUESTION", for: .normal)
+            addButton.setTitleColor(nextStepButton.backgroundColor, for: .normal)
+            addButton.titleLabel!.font = UIFont.systemFont(ofSize: 14.0, weight: .bold)
+            addButton.contentHorizontalAlignment = .right
+            addButton.addTarget(self, action: #selector(addQuestionButtonTap), for: .touchUpInside)
+            qSelector.addSubview(addButton)
+        } else {
+            var valX: CGFloat = 0.0
+            for I in 0...1 {
+                let qButton = UIButton(type: .custom)
+                qButton.frame = CGRect(x: valX, y: 0, width: W-5.0, height: 40)
+                qButton.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
+                qButton.setTitle(" Question \(I+1)", for: .normal)
+                qButton.contentHorizontalAlignment = .left
+                qButton.isSelected = false
+                qButton.setTitleColor(UIColor.lightGray, for: .normal)
+                qButton.setTitleColor(UIColor.black, for: .selected)
+                qButton.titleLabel!.font = UIFont.systemFont(ofSize: 15.0)
+                qButton.tag = I
+                qButton.addTarget(self, action: #selector(questionButtonTap), for: .touchUpInside)
+                qSelector.addSubview(qButton)
+                
+                valX += W + (5.0)
+            }
+            
+            let deleteButton = UIButton(type: .custom)
+            deleteButton.frame = CGRect(x: (W*2)-40, y: 0, width: 40, height: 40)
+            //deleteButton.backgroundColor = nextStepButton.backgroundColor
+            deleteButton.setTitle("  X", for: .normal)
+            deleteButton.contentHorizontalAlignment = .center
+            deleteButton.setTitleColor(UIColor.black, for: .normal)
+            deleteButton.titleLabel!.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+            deleteButton.addTarget(self, action: #selector(deleteSecondQuestionButtonTap), for: .touchUpInside)
+            qSelector.addSubview(deleteButton)
+        }
+        
     }
     
     func refreshQuestion() {
         let Q = SelectedSurvey.shared.questions[currentQuestion]
+        
         
         questionsSelector.selectedSegmentIndex = currentQuestion
         questionTextView.text = Q.text
@@ -317,6 +386,49 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
         }
     }
     
+    @objc func addQuestionButtonTap(sender: UIButton) {
+        if(SelectedSurvey.shared.questions.count<SURVEYS_MAX_QUESTIONS) {
+            let newQuestion = Question(text: "", type: .text, options: [])
+            SelectedSurvey.shared.questions.append(newQuestion)
+            
+            currentQuestion = SelectedSurvey.shared.questions.count-1
+            refreshQuestionsSelector()
+            refreshQuestion()
+            
+            questionButtonTap(sender: qSelector.subviews[1] as! UIButton)
+        } else {
+            ALERT(title_ERROR, text_QUESTIONS_LIMIT, viewController: self)
+        }
+    }
+
+    @objc func questionButtonTap(sender: UIButton) {
+        let superView = sender.superview
+        
+        for V in superView!.subviews {
+            if(V is UIButton) {
+                let button = (V as! UIButton)
+                
+                button.isSelected = false
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+            }
+        }
+        
+        sender.isSelected = true
+        sender.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+        
+        currentQuestion = sender.tag
+        refreshQuestion()
+    }
     
+    @objc func deleteSecondQuestionButtonTap(sender: UIButton) {
+        if(SelectedSurvey.shared.questions.count>1) {
+            SelectedSurvey.shared.questions.remove(at: 1)
+            currentQuestion = 0
+            refreshQuestionsSelector()
+            refreshQuestion()
+        } else {
+            ALERT(title_ERROR, text_QUESTIONS_MIN, viewController: self)
+        }
+    }
     
 }
