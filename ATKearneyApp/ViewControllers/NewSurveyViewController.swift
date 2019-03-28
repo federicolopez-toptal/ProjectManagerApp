@@ -254,28 +254,31 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
     @IBAction func nextButtonTap(_ sender: UIButton) {
         // Validations
         if(titleTextField.text!.isEmpty) {
-            ALERT(title_ERROR, text_EMPTY_FIELDS, viewController: self)
+            ALERT(title_ERROR, text_SURVEY_TITLE, viewController: self)
             return
         }
         
+        
         // Questions text should not be empty
         var found = false
-        for Q in SelectedSurvey.shared.questions {
+        for (index, Q) in SelectedSurvey.shared.questions.enumerated() {
             if(Q.text.isEmpty) {
+                ALERT("Question \(index+1)", text_EMPTY_FIELDS, viewController: self)
                 found = true
                 break
             }
         }
         if(found) {
-            ALERT(title_ERROR, text_EMPTY_FIELDS, viewController: self)
             return
         }
         
+        
         // Question options should not be empty
         found = false
-        for Q in SelectedSurvey.shared.questions {
+        for (index, Q) in SelectedSurvey.shared.questions.enumerated() {
             for S in Q.options {
                 if(S.isEmpty) {
+                    ALERT("Question \(index+1)", text_EMPTY_FIELDS, viewController: self)
                     found = true
                     break
                 }
@@ -285,7 +288,6 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
             }
         }
         if(found) {
-            ALERT(title_ERROR, text_EMPTY_FIELDS, viewController: self)
             return
         }
         

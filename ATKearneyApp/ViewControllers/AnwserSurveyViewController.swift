@@ -35,7 +35,7 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
         
         CHANGE_LABEL_HEIGHT(label: titleLabel, text: SelectedSurvey.shared.title)
         CHANGE_LABEL_HEIGHT(label: descriptionLabel, text: SelectedSurvey.shared.description!, placeBelow: titleLabel, margin: 10.0)
-        addLine(below: descriptionLabel, margin: 10.0)
+        addLine(below: descriptionLabel, margin: 20.0)
         
         buildQuestions()
     }
@@ -52,13 +52,13 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
         let w = titleLabel.frame.size.width
         
         let lineView = UIView(frame: CGRect(x: x, y: y, width: w, height: 1))
-        lineView.backgroundColor = UIColor.lightGray
+        lineView.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
         contentView.addSubview(lineView)
     }
     
     // MARK: - Questions
     func buildQuestions() {
-        currentY = descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height + 20.0
+        currentY = descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height + 60.0
         
         for (index, Q) in SelectedSurvey.shared.questions.enumerated() {
             addQuestion(Q, index: index)
@@ -103,28 +103,34 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
         questionView.backgroundColor = UIColor.white
         
         let textLabel = UILabel(frame: CGRect(x: X, y: margin, width: W, height: 10.0))
+        textLabel.font = descriptionLabel.font
         questionView.addSubview(textLabel)
         CHANGE_LABEL_HEIGHT(label: textLabel, text: Q.text)
         
         if(Q.type == .text) {
             // TEXT
             let textView = UITextView(frame: CGRect(x: X, y: BOTTOM(view: textLabel) + margin, width: W, height: 96))
+            textView.font = descriptionLabel.font
             textView.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
             textView.tag = index
+            textView.autocapitalizationType = .none
+            textView.autocorrectionType = .no
+            textView.spellCheckingType = .no
             
             questionView.addSubview(textView)
-            CHANGE_HEIGHT(view: questionView, BOTTOM(view: textView) + (margin*2))
+            CHANGE_HEIGHT(view: questionView, BOTTOM(view: textView) + (margin*5))
             textView.delegate = self
         } else if(Q.type == .yes_no) {
             // YES - NO (mutually exclusive)
             for i in 0...1 {
                 var valX = X
                 if(i==1){
-                    valX = X + (W/2)
+                    valX = X + (W/2) + 5
                 }
                 
                 let button = UIButton(type: .custom)
-                button.frame = CGRect(x: valX, y: BOTTOM(view: textLabel) + margin, width: W/2, height: 30)
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+                button.frame = CGRect(x: valX, y: BOTTOM(view: textLabel) + margin, width: (W/2)-5, height: 35)
                 button.setTitle(Q.options[i], for: .normal)
                 button.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
                 button.isSelected = false
@@ -134,7 +140,7 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
                 button.tag = index
                 questionView.addSubview(button)
                 
-                CHANGE_HEIGHT(view: questionView, BOTTOM(view: button) + (margin*2))
+                CHANGE_HEIGHT(view: questionView, BOTTOM(view: button) + (margin*5))
             }
             
             for V in questionView.subviews {
@@ -148,7 +154,8 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
             var valY = BOTTOM(view: textLabel) + margin
             for option in Q.options {
                 let button = UIButton(type: .custom)
-                button.frame = CGRect(x: X, y: valY, width: W, height: 30)
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+                button.frame = CGRect(x: X, y: valY, width: W, height: 35)
                 button.setTitle(option, for: .normal)
                 button.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
                 button.isSelected = false
@@ -158,14 +165,15 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
                 button.tag = index
                 questionView.addSubview(button)
                 
-                CHANGE_HEIGHT(view: questionView, BOTTOM(view: button) + (margin*2))
-                valY += 30.0 + 5
+                CHANGE_HEIGHT(view: questionView, BOTTOM(view: button) + (margin*5))
+                valY += 35.0 + 7.5
             }
         } else if(Q.type == .scale) {
             // Scale value selection
             
-            let valueLabel = UILabel(frame: CGRect(x: X, y: BOTTOM(view: textLabel), width: W, height: 21))
+            let valueLabel = UILabel(frame: CGRect(x: X, y: BOTTOM(view: textLabel) + (margin * 2), width: W, height: 21))
             valueLabel.text = "5"
+            valueLabel.font = descriptionLabel.font
             valueLabel.textAlignment = .center
             valueLabel.tag = VALUE_LABEL_TAG
             questionView.addSubview(valueLabel)
@@ -180,21 +188,23 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
             
             let minLabel = UILabel(frame: CGRect(x: X, y: BOTTOM(view: slider), width: W/2, height: 21))
             minLabel.text = Q.options[0]
+            minLabel.font = descriptionLabel.font
             questionView.addSubview(minLabel)
             
             let maxLabel = UILabel(frame: CGRect(x: X+(W/2), y: BOTTOM(view: slider), width: W/2, height: 21))
             maxLabel.text = Q.options[1]
+            maxLabel.font = descriptionLabel.font
             maxLabel.textAlignment = .right
             questionView.addSubview(maxLabel)
             
-            CHANGE_HEIGHT(view: questionView, BOTTOM(view: minLabel) + (margin*2))
+            CHANGE_HEIGHT(view: questionView, BOTTOM(view: minLabel) + (margin*5))
         }
         
         contentView.addSubview(questionView)
-        PLACE(sendReponseButton, below: questionView, margin: margin)
+        PLACE(sendReponseButton, below: questionView, margin: margin * 4)
         
         currentY += questionView.frame.size.height
-        CHANGE_HEIGHT(view: contentView, BOTTOM(view: sendReponseButton) + margin)
+        CHANGE_HEIGHT(view: contentView, BOTTOM(view: sendReponseButton) + (margin*5))
         scrollView.contentSize = contentView.frame.size
     }
     
@@ -209,13 +219,15 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
         
         for V in superView!.subviews {
             if(V is UIButton) {
-                (V as! UIButton).isSelected = false
+                let button = (V as! UIButton)
                 
-                //backgroundColor = COLOR_FROM_HEX("#D9D9D9")
+                button.isSelected = false
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
             }
         }
 
         sender.isSelected = true
+        sender.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
         answers[sender.tag] = sender.titleLabel!.text!
     }
     
@@ -227,8 +239,12 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
         for V in superView!.subviews {
             if(V is UIButton) {
                 let button = (V as! UIButton)
+                
                 if(button.isSelected) {
                     multipleAnswers.append(button.titleLabel!.text!)
+                    button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+                } else {
+                    button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
                 }
             }
         }
@@ -245,8 +261,34 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
         answers[sender.tag] = value
     }
     
-    // Button actions
+    // MARK: - Button actions
+    func validateForm() -> Bool {
+        var result = true
+        
+        for A in answers {
+            if(A is String) {
+                if( (A as! String).isEmpty ) {
+                    ALERT(title_ERROR, text_ANSWER_TEXT_EMPTY, viewController: self)
+                    result = false
+                    break
+                }
+            } else if(A is Array<String>) {
+                if( (A as! Array<String>).count == 0 ) {
+                    ALERT(title_ERROR, text_ANSWER_MULTIPLE_0, viewController: self)
+                    result = false
+                    break
+                }
+            }
+        }
+        
+        return result
+    }
+    
+    
     @IBAction func sendResponseButtonTap(_ sender: UIButton) {
+        if(!validateForm()) {
+            return
+        }
         
         var answersDict = [String: Any]()
         for (i, value) in answers.enumerated() {

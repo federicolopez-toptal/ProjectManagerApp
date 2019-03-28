@@ -122,6 +122,28 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func selectAllButtonTap(_ sender: UIButton) {
+        selectedUsers = Set<String>()
+        for (index, userDict) in users.enumerated() {
+            let indexPath = IndexPath(row: index, section: 0)
+            let cell = usersList.cellForRow(at: indexPath) as! UserSelectableCell
+            let userID = users[index]["id"] as! String
+            
+            if( !SelectedProject.shared.hasOfficer(userID: userID) ) {
+                // Check all the clients / ATK Members
+                cell.setState(true)
+                cell.checkImageView.isHidden = false
+                selectedUsers.insert(userID)
+            } else {
+                cell.setState(false)
+                cell.checkImageView.isHidden = true
+            }
+            
+            
+        }
+    }
+    
+    
     @IBAction func createButtonTap(_ sender: UIButton) {
         var description = ""
         if let D = SelectedSurvey.shared.description {
