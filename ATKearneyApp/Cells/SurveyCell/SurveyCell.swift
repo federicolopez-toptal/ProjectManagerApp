@@ -11,6 +11,8 @@ import UIKit
 class SurveyCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var expirationLabel: UILabel!
+    
     
     // MARK: - Init
     override func awakeFromNib() {

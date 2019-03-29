@@ -201,6 +201,48 @@
 			path = "Third party";
 			sourceTree = "<group>";
 		};
+		BD3663D0224E5B2F008EA936 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				BD82B7A222397E1B003825D8 /* LoginViewController.swift */,
+				BD4DC9B8223C21AE00E14F2F /* RegisterViewController.swift */,
+				BD4DC9BA223C27C300E14F2F /* ResetPassViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		BD3663D1224E5B45008EA936 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				BD82B796223964AF003825D8 /* ProjectsViewController.swift */,
+				BD82B7AA223987B5003825D8 /* NewProjectViewController.swift */,
+				BD82B7AC22398A75003825D8 /* UsersViewController.swift */,
+				BDDBA3BF223AC43E005E96FF /* ProjectDetailsViewController.swift */,
+			);
+			path = Projects;
+			sourceTree = "<group>";
+		};
+		BD3663D2224E5B5D008EA936 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				BDDBA3C1223AF9D3005E96FF /* UserDetailsViewController.swift */,
+				BD4285632240177700E7D5EA /* EditUserViewController.swift */,
+				BD428565224021B500E7D5EA /* EditPasswordViewController.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		BD3663D3224E5B6D008EA936 /* Surveys */ = {
+			isa = PBXGroup;
+			children = (
+				BD0C6D752249445B0096ECF8 /* NewSurveyViewController.swift */,
+				BDC64AD4224A8B22000E1831 /* SurveyUsersViewController.swift */,
+				BD8ED510224B99E5009059E9 /* AnwserSurveyViewController.swift */,
+				BD018F08224D022D00EEDB22 /* SurveyResultsViewController.swift */,
+			);
+			path = Surveys;
+			sourceTree = "<group>";
+		};
 		BD3BABC42239A8A0004521F4 /* UserCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,20 +309,10 @@
 			isa = PBXGroup;
 			children = (
 				BD82B794223964A5003825D8 /* BaseViewController.swift */,
-				BD82B7A222397E1B003825D8 /* LoginViewController.swift */,
-				BD4DC9B8223C21AE00E14F2F /* RegisterViewController.swift */,
-				BD4DC9BA223C27C300E14F2F /* ResetPassViewController.swift */,
-				BD82B796223964AF003825D8 /* ProjectsViewController.swift */,
-				BD82B7AA223987B5003825D8 /* NewProjectViewController.swift */,
-				BD82B7AC22398A75003825D8 /* UsersViewController.swift */,
-				BDDBA3BF223AC43E005E96FF /* ProjectDetailsViewController.swift */,
-				BDDBA3C1223AF9D3005E96FF /* UserDetailsViewController.swift */,
-				BD4285632240177700E7D5EA /* EditUserViewController.swift */,
-				BD428565224021B500E7D5EA /* EditPasswordViewController.swift */,
-				BD0C6D752249445B0096ECF8 /* NewSurveyViewController.swift */,
-				BDC64AD4224A8B22000E1831 /* SurveyUsersViewController.swift */,
-				BD8ED510224B99E5009059E9 /* AnwserSurveyViewController.swift */,
-				BD018F08224D022D00EEDB22 /* SurveyResultsViewController.swift */,
+				BD3663D0224E5B2F008EA936 /* Auth */,
+				BD3663D1224E5B45008EA936 /* Projects */,
+				BD3663D2224E5B5D008EA936 /* Users */,
+				BD3663D3224E5B6D008EA936 /* Surveys */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

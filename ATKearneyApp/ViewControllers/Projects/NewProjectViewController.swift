@@ -16,6 +16,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     @IBOutlet weak var usersList: UITableView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
+    @IBOutlet weak var noUsersLabel: UILabel!
     
     var usersCopy = [String: String]()
     var users = [NSDictionary]()
@@ -61,7 +62,15 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
         FirebaseManager.shared.getUsers(userIDs:SelectedProject.shared.users){ (usersArray) in
             self.users = usersArray!
             self.usersList.reloadData()
+            self.noUsersCheck()
             self.loading.stopAnimating()
+        }
+    }
+    func noUsersCheck() {
+        if(self.users.count==0){
+            noUsersLabel.isHidden = false
+        } else {
+            noUsersLabel.isHidden = true
         }
     }
     

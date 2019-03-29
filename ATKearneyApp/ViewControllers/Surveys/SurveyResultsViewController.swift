@@ -82,6 +82,7 @@ class SurveyResultsViewController: BaseViewController {
         // QUESTION SELECTOR
         var Y = BOTTOM(view: descriptionLabel) + 20.0
         let questionSelector = UIView(frame: CGRect(x: 0, y: Y, width: self.view.frame.width, height: 45))
+        //questionSelector.backgroundColor = UIColor.green
         contentView.addSubview(questionSelector)
         
         let qCount = SelectedSurvey.shared.questions.count
@@ -103,8 +104,8 @@ class SurveyResultsViewController: BaseViewController {
         
         
         // QUESTIONS + ANSWERS
-        Y = BOTTOM(view: questionSelector) + 30.0
         for (index, Q) in SelectedSurvey.shared.questions.enumerated() {
+            Y = BOTTOM(view: questionSelector) + 30.0
             let questionView = UIView(frame: CGRect(x: 0, y: Y, width: self.view.frame.size.width, height: 10))
             questionView.backgroundColor = UIColor.white
             
@@ -316,7 +317,7 @@ class SurveyResultsViewController: BaseViewController {
     
     func showAnswer(_ index: Int) {
         for V in contentView.subviews {
-            if(V.tag>=BASE_TAG) {
+            if(V.tag >= BASE_TAG) {
                 V.isHidden = true
             }
         }

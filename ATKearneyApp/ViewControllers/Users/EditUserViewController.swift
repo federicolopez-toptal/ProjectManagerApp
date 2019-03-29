@@ -58,6 +58,41 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func saveButtonTap(_ sender: UIButton) {
+        showLoading(true)
+        saveStep2()
+        /*
+        if(MyUser.shared.email != emailTextField.text!) {
+            FirebaseManager.shared.editUserEmail(email: emailTextField.text!) { (error) in
+                if(error != nil) {
+                    print( error?.localizedDescription )
+                    
+                    var text = ""
+                    let errorCode = ERROR_CODE(error)
+                    
+                    switch(errorCode) {
+                    case 17011, 17009:
+                        text = text_LOGIN_ERROR
+                    case 17008:
+                        text = text_INVALID_EMAIL
+                    default:
+                        text = text_GENERIC_ERROR
+                    }
+                    ALERT(title_ERROR, text, viewController: self)
+                } else {
+                    print("go!")
+                }
+                
+                self.showLoading(false)
+            }
+        } else {
+            //saveStep2()
+            print("go!")
+            self.showLoading(false)
+        }
+ */
+    }
+    
+    func saveStep2() {
         let info = [
             "admin": MyUser.shared.admin,
             "name": nameTextField.text!,
@@ -68,7 +103,6 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
             "photoLastUpdate": MyUser.shared.photoLastUpdate as Any
             ] as [String : Any]
         
-        showLoading(true)
         FirebaseManager.shared.editUser(userID: MyUser.shared.userID, info: info){ (error) in
             if(error==nil) {
                 let info = [
@@ -80,7 +114,7 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
                     "skills": self.skillsTextField.text as Any,
                     "photoLastUpdate": MyUser.shared.photoLastUpdate as Any
                     ] as [String: Any]
-
+                
                 MyUser.shared.fillWith(userID: MyUser.shared.userID, info: info)
                 SelectedUser.shared = MyUser.shared
                 
@@ -93,7 +127,7 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
                         
                         MyUser.shared.photoLastUpdate = time
                         SelectedUser.shared = MyUser.shared
-
+                        
                         self.showLoading(false)
                         self.navigationController?.popViewController(animated: true)
                     }

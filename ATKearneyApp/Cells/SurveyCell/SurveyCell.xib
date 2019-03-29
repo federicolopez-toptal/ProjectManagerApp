@@ -41,14 +41,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXD-6Z-bn7">
+                                <rect key="frame" x="8" y="30" width="29" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.92338405744465235" green="0.92996791116128119" blue="0.94971947231116749" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="rXD-6Z-bn7" firstAttribute="leading" secondItem="f8A-eX-iSn" secondAttribute="leading" constant="8" id="6CD-9v-kWU"/>
                             <constraint firstItem="tHd-Yb-uwG" firstAttribute="leading" secondItem="f8A-eX-iSn" secondAttribute="leading" constant="8" id="FDw-NZ-58D"/>
                             <constraint firstItem="Rye-XF-YAJ" firstAttribute="centerY" secondItem="f8A-eX-iSn" secondAttribute="centerY" constant="-0.5" id="Hdn-wf-c6u"/>
                             <constraint firstAttribute="trailing" secondItem="Rye-XF-YAJ" secondAttribute="trailing" constant="8" id="P1p-6c-gAt"/>
                             <constraint firstAttribute="height" constant="50" id="Vy6-7e-FwK"/>
                             <constraint firstItem="tHd-Yb-uwG" firstAttribute="top" secondItem="f8A-eX-iSn" secondAttribute="top" constant="7" id="dkP-2e-nST"/>
+                            <constraint firstAttribute="bottom" secondItem="rXD-6Z-bn7" secondAttribute="bottom" constant="6" id="vvA-kd-fVJ"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -60,9 +68,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="expirationLabel" destination="rXD-6Z-bn7" id="CLD-SG-sjm"/>
                 <outlet property="titleLabel" destination="tHd-Yb-uwG" id="Pde-Gr-ImV"/>
             </connections>
-            <point key="canvasLocation" x="-371.19999999999999" y="132.68365817091455"/>
+            <point key="canvasLocation" x="-808" y="123"/>
         </tableViewCell>
     </objects>
 </document>

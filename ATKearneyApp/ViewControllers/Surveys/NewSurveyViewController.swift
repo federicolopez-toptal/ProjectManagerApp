@@ -383,6 +383,8 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
             SelectedSurvey.shared.questions[currentQuestion].options[sender.tag] = sender.text!
         } else if(sender.superview==multipleOptionsView) {
             SelectedSurvey.shared.questions[currentQuestion].options[sender.tag] = sender.text!
+        } else if(sender.superview==scaleView) {
+            SelectedSurvey.shared.questions[currentQuestion].options[sender.tag] = sender.text!
         }
     }
     

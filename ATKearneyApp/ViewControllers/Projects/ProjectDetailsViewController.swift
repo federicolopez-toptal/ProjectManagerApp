@@ -84,8 +84,17 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             loadingSurvey.startAnimating()
             if(MyUser.shared.admin || SelectedProject.shared.hasOfficer(userID: MyUser.shared.userID)) {
                 // get all surveys for this project (I'm an admin or project officer)
+                surveys = [NSDictionary]()
                 FirebaseManager.shared.getSurveysForProject(SelectedProject.shared.projectID) { (surveysArray, error) in
-                    self.surveys = surveysArray!
+                    
+                    //self.surveys = surveysArray!      // Without filters
+                    
+                    // Filter: Include only NON EXPIRED surveys
+                    for dict in surveysArray! {
+                        if(!self.isExpired(dict: dict)) {
+                            self.surveys.append(dict)
+                        }
+                    }
                     
                     if(self.surveys.count==0) {
                         self.noSurveysLabel.isHidden = false
@@ -98,15 +107,19 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             } else {
                 surveyLabel.text = "Surveys to answer"
                 
-                // get surveys which includes my user
+                // get surveys that includes my user
                 surveys = [NSDictionary]()
                 FirebaseManager.shared.getSurveysForUser(MyUser.shared.userID) { (surveysArray, error) in
                     
-                    // Show only surveys that needs to be answered
+                    //self.surveys = surveysArray!      // Without filters
+                    
+                    // Filter: Include NON EXPIRED + NON ANSWERED surveys
                     for dict in surveysArray! {
-                        let shouldAnswer = dict["shouldAnswer"] as! Bool
-                        if(shouldAnswer) {
-                            self.surveys.append(dict)
+                        if(!self.isExpired(dict: dict)) {
+                            let shouldAnswer = dict["shouldAnswer"] as! Bool
+                            if(shouldAnswer) {
+                                self.surveys.append(dict)
+                            }
                         }
                     }
                     
@@ -121,6 +134,16 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
 
             firstTime = false
         }
+    }
+    
+    func isExpired(dict: NSDictionary) -> Bool {
+        let content = dict["content"] as! NSDictionary
+        let info = content["info"] as! NSDictionary
+        let expires = info["expires"] as! String
+        let expDate = DATE(expires)
+        
+        let isValid = expDate > Date()
+        return !isValid
     }
 
     // MARK: - Button actions
@@ -189,6 +212,9 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             
             let title = info["title"] as! String
             cell.titleLabel.text = title
+            
+            let expDate = DATE(info["expires"] as! String)
+            cell.expirationLabel.text = "EXPIRES: \(STR_DATE_NICE(expDate))"
             
             return cell
         }

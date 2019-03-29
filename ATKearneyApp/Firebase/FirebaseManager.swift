@@ -186,6 +186,12 @@ class FirebaseManager: NSObject {
         }
     }
     
+    func editUserEmail(email: String, callback: @escaping (Error?) -> () ) {
+        Auth.auth().currentUser?.updateEmail(to: email, completion: { (error) in
+            callback(error)
+        })
+    }
+    
     // MARK: - Files
     func uploadUserPhoto(userID: String, photo: UIImage, time: String, callback: @escaping (Error?) -> () ) {
         let storageRef = Storage.storage().reference().child("profilePhotos").child("\(userID).jpg")
@@ -445,7 +451,7 @@ class FirebaseManager: NSObject {
     }
     
     // MARK: - Surveys
-    func createSurvey(info: [String: String], questions: [String: Any], users: Set<String>, callback: @escaping (Error?) -> ())  {
+    func createSurvey(info: [String: Any], questions: [String: Any], users: Set<String>, callback: @escaping (Error?) -> ())  {
         let DBref = Database.database().reference()
         
         var usersDict = [String: Bool]()
@@ -463,7 +469,7 @@ class FirebaseManager: NSObject {
         newSurvey.setValue(newItemContent){ (error, ref) in
             if let surveyID = ref.key {
                 // Surveys in a project
-                let projectID = info["projectID"]!
+                let projectID = info["projectID"] as! String
                 DBref.child(self.PROJECTS).child(projectID).child("surveys").observeSingleEvent(of: .value, with: { (snapshot) in
                     if(snapshot.exists()) {
                         var projectSurveys = snapshot.value as! [String: Bool]

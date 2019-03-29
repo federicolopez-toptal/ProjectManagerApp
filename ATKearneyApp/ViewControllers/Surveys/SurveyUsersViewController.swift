@@ -12,6 +12,11 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
 
     @IBOutlet weak var usersList: UITableView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
+    @IBOutlet weak var expirationDateButton: UIButton!
+    
+    let darkView = UIView()
+    let datePicker = UIDatePicker()
+    var dateSelected = false
     
     var users = [NSDictionary]()
     var selectedUsers = Set<String>()
@@ -28,6 +33,8 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
         loading.stopAnimating()
         let nib = UINib.init(nibName: "UserSelectableCell", bundle: nil)
         usersList.register(nib, forCellReuseIdentifier: "UserSelectableCell")
+        
+        buildDateSelector()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +52,53 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
             self.loading.stopAnimating()
         }
     }
+    
+    // MARK: - Date Selector
+    func buildDateSelector() {
+        darkView.frame = self.view.frame
+        darkView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(darkViewOnTap(sender:)))
+        darkView.addGestureRecognizer(gesture)
+        darkView.isHidden = true
+        self.view.addSubview(darkView)
+        
+        datePicker.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216)
+        datePicker.backgroundColor = UIColor.white
+        datePicker.datePickerMode = .date
+        darkView.addSubview(datePicker)
+        datePicker.date = Date()
+        datePicker.center = darkView.center
+        
+        let okButton = UIButton(type: .custom)
+        okButton.frame = CGRect(x: self.view.frame.size.width - 105, y: BOTTOM(view: datePicker) + 5.0, width: 100, height: 35)
+        okButton.backgroundColor = UIColor.white
+        okButton.setTitle("Ok", for: .normal)
+        okButton.setTitleColor(UIColor.black, for: .normal)
+        okButton.addTarget(self, action: #selector(okDateButtonTap), for: .touchUpInside)
+        darkView.addSubview(okButton)
+    }
+    @objc func darkViewOnTap(sender: UITapGestureRecognizer) {
+        darkView.isHidden = true
+    }
+    @IBAction func expirationButtonTap(_ sender: UIButton) {
+        darkView.isHidden = false
+    }
+    @objc func okDateButtonTap(sender: UIButton) {
+        if(datePicker.date <= Date()) {
+            ALERT(title_ERROR, text_EXP_DATE_ERROR, viewController: self)
+        } else {
+            var selectedDate = datePicker.date
+            selectedDate = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: selectedDate)!
+
+            SelectedSurvey.shared.expires = selectedDate
+            dateSelected = true
+            
+            expirationDateButton.setTitle(" \(STR_DATE_NICE(selectedDate))", for: .normal)
+            darkView.isHidden = true
+        }
+    }
+    
+    
     
     // MARK: - UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -145,6 +199,15 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
     
     
     @IBAction func createButtonTap(_ sender: UIButton) {
+        if(!dateSelected) {
+            ALERT(title_ERROR, text_EXP_DATE_BLANK, viewController: self)
+            return
+        }
+        if(selectedUsers.isEmpty) {
+            ALERT(title_ERROR, text_SURVEY_NO_USERS, viewController: self)
+            return
+        }
+        
         var description = ""
         if let D = SelectedSurvey.shared.description {
             description = D
@@ -154,9 +217,10 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
             "projectID": SelectedProject.shared.projectID ,
             "title": SelectedSurvey.shared.title,
             "description": description,
+            "active": true,
             "created": NOW(),
-            "expires": NOW()
-        ]
+            "expires": STR_DATE(SelectedSurvey.shared.expires)
+        ] as [String: Any]
         
         var questions = [String: Any]()
         for (index, Q) in SelectedSurvey.shared.questions.enumerated() {

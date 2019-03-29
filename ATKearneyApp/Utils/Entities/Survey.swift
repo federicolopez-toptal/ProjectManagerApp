@@ -36,7 +36,8 @@ struct Survey {
     var surveyID = ""
     var title = ""
     var description: String?
-    var created = ""
+    var created: Date = Date()
+    var expires: Date = Date()
     var questions = [Question]()
     var answers = [Answers]()
     
@@ -44,7 +45,7 @@ struct Survey {
         surveyID = ""
         title = ""
         description = ""
-        created = ""
+        created = Date()
         questions = [ Question(text: "", type: .text, options: []) ]
     }
     
@@ -52,12 +53,13 @@ struct Survey {
         surveyID = dict["id"] as! String
         let content = dict["content"] as! [String: Any]
         
-        let info = content["info"] as! [String: String]
+        let info = content["info"] as! [String: Any]
         let questions = content["questions"] as! [NSDictionary]
         
-        title = info["title"]! as String
-        description = info["description"]
-        created = info["created"]! as String
+        title = info["title"] as! String
+        description = info["description"] as? String
+        created = DATE(info["created"] as! String)
+        expires = DATE(info["expires"] as! String)
         
         // Questions
         self.questions = [Question]()

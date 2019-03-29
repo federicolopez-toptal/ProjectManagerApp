@@ -31,17 +31,29 @@ func INTERNET_AVAILABLE() -> Bool {
 
 // Date example: 2019-03-19_11-30_-0300
 func NOW() -> String {
+    return STR_DATE(Date())
+}
+
+func STR_DATE(_ date: Date) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd_HH-mm_ZZZ"
-    let result = dateFormatter.string(from: Date())
+    let result = dateFormatter.string(from: date)
     
     return result
 }
 
-func DATE(_ str: String) -> Date? {
+func DATE(_ str: String) -> Date {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd_HH-mm_ZZZ"
     let result = dateFormatter.date(from: str)
+    
+    return result!
+}
+
+func STR_DATE_NICE(_ date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd MMMM yyyy"
+    let result = dateFormatter.string(from: date)
     
     return result
 }
