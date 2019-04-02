@@ -627,5 +627,13 @@ class FirebaseManager: NSObject {
             }
         }
     }
+    
+    func finishSurvey(surveyID: String, callback: @escaping (Error?) -> ()) {
+        let DBref = Database.database().reference()
+        
+        DBref.child(SURVEYS).child(surveyID).child("info").child("active").setValue(false) { (error, ref) in
+            callback(error)
+        }
+    }
 
 }

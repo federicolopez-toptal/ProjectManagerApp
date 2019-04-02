@@ -41,3 +41,4 @@ let text_ANSWER_MULTIPLE_0 =    "You should select at least one option in a mult
 let text_EXP_DATE_ERROR =       "The expiration date should be later than today"
 let text_EXP_DATE_BLANK =       "Please select an expiration date for the survey"
 let text_SURVEY_NO_USERS =      "A survey should be sent, at least, to one user"
+let text_SURVEY_FINISHED =      "The survey is inactive now"

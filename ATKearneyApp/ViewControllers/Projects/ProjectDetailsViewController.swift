@@ -23,6 +23,10 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     @IBOutlet weak var surveysList: UITableView!
     @IBOutlet weak var noSurveysLabel: UILabel!
     
+    var surveysFilter = 0
+    @IBOutlet weak var surveySelectorView: UIView!
+    @IBOutlet weak var heightContraint: NSLayoutConstraint!
+    
     var users = [NSDictionary]()
     var surveys = [NSDictionary]()
     var firstTime = true
@@ -83,29 +87,13 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             noSurveysLabel.isHidden = true
             loadingSurvey.startAnimating()
             if(MyUser.shared.admin || SelectedProject.shared.hasOfficer(userID: MyUser.shared.userID)) {
-                // get all surveys for this project (I'm an admin or project officer)
-                surveys = [NSDictionary]()
-                FirebaseManager.shared.getSurveysForProject(SelectedProject.shared.projectID) { (surveysArray, error) in
-                    
-                    //self.surveys = surveysArray!      // Without filters
-                    
-                    // Filter: Include only NON EXPIRED surveys
-                    for dict in surveysArray! {
-                        if(!self.isExpired(dict: dict)) {
-                            self.surveys.append(dict)
-                        }
-                    }
-                    
-                    if(self.surveys.count==0) {
-                        self.noSurveysLabel.isHidden = false
-                        self.noSurveysLabel.text = "No surveys for this project"
-                    }
-                    
-                    self.surveysList.reloadData()
-                    self.loadingSurvey.stopAnimating()
-                }
+                loadSurveysForAdmin()
+                
             } else {
                 surveyLabel.text = "Surveys to answer"
+                
+                heightContraint.constant = 0.0
+                surveySelectorView.isHidden = true
                 
                 // get surveys that includes my user
                 surveys = [NSDictionary]()
@@ -136,6 +124,53 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         }
     }
     
+    func loadSurveysForAdmin() {
+        noSurveysLabel.isHidden = true
+        loadingSurvey.startAnimating()
+        
+        // UI update
+        for (i, V) in surveySelectorView.subviews.enumerated() {
+            let button = (V as! UIButton)
+            if(i==surveysFilter) {
+                button.setTitleColor(UIColor.black, for: .normal)
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+            } else {
+                button.setTitleColor(UIColor.lightGray, for: .normal)
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+            }
+            
+        }
+        
+        // get all surveys for this project (I'm an admin or project officer)
+        surveys = [NSDictionary]()
+        FirebaseManager.shared.getSurveysForProject(SelectedProject.shared.projectID) { (surveysArray, error) in
+            //self.surveys = surveysArray!      // Without filters
+            
+            
+            for dict in surveysArray! {
+                if(self.surveysFilter==0) {     // Filter: Include NON EXPIRED and ACTIVE surveys
+                    if(!self.isExpired(dict: dict) && self.isActive(dict: dict)) {
+                        self.surveys.append(dict)
+                    }
+                } else {                        // Filter: Include EXPIRED and INACTIVE surveys
+                    if(self.isExpired(dict: dict)) {
+                        self.surveys.append(dict)
+                    } else if(!self.isActive(dict: dict)) {
+                        self.surveys.append(dict)
+                    }
+                }
+            }
+            
+            if(self.surveys.count==0) {
+                self.noSurveysLabel.isHidden = false
+                self.noSurveysLabel.text = "No surveys found"
+            }
+            
+            self.surveysList.reloadData()
+            self.loadingSurvey.stopAnimating()
+        }
+    }
+    
     func isExpired(dict: NSDictionary) -> Bool {
         let content = dict["content"] as! NSDictionary
         let info = content["info"] as! NSDictionary
@@ -144,6 +179,14 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         
         let isValid = expDate > Date()
         return !isValid
+    }
+    
+    func isActive(dict: NSDictionary) -> Bool {
+        let content = dict["content"] as! NSDictionary
+        let info = content["info"] as! NSDictionary
+        let active = info["active"] as! Bool
+        
+        return active
     }
 
     // MARK: - Button actions
@@ -158,6 +201,22 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     @IBAction func createSurveyButtonTap(_ sender: UIButton) {
         self.performSegue(withIdentifier: "gotoNewSurvey", sender: self)
     }
+    
+    @IBAction func surveySelectorButtonTap(_ sender: UIButton) {
+        surveysFilter = sender.tag
+        
+        for V in surveySelectorView.subviews {
+            let button = (V as! UIButton)
+            button.setTitleColor(UIColor.lightGray, for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+        }
+    
+        sender.setTitleColor(UIColor.black, for: .normal)
+        sender.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+        
+        loadSurveysForAdmin()
+    }
+    
     
     
     // MARK: - UITableView
@@ -257,6 +316,14 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             destinationVC.profileInProject = true
             destinationVC.officerRoleEditable = false
             destinationVC.canEditMyProfile = false
+        } else if(segue.identifier=="gotoResults") {
+            let destinationVC = segue.destination as! SurveyResultsViewController
+            if(surveysFilter==0) {
+                destinationVC.isActive = true
+            } else {
+                destinationVC.isActive = false
+            }
         }
     }
+    
 }

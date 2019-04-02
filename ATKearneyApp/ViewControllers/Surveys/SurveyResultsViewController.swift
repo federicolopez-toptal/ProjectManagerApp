@@ -38,6 +38,7 @@ class SurveyResultsViewController: BaseViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     let BASE_TAG = 200
+    var isActive = true
     
     // MARK: - Init
     override func viewDidLoad() {
@@ -59,6 +60,29 @@ class SurveyResultsViewController: BaseViewController {
     @IBAction func closeButtonTap(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func manageButtonTap(_ sender: UIButton) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        if(isActive) {
+            let finishAction = UIAlertAction(title: "Finish survey", style: .default) { (alertAction) in
+                self.finishSurvey()
+            }
+            alert.addAction(finishAction)
+        }
+        
+        let deleteAction = UIAlertAction(title: "Delete survey", style: .default) { (alertAction) in
+            self.deleteSurvey()
+        }
+        alert.addAction(deleteAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true) {
+        }
+    }
+    
     
     // MARK: - Answers
     func buildAnswers() {
@@ -346,6 +370,72 @@ class SurveyResultsViewController: BaseViewController {
         sender.isSelected = true
         sender.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
         showAnswer(sender.tag)
+    }
+    
+    // MARK: - Some actions
+    func finishSurvey() {
+        let title = "Finish survey"
+        let msg = "The users will not be able to answer it anymore. Confirm?"
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (alertAction) in
+            self.finishSurvey_step2()
+        }
+        alert.addAction(yesAction)
+        
+        let noAction = UIAlertAction(title: "No", style: .default) { (alertAction) in
+            print("No")
+        }
+        alert.addAction(noAction)
+        
+        self.present(alert, animated: true) {
+        }
+    }
+    func finishSurvey_step2() {
+        showLoading(true)
+        FirebaseManager.shared.finishSurvey(surveyID: SelectedSurvey.shared.surveyID) { (error) in
+            if(error==nil) {
+                ALERT(title_SUCCES, text_SURVEY_FINISHED, viewController: self) {
+                    var destination: UIViewController?
+                    for VC in self.navigationController!.viewControllers {
+                        if(VC is ProjectDetailsViewController) {
+                            destination = VC
+                            break
+                        }
+                    }
+                    
+                    if let VC = destination {
+                        (VC as! ProjectDetailsViewController).firstTime = true
+                        self.navigationController?.popToViewController(VC, animated: true)
+                    }
+                }
+            } else {
+                ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
+            }
+            
+            self.showLoading(false)
+        }
+    }
+    
+    
+    
+    func deleteSurvey() {
+        let title = "Delete survey"
+        let msg = "The survey and all it results will be deleted. Confirm?"
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (alertAction) in
+            print("Yes!")
+        }
+        alert.addAction(yesAction)
+        
+        let noAction = UIAlertAction(title: "No", style: .default) { (alertAction) in
+            print("No")
+        }
+        alert.addAction(noAction)
+        
+        self.present(alert, animated: true) {
+        }
     }
     
 }

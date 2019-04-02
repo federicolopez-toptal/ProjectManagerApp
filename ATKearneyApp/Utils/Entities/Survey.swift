@@ -35,6 +35,7 @@ struct Survey {
     
     var surveyID = ""
     var title = ""
+    var active = true
     var description: String?
     var created: Date = Date()
     var expires: Date = Date()
@@ -44,6 +45,7 @@ struct Survey {
     mutating func reset() {
         surveyID = ""
         title = ""
+        active = true
         description = ""
         created = Date()
         questions = [ Question(text: "", type: .text, options: []) ]
@@ -60,6 +62,8 @@ struct Survey {
         description = info["description"] as? String
         created = DATE(info["created"] as! String)
         expires = DATE(info["expires"] as! String)
+        
+        active = info["active"] as! Bool
         
         // Questions
         self.questions = [Question]()
