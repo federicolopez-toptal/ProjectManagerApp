@@ -425,7 +425,7 @@ class SurveyResultsViewController: BaseViewController {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         
         let yesAction = UIAlertAction(title: "Yes", style: .default) { (alertAction) in
-            print("Yes!")
+            self.deleteSurvey_step2()
         }
         alert.addAction(yesAction)
         
@@ -435,6 +435,34 @@ class SurveyResultsViewController: BaseViewController {
         alert.addAction(noAction)
         
         self.present(alert, animated: true) {
+        }
+    }
+    func deleteSurvey_step2() {
+        let S = SelectedSurvey.shared.surveyID
+        let P = SelectedProject.shared.projectID
+        
+        showLoading(true)
+        FirebaseManager.shared.deleteSurvey(surveyID: S, projectID: P){ (error) in
+            if(error==nil) {
+                ALERT(title_SUCCES, text_SURVEY_DELETED, viewController: self) {
+                    var destination: UIViewController?
+                    for VC in self.navigationController!.viewControllers {
+                        if(VC is ProjectDetailsViewController) {
+                            destination = VC
+                            break
+                        }
+                    }
+                    
+                    if let VC = destination {
+                        (VC as! ProjectDetailsViewController).firstTime = true
+                        self.navigationController?.popToViewController(VC, animated: true)
+                    }
+                }
+            } else {
+                ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
+            }
+            
+            self.showLoading(false)
         }
     }
     

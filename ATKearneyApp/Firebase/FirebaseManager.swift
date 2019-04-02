@@ -635,5 +635,26 @@ class FirebaseManager: NSObject {
             callback(error)
         }
     }
+    
+    func deleteSurvey(surveyID: String, projectID: String, callback: @escaping (Error?) -> ()) {
+        let DBref = Database.database().reference()
+        
+        // 1. Remove survey from project
+        DBref.child(PROJECTS).child(projectID).child("surveys").child(surveyID).removeValue()
+        
+        // 2. Remove survey from users
+        DBref.child(SURVEYS).child(surveyID).child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+            let users = snapshot.value as! [String: Bool]
+            
+            for (keyUserID, _) in users {
+                DBref.child(self.USERS).child(keyUserID).child("surveys").child(surveyID).removeValue()
+            }
+            
+            // 3. Finally, delete the survey
+            DBref.child(self.SURVEYS).child(surveyID).removeValue(completionBlock: { (error, ref) in
+                callback(error)
+            })
+        })
+    }
 
 }

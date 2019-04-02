@@ -101,9 +101,9 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
                     
                     //self.surveys = surveysArray!      // Without filters
                     
-                    // Filter: Include NON EXPIRED + NON ANSWERED surveys
+                    // Filter: Include (NON EXPIRED + ACTIVE) + NON ANSWERED surveys
                     for dict in surveysArray! {
-                        if(!self.isExpired(dict: dict)) {
+                        if(!self.isExpired(dict: dict) && self.isActive(dict: dict)) {
                             let shouldAnswer = dict["shouldAnswer"] as! Bool
                             if(shouldAnswer) {
                                 self.surveys.append(dict)
