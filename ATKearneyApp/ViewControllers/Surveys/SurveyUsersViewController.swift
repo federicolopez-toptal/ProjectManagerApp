@@ -327,7 +327,8 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
             var url = FirebaseManager.FUNC_SEND_EMAIL
             url = url.replacingOccurrences(of: "<TO>", with: strEmails)
             url = url.replacingOccurrences(of: "<TYPE>", with: "addedToSurvey")
-            url = url.replacingOccurrences(of: "<PARAM1>", with: URL_ENCODE(SelectedSurvey.shared.title))
+            url = url.replacingOccurrences(of: "<PARAM1>", with: SelectedProject.shared.projectID)
+            url = url.replacingOccurrences(of: "<PARAM2>", with: URL_ENCODE(SelectedSurvey.shared.title))
 
             CALL_URL(url)
         }

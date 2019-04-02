@@ -45,6 +45,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         Device.shared.FCMToken = fcmToken
         FirebaseManager.shared.saveDeviceToCurrentUser(deviceToken: fcmToken)
     }
+    
+    // MARK: - Custom URL scheme
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        /*
+         example:
+            atkearneyPMO://showSurvey?projectID=123
+        */
+        
+        //print(url.query)
+        
+        // url.scheme   // unused here
+        if let host = url.host {
+            // Open a specific survey
+            if(host=="showSurvey") {
+                var projectID = ""
+                
+                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+                if let params = urlComponents?.queryItems {
+                    for P in params {
+                        if(P.name == "projectID") {
+                            projectID = P.value!
+                        }
+                    }
+                }
+                
+                Navigation.shared.navigate(action: host, params: [projectID])
+            }
+            
+        }
+        
+        return true
+    }
    
 }
 

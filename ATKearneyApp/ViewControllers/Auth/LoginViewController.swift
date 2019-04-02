@@ -22,6 +22,8 @@ class LoginViewController: BaseViewController {
         super.viewDidLoad()
         scrollView.subviews.first!.backgroundColor = UIColor.white
         addFormBehavior(scrollview: scrollView, bottomContraint: bottomConstraint)
+        
+        Navigation.shared.navController = self.navigationController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,10 +39,14 @@ class LoginViewController: BaseViewController {
                     }
                     
                     self.performSegue(withIdentifier: "gotoProjects", sender: self)
+                } else {
+                    Navigation.shared.finish()
                 }
                 
                 self.showLoading(false)
             }
+        } else {
+            Navigation.shared.finish()
         }
     }
     

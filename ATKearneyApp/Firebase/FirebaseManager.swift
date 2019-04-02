@@ -20,7 +20,7 @@ class FirebaseManager: NSObject {
     
     private let BUCKET = "atk-pmo-v3.appspot.com"
     
-    static let FUNC_SEND_EMAIL = "https://us-central1-atk-pmo-v3.cloudfunctions.net/sendEmail?to=<TO>&type=<TYPE>&param1=<PARAM1>"
+    static let FUNC_SEND_EMAIL = "https://us-central1-atk-pmo-v3.cloudfunctions.net/sendEmail?to=<TO>&type=<TYPE>&param1=<PARAM1>&param2=<PARAM2>"
     static let FUNC_SEND_PUSH = "https://us-central1-atk-pmo-v3.cloudfunctions.net/sendPush?to=<TO>&type=<TYPE>&param1=<PARAM1>"
     
     

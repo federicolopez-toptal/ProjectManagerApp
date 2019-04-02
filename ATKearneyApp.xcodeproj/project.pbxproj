@@ -15,6 +15,7 @@
 		BD0E2FA222413C7D00BB7E57 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2FA122413C7D00BB7E57 /* CustomNavigationController.swift */; };
 		BD0E2FA62241429C00BB7E57 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2FA52241429C00BB7E57 /* Reachability.swift */; };
 		BD0E2FA8224151DA00BB7E57 /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0E2FA7224151DA00BB7E57 /* Texts.swift */; };
+		BD1D2D092253E0E3007A5D5E /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D2D082253E0E3007A5D5E /* Navigation.swift */; };
 		BD3BABC92239A8CD004521F4 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3BABC72239A8CD004521F4 /* UserCell.swift */; };
 		BD3BABCA2239A8CD004521F4 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3BABC82239A8CD004521F4 /* UserCell.xib */; };
 		BD4285642240177700E7D5EA /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4285632240177700E7D5EA /* EditUserViewController.swift */; };
@@ -87,6 +88,7 @@
 		BD0E2FA122413C7D00BB7E57 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		BD0E2FA52241429C00BB7E57 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BD0E2FA7224151DA00BB7E57 /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
+		BD1D2D082253E0E3007A5D5E /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		BD3BABC72239A8CD004521F4 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		BD3BABC82239A8CD004521F4 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		BD4285632240177700E7D5EA /* EditUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				BD4DC9BC223C476500E14F2F /* SelectedUser.swift */,
 				BD82FF4B22399984008F6304 /* SelectedProject.swift */,
 				BD818FB622495D0E00D47B4A /* SelectedSurvey.swift */,
+				BD1D2D082253E0E3007A5D5E /* Navigation.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				BD3BABC92239A8CD004521F4 /* UserCell.swift in Sources */,
 				BD82B795223964A5003825D8 /* BaseViewController.swift in Sources */,
 				BD8ED511224B99E5009059E9 /* AnwserSurveyViewController.swift in Sources */,
+				BD1D2D092253E0E3007A5D5E /* Navigation.swift in Sources */,
 				BDC64AD9224ABCAF000E1831 /* SurveyCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

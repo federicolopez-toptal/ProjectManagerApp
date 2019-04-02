@@ -43,3 +43,6 @@ let text_EXP_DATE_BLANK =       "Please select an expiration date for the survey
 let text_SURVEY_NO_USERS =      "A survey should be sent, at least, to one user"
 let text_SURVEY_FINISHED =      "The survey is inactive now"
 let text_SURVEY_DELETED =       "The survey was successfully deleted"
+
+let text_PROJECT_NOT_FOUND =    "Project not found"
+let text_SURVEY_NOT_FOUND =     "Survey not found"

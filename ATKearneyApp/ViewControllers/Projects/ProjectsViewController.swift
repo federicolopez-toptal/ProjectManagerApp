@@ -54,6 +54,29 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         MyUser.shared.traceAll()
     }
     
+    // MARK: - navigation
+    func navigate() {
+        if(Navigation.shared.active && Navigation.shared.action=="showSurvey") {
+            let projectID = Navigation.shared.getParam()
+            
+            var found = false
+            for (index, P) in projects.enumerated() {
+                let pID = P["id"] as! String
+                if(pID==projectID) {
+                    found = true
+                    Navigation.shared.finish()
+                    tableView(projectsList, didSelectRowAt: IndexPath(row: index, section: 0))
+                    break
+                }
+            }
+            
+            if(!found) {
+                Navigation.shared.finish()
+                ALERT(title_ERROR, text_PROJECT_NOT_FOUND, viewController: self)
+            }
+        }
+    }
+    
     // MARK: - Button actions
     @IBAction func createProjectButtonTap(_ sender: UIButton) {
         self.performSegue(withIdentifier: "gotoNewProject", sender: self)
@@ -106,6 +129,7 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         }
         
         projectsList.reloadData()
+        navigate()
     }
     
     // MARK: - UITableView
