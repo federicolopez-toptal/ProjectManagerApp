@@ -19,6 +19,7 @@ struct User {
     var role: String?
     var skills: String?
     var photoLastUpdate: String?
+    var deviceToken: String?
     
 
     // MARK: - Edit info
@@ -32,6 +33,7 @@ struct User {
         role = nil
         skills = nil
         photoLastUpdate = nil
+        deviceToken = nil
     }
     
     mutating func fillWith(info: NSDictionary) {
@@ -49,6 +51,7 @@ struct User {
         role = info["role"] as? String
         skills = info["skills"] as? String
         photoLastUpdate = info["photoLastUpdate"] as? String
+        deviceToken = info["deviceToken"] as? String
     }
     
     mutating func fillWith(userID: String, info: [String: Any]) {
@@ -62,6 +65,7 @@ struct User {
         role = info["role"] as? String
         skills = info["skills"] as? String
         photoLastUpdate = info["photoLastUpdate"] as? String
+        deviceToken = info["deviceToken"] as? String
     }
     
     // MARK: - misc

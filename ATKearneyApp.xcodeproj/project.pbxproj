@@ -45,6 +45,7 @@
 		BD82FF4C22399984008F6304 /* SelectedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82FF4B22399984008F6304 /* SelectedProject.swift */; };
 		BD82FF4F22399E5D008F6304 /* checkON.png in Resources */ = {isa = PBXBuildFile; fileRef = BD82FF4D22399E5D008F6304 /* checkON.png */; };
 		BD82FF5022399E5D008F6304 /* checkOFF.png in Resources */ = {isa = PBXBuildFile; fileRef = BD82FF4E22399E5D008F6304 /* checkOFF.png */; };
+		BD85F36F2252A6BA004430D4 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD85F36E2252A6BA004430D4 /* Device.swift */; };
 		BD886992224568F400468D4E /* whiteLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = BD886991224568F400468D4E /* whiteLogo.png */; };
 		BD8C69892242A63D00A25ED4 /* profileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BD8C69882242A63C00A25ED4 /* profileIcon.png */; };
 		BD8C698B2242A86900A25ED4 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8C698A2242A86900A25ED4 /* UIButtonExtension.swift */; };
@@ -118,6 +119,7 @@
 		BD82FF4B22399984008F6304 /* SelectedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedProject.swift; sourceTree = "<group>"; };
 		BD82FF4D22399E5D008F6304 /* checkON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkON.png; sourceTree = "<group>"; };
 		BD82FF4E22399E5D008F6304 /* checkOFF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkOFF.png; sourceTree = "<group>"; };
+		BD85F36E2252A6BA004430D4 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		BD886991224568F400468D4E /* whiteLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteLogo.png; sourceTree = "<group>"; };
 		BD8C69882242A63C00A25ED4 /* profileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileIcon.png; sourceTree = "<group>"; };
 		BD8C698A2242A86900A25ED4 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		BDDBA3BD223AC306005E96FF /* plusRedButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusRedButton.png; sourceTree = "<group>"; };
 		BDDBA3BF223AC43E005E96FF /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
 		BDDBA3C1223AF9D3005E96FF /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
+		BDECB49B22524A75000A6F09 /* ATKearneyApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ATKearneyApp.entitlements; sourceTree = "<group>"; };
 		BDF7D44F2240600600D276CE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BDF7D45122406FD300D276CE /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		BDF901672243E71F00F83E55 /* 29_x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 29_x3.png; sourceTree = "<group>"; };
@@ -273,6 +276,7 @@
 		BD7B690322395F2100C0DE35 /* ATKearneyApp */ = {
 			isa = PBXGroup;
 			children = (
+				BDECB49B22524A75000A6F09 /* ATKearneyApp.entitlements */,
 				BD4DC9BE223C4F9100E14F2F /* notes.txt */,
 				BDAAAEC12249D2B100F21229 /* Values.swift */,
 				BD0E2FA7224151DA00BB7E57 /* Texts.swift */,
@@ -385,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				BD82B7A022396D9B003825D8 /* MyUser.swift */,
+				BD85F36E2252A6BA004430D4 /* Device.swift */,
 				BD4DC9BC223C476500E14F2F /* SelectedUser.swift */,
 				BD82FF4B22399984008F6304 /* SelectedProject.swift */,
 				BD818FB622495D0E00D47B4A /* SelectedSurvey.swift */,
@@ -468,6 +473,11 @@
 				TargetAttributes = {
 					BD7B690022395F2100C0DE35 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -544,6 +554,7 @@
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -554,6 +565,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -594,6 +606,7 @@
 				BDDBA3C0223AC43E005E96FF /* ProjectDetailsViewController.swift in Sources */,
 				BD4DC9BB223C27C400E14F2F /* ResetPassViewController.swift in Sources */,
 				BD4DC9BD223C476500E14F2F /* SelectedUser.swift in Sources */,
+				BD85F36F2252A6BA004430D4 /* Device.swift in Sources */,
 				BD82B7A322397E1B003825D8 /* LoginViewController.swift in Sources */,
 				BDDBA3C2223AF9D3005E96FF /* UserDetailsViewController.swift in Sources */,
 				BD8C698D2242EFEE00A25ED4 /* UIImageViewExtension.swift in Sources */,
@@ -772,6 +785,7 @@
 			baseConfigurationReference = C6D672A18292CFB9EFD13DB9 /* Pods-ATKearneyApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ATKearneyApp/ATKearneyApp.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SW8S5Y74E8;
 				INFOPLIST_FILE = ATKearneyApp/App/Info.plist;
@@ -782,7 +796,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gatoLab.ATKearneyPMO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "ATKearneyPMO DEV";
+				PROVISIONING_PROFILE_SPECIFIER = "ATKearneyPMO DEV 01 April";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -793,6 +807,7 @@
 			baseConfigurationReference = D99FF67ABA930557895509B0 /* Pods-ATKearneyApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ATKearneyApp/ATKearneyApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SW8S5Y74E8;

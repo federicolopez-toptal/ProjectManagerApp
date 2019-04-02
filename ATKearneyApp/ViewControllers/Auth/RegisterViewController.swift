@@ -55,6 +55,11 @@ class RegisterViewController: BaseViewController {
             FirebaseManager.shared.createUser(email: emailTextField.text!, password: passwordTextField.text!, info: info) { (error) in
                 if(error==nil) {
                     ALERT(title_SUCCES, text_USER_CREATED, viewController: self) {
+                        MyUser.shared.deviceToken = Device.shared.FCMToken
+                        if let deviceToken = Device.shared.FCMToken {
+                            FirebaseManager.shared.saveDeviceToCurrentUser(deviceToken: deviceToken)
+                        }
+                        
                         self.performSegue(withIdentifier: "gotoProjects", sender: self)
                     }
                 } else {

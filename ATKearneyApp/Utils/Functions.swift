@@ -183,3 +183,40 @@ func COLOR_FROM_HEX(_ hex: String) -> UIColor {
         alpha: CGFloat(1.0)
     )
 }
+
+func CALL_URL(_ url: String) {
+    
+    let task = URLSession.shared.dataTask(with: URL(string: url)!){ (data, response, error) in
+        if(error==nil) {
+            if let D = data {
+                print( String(data: D, encoding: .utf8)! )
+            }
+        }
+    }
+    task.resume()
+}
+
+func URL_ENCODE(_ text: String) -> String {
+    return text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+}
+
+
+
+
+/*
+ let url = URL(string: "http://www.google.com/") //Or your URL
+ var request = URLRequest(url: url!)
+ request.httpMethod = "POST"
+ request.httpBody = "Data to send to your backend".data(using: .utf8)!
+ 
+ let task = URLSession.shared.dataTask(with: request) { data, response, error in
+ if error != nil {
+ //There was an error
+ } else {
+ //The HTTP request was successful
+ print(String(data: data!, encoding: .utf8)!)
+ }
+ 
+ }
+ task.resume()
+ */

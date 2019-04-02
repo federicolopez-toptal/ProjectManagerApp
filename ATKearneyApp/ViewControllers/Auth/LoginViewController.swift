@@ -31,6 +31,11 @@ class LoginViewController: BaseViewController {
             showLoading(true)
             FirebaseManager.shared.autoLogin{ (success, error) in
                 if(error==nil && success) {
+                    MyUser.shared.deviceToken = Device.shared.FCMToken
+                    if let deviceToken = Device.shared.FCMToken {
+                        FirebaseManager.shared.saveDeviceToCurrentUser(deviceToken: deviceToken)
+                    }
+                    
                     self.performSegue(withIdentifier: "gotoProjects", sender: self)
                 }
                 
@@ -55,6 +60,11 @@ class LoginViewController: BaseViewController {
             showLoading(true)
             FirebaseManager.shared.login(email: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if(error==nil) {
+                    MyUser.shared.deviceToken = Device.shared.FCMToken
+                    if let deviceToken = Device.shared.FCMToken {
+                        FirebaseManager.shared.saveDeviceToCurrentUser(deviceToken: deviceToken)
+                    }
+                        
                     self.performSegue(withIdentifier: "gotoProjects", sender: self)
                 } else {
                     var text = ""

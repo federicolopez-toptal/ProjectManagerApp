@@ -20,6 +20,9 @@ class FirebaseManager: NSObject {
     
     private let BUCKET = "atk-pmo-v3.appspot.com"
     
+    static let FUNC_SEND_EMAIL = "https://us-central1-atk-pmo-v3.cloudfunctions.net/sendEmail?to=<TO>&type=<TYPE>&param1=<PARAM1>"
+    static let FUNC_SEND_PUSH = "https://us-central1-atk-pmo-v3.cloudfunctions.net/sendPush?to=<TO>&type=<TYPE>&param1=<PARAM1>"
+    
     
     // MARK: - Users
     func createUser(email: String, password: String, info:[String: Any], callback: @escaping (Error?) ->() ) {
@@ -190,6 +193,24 @@ class FirebaseManager: NSObject {
         Auth.auth().currentUser?.updateEmail(to: email, completion: { (error) in
             callback(error)
         })
+    }
+    
+    func saveDeviceToCurrentUser(deviceToken: String) {
+        let DBref = Database.database().reference()
+        
+        if let userID = Auth.auth().currentUser?.uid {
+            DBref.child(USERS).child(userID).child("info").child("deviceToken").setValue(deviceToken)
+        }
+    }
+    
+    func removeDeviceFromCurrentUser(callback: @escaping () -> () ) {
+        let DBref = Database.database().reference()
+        
+        if let userID = Auth.auth().currentUser?.uid {
+            DBref.child(USERS).child(userID).child("info").child("deviceToken").removeValue(){ _,_ in
+                callback()
+            }
+        }
     }
     
     // MARK: - Files

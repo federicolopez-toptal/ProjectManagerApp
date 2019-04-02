@@ -134,12 +134,17 @@ class UserDetailsViewController: BaseViewController {
     }
     
     @IBAction func logoutButtonTap(_ sender: UIButton) {        
-        FirebaseManager.shared.logout()
-        
-        let loginVC = self.navigationController?.viewControllers.first as! LoginViewController
-        loginVC.emailTextField.text = ""
-        loginVC.passwordTextField.text = ""
-        self.navigationController?.popToViewController(loginVC, animated: true)
+        showLoading(true)
+        FirebaseManager.shared.removeDeviceFromCurrentUser {
+            self.showLoading(false)
+            
+            FirebaseManager.shared.logout()
+            
+            let loginVC = self.navigationController?.viewControllers.first as! LoginViewController
+            loginVC.emailTextField.text = ""
+            loginVC.passwordTextField.text = ""
+            self.navigationController?.popToViewController(loginVC, animated: true)
+        }
     }
     
 }

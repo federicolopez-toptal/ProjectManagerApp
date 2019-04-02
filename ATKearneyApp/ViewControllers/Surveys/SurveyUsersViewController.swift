@@ -21,6 +21,9 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
     var users = [NSDictionary]()
     var selectedUsers = Set<String>()
     
+    var emails = Set<String>()
+    var deviceTokens = Set<String>()
+    
     
     // MARK: - Init
     override func viewDidLoad() {
@@ -156,6 +159,8 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! UserSelectableCell
         let userID = users[indexPath.row]["id"] as! String
+        let content = users[indexPath.row]["content"] as! NSDictionary
+        let info = content["info"] as! NSDictionary
         
         if( SelectedProject.shared.hasOfficer(userID: userID) ) {
             //
@@ -164,8 +169,18 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
             cell.setState(!cell.isON)
             if(cell.isON) {
                 selectedUsers.insert(userID)
+                
+                emails.insert(info["email"] as! String)
+                if let deviceToken = info["deviceToken"] as? String {
+                    deviceTokens.insert(deviceToken)
+                }
             } else {
                 selectedUsers.remove(userID)
+                
+                emails.remove(info["email"] as! String)
+                if let deviceToken = info["deviceToken"] as? String {
+                    deviceTokens.remove(deviceToken)
+                }
             }
         }
         
@@ -178,16 +193,23 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
     
     @IBAction func selectAllButtonTap(_ sender: UIButton) {
         selectedUsers = Set<String>()
-        for (index, userDict) in users.enumerated() {
+        for (index, _) in users.enumerated() {
             let indexPath = IndexPath(row: index, section: 0)
             let cell = usersList.cellForRow(at: indexPath) as! UserSelectableCell
             let userID = users[index]["id"] as! String
+            let content = users[indexPath.row]["content"] as! NSDictionary
+            let info = content["info"] as! NSDictionary
             
             if( !SelectedProject.shared.hasOfficer(userID: userID) ) {
                 // Check all the clients / ATK Members
                 cell.setState(true)
                 cell.checkImageView.isHidden = false
                 selectedUsers.insert(userID)
+                
+                emails.insert(info["email"] as! String)
+                if let deviceToken = info["deviceToken"] as? String {
+                    deviceTokens.insert(deviceToken)
+                }
             } else {
                 cell.setState(false)
                 cell.checkImageView.isHidden = true
@@ -234,11 +256,24 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
             questions[String(index)] = questionDict
         }
         
+        sendNotifications()
+        showLoading(false)
+        return
+        
+            
+            
+            
+            
+            
+        
         showLoading(true)
         FirebaseManager.shared.createSurvey(info: info, questions: questions, users: selectedUsers) { (error) in
             if(error != nil) {
                 ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
             } else {
+                // Enviar push notifications + emails
+                self.sendNotifications()
+                
                 ALERT(title_SUCCES, text_SURVEY_CREATED, viewController: self){
                     var destination: UIViewController?
                     
@@ -267,6 +302,45 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
         }
         
         return result
+    }
+    
+    func sendNotifications() {
+        var strEmails = ""
+        for E in emails {
+            if(!strEmails.isEmpty) {
+                strEmails += ","
+            }
+            strEmails += E
+        }
+        
+        var strDeviceTokens = ""
+        for T in deviceTokens {
+            if(!strDeviceTokens.isEmpty) {
+                strDeviceTokens += ","
+            }
+            strDeviceTokens += T
+        }
+        
+        
+        
+        if(!strEmails.isEmpty) {
+            var url = FirebaseManager.FUNC_SEND_EMAIL
+            url = url.replacingOccurrences(of: "<TO>", with: strEmails)
+            url = url.replacingOccurrences(of: "<TYPE>", with: "addedToSurvey")
+            url = url.replacingOccurrences(of: "<PARAM1>", with: URL_ENCODE(SelectedSurvey.shared.title))
+
+            CALL_URL(url)
+        }
+        
+        if(!strDeviceTokens.isEmpty) {
+            var url = FirebaseManager.FUNC_SEND_PUSH
+            url = url.replacingOccurrences(of: "<TO>", with: strDeviceTokens)
+            url = url.replacingOccurrences(of: "<TYPE>", with: "addedToSurvey")
+            url = url.replacingOccurrences(of: "<PARAM1>", with: URL_ENCODE(SelectedSurvey.shared.title))
+            
+            CALL_URL(url)
+        }
+        
     }
     
 }
