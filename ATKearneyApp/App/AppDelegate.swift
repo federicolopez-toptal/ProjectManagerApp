@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import UserNotifications
+import FirebaseMessaging
 
 
 @UIApplicationMain
@@ -22,6 +23,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         
         Messaging.messaging().delegate = self
         askForPushNotification()
+        
+        if(launchOptions != nil) {
+            // Open the app from push notification
+            if let userInfo = launchOptions![.remoteNotification] as? [AnyHashable: Any] {
+                let action = userInfo["gcm.notification.action"] as! String
+                
+                if(action=="showSurvey") {
+                    let projectID = userInfo["gcm.notification.projectID"] as! String
+                    Navigation.shared.navigate(action: action, params: [projectID])
+                }
+            }
+        }
         
         return true
     }
@@ -46,16 +59,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         FirebaseManager.shared.saveDeviceToCurrentUser(deviceToken: fcmToken)
     }
     
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        let appState = application.applicationState
+        
+        if(appState == .inactive || appState == .background) {
+            let action = userInfo["gcm.notification.action"] as! String
+            
+            if(action=="showSurvey") {
+                let projectID = userInfo["gcm.notification.projectID"] as! String
+                Navigation.shared.navigate(action: action, params: [projectID])
+            }
+        }
+    }
+    
+    
     // MARK: - Custom URL scheme
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         /*
          example:
             atkearneyPMO://showSurvey?projectID=123
         */
-        
-        //print(url.query)
-        
-        // url.scheme   // unused here
+
         if let host = url.host {
             // Open a specific survey
             if(host=="showSurvey") {
@@ -83,58 +107,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
 
 
-
-
-
-/*
- func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
- print(deviceToken)
- Messaging.messaging().apnsToken = deviceToken
- }
- 
- func application(application: UIApplication,
- didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
- Messaging.messaging().apnsToken = deviceToken as Data
- }
- 
- func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
- // If you are receiving a notification message while your app is in the background,
- // this callback will not be fired till the user taps on the notification launching the application.
- // TODO: Handle data of notification
- 
- // With swizzling disabled you must let Messaging know about the message, for Analytics
- // Messaging.messaging().appDidReceiveMessage(userInfo)
- 
- // Print message ID.
- 
- if let messageID = userInfo[gcmMessageIDKey] {
- print("Message ID: \(messageID)")
- }
- 
- // Print full message.
- print(userInfo)
- }
- 
- func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
- fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
- // If you are receiving a notification message while your app is in the background,
- // this callback will not be fired till the user taps on the notification launching the application.
- // TODO: Handle data of notification
- 
- // With swizzling disabled you must let Messaging know about the message, for Analytics
- // Messaging.messaging().appDidReceiveMessage(userInfo)
- 
- // Print message ID.
- 
- if let messageID = userInfo[gcmMessageIDKey] {
- print("Message ID: \(messageID)")
- }
- 
- 
- // Print full message.
- print(userInfo)
- 
- completionHandler(UIBackgroundFetchResult.newData)
- }
- 
- */

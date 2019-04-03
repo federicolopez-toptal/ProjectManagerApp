@@ -256,15 +256,6 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
             questions[String(index)] = questionDict
         }
         
-        sendNotifications()
-        showLoading(false)
-        return
-        
-            
-            
-            
-            
-            
         
         showLoading(true)
         FirebaseManager.shared.createSurvey(info: info, questions: questions, users: selectedUsers) { (error) in
@@ -326,18 +317,20 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
         if(!strEmails.isEmpty) {
             var url = FirebaseManager.FUNC_SEND_EMAIL
             url = url.replacingOccurrences(of: "<TO>", with: strEmails)
-            url = url.replacingOccurrences(of: "<TYPE>", with: "addedToSurvey")
+            url = url.replacingOccurrences(of: "<ACTION>", with: "showSurvey")
             url = url.replacingOccurrences(of: "<PARAM1>", with: SelectedProject.shared.projectID)
             url = url.replacingOccurrences(of: "<PARAM2>", with: URL_ENCODE(SelectedSurvey.shared.title))
 
             CALL_URL(url)
         }
         
+        
         if(!strDeviceTokens.isEmpty) {
             var url = FirebaseManager.FUNC_SEND_PUSH
             url = url.replacingOccurrences(of: "<TO>", with: strDeviceTokens)
-            url = url.replacingOccurrences(of: "<TYPE>", with: "addedToSurvey")
-            url = url.replacingOccurrences(of: "<PARAM1>", with: URL_ENCODE(SelectedSurvey.shared.title))
+            url = url.replacingOccurrences(of: "<ACTION>", with: "showSurvey")
+            url = url.replacingOccurrences(of: "<PARAM1>", with: SelectedProject.shared.projectID)
+            url = url.replacingOccurrences(of: "<PARAM2>", with: URL_ENCODE(SelectedSurvey.shared.title))
             
             CALL_URL(url)
         }

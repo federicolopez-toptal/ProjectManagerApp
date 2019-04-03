@@ -11,6 +11,8 @@ import UIKit
 class Navigation {
     static var shared = Navigation()
     
+    var sarasa: Any?
+    
     var action = ""
     var active = false
     var navController: UINavigationController?
@@ -46,6 +48,10 @@ class Navigation {
     }
     
     func getParam() -> String {
+        if(params.isEmpty) {
+            return ""
+        }
+        
         return params[currentParam]
     }
     
@@ -57,7 +63,6 @@ class Navigation {
     }
     
     func finish() {
-        // Clear everything
         active = false
     }
 }
