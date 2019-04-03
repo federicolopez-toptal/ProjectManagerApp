@@ -11,6 +11,8 @@ import UIKit
 extension UIButton {
     func setCircular() {
         self.imageView?.layer.cornerRadius = self.frame.width/2
+        self.imageView?.layer.borderWidth = 1.5
+        self.imageView?.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     func setCircularWithRadius(_ radius: CGFloat) {

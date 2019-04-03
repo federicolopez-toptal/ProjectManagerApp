@@ -41,6 +41,12 @@
 	<string>Users select photos for profile pictures</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Muli-Bold.ttf</string>
+		<string>Muli-Regular.ttf</string>
+		<string>Muli-SemiBold.ttf</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

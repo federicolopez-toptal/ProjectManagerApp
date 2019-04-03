@@ -40,7 +40,9 @@ class ResetPassViewController: BaseViewController {
             
             FirebaseManager.shared.resetPassword(email: emailTextField.text!) { (error) in
                 if(error==nil) {
-                    ALERT(title_SUCCES, text_EMAIL_SENT, viewController: self)
+                    //ALERT(title_SUCCES, text_EMAIL_SENT, viewController: self)
+                    
+                    self.performSegue(withIdentifier: "gotoConfirmation", sender: self)
                 } else {
                     var text = ""
                     let errorCode = ERROR_CODE(error)

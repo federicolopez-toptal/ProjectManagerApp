@@ -12,11 +12,14 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
 
     @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var noDataView: UIView!
+    @IBOutlet weak var noDataLabel: UILabel!
     @IBOutlet weak var createProjectButton: UIButton!
     @IBOutlet weak var createProjectCircleButton: UIButton!
+    //@IBOutlet weak var createProjectCircleButton: UIButton!
     @IBOutlet weak var projectsList: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var loading: UIActivityIndicatorView!
+    @IBOutlet weak var bottomWhiteViewHeightContraint: NSLayoutConstraint!
     
     var projects = [NSDictionary]()
     
@@ -25,7 +28,8 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        noDataView.backgroundColor = UIColor.white
+        noDataView.backgroundColor = self.view.backgroundColor
+        projectsList.backgroundColor = self.view.backgroundColor
         noDataView.isHidden = true
         
         projectsList.tableFooterView = UIView()
@@ -36,6 +40,10 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         let nib = UINib.init(nibName: "ProjectCell", bundle: nil)
         projectsList.register(nib, forCellReuseIdentifier: "ProjectCell")
         
+        if(!MyUser.shared.admin) {
+            bottomWhiteViewHeightContraint.constant = 0.0
+            noDataLabel.text = "There is no projects available for\nyou at the moment. Get in touch\nwith your project officer to add your project"
+        }
         createProjectButton.isHidden = !MyUser.shared.admin
         createProjectCircleButton.isHidden = true
         loading.stopAnimating()
@@ -152,13 +160,13 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         
         cell.nameLabel.text! = info["name"]! as String
         cell.descriptionLabel.text! = info["description"]! as String
-        cell.membersLabel.text = "\(usersCount) MEMBERS"
+        cell.membersLabel.text = "\(usersCount) Project members"
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return 215
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

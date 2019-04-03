@@ -200,25 +200,33 @@ func URL_ENCODE(_ text: String) -> String {
     return text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
 }
 
+func ADD_SHADOW(to view: UIView) {
+    let shadows = UIView()
+    shadows.frame = view.frame
+    shadows.clipsToBounds = false
+    view.addSubview(shadows)
+    
+    let shadowPath0 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 0)
+    let layer0 = CALayer()
+    layer0.shadowPath = shadowPath0.cgPath
+    
+    layer0.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05).cgColor
+    
+    layer0.shadowOpacity = 1
+    
+    layer0.shadowRadius = 10
+    
+    layer0.shadowOffset = CGSize(width: 0, height: 2)
+    
+    layer0.bounds = shadows.bounds
+    
+    layer0.position = shadows.center
+    
+    shadows.layer.addSublayer(layer0)
+}
 
 
 
 
 
-/*
- let url = URL(string: "http://www.google.com/") //Or your URL
- var request = URLRequest(url: url!)
- request.httpMethod = "POST"
- request.httpBody = "Data to send to your backend".data(using: .utf8)!
- 
- let task = URLSession.shared.dataTask(with: request) { data, response, error in
- if error != nil {
- //There was an error
- } else {
- //The HTTP request was successful
- print(String(data: data!, encoding: .utf8)!)
- }
- 
- }
- task.resume()
- */
+
