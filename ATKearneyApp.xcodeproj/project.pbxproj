@@ -59,6 +59,7 @@
 		BDBFB3EC22567BB0001BA4B7 /* checkON.png in Resources */ = {isa = PBXBuildFile; fileRef = BDBFB3EA22567BB0001BA4B7 /* checkON.png */; };
 		BDBFB3ED22567BB0001BA4B7 /* checkOFF.png in Resources */ = {isa = PBXBuildFile; fileRef = BDBFB3EB22567BB0001BA4B7 /* checkOFF.png */; };
 		BDBFB3EF22569D02001BA4B7 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = BDBFB3EE22569D00001BA4B7 /* down.png */; };
+		BDBFB3F12256C29B001BA4B7 /* checkOFF_2.png in Resources */ = {isa = PBXBuildFile; fileRef = BDBFB3F02256C29A001BA4B7 /* checkOFF_2.png */; };
 		BDC2D184223AB9E000B0D527 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2D182223AB9E000B0D527 /* ProjectCell.swift */; };
 		BDC2D185223AB9E000B0D527 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC2D183223AB9E000B0D527 /* ProjectCell.xib */; };
 		BDC64AD5224A8B22000E1831 /* SurveyUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC64AD4224A8B22000E1831 /* SurveyUsersViewController.swift */; };
@@ -142,6 +143,7 @@
 		BDBFB3EA22567BB0001BA4B7 /* checkON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkON.png; sourceTree = "<group>"; };
 		BDBFB3EB22567BB0001BA4B7 /* checkOFF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkOFF.png; sourceTree = "<group>"; };
 		BDBFB3EE22569D00001BA4B7 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		BDBFB3F02256C29A001BA4B7 /* checkOFF_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkOFF_2.png; sourceTree = "<group>"; };
 		BDC2D182223AB9E000B0D527 /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		BDC2D183223AB9E000B0D527 /* ProjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 		BDC64AD4224A8B22000E1831 /* SurveyUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyUsersViewController.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				BDBFB3E622566008001BA4B7 /* people.png */,
 				BDBFB3E8225664A3001BA4B7 /* next.png */,
 				BDBFB3EB22567BB0001BA4B7 /* checkOFF.png */,
+				BDBFB3F02256C29A001BA4B7 /* checkOFF_2.png */,
 				BDBFB3EA22567BB0001BA4B7 /* checkON.png */,
 				BD8C69882242A63C00A25ED4 /* profileIcon.png */,
 				BD82B7A822398715003825D8 /* profileButton.png */,
@@ -576,6 +579,7 @@
 				BD82B79F223969F6003825D8 /* V2 GoogleService-Info.plist in Resources */,
 				BDEF2AA82256456100FD0A2F /* Graphik-Semibold.otf in Resources */,
 				BDF901762243E72400F83E55 /* 40_x1.png in Resources */,
+				BDBFB3F12256C29B001BA4B7 /* checkOFF_2.png in Resources */,
 				BDBFB3ED22567BB0001BA4B7 /* checkOFF.png in Resources */,
 				BDF901822243E72400F83E55 /* 1024_x1.png in Resources */,
 				BDF9017A2243E72400F83E55 /* 76_x1.png in Resources */,

@@ -19,6 +19,7 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var sendReponseButton: UIButton!
     
     let VALUE_LABEL_TAG = 999
+    let CHECK_IMG_TAG = 777
     var currentY: CGFloat = 0.0
     var answers = [Any]()
     
@@ -35,7 +36,7 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
         
         CHANGE_LABEL_HEIGHT(label: titleLabel, text: SelectedSurvey.shared.title)
         CHANGE_LABEL_HEIGHT(label: descriptionLabel, text: SelectedSurvey.shared.description!, placeBelow: titleLabel, margin: 10.0)
-        addLine(below: descriptionLabel, margin: 20.0)
+        addLine(below: descriptionLabel, margin: 25.0)
         
         buildQuestions()
     }
@@ -102,23 +103,23 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
         let questionView = UIView(frame: CGRect(x: 0, y: currentY, width: self.view.frame.size.width, height: 100))
         questionView.backgroundColor = UIColor.white
         
-        let textLabel = UILabel(frame: CGRect(x: X, y: margin, width: W, height: 10.0))
+        let textLabel = UILabel(frame: CGRect(x: X, y: 0, width: W, height: 10.0))
         textLabel.font = descriptionLabel.font
         questionView.addSubview(textLabel)
         CHANGE_LABEL_HEIGHT(label: textLabel, text: Q.text)
         
         if(Q.type == .text) {
             // TEXT
-            let textView = UITextView(frame: CGRect(x: X, y: BOTTOM(view: textLabel) + margin, width: W, height: 96))
-            textView.font = descriptionLabel.font
-            textView.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
+            let textView = UITextView(frame: CGRect(x: X, y: BOTTOM(view: textLabel) + 20.0, width: W, height: 85))
+            textView.font = UIFont(name: "Graphik-Medium", size: 16)
+            textView.backgroundColor = COLOR_FROM_HEX("#F2F2F2")
             textView.tag = index
             textView.autocapitalizationType = .none
             textView.autocorrectionType = .no
             textView.spellCheckingType = .no
             
             questionView.addSubview(textView)
-            CHANGE_HEIGHT(view: questionView, BOTTOM(view: textView) + (margin*5))
+            CHANGE_HEIGHT(view: questionView, BOTTOM(view: textView) + 35.0)
             textView.delegate = self
         } else if(Q.type == .yes_no) {
             // YES - NO (mutually exclusive)
@@ -128,17 +129,25 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
                     valX = X + (W/2) + 5
                 }
                 
-                let button = UIButton(type: .custom)
+                let button = BorderedButton()
                 button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
-                button.frame = CGRect(x: valX, y: BOTTOM(view: textLabel) + margin, width: (W/2)-5, height: 35)
-                button.setTitle(Q.options[i], for: .normal)
-                button.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
+                button.frame = CGRect(x: valX, y: BOTTOM(view: textLabel) + 20.0, width: (W/2)-5, height: 55)
+                button.drawBorder()
+                button.setTitle(Q.options[i].uppercased(), for: .normal)
+                button.backgroundColor = UIColor.white
                 button.isSelected = false
-                button.setTitleColor(UIColor.lightGray, for: .normal)
+                button.setTitleColor(UIColor.black.withAlphaComponent(0.7), for: .normal)
                 button.setTitleColor(UIColor.black, for: .selected)
                 button.addTarget(self, action: #selector(yesNoButtonTap), for: .touchUpInside)
+                button.titleLabel?.font = UIFont(name: "Graphik-Medium", size: 17)
+                button.contentHorizontalAlignment = .left
+                button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 70.0, bottom: 0, right: 0)
                 button.tag = index
                 questionView.addSubview(button)
+                
+                let imageView = UIImageView(frame: CGRect(x: 11, y: 16, width: 22, height: 22))
+                imageView.tag = CHECK_IMG_TAG
+                button.addSubview(imageView)
                 
                 CHANGE_HEIGHT(view: questionView, BOTTOM(view: button) + (margin*5))
             }
@@ -151,29 +160,38 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
             }
         } else if(Q.type == .multiple) {
             // Multiple options (non exclusives)
-            var valY = BOTTOM(view: textLabel) + margin
+            var valY = BOTTOM(view: textLabel) + 30.0
             for option in Q.options {
-                let button = UIButton(type: .custom)
+                let button = BorderedButton()
                 button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
-                button.frame = CGRect(x: X, y: valY, width: W, height: 35)
+                button.frame = CGRect(x: X, y: valY, width: W, height: 55)
                 button.setTitle(option, for: .normal)
-                button.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
+                button.backgroundColor = UIColor.white
+                button.drawBorder(color: COLOR_FROM_HEX("#DBD8D8"))
                 button.isSelected = false
-                button.setTitleColor(UIColor.lightGray, for: .normal)
+                button.setTitleColor(UIColor.black.withAlphaComponent(0.7), for: .normal)
                 button.setTitleColor(UIColor.black, for: .selected)
+                button.titleLabel?.font = UIFont(name: "Graphik-Medium", size: 17)
                 button.addTarget(self, action: #selector(multipleButtonTap), for: .touchUpInside)
+                button.contentHorizontalAlignment = .left
+                button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 70.0, bottom: 0, right: 0)
                 button.tag = index
                 questionView.addSubview(button)
                 
+                let imageView = UIImageView(frame: CGRect(x: 11, y: 16, width: 22, height: 22))
+                imageView.tag = CHECK_IMG_TAG
+                imageView.image = UIImage(named: "checkOFF_2.png")
+                button.addSubview(imageView)
+                
                 CHANGE_HEIGHT(view: questionView, BOTTOM(view: button) + (margin*5))
-                valY += 35.0 + 7.5
+                valY += 55 + 10
             }
         } else if(Q.type == .scale) {
             // Scale value selection
             
             let valueLabel = UILabel(frame: CGRect(x: X, y: BOTTOM(view: textLabel) + (margin * 2), width: W, height: 21))
             valueLabel.text = "5"
-            valueLabel.font = descriptionLabel.font
+            valueLabel.font = UIFont(name: "Graphik-Regular", size: 16)
             valueLabel.textAlignment = .center
             valueLabel.tag = VALUE_LABEL_TAG
             questionView.addSubview(valueLabel)
@@ -184,16 +202,18 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
             slider.value = 5.5
             slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
             slider.tag = index
+            slider.minimumTrackTintColor = UIColor.black
+            slider.maximumTrackTintColor = COLOR_FROM_HEX("#DBD8D8")
             questionView.addSubview(slider)
             
             let minLabel = UILabel(frame: CGRect(x: X, y: BOTTOM(view: slider), width: W/2, height: 21))
             minLabel.text = Q.options[0]
-            minLabel.font = descriptionLabel.font
+            minLabel.font = UIFont(name: "Graphik-Regular", size: 16)
             questionView.addSubview(minLabel)
             
             let maxLabel = UILabel(frame: CGRect(x: X+(W/2), y: BOTTOM(view: slider), width: W/2, height: 21))
             maxLabel.text = Q.options[1]
-            maxLabel.font = descriptionLabel.font
+            maxLabel.font = UIFont(name: "Graphik-Regular", size: 16)
             maxLabel.textAlignment = .right
             questionView.addSubview(maxLabel)
             
@@ -222,12 +242,14 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
                 let button = (V as! UIButton)
                 
                 button.isSelected = false
-                button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+                (button.viewWithTag(CHECK_IMG_TAG) as! UIImageView).image = UIImage(named: "checkOFF_2.png")
+                (button as! BorderedButton).drawBorder(color: COLOR_FROM_HEX("#DBD8D8"))
             }
         }
 
         sender.isSelected = true
-        sender.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+        (sender as! BorderedButton).drawBorder(color: UIColor.black)
+        (sender.viewWithTag(CHECK_IMG_TAG) as! UIImageView).image = UIImage(named: "checkON.png")
         answers[sender.tag] = sender.titleLabel!.text!
     }
     
@@ -242,9 +264,11 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
                 
                 if(button.isSelected) {
                     multipleAnswers.append(button.titleLabel!.text!)
-                    button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+                    (button as! BorderedButton).drawBorder(color: UIColor.black)
+                    (button.viewWithTag(CHECK_IMG_TAG) as! UIImageView).image = UIImage(named: "checkON.png")
                 } else {
-                    button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+                    (button.viewWithTag(CHECK_IMG_TAG) as! UIImageView).image = UIImage(named: "checkOFF_2.png")
+                    (button as! BorderedButton).drawBorder(color: COLOR_FROM_HEX("#DBD8D8"))
                 }
             }
         }

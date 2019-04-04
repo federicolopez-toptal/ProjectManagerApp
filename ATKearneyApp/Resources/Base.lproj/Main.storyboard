@@ -978,11 +978,6 @@
                                 <rect key="frame" x="0.0" y="292" width="375" height="290"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xRj-Dc-7vw">
-                                <rect key="frame" x="282" y="48" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ti-ez-T5j">
                                 <rect key="frame" x="245" y="263" width="114" height="30"/>
                                 <constraints>
@@ -1003,6 +998,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select project members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3A-zk-dvu">
+                                <rect key="frame" x="25" y="270" width="180" height="16"/>
+                                <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dv3-ox-SQM" customClass="BorderedButton" customModule="ATKearneyApp" customModuleProvider="target">
                                 <rect key="frame" x="25" y="191" width="326" height="43"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1017,12 +1018,10 @@
                                     <action selector="expirationButtonTap:" destination="5Cj-5b-PIv" eventType="touchUpInside" id="bpY-dw-B7g"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select project members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3A-zk-dvu">
-                                <rect key="frame" x="25" y="270" width="180" height="16"/>
-                                <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xRj-Dc-7vw">
+                                <rect key="frame" x="213" y="268" width="20" height="20"/>
+                                <color key="color" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1039,6 +1038,7 @@
                             <constraint firstItem="AeK-nz-bri" firstAttribute="top" secondItem="ZDZ-zc-h3a" secondAttribute="bottom" constant="8" id="WIf-NJ-E59"/>
                             <constraint firstItem="WrH-ow-XgO" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="25" id="fDC-t3-7k4"/>
                             <constraint firstItem="1Ti-ez-T5j" firstAttribute="top" secondItem="dv3-ox-SQM" secondAttribute="bottom" constant="29" id="jzR-f4-gaW"/>
+                            <constraint firstItem="xRj-Dc-7vw" firstAttribute="top" secondItem="dv3-ox-SQM" secondAttribute="bottom" constant="34" id="ldA-v0-P6i"/>
                             <constraint firstItem="rta-da-vPl" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="25" id="lz4-26-eqQ"/>
                             <constraint firstItem="BgC-2w-wa7" firstAttribute="trailing" secondItem="1Ti-ez-T5j" secondAttribute="trailing" constant="16" id="mGg-Q7-hEf"/>
                             <constraint firstItem="BgC-2w-wa7" firstAttribute="trailing" secondItem="ZDZ-zc-h3a" secondAttribute="trailing" id="p89-EV-FoZ"/>
@@ -1046,6 +1046,7 @@
                             <constraint firstItem="ZDZ-zc-h3a" firstAttribute="top" secondItem="l3A-zk-dvu" secondAttribute="bottom" constant="6" id="sMr-lU-ITf"/>
                             <constraint firstItem="AeK-nz-bri" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="25" id="tlw-9g-J5y"/>
                             <constraint firstItem="C5a-Q7-A6O" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="8" id="wfF-Ed-42c"/>
+                            <constraint firstItem="xRj-Dc-7vw" firstAttribute="leading" secondItem="l3A-zk-dvu" secondAttribute="trailing" constant="8" id="zzm-1i-HNb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BgC-2w-wa7"/>
                     </view>
@@ -1075,7 +1076,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZ4-wj-zf9">
-                                                <rect key="frame" x="16" y="33" width="50" height="50"/>
+                                                <rect key="frame" x="8" y="33" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="closeButton.png"/>
                                                 <connections>
@@ -1083,26 +1084,26 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZ0-kk-V2O">
-                                                <rect key="frame" x="29" y="129" width="316" height="21"/>
+                                                <rect key="frame" x="25" y="129" width="326" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Answer survey" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCf-fH-BRA">
-                                                <rect key="frame" x="29" y="85" width="316" height="36"/>
+                                                <rect key="frame" x="25" y="85" width="326" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmZ-vF-HxW">
-                                                <rect key="frame" x="16" y="369" width="343" height="51"/>
+                                                <rect key="frame" x="25" y="369" width="326" height="60"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.51970928910000003" green="0.23232031710000001" blue="0.18708523020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" red="1" green="0.85098039219999999" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="SEND RESPONSE">
-                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Send response">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="sendResponseButtonTap:" destination="Ftw-cD-jfI" eventType="touchUpInside" id="0d9-zP-zft"/>
@@ -2184,7 +2185,7 @@
                                                 <rect key="frame" x="25" y="547" width="326" height="55"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="17"/>
                                                 <state key="normal" title="Response Type">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -2311,7 +2312,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E85-hx-Zqo">
-                                                <rect key="frame" x="16" y="33" width="50" height="50"/>
+                                                <rect key="frame" x="8" y="33" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="closeButton.png"/>
                                                 <connections>
@@ -2319,25 +2320,25 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Survey results" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQ0-4k-7e3">
-                                                <rect key="frame" x="29" y="85" width="316" height="36"/>
+                                                <rect key="frame" x="25" y="85" width="326" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2Z-wE-WOO">
-                                                <rect key="frame" x="29" y="129" width="316" height="21"/>
+                                                <rect key="frame" x="25" y="129" width="326" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJY-wD-08M">
                                                 <rect key="frame" x="248" y="43" width="111" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="15"/>
                                                 <state key="normal" title="MANAGE">
-                                                    <color key="titleColor" red="0.51970928910000003" green="0.23232031710000001" blue="0.18708523020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" red="0.73725490196078436" green="0.094117647058823528" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="manageButtonTap:" destination="4zw-KA-cFV" eventType="touchUpInside" id="OMv-o9-1le"/>
