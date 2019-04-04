@@ -43,9 +43,9 @@
 	<string>LaunchScreen</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Muli-Bold.ttf</string>
-		<string>Muli-Regular.ttf</string>
-		<string>Muli-SemiBold.ttf</string>
+		<string>Graphik-Medium.otf</string>
+		<string>Graphik-Regular.otf</string>
+		<string>Graphik-Semibold.otf</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>

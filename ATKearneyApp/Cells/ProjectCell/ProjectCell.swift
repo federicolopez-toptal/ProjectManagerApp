@@ -20,25 +20,10 @@ class ProjectCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
 
-        whiteView.layer.shadowColor = UIColor.black.cgColor
-        whiteView.layer.shadowOpacity = 0.05
-        whiteView.layer.shadowOffset = CGSize(width: 2, height: 2)
-        whiteView.layer.shadowRadius = 2.0
+        let alpha: CGFloat = 0.06
+        let borderColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: alpha)
+        whiteView.layer.borderColor = borderColor.cgColor
+        whiteView.layer.borderWidth = 1.0
     }
-    
-    
-    /*
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        
-        // Glow effect
-        whiteView.layer.masksToBounds = false
-        whiteView.layer.shadowOffset = .zero
-        whiteView.layer.shadowColor = UIColor.green.cgColor
-        whiteView.layer.shadowRadius = 3
-        whiteView.layer.shadowOpacity = 0.5
-        whiteView.layer.shadowPath = UIBezierPath(rect: whiteView.bounds).cgPath
-    }
-    */
     
 }
