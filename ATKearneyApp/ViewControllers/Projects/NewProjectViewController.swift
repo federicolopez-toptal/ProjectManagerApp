@@ -16,7 +16,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     @IBOutlet weak var usersList: UITableView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
-    @IBOutlet weak var noUsersLabel: UILabel!
+    @IBOutlet weak var noUsersView: UIView!
     
     var usersCopy = [String: String]()
     var users = [NSDictionary]()
@@ -25,6 +25,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
+        noUsersView.backgroundColor = self.view.backgroundColor
         
         usersList.tableFooterView = UIView()
         usersList.delegate = self
@@ -68,9 +69,9 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     }
     func noUsersCheck() {
         if(self.users.count==0){
-            noUsersLabel.isHidden = false
+            noUsersView.isHidden = false
         } else {
-            noUsersLabel.isHidden = true
+            noUsersView.isHidden = true
         }
     }
     
@@ -185,14 +186,16 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
         
         cell.roleLabel.textColor = UIColor.gray
         if(SelectedProject.shared.hasOfficer(userID: userID)) {
-            cell.roleLabel.text = "Project officer"
-            cell.roleLabel.textColor = UIColor.red
+            cell.roleLabel.text = "PROJECT OFFICER"
+            cell.roleLabel.textColor = COLOR_FROM_HEX("#BC1832")
         } else {
             let email = info["email"] as! String
             if( IS_ATK_MEMBER(email: email) ) {
-                cell.roleLabel.text = "ATK member"
+                cell.roleLabel.text = "ATK MEMBER"
+                cell.roleLabel.textColor = COLOR_FROM_HEX("#842D2D")
             } else {
-                cell.roleLabel.text = "Client"
+                cell.roleLabel.text = "CLIENT"
+                cell.roleLabel.textColor = COLOR_FROM_HEX("#919191")
             }
         }
         
@@ -203,7 +206,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 64
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

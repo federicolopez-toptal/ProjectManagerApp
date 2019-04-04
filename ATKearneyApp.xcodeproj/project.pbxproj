@@ -56,6 +56,8 @@
 		BD8C698D2242EFEE00A25ED4 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8C698C2242EFEE00A25ED4 /* UIImageViewExtension.swift */; };
 		BD8ED511224B99E5009059E9 /* AnwserSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8ED510224B99E5009059E9 /* AnwserSurveyViewController.swift */; };
 		BDAAAEC22249D2B100F21229 /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAAAEC12249D2B100F21229 /* Values.swift */; };
+		BDBFB3E722566008001BA4B7 /* people.png in Resources */ = {isa = PBXBuildFile; fileRef = BDBFB3E622566008001BA4B7 /* people.png */; };
+		BDBFB3E9225664A3001BA4B7 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = BDBFB3E8225664A3001BA4B7 /* next.png */; };
 		BDC2D184223AB9E000B0D527 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2D182223AB9E000B0D527 /* ProjectCell.swift */; };
 		BDC2D185223AB9E000B0D527 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC2D183223AB9E000B0D527 /* ProjectCell.xib */; };
 		BDC64AD5224A8B22000E1831 /* SurveyUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC64AD4224A8B22000E1831 /* SurveyUsersViewController.swift */; };
@@ -137,6 +139,8 @@
 		BD8C698C2242EFEE00A25ED4 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		BD8ED510224B99E5009059E9 /* AnwserSurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnwserSurveyViewController.swift; sourceTree = "<group>"; };
 		BDAAAEC12249D2B100F21229 /* Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Values.swift; sourceTree = "<group>"; };
+		BDBFB3E622566008001BA4B7 /* people.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = people.png; sourceTree = "<group>"; };
+		BDBFB3E8225664A3001BA4B7 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
 		BDC2D182223AB9E000B0D527 /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		BDC2D183223AB9E000B0D527 /* ProjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 		BDC64AD4224A8B22000E1831 /* SurveyUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyUsersViewController.swift; sourceTree = "<group>"; };
@@ -383,6 +387,8 @@
 		BD82B79922396511003825D8 /* misc */ = {
 			isa = PBXGroup;
 			children = (
+				BDBFB3E622566008001BA4B7 /* people.png */,
+				BDBFB3E8225664A3001BA4B7 /* next.png */,
 				BD8C69882242A63C00A25ED4 /* profileIcon.png */,
 				BD82B7A822398715003825D8 /* profileButton.png */,
 				BD82FF4E22399E5D008F6304 /* checkOFF.png */,
@@ -557,6 +563,7 @@
 				BDF901812243E72400F83E55 /* 83.5_x2.png in Resources */,
 				BD3BABCA2239A8CD004521F4 /* UserCell.xib in Resources */,
 				BDF9017B2243E72400F83E55 /* 60_x3.png in Resources */,
+				BDBFB3E9225664A3001BA4B7 /* next.png in Resources */,
 				BD82B7B52239903D003825D8 /* UserSelectableCell.xib in Resources */,
 				BDF901842243E79E00F83E55 /* 20_x3.png in Resources */,
 				BDF9017F2243E72400F83E55 /* 60_x2.png in Resources */,
@@ -579,6 +586,7 @@
 				BD7B690A22395F2100C0DE35 /* Main.storyboard in Resources */,
 				BDF9017E2243E72400F83E55 /* 29_x1.png in Resources */,
 				BD82B7A922398716003825D8 /* profileButton.png in Resources */,
+				BDBFB3E722566008001BA4B7 /* people.png in Resources */,
 				BDF901792243E72400F83E55 /* 40_x2.png in Resources */,
 				BDC2D185223AB9E000B0D527 /* ProjectCell.xib in Resources */,
 				BD886992224568F400468D4E /* whiteLogo.png in Resources */,

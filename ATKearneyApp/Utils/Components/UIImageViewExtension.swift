@@ -13,6 +13,9 @@ extension UIImageView {
         self.layer.cornerRadius = self.frame.width/2
         self.clipsToBounds = true
         self.layer.borderWidth = 1.5
-        self.layer.borderColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.075).cgColor
+        
+        let alpha: CGFloat = 0.06
+        let borderColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: alpha)
+        self.layer.borderColor = borderColor.cgColor
     }
 }

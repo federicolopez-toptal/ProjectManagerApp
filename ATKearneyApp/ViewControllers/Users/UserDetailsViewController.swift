@@ -22,7 +22,7 @@ class UserDetailsViewController: BaseViewController {
     @IBOutlet weak var skillsLabel: UILabel!
     @IBOutlet weak var officerView: UIView!
     @IBOutlet weak var projectOfficerSwitch: UISwitch!
-    @IBOutlet weak var officerStatusLabel: UILabel!
+    @IBOutlet weak var permissionsButton: BorderedButton!
     @IBOutlet weak var logoutButton: UIButton!
     
     @IBOutlet weak var editUserButton: UIButton!
@@ -45,9 +45,11 @@ class UserDetailsViewController: BaseViewController {
         userID = SelectedUser.shared.userID
         officerView.backgroundColor = UIColor.white
         photoImageView.setCircular()
-        projectOfficerSwitch.backgroundColor = UIColor.darkGray
+        projectOfficerSwitch.backgroundColor = COLOR_FROM_HEX("#842D2D")
         projectOfficerSwitch.layer.cornerRadius = 16.0;
-
+        
+        permissionsButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 15.0, bottom: 0, right: 0)
+        permissionsButton.superview?.bringSubviewToFront(permissionsButton)
         
         officerView.isHidden = true
         editUserButton.isHidden = true
@@ -65,17 +67,17 @@ class UserDetailsViewController: BaseViewController {
             projectOfficerSwitch.isOn = SelectedProject.shared.hasOfficer(userID: userID)
             
             if(projectOfficerSwitch.isOn) {
-                officerStatusLabel.text = "YES"
+                permissionsButton.setTitle("Project officer", for: .normal)
             } else {
-                officerStatusLabel.text = "NO"
+                permissionsButton.setTitle("Regular user", for: .normal)
             }
             
             if(officerRoleEditable) {
                 projectOfficerSwitch.isHidden = false
-                officerStatusLabel.isHidden = true
+                permissionsButton.isHidden = true
             } else {
                 projectOfficerSwitch.isHidden = true
-                officerStatusLabel.isHidden = false
+                permissionsButton.isHidden = false
             }
         }
         projectOfficerSwitch.isEnabled = officerRoleEditable
