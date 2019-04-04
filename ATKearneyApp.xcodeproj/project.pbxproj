@@ -294,6 +294,7 @@
 		BD614BC8225527430053F15D /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				BD82B7AE22398B9F003825D8 /* backButton.png */,
 				BD82B7A4223986C4003825D8 /* closeButton.png */,
 			);
 			path = Buttons;
@@ -384,7 +385,6 @@
 			children = (
 				BD8C69882242A63C00A25ED4 /* profileIcon.png */,
 				BD82B7A822398715003825D8 /* profileButton.png */,
-				BD82B7AE22398B9F003825D8 /* backButton.png */,
 				BD82FF4E22399E5D008F6304 /* checkOFF.png */,
 				BD82FF4D22399E5D008F6304 /* checkON.png */,
 				BDDBA3BD223AC306005E96FF /* plusRedButton.png */,

@@ -10,6 +10,9 @@ import UIKit
 
 class UserDetailsViewController: BaseViewController {
 
+    @IBOutlet weak var scrollview: UIScrollView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+ 
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userTypeLabel: UILabel!
@@ -35,6 +38,9 @@ class UserDetailsViewController: BaseViewController {
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollview.subviews.first!.backgroundColor = UIColor.white
+        addFormBehavior(scrollview: scrollview, bottomContraint: bottomConstraint)
         
         userID = SelectedUser.shared.userID
         officerView.backgroundColor = UIColor.white
@@ -96,17 +102,21 @@ class UserDetailsViewController: BaseViewController {
         
         if let roleText = roleLabel.text {
             if(roleText.isEmpty) {
-                roleLabel.text = "..."
+                roleLabel.text = "Unspecified"
+                roleLabel.textColor = UIColor.lightGray
             }
         } else {
-            roleLabel.text = "..."
+            roleLabel.text = "Unspecified"
+            roleLabel.textColor = UIColor.lightGray
         }
         if let skillsText = skillsLabel.text {
             if(skillsText.isEmpty) {
-                skillsLabel.text = "..."
+                skillsLabel.text = "Unspecified"
+                skillsLabel.textColor = UIColor.lightGray
             }
         } else {
-            skillsLabel.text = "..."
+            skillsLabel.text = "Unspecified"
+            skillsLabel.textColor = UIColor.lightGray
         }
         
         FirebaseManager.shared.userPhoto(userID: SelectedUser.shared.userID, lastUpdate: SelectedUser.shared.photoLastUpdate, to: photoImageView)
@@ -133,7 +143,24 @@ class UserDetailsViewController: BaseViewController {
         self.performSegue(withIdentifier: "gotoPass", sender: self)
     }
     
-    @IBAction func logoutButtonTap(_ sender: UIButton) {        
+    @IBAction func logoutButtonTap(_ sender: UIButton) {
+        let title = "Logout"
+        let msg = "Close current session?"
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (alertAction) in
+            self.logout_step2()
+        }
+        alert.addAction(yesAction)
+        
+        let noAction = UIAlertAction(title: "No", style: .default) { (alertAction) in
+        }
+        alert.addAction(noAction)
+        
+        self.present(alert, animated: true) {
+        }
+    }
+    func logout_step2() {
         showLoading(true)
         FirebaseManager.shared.removeDeviceFromCurrentUser {
             self.showLoading(false)

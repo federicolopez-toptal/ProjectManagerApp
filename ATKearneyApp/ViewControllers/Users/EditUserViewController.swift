@@ -40,7 +40,7 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
         skillsTextField.text = MyUser.shared.skills
         
         emailTextField.isEnabled = false
-        photoButton.setCircularWithRadius(35.0)
+        photoButton.setCircularWithRadius(26)
     }
     
     override func viewWillAppear(_ animated: Bool) {

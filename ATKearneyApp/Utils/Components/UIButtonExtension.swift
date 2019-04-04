@@ -12,10 +12,12 @@ extension UIButton {
     func setCircular() {
         self.imageView?.layer.cornerRadius = self.frame.width/2
         self.imageView?.layer.borderWidth = 1.5
-        self.imageView?.layer.borderColor = UIColor.lightGray.cgColor
+        self.imageView?.layer.borderColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.075).cgColor
     }
     
     func setCircularWithRadius(_ radius: CGFloat) {
         self.imageView?.layer.cornerRadius = radius
+        self.imageView?.layer.borderWidth = 1.5
+        self.imageView?.layer.borderColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.075).cgColor
     }
 }
