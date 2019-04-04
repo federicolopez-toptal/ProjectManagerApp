@@ -26,6 +26,7 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         noUsersView.backgroundColor = self.view.backgroundColor
+        noUsersView.isHidden = true
         
         usersList.tableFooterView = UIView()
         usersList.delegate = self

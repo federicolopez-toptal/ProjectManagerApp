@@ -25,7 +25,8 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     
     var surveysFilter = 0
     @IBOutlet weak var surveySelectorView: UIView!
-    @IBOutlet weak var heightContraint: NSLayoutConstraint!
+    @IBOutlet weak var surveySelectorViewHeightContraint: NSLayoutConstraint!
+    @IBOutlet weak var surveyViewHeightConstraint: NSLayoutConstraint!
     
     var users = [NSDictionary]()
     var surveys = [NSDictionary]()
@@ -48,12 +49,25 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         surveyView.backgroundColor = UIColor.white
         loading.stopAnimating()
         loadingSurvey.stopAnimating()
+        initSurveySelectorView()
         
         let nib = UINib.init(nibName: "UserCell", bundle: nil)
         usersList.register(nib, forCellReuseIdentifier: "UserCell")
         
         let nib2 = UINib.init(nibName: "SurveyCell", bundle: nil)
         surveysList.register(nib2, forCellReuseIdentifier: "SurveyCell")
+    }
+    func initSurveySelectorView() {
+        surveySelectorView.backgroundColor = self.view.backgroundColor
+        let borderedView = surveySelectorView.subviews.first!
+        
+        borderedView.backgroundColor = self.view.backgroundColor
+        borderedView.layer.borderColor = COLOR_FROM_HEX("#DBD8D8").cgColor
+        borderedView.layer.borderWidth = 1.0
+        
+        let middleView = UIView(frame: CGRect(x: surveyView.frame.width/2, y: 15, width: 1, height: 20))
+        middleView.backgroundColor = COLOR_FROM_HEX("#DBD8D8")
+        surveySelectorView.addSubview(middleView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,7 +106,8 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             } else {
                 surveyLabel.text = "Surveys to answer"
                 
-                heightContraint.constant = 0.0
+                surveySelectorViewHeightContraint.constant = 0.0
+                surveyViewHeightConstraint.constant = 226
                 surveySelectorView.isHidden = true
                 
                 // get surveys that includes my user
@@ -128,18 +143,17 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         noSurveysLabel.isHidden = true
         loadingSurvey.startAnimating()
         
-        // UI update
-        for (i, V) in surveySelectorView.subviews.enumerated() {
+        for (i, V) in surveySelectorView.subviews.first!.subviews.enumerated() {
             let button = (V as! UIButton)
             if(i==surveysFilter) {
                 button.setTitleColor(UIColor.black, for: .normal)
-                button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+                button.titleLabel?.font = UIFont(name: "Graphik-Semibold", size: 13.0)
             } else {
-                button.setTitleColor(UIColor.lightGray, for: .normal)
-                button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+                button.setTitleColor(UIColor.black.withAlphaComponent(0.5), for: .normal)
+                button.titleLabel?.font = UIFont(name: "Graphik-Medium", size: 13.0)
             }
-            
         }
+
         
         // get all surveys for this project (I'm an admin or project officer)
         surveys = [NSDictionary]()
@@ -205,14 +219,13 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     @IBAction func surveySelectorButtonTap(_ sender: UIButton) {
         surveysFilter = sender.tag
         
-        for V in surveySelectorView.subviews {
+        for V in surveySelectorView.subviews.first!.subviews {
             let button = (V as! UIButton)
-            button.setTitleColor(UIColor.lightGray, for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+            button.setTitleColor(UIColor.black.withAlphaComponent(0.5), for: .normal)
+            button.titleLabel?.font = UIFont(name: "Graphik-Medium", size: 13.0)
         }
-    
         sender.setTitleColor(UIColor.black, for: .normal)
-        sender.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+        sender.titleLabel?.font = UIFont(name: "Graphik-Semibold", size: 13.0)
         
         loadSurveysForAdmin()
     }
@@ -273,7 +286,7 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             cell.titleLabel.text = title
             
             let expDate = DATE(info["expires"] as! String)
-            cell.expirationLabel.text = "EXPIRES: \(STR_DATE_NICE(expDate))"
+            cell.expirationLabel.text = "EXPIRES: \(STR_DATE_NICE(expDate).uppercased())"
             
             return cell
         }
@@ -283,9 +296,9 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(tableView == usersList) {
-            return 50
+            return 64
         } else if (tableView == surveysList) {
-            return 55
+            return 90
         }
         
         return 50
