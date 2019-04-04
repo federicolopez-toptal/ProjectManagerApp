@@ -34,6 +34,7 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         usersList.tableFooterView = UIView()
         usersList.delegate = self
         usersList.dataSource = self
+        usersList.separatorStyle = .none
         
         loading.stopAnimating()
         let nib = UINib.init(nibName: "UserSelectableCell", bundle: nil)
@@ -107,6 +108,7 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
             cell.roleLabel.text = "Client"
         }
         
+        cell.photoImageView.image = nil
         FirebaseManager.shared.userPhoto(userID: user.userID, lastUpdate: user.photoLastUpdate, to: cell.photoImageView)
         
         return cell

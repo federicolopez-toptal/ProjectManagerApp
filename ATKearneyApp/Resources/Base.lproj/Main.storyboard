@@ -348,7 +348,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfh-C0-iLt">
-                                <rect key="frame" x="16" y="33" width="50" height="50"/>
+                                <rect key="frame" x="8" y="33" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="koQ-G1-JwE"/>
                                     <constraint firstAttribute="width" constant="50" id="wpX-5d-pPC"/>
@@ -358,18 +358,18 @@
                                     <action selector="backButtonTap:" destination="2vt-zY-x6x" eventType="touchUpInside" id="Mm9-k1-INf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage user list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omk-tL-i9q">
-                                <rect key="frame" x="29" y="85" width="229" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omk-tL-i9q">
+                                <rect key="frame" x="25" y="111" width="241.5" height="36"/>
+                                <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Gw5-dy-aW8">
-                                <rect key="frame" x="275" y="93" width="20" height="20"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="277.5" y="120" width="20" height="20"/>
+                                <color key="color" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WbT-uk-2T1">
-                                <rect key="frame" x="16" y="188" width="343" height="479"/>
+                                <rect key="frame" x="0.0" y="236" width="375" height="431"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j33-AV-FLD">
@@ -378,22 +378,22 @@
                                     <constraint firstAttribute="height" constant="30" id="PrS-UD-BFV"/>
                                     <constraint firstAttribute="width" constant="59" id="WKB-Iy-dW0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                 <state key="normal" title="APPLY">
-                                    <color key="titleColor" red="0.51970928910000003" green="0.23232031710000001" blue="0.18708523020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleColor" red="0.73725490196078436" green="0.094117647058823528" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <action selector="saveButtonTap:" destination="2vt-zY-x6x" eventType="touchUpInside" id="pmL-W4-qhJ"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search for users" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Bsb-md-623">
-                                <rect key="frame" x="29" y="126" width="316" height="43"/>
-                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search for users" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Bsb-md-623" customClass="CustomTextField" customModule="ATKearneyApp" customModuleProvider="target">
+                                <rect key="frame" x="25" y="167" width="326" height="55"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="HiK-dw-Yvf"/>
+                                    <constraint firstAttribute="height" constant="55" id="HiK-dw-Yvf"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <connections>
                                     <action selector="filterTextChange:" destination="2vt-zY-x6x" eventType="editingChanged" id="pQM-Hf-97f"/>
@@ -402,21 +402,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Pie-fx-GGB" firstAttribute="bottom" secondItem="WbT-uk-2T1" secondAttribute="bottom" id="8us-Ss-wSz"/>
-                            <constraint firstItem="Pie-fx-GGB" firstAttribute="trailing" secondItem="Bsb-md-623" secondAttribute="trailing" constant="30" id="ATg-2c-oBz"/>
-                            <constraint firstItem="Omk-tL-i9q" firstAttribute="top" secondItem="yfh-C0-iLt" secondAttribute="bottom" constant="2" id="AXz-mC-vvC"/>
-                            <constraint firstItem="yfh-C0-iLt" firstAttribute="leading" secondItem="Pie-fx-GGB" secondAttribute="leading" constant="16" id="Dc5-GJ-EPP"/>
+                            <constraint firstItem="Pie-fx-GGB" firstAttribute="trailing" secondItem="Bsb-md-623" secondAttribute="trailing" constant="24" id="ATg-2c-oBz"/>
+                            <constraint firstItem="Omk-tL-i9q" firstAttribute="top" secondItem="yfh-C0-iLt" secondAttribute="bottom" constant="28" id="AXz-mC-vvC"/>
+                            <constraint firstItem="WbT-uk-2T1" firstAttribute="top" secondItem="Bsb-md-623" secondAttribute="bottom" constant="14" id="Cny-qL-EoV"/>
+                            <constraint firstItem="yfh-C0-iLt" firstAttribute="leading" secondItem="Pie-fx-GGB" secondAttribute="leading" constant="8" id="Dc5-GJ-EPP"/>
                             <constraint firstItem="yfh-C0-iLt" firstAttribute="top" secondItem="Pie-fx-GGB" secondAttribute="top" constant="13" id="GCQ-Ch-sDq"/>
-                            <constraint firstItem="Pie-fx-GGB" firstAttribute="trailing" secondItem="WbT-uk-2T1" secondAttribute="trailing" constant="16" id="L1j-MJ-ACh"/>
-                            <constraint firstItem="Omk-tL-i9q" firstAttribute="leading" secondItem="Pie-fx-GGB" secondAttribute="leading" constant="29" id="Mca-yJ-nJS"/>
-                            <constraint firstItem="WbT-uk-2T1" firstAttribute="top" secondItem="Bsb-md-623" secondAttribute="bottom" constant="19" id="OzQ-4V-DST"/>
-                            <constraint firstItem="Gw5-dy-aW8" firstAttribute="centerY" secondItem="Omk-tL-i9q" secondAttribute="centerY" id="Py5-TW-ZlH"/>
-                            <constraint firstItem="Bsb-md-623" firstAttribute="leading" secondItem="Pie-fx-GGB" secondAttribute="leading" constant="29" id="eGY-jg-NHy"/>
-                            <constraint firstItem="Gw5-dy-aW8" firstAttribute="leading" secondItem="Omk-tL-i9q" secondAttribute="trailing" constant="17" id="fUD-ey-9uz"/>
-                            <constraint firstItem="WbT-uk-2T1" firstAttribute="leading" secondItem="Pie-fx-GGB" secondAttribute="leading" constant="16" id="gCX-CR-hwf"/>
+                            <constraint firstItem="Pie-fx-GGB" firstAttribute="trailing" secondItem="WbT-uk-2T1" secondAttribute="trailing" id="J6Z-69-Md5"/>
+                            <constraint firstItem="Omk-tL-i9q" firstAttribute="leading" secondItem="Pie-fx-GGB" secondAttribute="leading" constant="25" id="Mca-yJ-nJS"/>
+                            <constraint firstItem="Gw5-dy-aW8" firstAttribute="centerY" secondItem="Omk-tL-i9q" secondAttribute="centerY" constant="1" id="Py5-TW-ZlH"/>
+                            <constraint firstItem="WbT-uk-2T1" firstAttribute="leading" secondItem="Pie-fx-GGB" secondAttribute="leading" id="Qif-Pf-Gzf"/>
+                            <constraint firstItem="Bsb-md-623" firstAttribute="leading" secondItem="Pie-fx-GGB" secondAttribute="leading" constant="25" id="eGY-jg-NHy"/>
+                            <constraint firstItem="Gw5-dy-aW8" firstAttribute="leading" secondItem="Omk-tL-i9q" secondAttribute="trailing" constant="11" id="fUD-ey-9uz"/>
                             <constraint firstItem="j33-AV-FLD" firstAttribute="top" secondItem="Pie-fx-GGB" secondAttribute="top" constant="23" id="llE-5f-4b6"/>
                             <constraint firstItem="Pie-fx-GGB" firstAttribute="trailing" secondItem="j33-AV-FLD" secondAttribute="trailing" constant="16" id="ltF-aG-s3G"/>
-                            <constraint firstItem="Bsb-md-623" firstAttribute="top" secondItem="Omk-tL-i9q" secondAttribute="bottom" constant="5" id="z43-l6-hmF"/>
+                            <constraint firstItem="Pie-fx-GGB" firstAttribute="bottom" secondItem="WbT-uk-2T1" secondAttribute="bottom" id="mDc-uX-OfT"/>
+                            <constraint firstItem="Bsb-md-623" firstAttribute="top" secondItem="Omk-tL-i9q" secondAttribute="bottom" constant="20" id="z43-l6-hmF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pie-fx-GGB"/>
                     </view>
