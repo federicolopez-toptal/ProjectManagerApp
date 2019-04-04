@@ -103,9 +103,11 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         cell.setState( usersCopy[user.userID] != nil )
         
         if( IS_ATK_MEMBER(email: user.email) ) {
-            cell.roleLabel.text = "ATK member"
+            cell.roleLabel.text = "ATK MEMBER"
+            cell.roleLabel.textColor = COLOR_FROM_HEX("#842D2D")
         } else {
-            cell.roleLabel.text = "Client"
+            cell.roleLabel.text = "CLIENT"
+            cell.roleLabel.textColor = COLOR_FROM_HEX("#919191")
         }
         
         cell.photoImageView.image = nil

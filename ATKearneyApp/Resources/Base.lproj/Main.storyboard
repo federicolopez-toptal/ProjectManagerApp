@@ -944,13 +944,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create survey (2/2)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WrH-ow-XgO">
-                                <rect key="frame" x="29" y="85" width="274" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <rect key="frame" x="25" y="109" width="322.5" height="35"/>
+                                <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5a-Q7-A6O">
-                                <rect key="frame" x="16" y="33" width="50" height="50"/>
+                                <rect key="frame" x="8" y="33" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="OHw-qj-tJG"/>
                                     <constraint firstAttribute="width" constant="50" id="zJe-Kp-4K1"/>
@@ -961,53 +961,55 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeK-nz-bri">
-                                <rect key="frame" x="16" y="606" width="343" height="51"/>
-                                <color key="backgroundColor" red="0.51970928910000003" green="0.23232031710000001" blue="0.18708523020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="25" y="590" width="326" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.85098039219999999" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="DEp-q1-Wqh"/>
+                                    <constraint firstAttribute="height" constant="60" id="DEp-q1-Wqh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="CREATE SURVEY">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="18"/>
+                                <state key="normal" title="Create survey">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="createButtonTap:" destination="5Cj-5b-PIv" eventType="touchUpInside" id="a8k-RH-qBJ"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZDZ-zc-h3a">
-                                <rect key="frame" x="16" y="259" width="343" height="339"/>
+                                <rect key="frame" x="0.0" y="292" width="375" height="290"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xRj-Dc-7vw">
-                                <rect key="frame" x="323" y="96" width="20" height="20"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xRj-Dc-7vw">
+                                <rect key="frame" x="282" y="48" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ti-ez-T5j">
-                                <rect key="frame" x="245" y="230" width="114" height="30"/>
+                                <rect key="frame" x="245" y="263" width="114" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="Ef5-7Y-ZkF"/>
-                                    <constraint firstAttribute="height" constant="30" id="sl3-mp-oMl"/>
+                                    <constraint firstAttribute="height" constant="30" id="6ml-Vg-yvK"/>
+                                    <constraint firstAttribute="width" constant="114" id="rA6-Qp-KZV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <state key="normal" title="SELECT ALL">
-                                    <color key="titleColor" red="0.51970928910000003" green="0.23232031710000001" blue="0.18708523020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleColor" red="0.73725490196078436" green="0.094117647058823528" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <action selector="selectAllButtonTap:" destination="5Cj-5b-PIv" eventType="touchUpInside" id="6LA-zW-ylR"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Survey expiration date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rta-da-vPl">
-                                <rect key="frame" x="16" y="150" width="153" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose survey expiration date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rta-da-vPl">
+                                <rect key="frame" x="25" y="165" width="228" height="16"/>
+                                <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dv3-ox-SQM">
-                                <rect key="frame" x="16" y="173" width="343" height="43"/>
-                                <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dv3-ox-SQM" customClass="BorderedButton" customModule="ATKearneyApp" customModuleProvider="target">
+                                <rect key="frame" x="25" y="191" width="326" height="43"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="bKd-ft-Qed"/>
+                                    <constraint firstAttribute="height" constant="43" id="Ws7-Uc-geW"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="17"/>
                                 <state key="normal">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1015,30 +1017,35 @@
                                     <action selector="expirationButtonTap:" destination="5Cj-5b-PIv" eventType="touchUpInside" id="bpY-dw-B7g"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select project members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l3A-zk-dvu">
+                                <rect key="frame" x="25" y="270" width="180" height="16"/>
+                                <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="WrH-ow-XgO" firstAttribute="top" secondItem="C5a-Q7-A6O" secondAttribute="bottom" constant="2" id="1HZ-ps-E7y"/>
-                            <constraint firstItem="1Ti-ez-T5j" firstAttribute="top" secondItem="dv3-ox-SQM" secondAttribute="bottom" constant="14" id="1To-kl-dbT"/>
-                            <constraint firstItem="dv3-ox-SQM" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="16" id="50J-2p-zjZ"/>
-                            <constraint firstItem="BgC-2w-wa7" firstAttribute="trailing" secondItem="ZDZ-zc-h3a" secondAttribute="trailing" constant="16" id="53y-P9-LBF"/>
-                            <constraint firstItem="BgC-2w-wa7" firstAttribute="bottom" secondItem="AeK-nz-bri" secondAttribute="bottom" constant="10" id="6cr-yr-WQG"/>
-                            <constraint firstItem="BgC-2w-wa7" firstAttribute="trailing" secondItem="AeK-nz-bri" secondAttribute="trailing" constant="16" id="6sy-et-tvH"/>
+                            <constraint firstItem="WrH-ow-XgO" firstAttribute="top" secondItem="C5a-Q7-A6O" secondAttribute="bottom" constant="26" id="1HZ-ps-E7y"/>
+                            <constraint firstItem="rta-da-vPl" firstAttribute="top" secondItem="WrH-ow-XgO" secondAttribute="bottom" constant="21" id="42k-Yt-yww"/>
+                            <constraint firstItem="l3A-zk-dvu" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="25" id="5lq-C4-RDh"/>
+                            <constraint firstItem="BgC-2w-wa7" firstAttribute="bottom" secondItem="AeK-nz-bri" secondAttribute="bottom" constant="17" id="6cr-yr-WQG"/>
+                            <constraint firstItem="BgC-2w-wa7" firstAttribute="trailing" secondItem="AeK-nz-bri" secondAttribute="trailing" constant="24" id="6sy-et-tvH"/>
                             <constraint firstItem="C5a-Q7-A6O" firstAttribute="top" secondItem="BgC-2w-wa7" secondAttribute="top" constant="13" id="8K1-jE-yq2"/>
-                            <constraint firstItem="rta-da-vPl" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="16" id="9jY-6k-27l"/>
-                            <constraint firstItem="xRj-Dc-7vw" firstAttribute="top" secondItem="C5a-Q7-A6O" secondAttribute="bottom" constant="13" id="Lg7-co-CBu"/>
-                            <constraint firstItem="BgC-2w-wa7" firstAttribute="trailing" secondItem="dv3-ox-SQM" secondAttribute="trailing" constant="16" id="RzO-aa-HYE"/>
-                            <constraint firstItem="AeK-nz-bri" firstAttribute="top" secondItem="ZDZ-zc-h3a" secondAttribute="bottom" constant="8" id="WGk-BR-WkT"/>
-                            <constraint firstItem="ZDZ-zc-h3a" firstAttribute="top" secondItem="1Ti-ez-T5j" secondAttribute="bottom" constant="-1" id="bn9-bD-Lvx"/>
-                            <constraint firstItem="ZDZ-zc-h3a" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="16" id="btV-E8-QjA"/>
-                            <constraint firstItem="BgC-2w-wa7" firstAttribute="trailing" secondItem="1Ti-ez-T5j" secondAttribute="trailing" constant="16" id="cmF-wL-pDl"/>
-                            <constraint firstItem="rta-da-vPl" firstAttribute="top" secondItem="WrH-ow-XgO" secondAttribute="bottom" constant="29" id="e2R-HJ-ImU"/>
-                            <constraint firstItem="WrH-ow-XgO" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="29" id="fDC-t3-7k4"/>
-                            <constraint firstItem="BgC-2w-wa7" firstAttribute="trailing" secondItem="rta-da-vPl" secondAttribute="trailing" constant="206" id="fuV-Va-2oR"/>
-                            <constraint firstItem="xRj-Dc-7vw" firstAttribute="leading" secondItem="WrH-ow-XgO" secondAttribute="trailing" constant="20" id="plV-9a-eu3"/>
-                            <constraint firstItem="AeK-nz-bri" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="16" id="tlw-9g-J5y"/>
-                            <constraint firstItem="dv3-ox-SQM" firstAttribute="top" secondItem="rta-da-vPl" secondAttribute="bottom" constant="5" id="uOY-oR-cq5"/>
-                            <constraint firstItem="C5a-Q7-A6O" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="16" id="wfF-Ed-42c"/>
+                            <constraint firstItem="l3A-zk-dvu" firstAttribute="top" secondItem="dv3-ox-SQM" secondAttribute="bottom" constant="36" id="9IO-l4-zgJ"/>
+                            <constraint firstItem="dv3-ox-SQM" firstAttribute="top" secondItem="rta-da-vPl" secondAttribute="bottom" constant="10" id="Ama-wa-abL"/>
+                            <constraint firstItem="BgC-2w-wa7" firstAttribute="trailing" secondItem="dv3-ox-SQM" secondAttribute="trailing" constant="24" id="QSa-H9-DzI"/>
+                            <constraint firstItem="dv3-ox-SQM" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="25" id="U3n-ch-qnS"/>
+                            <constraint firstItem="AeK-nz-bri" firstAttribute="top" secondItem="ZDZ-zc-h3a" secondAttribute="bottom" constant="8" id="WIf-NJ-E59"/>
+                            <constraint firstItem="WrH-ow-XgO" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="25" id="fDC-t3-7k4"/>
+                            <constraint firstItem="1Ti-ez-T5j" firstAttribute="top" secondItem="dv3-ox-SQM" secondAttribute="bottom" constant="29" id="jzR-f4-gaW"/>
+                            <constraint firstItem="rta-da-vPl" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="25" id="lz4-26-eqQ"/>
+                            <constraint firstItem="BgC-2w-wa7" firstAttribute="trailing" secondItem="1Ti-ez-T5j" secondAttribute="trailing" constant="16" id="mGg-Q7-hEf"/>
+                            <constraint firstItem="BgC-2w-wa7" firstAttribute="trailing" secondItem="ZDZ-zc-h3a" secondAttribute="trailing" id="p89-EV-FoZ"/>
+                            <constraint firstItem="ZDZ-zc-h3a" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" id="sGU-mD-Nre"/>
+                            <constraint firstItem="ZDZ-zc-h3a" firstAttribute="top" secondItem="l3A-zk-dvu" secondAttribute="bottom" constant="6" id="sMr-lU-ITf"/>
+                            <constraint firstItem="AeK-nz-bri" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="25" id="tlw-9g-J5y"/>
+                            <constraint firstItem="C5a-Q7-A6O" firstAttribute="leading" secondItem="BgC-2w-wa7" secondAttribute="leading" constant="8" id="wfF-Ed-42c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BgC-2w-wa7"/>
                     </view>
@@ -1892,10 +1899,10 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="u1g-4A-ODI">
-                                                <rect key="frame" x="32" y="184" width="310" height="96"/>
+                                                <rect key="frame" x="25" y="230" width="326" height="85"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Description (Optional)"/>
@@ -1904,23 +1911,23 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Survey title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bt0-rQ-DTG">
-                                                <rect key="frame" x="32" y="135" width="311" height="43"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Survey title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bt0-rQ-DTG" customClass="CustomTextField" customModule="ATKearneyApp" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="165" width="326" height="55"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create survey (1/2)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1N5-mx-GKa">
-                                                <rect key="frame" x="29" y="85" width="270" height="36"/>
+                                                <rect key="frame" x="25" y="109" width="315.5" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="35"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUc-Op-hUT">
-                                                <rect key="frame" x="16" y="33" width="50" height="50"/>
+                                                <rect key="frame" x="8" y="33" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="closeButton.png"/>
                                                 <connections>
@@ -1928,10 +1935,10 @@
                                                 </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lmW-h7-Lod">
-                                                <rect key="frame" x="33" y="389" width="310" height="80"/>
+                                                <rect key="frame" x="25" y="411" width="326" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Description (Optional)"/>
@@ -1943,8 +1950,13 @@
                                                     <outlet property="delegate" destination="GXn-43-8mf" id="fcT-j6-W26"/>
                                                 </connections>
                                             </textView>
+                                            <view alpha="0.10000000149011612" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r91-6I-PvF">
+                                                <rect key="frame" x="25" y="391" width="326" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CHV-s4-e3q">
-                                                <rect key="frame" x="32" y="353" width="248" height="29"/>
+                                                <rect key="frame" x="25" y="353" width="248" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <segments>
                                                     <segment title="Question 1"/>
@@ -1968,54 +1980,54 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kg2-L2-Rwm">
-                                                <rect key="frame" x="33" y="551" width="310" height="51"/>
+                                                <rect key="frame" x="25" y="641" width="326" height="60"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.51970928910000003" green="0.23232031710000001" blue="0.18708523020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="NEXT STEP">
-                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="1" green="0.85098039219999999" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="18"/>
+                                                <state key="normal" title="Next step">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="nextButtonTap:" destination="GXn-43-8mf" eventType="touchUpInside" id="Q7E-Uz-LAO"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vm2-YZ-uVh">
-                                                <rect key="frame" x="0.0" y="613" width="375" height="142"/>
+                                                <rect key="frame" x="0.0" y="800" width="375" height="195"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tmb-Gr-Wm1">
-                                                        <rect key="frame" x="32" y="28" width="311" height="43"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tmb-Gr-Wm1" customClass="CustomTextField" customModule="ATKearneyApp" customModuleProvider="target">
+                                                        <rect key="frame" x="25" y="26" width="326" height="55"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         <connections>
                                                             <action selector="textFieldsChanged:" destination="GXn-43-8mf" eventType="editingChanged" id="3eI-lv-kwI"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-Tc-Rml">
-                                                        <rect key="frame" x="32" y="99" width="311" height="43"/>
+                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-Tc-Rml" customClass="CustomTextField" customModule="ATKearneyApp" customModuleProvider="target">
+                                                        <rect key="frame" x="25" y="127" width="326" height="55"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         <connections>
                                                             <action selector="textFieldsChanged:" destination="GXn-43-8mf" eventType="editingChanged" id="ZLz-1o-TYv"/>
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Option 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Gb-6v-gAZ">
-                                                        <rect key="frame" x="32" y="7" width="57" height="18"/>
+                                                        <rect key="frame" x="25" y="0.0" width="63" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Option 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCv-MH-pwC">
-                                                        <rect key="frame" x="32" y="77" width="59" height="18"/>
+                                                        <rect key="frame" x="25" y="101" width="66" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2023,80 +2035,78 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qi9-0t-WBa">
-                                                <rect key="frame" x="0.0" y="779" width="375" height="469"/>
+                                                <rect key="frame" x="0.0" y="1015" width="375" height="597"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8b-7c-Bc8">
-                                                        <rect key="frame" x="32" y="30" width="311" height="43"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8b-7c-Bc8" customClass="CustomTextField" customModule="ATKearneyApp" customModuleProvider="target">
+                                                        <rect key="frame" x="25" y="26" width="326" height="55"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         <connections>
                                                             <action selector="textFieldsChanged:" destination="GXn-43-8mf" eventType="editingChanged" id="yMc-jh-8ga"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l5T-Xi-vWn">
-                                                        <rect key="frame" x="32" y="99" width="311" height="43"/>
+                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l5T-Xi-vWn" customClass="CustomTextField" customModule="ATKearneyApp" customModuleProvider="target">
+                                                        <rect key="frame" x="25" y="127" width="326" height="55"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         <connections>
                                                             <action selector="textFieldsChanged:" destination="GXn-43-8mf" eventType="editingChanged" id="joj-UW-HLs"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dRp-rK-d8g">
-                                                        <rect key="frame" x="32" y="170" width="311" height="43"/>
+                                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dRp-rK-d8g" customClass="CustomTextField" customModule="ATKearneyApp" customModuleProvider="target">
+                                                        <rect key="frame" x="25" y="228" width="326" height="55"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         <connections>
                                                             <action selector="textFieldsChanged:" destination="GXn-43-8mf" eventType="editingChanged" id="SsK-3j-wdK"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 4" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8W-vb-Izy">
-                                                        <rect key="frame" x="32" y="242" width="311" height="43"/>
+                                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 4" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8W-vb-Izy" customClass="CustomTextField" customModule="ATKearneyApp" customModuleProvider="target">
+                                                        <rect key="frame" x="25" y="329" width="326" height="55"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         <connections>
                                                             <action selector="textFieldsChanged:" destination="GXn-43-8mf" eventType="editingChanged" id="L5e-Cg-xg7"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 5" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5cU-Vh-FdY">
-                                                        <rect key="frame" x="32" y="313" width="311" height="43"/>
+                                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Option 5" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5cU-Vh-FdY" customClass="CustomTextField" customModule="ATKearneyApp" customModuleProvider="target">
+                                                        <rect key="frame" x="25" y="430" width="326" height="55"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         <connections>
                                                             <action selector="textFieldsChanged:" destination="GXn-43-8mf" eventType="editingChanged" id="QiQ-MS-mk7"/>
                                                         </connections>
                                                     </textField>
-                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jy-gP-ytZ">
-                                                        <rect key="frame" x="312" y="215" width="36" height="30"/>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jy-gP-ytZ">
+                                                        <rect key="frame" x="311" y="285" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                        <state key="normal" title="X">
+                                                        <state key="normal" image="closeButton.png">
                                                             <color key="titleColor" red="0.51970928910000003" green="0.23232031710000001" blue="0.18708523020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="deleteActionButtonTap:" destination="GXn-43-8mf" eventType="touchUpInside" id="Kb9-GC-5V8"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9iu-sY-Bhf">
-                                                        <rect key="frame" x="312" y="145" width="36" height="30"/>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9iu-sY-Bhf">
+                                                        <rect key="frame" x="311" y="184" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                        <state key="normal" title="X">
+                                                        <state key="normal" image="closeButton.png">
                                                             <color key="titleColor" red="0.51970928910000003" green="0.23232031710000001" blue="0.18708523020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
@@ -2104,50 +2114,50 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Option 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJj-fO-Mkd">
-                                                        <rect key="frame" x="32" y="8" width="57" height="18"/>
+                                                        <rect key="frame" x="25" y="0.0" width="63" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Option 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMu-a1-wIY">
-                                                        <rect key="frame" x="32" y="78" width="59" height="18"/>
+                                                        <rect key="frame" x="25" y="101" width="66" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Option 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtq-Y6-704">
-                                                        <rect key="frame" x="32" y="149" width="60" height="18"/>
+                                                        <rect key="frame" x="25" y="202" width="66" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Option 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMm-J7-GrV">
-                                                        <rect key="frame" x="32" y="221" width="60" height="18"/>
+                                                        <rect key="frame" x="25" y="303" width="67" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Option 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEy-fG-pLo">
-                                                        <rect key="frame" x="32" y="291" width="60" height="18"/>
+                                                        <rect key="frame" x="25" y="404" width="66" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M58-KW-HlB">
-                                                        <rect key="frame" x="0.0" y="389" width="375" height="60"/>
+                                                        <rect key="frame" x="0.0" y="499" width="375" height="90"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVk-9p-N6Z">
-                                                                <rect key="frame" x="215" y="13" width="125" height="34"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVk-9p-N6Z" customClass="BorderedButton" customModule="ATKearneyApp" customModuleProvider="target">
+                                                                <rect key="frame" x="25" y="28" width="326" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <color key="backgroundColor" red="0.87546612410000002" green="0.87434420150000003" blue="0.89394139490000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                                <state key="normal" title="Add option">
+                                                                <state key="normal" title="Add another">
                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
@@ -2157,11 +2167,10 @@
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
-                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeM-De-NVA">
-                                                        <rect key="frame" x="312" y="285" width="36" height="30"/>
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeM-De-NVA">
+                                                        <rect key="frame" x="311" y="386" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                        <state key="normal" title="X">
+                                                        <state key="normal" image="closeButton.png">
                                                             <color key="titleColor" red="0.51970928910000003" green="0.23232031710000001" blue="0.18708523020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
@@ -2171,10 +2180,11 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egX-By-2ct">
-                                                <rect key="frame" x="33" y="475" width="309" height="43"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egX-By-2ct" customClass="BorderedButton" customModule="ATKearneyApp" customModuleProvider="target">
+                                                <rect key="frame" x="25" y="547" width="326" height="55"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.87546612407765378" green="0.87434420147093683" blue="0.89394139487126156" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="18"/>
                                                 <state key="normal" title="Response Type">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -2183,42 +2193,42 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rF3-NG-w3c">
-                                                <rect key="frame" x="1" y="1286" width="375" height="142"/>
+                                                <rect key="frame" x="1" y="1620" width="375" height="190"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lowest value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8XP-9I-GkF">
-                                                        <rect key="frame" x="32" y="28" width="311" height="43"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lowest value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8XP-9I-GkF" customClass="CustomTextField" customModule="ATKearneyApp" customModuleProvider="target">
+                                                        <rect key="frame" x="25" y="26" width="326" height="55"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         <connections>
                                                             <action selector="textFieldsChanged:" destination="GXn-43-8mf" eventType="editingChanged" id="Zkv-0E-tP7"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Highest value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41G-8a-69C">
-                                                        <rect key="frame" x="32" y="99" width="311" height="43"/>
+                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Highest value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41G-8a-69C" customClass="CustomTextField" customModule="ATKearneyApp" customModuleProvider="target">
+                                                        <rect key="frame" x="25" y="127" width="326" height="55"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         <connections>
                                                             <action selector="textFieldsChanged:" destination="GXn-43-8mf" eventType="editingChanged" id="Chg-pq-ovv"/>
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lowest value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DB3-BM-OLY">
-                                                        <rect key="frame" x="32" y="7" width="89" height="18"/>
+                                                        <rect key="frame" x="25" y="0.0" width="98" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Highest value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnD-tv-x40">
-                                                        <rect key="frame" x="32" y="77" width="94" height="18"/>
+                                                        <rect key="frame" x="25" y="101" width="102" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2237,6 +2247,17 @@
                                                     <action selector="deleteQuestionButtonTap:" destination="GXn-43-8mf" eventType="touchUpInside" id="Hjq-7S-w4r"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select response type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgQ-fR-Xz9">
+                                                <rect key="frame" x="25" y="521" width="158" height="16"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="down.png" translatesAutoresizingMaskIntoConstraints="NO" id="NPT-dA-Gxr">
+                                                <rect key="frame" x="315" y="571" width="12" height="7.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
@@ -2408,6 +2429,7 @@
     <resources>
         <image name="backButton.png" width="100" height="100"/>
         <image name="closeButton.png" width="100" height="100"/>
+        <image name="down.png" width="512" height="315"/>
         <image name="people.png" width="176" height="112"/>
         <image name="profileIcon.png" width="68" height="68"/>
     </resources>

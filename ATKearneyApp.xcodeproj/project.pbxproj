@@ -58,6 +58,7 @@
 		BDBFB3E9225664A3001BA4B7 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = BDBFB3E8225664A3001BA4B7 /* next.png */; };
 		BDBFB3EC22567BB0001BA4B7 /* checkON.png in Resources */ = {isa = PBXBuildFile; fileRef = BDBFB3EA22567BB0001BA4B7 /* checkON.png */; };
 		BDBFB3ED22567BB0001BA4B7 /* checkOFF.png in Resources */ = {isa = PBXBuildFile; fileRef = BDBFB3EB22567BB0001BA4B7 /* checkOFF.png */; };
+		BDBFB3EF22569D02001BA4B7 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = BDBFB3EE22569D00001BA4B7 /* down.png */; };
 		BDC2D184223AB9E000B0D527 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2D182223AB9E000B0D527 /* ProjectCell.swift */; };
 		BDC2D185223AB9E000B0D527 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDC2D183223AB9E000B0D527 /* ProjectCell.xib */; };
 		BDC64AD5224A8B22000E1831 /* SurveyUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC64AD4224A8B22000E1831 /* SurveyUsersViewController.swift */; };
@@ -140,6 +141,7 @@
 		BDBFB3E8225664A3001BA4B7 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
 		BDBFB3EA22567BB0001BA4B7 /* checkON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkON.png; sourceTree = "<group>"; };
 		BDBFB3EB22567BB0001BA4B7 /* checkOFF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkOFF.png; sourceTree = "<group>"; };
+		BDBFB3EE22569D00001BA4B7 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 		BDC2D182223AB9E000B0D527 /* ProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		BDC2D183223AB9E000B0D527 /* ProjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 		BDC64AD4224A8B22000E1831 /* SurveyUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyUsersViewController.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				BDBFB3EA22567BB0001BA4B7 /* checkON.png */,
 				BD8C69882242A63C00A25ED4 /* profileIcon.png */,
 				BD82B7A822398715003825D8 /* profileButton.png */,
+				BDBFB3EE22569D00001BA4B7 /* down.png */,
 			);
 			path = misc;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				BD7B690A22395F2100C0DE35 /* Main.storyboard in Resources */,
 				BDF9017E2243E72400F83E55 /* 29_x1.png in Resources */,
 				BD82B7A922398716003825D8 /* profileButton.png in Resources */,
+				BDBFB3EF22569D02001BA4B7 /* down.png in Resources */,
 				BDBFB3E722566008001BA4B7 /* people.png in Resources */,
 				BDF901792243E72400F83E55 /* 40_x2.png in Resources */,
 				BDC2D185223AB9E000B0D527 /* ProjectCell.xib in Resources */,

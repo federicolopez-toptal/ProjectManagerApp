@@ -32,6 +32,8 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
         usersList.tableFooterView = UIView()
         usersList.delegate = self
         usersList.dataSource = self
+        usersList.separatorStyle = .none
+        expirationDateButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 0)
         
         loading.stopAnimating()
         let nib = UINib.init(nibName: "UserSelectableCell", bundle: nil)
@@ -65,7 +67,7 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
         darkView.isHidden = true
         self.view.addSubview(darkView)
         
-        datePicker.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216)
+        datePicker.frame = CGRect(x: 25, y: 0, width: self.view.frame.size.width-50, height: 216)
         datePicker.backgroundColor = UIColor.white
         datePicker.datePickerMode = .date
         darkView.addSubview(datePicker)
@@ -73,10 +75,11 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
         datePicker.center = darkView.center
         
         let okButton = UIButton(type: .custom)
-        okButton.frame = CGRect(x: self.view.frame.size.width - 105, y: BOTTOM(view: datePicker) + 5.0, width: 100, height: 35)
+        okButton.frame = CGRect(x: self.view.frame.size.width-100-25, y: BOTTOM(view: datePicker) + 5.0, width: 100, height: 35)
         okButton.backgroundColor = UIColor.white
         okButton.setTitle("Ok", for: .normal)
         okButton.setTitleColor(UIColor.black, for: .normal)
+        okButton.titleLabel?.font = UIFont(name: "Graphik-Semibold", size: 18.0)
         okButton.addTarget(self, action: #selector(okDateButtonTap), for: .touchUpInside)
         darkView.addSubview(okButton)
     }
@@ -129,14 +132,16 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
         
         cell.roleLabel.textColor = UIColor.gray
         if(SelectedProject.shared.hasOfficer(userID: userID)) {
-            cell.roleLabel.text = "Project officer"
-            cell.roleLabel.textColor = UIColor.red
+            cell.roleLabel.text = "PROJECT OFFICER"
+            cell.roleLabel.textColor = COLOR_FROM_HEX("#BC1832")
         } else {
             let email = info["email"] as! String
             if( IS_ATK_MEMBER(email: email) ) {
-                cell.roleLabel.text = "ATK member"
+                cell.roleLabel.text = "ATK MEMBER"
+                cell.roleLabel.textColor = COLOR_FROM_HEX("#842D2D")
             } else {
-                cell.roleLabel.text = "Client"
+                cell.roleLabel.text = "CLIENT"
+                cell.roleLabel.textColor = COLOR_FROM_HEX("#919191")
             }
         }
         
@@ -153,7 +158,7 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56
+        return 64
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

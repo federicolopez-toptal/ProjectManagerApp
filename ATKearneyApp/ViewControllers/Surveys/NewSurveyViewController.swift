@@ -45,6 +45,8 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
         placeSettingsView(scaleView)
         multipleOptionsView.clipsToBounds = true
         
+        responseTypeButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 0)
+        
         /*
         descriptionTextView.placeholder = "Description (Optional)"
         questionTextView.placeholder = "Type your question (required)"
@@ -52,7 +54,7 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
     }
     func placeSettingsView(_ view: UIView) {
         var mFrame = view.frame
-        mFrame.origin.y = responseTypeButton.frame.origin.y + responseTypeButton.frame.size.height + 40.0
+        mFrame.origin.y = responseTypeButton.frame.origin.y + responseTypeButton.frame.size.height + 20.0
         view.frame = mFrame
     }
     
@@ -70,9 +72,8 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
     func buildQuestionSelector() {
         let X = descriptionTextView.frame.origin.x
         let W = descriptionTextView.frame.size.width
-        let Y = questionsSelector.frame.origin.y - 10.0
         
-        qSelector = UIView(frame: CGRect(x: X, y: Y, width: W, height: 40))
+        qSelector = UIView(frame: CGRect(x: X, y: 337.0, width: W, height: 55))
         contentView.addSubview(qSelector)
     }
     
@@ -88,54 +89,66 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
         // NEW components
         qSelector.subviews.forEach({ $0.removeFromSuperview() })
         
-        let W = qSelector.frame.size.width/2
+        var W = qSelector.frame.size.width/2
         let qCount = SelectedSurvey.shared.questions.count
         
         if(qCount==1) {
-            let qButton = UIButton(type: .custom)
-            qButton.frame = CGRect(x: 0, y: 0, width: W-5.0, height: 40)
-            qButton.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
+            let qButton = BorderedButton()
+            qButton.frame = CGRect(x: 0, y: 0, width: W-5.0, height: 55)
+            //qButton.drawBorder()
+            qButton.backgroundColor = UIColor.clear
             qButton.setTitle(" Question 1", for: .disabled)
             qButton.setTitleColor(UIColor.black, for: .disabled)
             qButton.contentHorizontalAlignment = .left
-            qButton.titleLabel!.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+            qButton.titleLabel!.font = UIFont(name: "Graphik-Semibold", size: 16.0)
+            qButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 0)
             qButton.isEnabled = false
             qSelector.addSubview(qButton)
             
             let addButton = UIButton(type: .custom)
-            addButton.frame = CGRect(x: W + 5.0, y: 0, width: W-5.0, height: 40)
+            addButton.frame = CGRect(x: W + 5.0, y: 0, width: W-5.0, height: 55)
             addButton.setTitle("ADD QUESTION", for: .normal)
-            addButton.setTitleColor(nextStepButton.backgroundColor, for: .normal)
-            addButton.titleLabel!.font = UIFont.systemFont(ofSize: 14.0, weight: .bold)
+            addButton.setTitleColor(COLOR_FROM_HEX("#BC1832"), for: .normal)
+            addButton.titleLabel!.font = UIFont(name: "Graphik-Semibold", size: 15.0)
             addButton.contentHorizontalAlignment = .right
             addButton.addTarget(self, action: #selector(addQuestionButtonTap), for: .touchUpInside)
             qSelector.addSubview(addButton)
         } else {
             var valX: CGFloat = 0.0
             for I in 0...1 {
-                let qButton = UIButton(type: .custom)
-                qButton.frame = CGRect(x: valX, y: 0, width: W-5.0, height: 40)
-                qButton.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
+                if(I==1){
+                    W += 1
+                }
+                
+                let qButton = BorderedButton()
+                qButton.frame = CGRect(x: valX, y: 0, width: W, height: 55)
+                qButton.drawBorder()
+                qButton.backgroundColor = UIColor.white
                 qButton.setTitle(" Question \(I+1)", for: .normal)
                 qButton.contentHorizontalAlignment = .left
                 qButton.isSelected = false
-                qButton.setTitleColor(UIColor.lightGray, for: .normal)
+                qButton.setTitleColor(UIColor.black.withAlphaComponent(0.5), for: .normal)
                 qButton.setTitleColor(UIColor.black, for: .selected)
-                qButton.titleLabel!.font = UIFont.systemFont(ofSize: 15.0)
+                qButton.titleLabel!.font = UIFont(name: "Graphik-Semibold", size: 16.0)
+                qButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 0)
                 qButton.tag = I
                 qButton.addTarget(self, action: #selector(questionButtonTap), for: .touchUpInside)
                 qSelector.addSubview(qButton)
                 
-                valX += W + (5.0)
+                valX += W-1
             }
             
             let deleteButton = UIButton(type: .custom)
-            deleteButton.frame = CGRect(x: (W*2)-40, y: 0, width: 40, height: 40)
-            //deleteButton.backgroundColor = nextStepButton.backgroundColor
-            deleteButton.setTitle("  X", for: .normal)
-            deleteButton.contentHorizontalAlignment = .center
-            deleteButton.setTitleColor(UIColor.black, for: .normal)
-            deleteButton.titleLabel!.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+            deleteButton.setImage(UIImage(named: "closeButton"), for: .normal)
+            
+            deleteButton.frame = CGRect(x: qSelector.frame.width - 50,
+                y: 2.5, width: 50, height: 50)
+            
+            
+            //deleteButton.contentHorizontalAlignment = .center
+            //deleteButton.setTitleColor(UIColor.black, for: .normal)
+            //deleteButton.titleLabel!.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+            
             deleteButton.addTarget(self, action: #selector(deleteSecondQuestionButtonTap), for: .touchUpInside)
             qSelector.addSubview(deleteButton)
         }
@@ -151,28 +164,28 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
         
         switch Q.type {
         case .yes_no:
-            responseTypeButton.setTitle("Type: Yes/No", for: .normal)
+            responseTypeButton.setTitle("Yes/No question", for: .normal)
             placeNextButtonBelow(view: yesNoView)
             fill_yesNoFieldsWithQuestion(Q)
             yesNoView.isHidden = false
             multipleOptionsView.isHidden = true
             scaleView.isHidden = true
         case .multiple:
-            responseTypeButton.setTitle("Type: Multiple options", for: .normal)
+            responseTypeButton.setTitle("Multiple selection", for: .normal)
             fill_multipleFieldsWithQuestion(Q)
             placeNextButtonBelow(view: multipleOptionsView)
             yesNoView.isHidden = true
             multipleOptionsView.isHidden = false
             scaleView.isHidden = true
         case .scale:
-            responseTypeButton.setTitle("Type: Scale", for: .normal)
+            responseTypeButton.setTitle("Scale", for: .normal)
             fill_scaleFieldsWithQuestion(Q)
             placeNextButtonBelow(view: scaleView)
             yesNoView.isHidden = true
             multipleOptionsView.isHidden = true
             scaleView.isHidden = false
         default: // Text
-            responseTypeButton.setTitle("Type: Text", for: .normal)
+            responseTypeButton.setTitle("Text String", for: .normal)
             placeNextButtonBelow(view: responseTypeButton)
             yesNoView.isHidden = true
             multipleOptionsView.isHidden = true
@@ -411,12 +424,12 @@ class NewSurveyViewController: BaseViewController, UITextViewDelegate {
                 let button = (V as! UIButton)
                 
                 button.isSelected = false
-                button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+                button.titleLabel?.font = UIFont(name: "Graphik-Medium", size: 15.0)
             }
         }
         
         sender.isSelected = true
-        sender.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+        sender.titleLabel!.font = UIFont(name: "Graphik-Semibold", size: 16.0)
         
         currentQuestion = sender.tag
         refreshQuestion()
