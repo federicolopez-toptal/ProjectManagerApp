@@ -156,11 +156,10 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         let content = project["content"] as! [String: Any]
         let info = content["info"] as! [String: String]
         let users = content["users"] as! [String: String]
-        let usersCount = users.keys.count
         
         cell.nameLabel.text! = info["name"]! as String
         cell.descriptionLabel.text! = info["description"]! as String
-        cell.membersLabel.text = "\(usersCount) Project members"
+        cell.createUserPictures(users: users)
         
         return cell
     }

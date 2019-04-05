@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Graphik-Regular.otf">
+            <string>Graphik-Regular</string>
+        </array>
+        <array key="Graphik-Semibold.otf">
+            <string>Graphik-Semibold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,24 +27,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="381" height="214.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1S9-TA-mXw">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1S9-TA-mXw">
                         <rect key="frame" x="2" y="2" width="377" height="200"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7K-wm-Zkm">
-                                <rect key="frame" x="20" y="25" width="61.5" height="29"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <rect key="frame" x="20" y="25" width="63.5" height="24"/>
+                                <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xZ-Bk-h8R">
-                                <rect key="frame" x="20" y="60.5" width="339" height="17"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJ2-CQ-Tdu">
-                                <rect key="frame" x="20" y="113" width="35" height="17"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <rect key="frame" x="20" y="64" width="339" height="14"/>
+                                <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -51,13 +53,11 @@
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="SDl-vf-3fl" firstAttribute="leading" secondItem="1S9-TA-mXw" secondAttribute="leading" constant="20" id="3GG-rC-EBc"/>
-                            <constraint firstAttribute="trailing" secondItem="SDl-vf-3fl" secondAttribute="trailing" constant="16" id="Ah8-id-Ypv"/>
-                            <constraint firstItem="SDl-vf-3fl" firstAttribute="top" secondItem="rJ2-CQ-Tdu" secondAttribute="bottom" constant="15" id="EMP-ik-ADY"/>
-                            <constraint firstAttribute="trailing" secondItem="0xZ-Bk-h8R" secondAttribute="trailing" constant="16" id="KcH-Cu-fPQ"/>
-                            <constraint firstItem="0xZ-Bk-h8R" firstAttribute="top" secondItem="v7K-wm-Zkm" secondAttribute="bottom" constant="6.5" id="Oqc-L8-wE2"/>
+                            <constraint firstAttribute="trailing" secondItem="SDl-vf-3fl" secondAttribute="trailing" constant="18" id="Ah8-id-Ypv"/>
+                            <constraint firstAttribute="trailing" secondItem="0xZ-Bk-h8R" secondAttribute="trailing" constant="18" id="KcH-Cu-fPQ"/>
+                            <constraint firstItem="0xZ-Bk-h8R" firstAttribute="top" secondItem="v7K-wm-Zkm" secondAttribute="bottom" constant="15" id="Oqc-L8-wE2"/>
                             <constraint firstItem="0xZ-Bk-h8R" firstAttribute="leading" secondItem="1S9-TA-mXw" secondAttribute="leading" constant="20" id="SNK-Al-EMe"/>
                             <constraint firstAttribute="height" constant="200" id="Xeo-ef-Mgd"/>
-                            <constraint firstItem="rJ2-CQ-Tdu" firstAttribute="leading" secondItem="1S9-TA-mXw" secondAttribute="leading" constant="20" id="Xtu-Je-M28"/>
                             <constraint firstItem="v7K-wm-Zkm" firstAttribute="leading" secondItem="1S9-TA-mXw" secondAttribute="leading" constant="20" id="eSn-dH-RIb"/>
                             <constraint firstItem="v7K-wm-Zkm" firstAttribute="top" secondItem="1S9-TA-mXw" secondAttribute="top" constant="25" id="gxI-Vb-76h"/>
                             <constraint firstAttribute="bottom" secondItem="SDl-vf-3fl" secondAttribute="bottom" constant="20" id="pJM-8P-AcH"/>
@@ -65,7 +65,7 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="1S9-TA-mXw" secondAttribute="trailing" constant="4" id="dXo-PL-n0h"/>
+                    <constraint firstAttribute="trailing" secondItem="1S9-TA-mXw" secondAttribute="trailing" constant="2" id="dXo-PL-n0h"/>
                     <constraint firstItem="1S9-TA-mXw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="pFO-s7-69G"/>
                     <constraint firstItem="1S9-TA-mXw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" id="pJV-nY-jaA"/>
                 </constraints>
@@ -74,7 +74,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="descriptionLabel" destination="0xZ-Bk-h8R" id="o6O-On-NNo"/>
-                <outlet property="membersLabel" destination="rJ2-CQ-Tdu" id="YoC-WM-U3u"/>
                 <outlet property="nameLabel" destination="v7K-wm-Zkm" id="qUE-zB-yW2"/>
                 <outlet property="whiteView" destination="1S9-TA-mXw" id="aqL-it-EMr"/>
             </connections>

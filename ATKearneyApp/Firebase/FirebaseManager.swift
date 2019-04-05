@@ -281,6 +281,7 @@ class FirebaseManager: NSObject {
                             try data.write(to: fileURL!)
                         } catch {
                             // Can't save it
+                            self.setImage(self.defaultUserPhoto(), to: view)
                         }
                         
                         // show image
