@@ -1841,7 +1841,7 @@
                                                         <rect key="frame" x="163" y="0.0" width="163" height="50"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="13"/>
-                                                        <state key="normal" title="PAST">
+                                                        <state key="normal" title="INACTIVE">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -2517,8 +2517,8 @@
         <image name="survey.png" width="512" height="569"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AVg-OP-vJp"/>
-        <segue reference="5TC-rh-18m"/>
+        <segue reference="egf-bS-qtF"/>
+        <segue reference="bWA-Xa-GVb"/>
         <segue reference="m4n-PI-Xe6"/>
     </inferredMetricsTieBreakers>
 </document>
