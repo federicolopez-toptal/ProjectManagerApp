@@ -1060,6 +1060,68 @@
             </objects>
             <point key="canvasLocation" x="2061.5999999999999" y="2661.3193403298351"/>
         </scene>
+        <!--Survey Thanks View Controller-->
+        <scene sceneID="87l-XI-v1V">
+            <objects>
+                <viewController id="wqo-xv-ULx" customClass="SurveyThanksViewController" customModule="ATKearneyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pKr-Av-ngK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your feedback is very important for us!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gru-fx-HS3">
+                                <rect key="frame" x="0.0" y="345" width="375" height="32"/>
+                                <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="people.png" translatesAutoresizingMaskIntoConstraints="NO" id="aj1-6G-2zF">
+                                <rect key="frame" x="165.5" y="170" width="44" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="9ry-VO-H4q"/>
+                                    <constraint firstAttribute="width" constant="44" id="f9n-NE-7wI"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for your response!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vqn-ds-5xC">
+                                <rect key="frame" x="58.5" y="248" width="258" height="72"/>
+                                <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kM5-L4-yoe">
+                                <rect key="frame" x="64" y="434" width="247" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.85098039219999999" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="7VU-ry-RUA"/>
+                                    <constraint firstAttribute="width" constant="247" id="CDR-6N-WtC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Back to project">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="acceptButtonTap:" destination="wqo-xv-ULx" eventType="touchUpInside" id="HVO-vj-w23"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Vqn-ds-5xC" firstAttribute="centerX" secondItem="vvK-Ow-MNf" secondAttribute="centerX" id="37m-MF-eHa"/>
+                            <constraint firstItem="Gru-fx-HS3" firstAttribute="top" secondItem="Vqn-ds-5xC" secondAttribute="bottom" constant="25" id="3aP-tW-4vY"/>
+                            <constraint firstItem="aj1-6G-2zF" firstAttribute="top" secondItem="vvK-Ow-MNf" secondAttribute="top" constant="150" id="ApQ-6F-lEc"/>
+                            <constraint firstItem="kM5-L4-yoe" firstAttribute="centerX" secondItem="vvK-Ow-MNf" secondAttribute="centerX" id="GtM-by-aft"/>
+                            <constraint firstItem="Gru-fx-HS3" firstAttribute="leading" secondItem="vvK-Ow-MNf" secondAttribute="leading" id="VRz-y5-CVQ"/>
+                            <constraint firstItem="vvK-Ow-MNf" firstAttribute="trailing" secondItem="Gru-fx-HS3" secondAttribute="trailing" id="cCH-aB-4h8"/>
+                            <constraint firstItem="aj1-6G-2zF" firstAttribute="centerX" secondItem="vvK-Ow-MNf" secondAttribute="centerX" id="dd2-nZ-dqB"/>
+                            <constraint firstItem="kM5-L4-yoe" firstAttribute="top" secondItem="Gru-fx-HS3" secondAttribute="bottom" constant="57" id="oaj-aj-EWG"/>
+                            <constraint firstItem="Vqn-ds-5xC" firstAttribute="top" secondItem="aj1-6G-2zF" secondAttribute="bottom" constant="50" id="xiT-Hl-J9g"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vvK-Ow-MNf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2KC-Vb-EO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3177" y="2901"/>
+        </scene>
         <!--Anwser Survey View Controller-->
         <scene sceneID="2PT-l7-kPU">
             <objects>
@@ -1084,14 +1146,14 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZ0-kk-V2O">
-                                                <rect key="frame" x="25" y="129" width="326" height="21"/>
+                                                <rect key="frame" x="25" y="174" width="326" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Answer survey" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCf-fH-BRA">
-                                                <rect key="frame" x="25" y="85" width="326" height="36"/>
+                                                <rect key="frame" x="25" y="111" width="326" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="30"/>
                                                 <nil key="textColor"/>
@@ -1133,6 +1195,7 @@
                         <outlet property="scrollView" destination="Ywk-03-Mg1" id="MC8-2Z-XP6"/>
                         <outlet property="sendReponseButton" destination="WmZ-vF-HxW" id="lJz-yf-ltS"/>
                         <outlet property="titleLabel" destination="lCf-fH-BRA" id="Bpf-ns-mEx"/>
+                        <segue destination="wqo-xv-ULx" kind="show" identifier="gotoThanks" id="3DN-Lb-IYS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2js-vv-2uw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1730,15 +1793,33 @@
                                         <rect key="frame" x="0.0" y="96" width="375" height="180"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No surveys for now..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEM-Az-Lo8">
-                                        <rect key="frame" x="0.0" y="173" width="375" height="16"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTz-ZT-Mu8">
+                                        <rect key="frame" x="25" y="96" width="325" height="128"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No surveys found!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykD-hM-VGs">
+                                                <rect key="frame" x="0.0" y="87" width="325" height="16"/>
+                                                <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="survey.png" translatesAutoresizingMaskIntoConstraints="NO" id="MG9-Jz-bas">
+                                                <rect key="frame" x="144.5" y="31" width="36" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="36" id="T30-uD-bsv"/>
+                                                    <constraint firstAttribute="height" constant="40" id="gyT-VO-pUo"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="cvD-Ji-fkF"/>
+                                            <constraint firstItem="MG9-Jz-bas" firstAttribute="centerX" secondItem="pTz-ZT-Mu8" secondAttribute="centerX" id="33q-jc-6Ui"/>
+                                            <constraint firstAttribute="trailing" secondItem="ykD-hM-VGs" secondAttribute="trailing" id="AmJ-Vr-EMm"/>
+                                            <constraint firstItem="ykD-hM-VGs" firstAttribute="top" secondItem="pTz-ZT-Mu8" secondAttribute="top" constant="87" id="GDn-e4-QNe"/>
+                                            <constraint firstItem="ykD-hM-VGs" firstAttribute="top" secondItem="MG9-Jz-bas" secondAttribute="bottom" constant="16" id="Zg8-qO-7PJ"/>
+                                            <constraint firstItem="ykD-hM-VGs" firstAttribute="leading" secondItem="pTz-ZT-Mu8" secondAttribute="leading" id="vT8-DJ-PlP"/>
+                                            <constraint firstAttribute="height" constant="128" id="wdD-YJ-5Go"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhx-Nj-UHi">
                                         <rect key="frame" x="0.0" y="36" width="375" height="50"/>
                                         <subviews>
@@ -1794,22 +1875,22 @@
                                 <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Xc6-zO-Kvw" firstAttribute="top" secondItem="aAl-Ce-D7L" secondAttribute="top" constant="-2" id="21r-8a-CDM"/>
-                                    <constraint firstItem="lEM-Az-Lo8" firstAttribute="top" secondItem="qhx-Nj-UHi" secondAttribute="bottom" constant="87" id="3xd-RC-uqS"/>
                                     <constraint firstItem="FAN-fI-3vS" firstAttribute="top" secondItem="aAl-Ce-D7L" secondAttribute="top" id="5BM-mX-Qg0"/>
                                     <constraint firstItem="btm-Si-8dT" firstAttribute="leading" secondItem="aAl-Ce-D7L" secondAttribute="leading" id="5rm-ld-jW4"/>
-                                    <constraint firstAttribute="trailing" secondItem="lEM-Az-Lo8" secondAttribute="trailing" id="62S-9J-lbb"/>
                                     <constraint firstItem="FAN-fI-3vS" firstAttribute="leading" secondItem="aAl-Ce-D7L" secondAttribute="leading" constant="25" id="6Cv-Ha-z5o"/>
+                                    <constraint firstItem="pTz-ZT-Mu8" firstAttribute="top" secondItem="qhx-Nj-UHi" secondAttribute="bottom" constant="10" id="Jm6-67-Lec"/>
                                     <constraint firstAttribute="trailing" secondItem="btm-Si-8dT" secondAttribute="trailing" id="U5m-hq-TBk"/>
                                     <constraint firstItem="pvk-5I-yPW" firstAttribute="top" secondItem="aAl-Ce-D7L" secondAttribute="top" constant="-7" id="VPf-7h-aI0"/>
                                     <constraint firstAttribute="bottom" secondItem="btm-Si-8dT" secondAttribute="bottom" id="WKh-mX-Ech"/>
                                     <constraint firstItem="qhx-Nj-UHi" firstAttribute="top" secondItem="FAN-fI-3vS" secondAttribute="bottom" constant="20" id="Wnt-jc-q27"/>
-                                    <constraint firstItem="lEM-Az-Lo8" firstAttribute="leading" secondItem="aAl-Ce-D7L" secondAttribute="leading" id="YxP-LD-WSa"/>
                                     <constraint firstItem="btm-Si-8dT" firstAttribute="top" secondItem="qhx-Nj-UHi" secondAttribute="bottom" constant="10" id="aA1-m3-4l3"/>
                                     <constraint firstAttribute="trailing" secondItem="pvk-5I-yPW" secondAttribute="trailing" constant="25" id="grZ-YE-G56"/>
+                                    <constraint firstAttribute="trailing" secondItem="pTz-ZT-Mu8" secondAttribute="trailing" constant="25" id="hbz-SD-O7G"/>
                                     <constraint firstItem="Xc6-zO-Kvw" firstAttribute="leading" secondItem="FAN-fI-3vS" secondAttribute="trailing" constant="9" id="idO-6J-YUW"/>
                                     <constraint firstItem="qhx-Nj-UHi" firstAttribute="leading" secondItem="aAl-Ce-D7L" secondAttribute="leading" id="j2e-1f-jdg"/>
                                     <constraint firstAttribute="trailing" secondItem="qhx-Nj-UHi" secondAttribute="trailing" id="ndN-Ew-m5h"/>
                                     <constraint firstAttribute="height" constant="276" id="q0S-kk-679"/>
+                                    <constraint firstItem="pTz-ZT-Mu8" firstAttribute="leading" secondItem="aAl-Ce-D7L" secondAttribute="leading" constant="25" id="wnZ-WH-fkO"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAw-0R-t0D">
@@ -1865,7 +1946,7 @@
                         <outlet property="loading" destination="lUj-UN-qfG" id="NPZ-k3-zmQ"/>
                         <outlet property="loadingSurvey" destination="Xc6-zO-Kvw" id="Fti-SG-h2F"/>
                         <outlet property="nameLabel" destination="7O9-Ph-BPC" id="eeG-QO-aYQ"/>
-                        <outlet property="noSurveysLabel" destination="lEM-Az-Lo8" id="0rm-xy-1eK"/>
+                        <outlet property="noSurveysView" destination="pTz-ZT-Mu8" id="Dqq-JJ-O7c"/>
                         <outlet property="surveyLabel" destination="FAN-fI-3vS" id="CPC-rc-Wag"/>
                         <outlet property="surveySelectorView" destination="qhx-Nj-UHi" id="qDr-B4-mvN"/>
                         <outlet property="surveySelectorViewHeightContraint" destination="M8M-oU-FIQ" id="u3E-68-d0d"/>
@@ -2320,21 +2401,21 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Survey results" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQ0-4k-7e3">
-                                                <rect key="frame" x="25" y="85" width="326" height="36"/>
+                                                <rect key="frame" x="25" y="111" width="326" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2Z-wE-WOO">
-                                                <rect key="frame" x="25" y="129" width="326" height="21"/>
+                                                <rect key="frame" x="25" y="184" width="326" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJY-wD-08M">
-                                                <rect key="frame" x="248" y="43" width="111" height="30"/>
+                                                <rect key="frame" x="240" y="43" width="111" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Graphik-Semibold" family="Graphik" pointSize="15"/>
                                                 <state key="normal" title="MANAGE">
@@ -2433,10 +2514,11 @@
         <image name="down.png" width="512" height="315"/>
         <image name="people.png" width="176" height="112"/>
         <image name="profileIcon.png" width="68" height="68"/>
+        <image name="survey.png" width="512" height="569"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AVg-OP-vJp"/>
-        <segue reference="5TC-rh-18m"/>
+        <segue reference="egf-bS-qtF"/>
+        <segue reference="bWA-Xa-GVb"/>
         <segue reference="m4n-PI-Xe6"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -91,37 +91,57 @@ class SurveyResultsViewController: BaseViewController {
         
         // No answers yet!
         if(SelectedSurvey.shared.answers.count==0) {
-            let noAnswersLabel = UILabel(frame: CGRect(x: X, y: 0, width: W, height: 42))
-            noAnswersLabel.font = descriptionLabel.font
-            noAnswersLabel.numberOfLines = 2
-            noAnswersLabel.textAlignment = .center
-            noAnswersLabel.text = "There are no answers for\nyour survey yet!"
+            let resultLabel = UILabel(frame: CGRect(x: X, y: BOTTOM(view: descriptionLabel) + 25, width: W, height: 10))
+            resultLabel.font = UIFont(name: "Graphik-Medium", size: 16)
+            contentView.addSubview(resultLabel)
+            CHANGE_LABEL_HEIGHT(label: resultLabel, text: "Survey results")
             
-            contentView.addSubview(noAnswersLabel)
-            noAnswersLabel.center = contentView.center
+            let line = UIView(frame: CGRect(x: X, y: BOTTOM(view: resultLabel)+20.0, width: W, height: 1))
+            line.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            contentView.addSubview(line)
+            
+            let imageView = UIImageView(frame: CGRect(x: (contentView.frame.width - 36)/2,
+                                                      y: 380, width: 36, height: 40))
+            imageView.image = UIImage(named: "survey.png")
+            contentView.addSubview(imageView)
+            
+            let noDataLabel = UILabel(frame: CGRect(x: X, y: BOTTOM(view: imageView) + 16, width: W, height: 10))
+            noDataLabel.font = UIFont(name: "Graphik-Regular", size: 16)
+            noDataLabel.numberOfLines = 2
+            noDataLabel.textAlignment = .center
+            CHANGE_LABEL_HEIGHT(label: noDataLabel, text: "There are no answers\nfor this survey yet!")
+            contentView.addSubview(noDataLabel)
             
             return
         }
 
         // QUESTION SELECTOR
-        var Y = BOTTOM(view: descriptionLabel) + 20.0
-        let questionSelector = UIView(frame: CGRect(x: 0, y: Y, width: self.view.frame.width, height: 45))
-        //questionSelector.backgroundColor = UIColor.green
+        var Y = BOTTOM(view: descriptionLabel) + 30.0
+        let questionSelector = UIView(frame: CGRect(x: 25, y: Y, width: W, height: 50))
+        questionSelector.backgroundColor = UIColor.white
+        questionSelector.layer.borderColor = COLOR_FROM_HEX("#DBD8D8").cgColor
+        questionSelector.layer.borderWidth = 1.0
         contentView.addSubview(questionSelector)
         
         let qCount = SelectedSurvey.shared.questions.count
         for I in 0...qCount-1 {
             let qButton = UIButton(type: .custom)
             let buttonW = W / CGFloat(qCount)
-            qButton.frame = CGRect(x: X + (buttonW*CGFloat(I)) + ((5.0/2) * CGFloat(qCount-1)), y: 0, width: buttonW - 5.0, height: 40)
-            qButton.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
-            qButton.setTitle("Question \(I+1)", for: .normal)
-            qButton.setTitleColor(UIColor.lightGray, for: .normal)
-            qButton.setTitleColor(UIColor.black, for: .selected)
+            qButton.frame = CGRect(x: buttonW*CGFloat(I), y: 0, width: buttonW, height: 50)
+            qButton.backgroundColor = UIColor.clear
+            qButton.setTitle("QUESTION \(I+1)", for: .normal)
+            qButton.setTitleColor(UIColor.black.withAlphaComponent(0.5), for: .normal)
+            qButton.setTitleColor(UIColor.black.withAlphaComponent(0.8), for: .selected)
+            qButton.titleLabel?.font = UIFont(name: "Graphik-Semibold", size: 13)
             qButton.tag = I
             qButton.addTarget(self, action: #selector(questionSelectorButtonTap), for: .touchUpInside)
             
             questionSelector.addSubview(qButton)
+        }
+        if(qCount==2) {
+            let middleView = UIView(frame: CGRect(x: questionSelector.frame.width/2, y: 15, width: 1, height: 20))
+            middleView.backgroundColor = COLOR_FROM_HEX("#DBD8D8")
+            questionSelector.addSubview(middleView)
         }
         
         
@@ -134,32 +154,38 @@ class SurveyResultsViewController: BaseViewController {
             questionView.backgroundColor = UIColor.white
             
             let questionLabel = UILabel(frame: CGRect(x: X, y: 10.0, width: W, height: 10))
-            questionLabel.font = descriptionLabel.font
+            questionLabel.font = UIFont(name: "Graphik-Medium", size: 16)
             questionView.addSubview(questionLabel)
             CHANGE_LABEL_HEIGHT(label: questionLabel, text: Q.text)
             
-            Y = BOTTOM(view: questionLabel) + 30.0
+            let line = UIView(frame: CGRect(x: X, y: BOTTOM(view: questionLabel)+20.0, width: W, height: 1))
+            line.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            questionView.addSubview(line)
+            
+            Y = BOTTOM(view: line) + 20.0
             if(Q.type == .text) {
                 // TEXT
                 for A in SelectedSurvey.shared.answers {
                     if let response = A.info[index] as? String {
                         let roleLabel = UILabel(frame: CGRect(x: X, y: Y, width: W, height: 10))
-                        roleLabel.font = UIFont.systemFont(ofSize: 10)
-                        CHANGE_LABEL_HEIGHT(label: roleLabel, text: "CLIENT")
+                        roleLabel.font = UIFont(name: "Graphik-Medium", size: 10)
+                        
                         if(A.isATKMember){
                             CHANGE_LABEL_HEIGHT(label: roleLabel, text: "ATK MEMBER")
+                            roleLabel.textColor = COLOR_FROM_HEX("#BC1832")
+                        } else {
+                            CHANGE_LABEL_HEIGHT(label: roleLabel, text: "CLIENT")
+                            roleLabel.textColor = UIColor.black.withAlphaComponent(0.5)
                         }
                         questionView.addSubview(roleLabel)
                         
-                        let answerLabel = UILabel(frame: CGRect(x: X, y: BOTTOM(view: roleLabel), width: W, height: 10))
-                        answerLabel.font = descriptionLabel.font
+                        let answerLabel = UILabel(frame: CGRect(x: X, y: BOTTOM(view: roleLabel) + 10.0, width: W, height: 10))
+                        answerLabel.font = UIFont(name: "Graphik-Regular", size: 16)
                         CHANGE_LABEL_HEIGHT(label: answerLabel, text: response)
                         questionView.addSubview(answerLabel)
-                        print(response)
-                        print("")
                         
-                        let line = UIView(frame: CGRect(x: X, y: BOTTOM(view: answerLabel) + 15.0, width: W, height: 1.0))
-                        line.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
+                        let line = UIView(frame: CGRect(x: X, y: BOTTOM(view: answerLabel) + 20.0, width: W, height: 1))
+                        line.backgroundColor = UIColor.black.withAlphaComponent(0.1)
                         questionView.addSubview(line)
                         
                         Y = BOTTOM(view: line) + 20.0
@@ -171,30 +197,39 @@ class SurveyResultsViewController: BaseViewController {
                     if let response = A.info[index] as? Array<String> {
                         let roleLabel = UILabel(frame: CGRect(x: X, y: Y, width: W, height: 10))
                         roleLabel.font = UIFont.systemFont(ofSize: 10)
-                        CHANGE_LABEL_HEIGHT(label: roleLabel, text: "CLIENT")
+                        
                         if(A.isATKMember){
                             CHANGE_LABEL_HEIGHT(label: roleLabel, text: "ATK MEMBER")
+                            roleLabel.textColor = COLOR_FROM_HEX("#BC1832")
+                        } else {
+                            CHANGE_LABEL_HEIGHT(label: roleLabel, text: "CLIENT")
+                            roleLabel.textColor = UIColor.black.withAlphaComponent(0.5)
                         }
                         questionView.addSubview(roleLabel)
                         
-                        let answerLabel = UILabel(frame: CGRect(x: X, y: BOTTOM(view: roleLabel) + 5.0, width: W, height: 10))
-                        answerLabel.font = descriptionLabel.font
-                        
-                        var responseText = ""
+                        var valY = BOTTOM(view: roleLabel) + 15.0
                         for strOption in response {
-                            if(!responseText.isEmpty){
-                                responseText += "\n"
-                            }
-                            responseText += "• \(strOption)"
+                            let optionView = UIView(frame: CGRect(x: X, y: valY, width: W, height: 45))
+                            optionView.backgroundColor = UIColor.white
+                            optionView.layer.borderColor = COLOR_FROM_HEX("#DBD8D8").cgColor
+                            optionView.layer.borderWidth = 1.0
+                            
+                            let optionLabel = UILabel(frame: CGRect(x: 0, y: 1, width: W, height: 10))
+                            optionLabel.font = UIFont(name: "Graphik-Medium", size: 17)
+                            CHANGE_LABEL_HEIGHT(label: optionLabel, text: strOption.uppercased())
+                            optionView.addSubview(optionLabel)
+                            
+                            var mFrame = optionLabel.frame
+                            mFrame.origin.x =  10.0
+                            mFrame.origin.y = (optionView.frame.height - mFrame.height)/2
+                            optionLabel.frame = mFrame
+                            
+                            questionView.addSubview(optionView)
+                            valY += 45 + 10.0
                         }
-                        CHANGE_LABEL_HEIGHT(label: answerLabel, text: responseText)
-                        questionView.addSubview(answerLabel)
                         
-                        let line = UIView(frame: CGRect(x: X, y: BOTTOM(view: answerLabel) + 15.0, width: W, height: 1.0))
-                        line.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
-                        questionView.addSubview(line)
                         
-                        Y = BOTTOM(view: line) + 20.0
+                        Y = valY + 30.0
                     }
                 }
             } else if(Q.type == .yes_no) {
@@ -220,7 +255,7 @@ class SurveyResultsViewController: BaseViewController {
                     }
                 }
                 
-                for D in data {
+                for (i, D) in data.enumerated() {
                     var text = ""
                     let total = D.options[0].value + D.options[1].value
                     
@@ -236,29 +271,36 @@ class SurveyResultsViewController: BaseViewController {
                     }
                     
                     let roleLabel = UILabel(frame: CGRect(x: X, y: Y, width: W, height: 10))
-                    roleLabel.font = UIFont.systemFont(ofSize: 10)
+                    roleLabel.font = UIFont(name: "Graphik-Medium", size: 10)
                     CHANGE_LABEL_HEIGHT(label: roleLabel, text: D.text)
+                    if(i==0) {
+                        roleLabel.textColor = UIColor.black.withAlphaComponent(0.5)
+                    } else {
+                        roleLabel.textColor = COLOR_FROM_HEX("#BC1832")
+                    }
                     questionView.addSubview(roleLabel)
                     
-                    let option1Label = UILabel(frame: CGRect(x: X, y: BOTTOM(view: roleLabel) + 5.0, width: W/2, height: 10))
-                    option1Label.font = descriptionLabel.font
+                    let option1Label = UILabel(frame: CGRect(x: X, y: BOTTOM(view: roleLabel) + 20.0, width: W/2, height: 10))
+                    option1Label.font = UIFont(name: "Graphik-Medium", size: 18)
+                    option1Label.textColor = UIColor.black
                     text = "\(D.options[0].text) - \(perc1)%"
                     CHANGE_LABEL_HEIGHT(label: option1Label, text: text)
                     questionView.addSubview(option1Label)
                     
-                    let option2Label = UILabel(frame: CGRect(x: X+(W/2), y: BOTTOM(view: roleLabel) + 5.0, width: W/2, height: 10))
-                    option2Label.font = descriptionLabel.font
+                    let option2Label = UILabel(frame: CGRect(x: X+(W/2), y: BOTTOM(view: roleLabel) + 20.0, width: W/2, height: 10))
+                    option2Label.font = UIFont(name: "Graphik-Medium", size: 18)
+                    option2Label.textColor = UIColor.black.withAlphaComponent(0.7)
                     text = "\(D.options[1].text) - \(perc2)%"
                     CHANGE_LABEL_HEIGHT(label: option2Label, text: text)
                     option2Label.textAlignment = .right
                     questionView.addSubview(option2Label)
                     
-                    let grayView = UIView(frame: CGRect(x: X, y: BOTTOM(view: option1Label) + 4.0, width: W, height: 35))
-                    grayView.backgroundColor = COLOR_FROM_HEX("#D9D9D9")
+                    let grayView = UIView(frame: CGRect(x: X, y: BOTTOM(view: option1Label) + 15.0, width: W, height: 55))
+                    grayView.backgroundColor = COLOR_FROM_HEX("#F5F5F5")
                     questionView.addSubview(grayView)
                     
                     if(total>0) {
-                        let blackView = UIView(frame: CGRect(x: X, y: BOTTOM(view: option1Label) + 4.0, width:W * (CGFloat(perc1)/100), height: 35))
+                        let blackView = UIView(frame: CGRect(x: X, y: BOTTOM(view: option1Label) + 15.0, width:W * (CGFloat(perc1)/100), height: 55))
                         blackView.backgroundColor = UIColor.black
                         questionView.addSubview(blackView)
                     }
@@ -266,7 +308,7 @@ class SurveyResultsViewController: BaseViewController {
                     if(total==0) {
                         let noDataLabel = UILabel(frame: CGRect(x: X, y: 0, width: W, height: 10))
                         noDataLabel.textAlignment = .center
-                        noDataLabel.font = UIFont.systemFont(ofSize: 12.0)
+                        noDataLabel.font = UIFont(name: "Graphik-Medium", size: 16)
                         CHANGE_LABEL_HEIGHT(label: noDataLabel, text: "No answers registered")
                         questionView.addSubview(noDataLabel)
                         noDataLabel.center = grayView.center
@@ -308,16 +350,21 @@ class SurveyResultsViewController: BaseViewController {
                     }
                     
                     let roleLabel = UILabel(frame: CGRect(x: X, y: Y, width: W, height: 10))
-                    roleLabel.font = UIFont.systemFont(ofSize: 10)
+                    roleLabel.font = UIFont(name: "Graphik-Medium", size: 10)
                     CHANGE_LABEL_HEIGHT(label: roleLabel, text: roleText)
+                    if(I==1) {
+                        roleLabel.textColor = UIColor.black.withAlphaComponent(0.5)
+                    } else {
+                        roleLabel.textColor = COLOR_FROM_HEX("#BC1832")
+                    }
                     questionView.addSubview(roleLabel)
                     
-                    let blackView = UIView(frame: CGRect(x: X, y: BOTTOM(view: roleLabel) + 5.0, width: W, height: 35))
+                    let blackView = UIView(frame: CGRect(x: X, y: BOTTOM(view: roleLabel) + 20.0, width: W, height: 55))
                     blackView.backgroundColor = UIColor.black
                     questionView.addSubview(blackView)
                     
                     let valueLabel = UILabel(frame: CGRect(x: X, y: 0, width: W, height: 10))
-                    valueLabel.font = UIFont.systemFont(ofSize: 12.0, weight: .bold)
+                    valueLabel.font = UIFont(name: "Graphik-Medium", size: 14)
                     valueLabel.textAlignment = .center
                     valueLabel.textColor = UIColor.white
                     CHANGE_LABEL_HEIGHT(label: valueLabel, text: "Average answer: \(avg)")
@@ -363,12 +410,12 @@ class SurveyResultsViewController: BaseViewController {
                 let button = (V as! UIButton)
                 
                 button.isSelected = false
-                button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
+                //button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
             }
         }
         
         sender.isSelected = true
-        sender.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+        //sender.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
         showAnswer(sender.tag)
     }
     

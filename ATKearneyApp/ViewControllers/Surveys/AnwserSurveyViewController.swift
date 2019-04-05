@@ -340,21 +340,7 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
         showLoading(true)
         FirebaseManager.shared.answerSurvey(surveyID: SelectedSurvey.shared.surveyID, userID: MyUser.shared.userID, info: info){ (error) in
             if(error==nil) {
-                ALERT(title_SUCCES, text_SURVEY_THANKS, viewController: self){
-                    var destination: UIViewController?
-                    
-                    for VC in self.navigationController!.viewControllers {
-                        if(VC is ProjectDetailsViewController) {
-                            destination = VC
-                            break
-                        }
-                    }
-                    
-                    if let VC = destination {
-                        (VC as! ProjectDetailsViewController).firstTime = true
-                        self.navigationController?.popToViewController(VC, animated: true)
-                    }
-                }
+                self.performSegue(withIdentifier: "gotoThanks", sender: self)
             } else {
                 ALERT(title_ERROR, text_GENERIC_ERROR, viewController: self)
             }

@@ -21,7 +21,7 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     @IBOutlet weak var createSurveyButton: UIButton!
     @IBOutlet weak var loadingSurvey: UIActivityIndicatorView!
     @IBOutlet weak var surveysList: UITableView!
-    @IBOutlet weak var noSurveysLabel: UILabel!
+    @IBOutlet weak var noSurveysView: UIView!
     
     var surveysFilter = 0
     @IBOutlet weak var surveySelectorView: UIView!
@@ -45,6 +45,7 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
         surveysList.delegate = self
         surveysList.dataSource = self
         surveysList.separatorStyle = .none
+        noSurveysView.backgroundColor = self.view.backgroundColor
         
         surveyView.backgroundColor = UIColor.white
         loading.stopAnimating()
@@ -98,7 +99,7 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             }
             
             // Load surveys
-            noSurveysLabel.isHidden = true
+            noSurveysView.isHidden = true
             loadingSurvey.startAnimating()
             if(MyUser.shared.admin || SelectedProject.shared.hasOfficer(userID: MyUser.shared.userID)) {
                 loadSurveysForAdmin()
@@ -127,8 +128,7 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
                     }
                     
                     if(self.surveys.count==0) {
-                        self.noSurveysLabel.isHidden = false
-                        self.noSurveysLabel.text = "No surveys for now..."
+                        self.noSurveysView.isHidden = false
                     }
                     self.surveysList.reloadData()
                     self.loadingSurvey.stopAnimating()
@@ -140,7 +140,7 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
     }
     
     func loadSurveysForAdmin() {
-        noSurveysLabel.isHidden = true
+        noSurveysView.isHidden = true
         loadingSurvey.startAnimating()
         
         for (i, V) in surveySelectorView.subviews.first!.subviews.enumerated() {
@@ -176,8 +176,7 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
             }
             
             if(self.surveys.count==0) {
-                self.noSurveysLabel.isHidden = false
-                self.noSurveysLabel.text = "No surveys found"
+                self.noSurveysView.isHidden = false
             }
             
             self.surveysList.reloadData()
