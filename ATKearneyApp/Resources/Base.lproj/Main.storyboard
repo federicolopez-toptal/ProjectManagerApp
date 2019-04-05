@@ -89,10 +89,10 @@
                                 <color key="color" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEz-uX-5nr">
-                                <rect key="frame" x="328" y="72" width="37" height="37"/>
+                                <rect key="frame" x="325" y="71" width="42" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="78P-6P-mYq"/>
-                                    <constraint firstAttribute="width" constant="37" id="sZc-vf-PPX"/>
+                                    <constraint firstAttribute="height" constant="42" id="78P-6P-mYq"/>
+                                    <constraint firstAttribute="width" constant="42" id="sZc-vf-PPX"/>
                                 </constraints>
                                 <state key="normal" image="profileIcon.png"/>
                                 <connections>
@@ -138,9 +138,9 @@
                             <constraint firstItem="9D8-Tz-3YP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="62.5" id="hpk-cW-l4C"/>
                             <constraint firstItem="C8r-VB-B4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="115" id="jZt-Ph-Pkq"/>
                             <constraint firstItem="Lj6-QL-fhf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jqN-PH-YtK"/>
-                            <constraint firstItem="aEz-uX-5nr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="52" id="k9m-9m-W4n"/>
+                            <constraint firstItem="aEz-uX-5nr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="51" id="k9m-9m-W4n"/>
                             <constraint firstItem="9D8-Tz-3YP" firstAttribute="leading" secondItem="ZL8-YS-Kfh" secondAttribute="trailing" constant="8" id="lTA-ke-slh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aEz-uX-5nr" secondAttribute="trailing" constant="10" id="lzV-gT-OGW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aEz-uX-5nr" secondAttribute="trailing" constant="8" id="lzV-gT-OGW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C8r-VB-B4o" secondAttribute="trailing" constant="8" id="mQ8-db-Mvw"/>
                             <constraint firstItem="jXh-tU-WYm" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ntz-08-bF6"/>
                         </constraints>
@@ -1608,7 +1608,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBt-N5-Wqj">
-                                                <rect key="frame" x="25" y="357" width="326" height="60"/>
+                                                <rect key="frame" x="25" y="351" width="326" height="60"/>
                                                 <color key="backgroundColor" red="1" green="0.85098039219999999" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="IUf-5A-k8g"/>
@@ -1622,7 +1622,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FV4-hz-jyS" customClass="CustomTextField" customModule="ATKearneyApp" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="282" width="326" height="55"/>
+                                                <rect key="frame" x="25" y="276" width="326" height="55"/>
                                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="lXy-Hh-fQu"/>
@@ -1641,7 +1641,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retrieve your password with your business email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moz-qz-njS">
-                                                <rect key="frame" x="25" y="212" width="326" height="42"/>
+                                                <rect key="frame" x="25" y="212" width="326" height="36"/>
                                                 <fontDescription key="fontDescription" name="Graphik-Regular" family="Graphik" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2517,8 +2517,8 @@
         <image name="survey.png" width="512" height="569"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="egf-bS-qtF"/>
-        <segue reference="bWA-Xa-GVb"/>
+        <segue reference="AVg-OP-vJp"/>
+        <segue reference="5TC-rh-18m"/>
         <segue reference="m4n-PI-Xe6"/>
     </inferredMetricsTieBreakers>
 </document>

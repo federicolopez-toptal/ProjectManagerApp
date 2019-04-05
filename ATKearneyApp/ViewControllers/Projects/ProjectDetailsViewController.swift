@@ -113,7 +113,9 @@ class ProjectDetailsViewController: BaseViewController, UITableViewDelegate, UIT
                 
                 // get surveys that includes my user
                 surveys = [NSDictionary]()
-                FirebaseManager.shared.getSurveysForUser(MyUser.shared.userID) { (surveysArray, error) in
+                
+                let projectID = SelectedProject.shared.projectID
+                FirebaseManager.shared.getSurveysForUser(MyUser.shared.userID, projectID: projectID) { (surveysArray, error) in
                     
                     //self.surveys = surveysArray!      // Without filters
                     

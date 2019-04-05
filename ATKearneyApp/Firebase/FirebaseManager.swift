@@ -578,7 +578,7 @@ class FirebaseManager: NSObject {
         }
     }
     
-    func getSurveysForUser(_ userID: String, callback: @escaping ([NSDictionary]?, Error?) -> ()) {
+    func getSurveysForUser(_ userID: String, projectID: String, callback: @escaping ([NSDictionary]?, Error?) -> ()) {
         let DBref = Database.database().reference()
         
         DBref.child(USERS).child(userID).child("surveys").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -596,13 +596,19 @@ class FirebaseManager: NSObject {
                     
                     DBref.child(self.SURVEYS).child(keySurveyID).observeSingleEvent(of: .value, with: { (snapshot) in
                         if(snapshot.exists()) {
-                            let newDict = [
-                                "id": snapshot.key,
-                                "shouldAnswer": answered,
-                                "content": snapshot.value as! NSDictionary
-                                ] as [String : Any]
+                            let content = snapshot.value as! NSDictionary
+                            let info = content["info"] as! NSDictionary
+                            let surveyProjectID = info["projectID"] as! String
                             
-                            result.append(newDict as NSDictionary)
+                            if(surveyProjectID==projectID) {
+                                let newDict = [
+                                    "id": snapshot.key,
+                                    "shouldAnswer": answered,
+                                    "content": content
+                                    ] as [String : Any]
+                                
+                                result.append(newDict as NSDictionary)
+                            }
                         }
                         
                         dispatchGroup.leave()

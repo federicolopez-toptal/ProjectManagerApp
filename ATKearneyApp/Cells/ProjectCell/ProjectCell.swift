@@ -13,6 +13,7 @@ class ProjectCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var whiteView: UIView!
+    @IBOutlet weak var surveysLabel: UILabel!
     
     private let BASE_TAG = 444
     private let LIMIT = 5
@@ -35,6 +36,8 @@ class ProjectCell: UITableViewCell {
         usersContainer.frame = CGRect(x: 0, y: 110, width: whiteView.frame.width, height: 24.0)
         usersContainer.backgroundColor = UIColor.white
         whiteView.addSubview(usersContainer)
+        
+        surveysLabel.text = ""
     }
     
     func createUserPictures(users: [String: String]) {
@@ -89,6 +92,80 @@ class ProjectCell: UITableViewCell {
             }
             
         }
+    }
+    
+    func showSurveysInfo(forProject project: Project) {
+        var surveys = [NSDictionary]()
+        
+        surveysLabel.textColor = UIColor.black
+        surveysLabel.superview?.backgroundColor = COLOR_FROM_HEX("#F5F5F5")
+        
+        if(MyUser.shared.admin || project.hasOfficer(userID: MyUser.shared.userID)) {
+            // admin
+            FirebaseManager.shared.getSurveysForProject(project.projectID) { (surveysArray, error) in
+                // Filter: Include NON EXPIRED and ACTIVE surveys
+                for dict in surveysArray! {
+                    if(!self.isExpired(dict: dict) && self.isActive(dict: dict)) {
+                        surveys.append(dict)
+                    }
+                }
+                
+                var text = ""
+                if(surveys.count==0) {
+                    text = "No active surveys"
+                } else if(surveys.count==1) {
+                    text = "1 active survey"
+                } else {
+                    text = "\(surveys.count) active surveys"
+                }
+                self.surveysLabel.text = text
+            }
+        } else {
+            // regular user
+            FirebaseManager.shared.getSurveysForUser(MyUser.shared.userID, projectID: project.projectID) { (surveysArray, error) in
+                // Filter: Include (NON EXPIRED + ACTIVE) + NON ANSWERED surveys
+                for dict in surveysArray! {
+                    if(!self.isExpired(dict: dict) && self.isActive(dict: dict)) {
+                        let shouldAnswer = dict["shouldAnswer"] as! Bool
+                        if(shouldAnswer) {
+                            surveys.append(dict)
+                        }
+                    }
+                }
+                
+                var text = ""
+                if(surveys.count==0) {
+                    text = "No surveys for answer"
+                } else if(surveys.count==1) {
+                    text = "1 survey for answer"
+                    self.surveysLabel.textColor = UIColor.white
+                    self.surveysLabel.superview?.backgroundColor = COLOR_FROM_HEX("#BC1832")
+                } else {
+                    text = "\(surveys.count) surveys for answer"
+                    self.surveysLabel.textColor = UIColor.white
+                    self.surveysLabel.superview?.backgroundColor = COLOR_FROM_HEX("#BC1832")
+                }
+                self.surveysLabel.text = text
+            }
+        }
+    }
+    
+    
+    func isExpired(dict: NSDictionary) -> Bool {
+        let content = dict["content"] as! NSDictionary
+        let info = content["info"] as! NSDictionary
+        let expires = info["expires"] as! String
+        let expDate = DATE(expires)
+        
+        let isValid = expDate > Date()
+        return !isValid
+    }
+    func isActive(dict: NSDictionary) -> Bool {
+        let content = dict["content"] as! NSDictionary
+        let info = content["info"] as! NSDictionary
+        let active = info["active"] as! Bool
+        
+        return active
     }
     
     

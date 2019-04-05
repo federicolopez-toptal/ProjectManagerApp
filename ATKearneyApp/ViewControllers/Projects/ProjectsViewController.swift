@@ -159,7 +159,12 @@ class ProjectsViewController: BaseViewController, UITableViewDelegate, UITableVi
         
         cell.nameLabel.text! = info["name"]! as String
         cell.descriptionLabel.text! = info["description"]! as String
+        
         cell.createUserPictures(users: users)
+        
+        var P = Project()
+        P.fillWith(dict: project)
+        cell.showSurveysInfo(forProject: P)
         
         return cell
     }
