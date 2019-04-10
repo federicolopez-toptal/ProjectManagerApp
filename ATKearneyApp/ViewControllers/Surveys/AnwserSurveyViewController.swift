@@ -332,7 +332,7 @@ class AnwserSurveyViewController: BaseViewController, UITextViewDelegate {
         print(answersDict)
         
         let info = [
-            "ATKMember": IS_ATK_MEMBER(email: MyUser.shared.userID),
+            "ATKMember": IS_ATK_MEMBER(email: MyUser.shared.email),
             "info": answersDict
             ] as [String : Any]
         print(info)
