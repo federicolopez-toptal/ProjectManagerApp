@@ -200,6 +200,23 @@ func URL_ENCODE(_ text: String) -> String {
     return text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
 }
 
+func SHOW_USER_TYPE_IN(label: UILabel, admin: Bool, pOfficer: Bool, email: String) {
+    if(admin) {
+        label.text = "ADMIN"
+        label.textColor = COLOR_FROM_HEX("#BC1832")
+    } else if(pOfficer) {
+        label.text = "PROJECT OFFICER"
+        label.textColor = COLOR_FROM_HEX("#BC1832")
+    } else {
+        if( IS_ATK_MEMBER(email: email) ) {
+            label.text = "ATK MEMBER"
+            label.textColor = COLOR_FROM_HEX("#842D2D")
+        } else {
+            label.text = "CLIENT"
+            label.textColor = COLOR_FROM_HEX("#919191")
+        }
+    }
+}
 
 
 

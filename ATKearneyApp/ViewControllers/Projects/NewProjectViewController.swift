@@ -185,20 +185,11 @@ class NewProjectViewController: BaseViewController, UITableViewDelegate, UITable
         }
         cell.nameLabel.text = cellText
         
-        cell.roleLabel.textColor = UIColor.gray
-        if(SelectedProject.shared.hasOfficer(userID: userID)) {
-            cell.roleLabel.text = "PROJECT OFFICER"
-            cell.roleLabel.textColor = COLOR_FROM_HEX("#BC1832")
-        } else {
-            let email = info["email"] as! String
-            if( IS_ATK_MEMBER(email: email) ) {
-                cell.roleLabel.text = "ATK MEMBER"
-                cell.roleLabel.textColor = COLOR_FROM_HEX("#842D2D")
-            } else {
-                cell.roleLabel.text = "CLIENT"
-                cell.roleLabel.textColor = COLOR_FROM_HEX("#919191")
-            }
-        }
+        let email = info["email"] as! String
+        let admin = info["admin"] as! Bool
+        SHOW_USER_TYPE_IN(label: cell.roleLabel, admin: admin,
+                          pOfficer: SelectedProject.shared.hasOfficer(userID: userID),
+                          email: email)
         
         let photoLastUpdate = info["photoLastUpdate"] as? String
         FirebaseManager.shared.userPhoto(userID: userID, lastUpdate: photoLastUpdate, to: cell.photoImageView)

@@ -13,6 +13,7 @@ struct basicUser {
     var userID = ""
     var name = ""
     var email = ""
+    var admin = false
     var photoLastUpdate: String?
 }
 
@@ -69,9 +70,10 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
             
             let name = info["name"] as! String
             let email = info["email"] as! String
+            let admin = info["admin"] as! Bool
             let photoLastUpdate = info["photoLastUpdate"] as? String
             
-            users.append( basicUser(userID: strKey, name: name, email: email, photoLastUpdate: photoLastUpdate) )
+            users.append( basicUser(userID: strKey, name: name, email: email, admin: admin, photoLastUpdate: photoLastUpdate) )
         }
         // Users sorted by name!
         users = users.sorted { (obj1: basicUser, obj2: basicUser) -> Bool in
@@ -101,14 +103,7 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         
         cell.nameLabel.text = cellText
         cell.setState( usersCopy[user.userID] != nil )
-        
-        if( IS_ATK_MEMBER(email: user.email) ) {
-            cell.roleLabel.text = "ATK MEMBER"
-            cell.roleLabel.textColor = COLOR_FROM_HEX("#842D2D")
-        } else {
-            cell.roleLabel.text = "CLIENT"
-            cell.roleLabel.textColor = COLOR_FROM_HEX("#919191")
-        }
+        SHOW_USER_TYPE_IN(label: cell.roleLabel, admin: user.admin, pOfficer: false, email: user.email)
         
         cell.photoImageView.image = nil
         FirebaseManager.shared.userPhoto(userID: user.userID, lastUpdate: user.photoLastUpdate, to: cell.photoImageView)
