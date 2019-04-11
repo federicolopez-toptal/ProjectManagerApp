@@ -149,6 +149,14 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
                 if(U.name.lowercased().contains(text)) {
                     filteredUsers.append(U)
                 }
+                /*else {
+                    if let C = U.company {
+                        if(C.lowercased().contains(text)) {
+                            filteredUsers.append(U)
+                        }
+                    }
+                }
+ */
             }
         }
         

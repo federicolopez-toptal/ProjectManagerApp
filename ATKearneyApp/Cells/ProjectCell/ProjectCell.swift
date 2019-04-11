@@ -135,13 +135,13 @@ class ProjectCell: UITableViewCell {
                 
                 var text = ""
                 if(surveys.count==0) {
-                    text = "No surveys for answer"
+                    text = "No surveys to answer"
                 } else if(surveys.count==1) {
-                    text = "1 survey for answer"
+                    text = "1 survey to answer"
                     self.surveysLabel.textColor = UIColor.white
                     self.surveysLabel.superview?.backgroundColor = COLOR_FROM_HEX("#BC1832")
                 } else {
-                    text = "\(surveys.count) surveys for answer"
+                    text = "\(surveys.count) surveys to answer"
                     self.surveysLabel.textColor = UIColor.white
                     self.surveysLabel.superview?.backgroundColor = COLOR_FROM_HEX("#BC1832")
                 }

@@ -19,11 +19,20 @@ struct YesNoData {
 }
 
 
+struct MultipleOption {
+    var text: String
+    var count: Int
+}
+struct MultipleData {
+    var text: String
+    var options = [MultipleOption]()
+}
+
 struct Avg {
     var count: Int
     var value: Int
 }
-struct MultipleData {
+struct ScaleData {
     var ATKMember: Avg
     var clients: Avg
 }
@@ -192,7 +201,99 @@ class SurveyResultsViewController: BaseViewController {
                     }
                 }
             } else if(Q.type == .multiple) {
-                // MULTIPLE
+                // MULTIPLE options
+                var data = [MultipleData]()
+                
+                for i in 1...2 {
+                    var text = "CLIENT"
+                    if(i==2) {
+                        text = "ATK MEMBER"
+                    }
+                    
+                    var options = [MultipleOption]()
+                    for strOption in Q.options {
+                        options.append( MultipleOption(text: strOption, count: 0) )
+                    }
+                    
+                    data.append(MultipleData(text: text, options: options))
+                }
+                
+                for A in SelectedSurvey.shared.answers {
+                    var i = 0
+                    if(A.isATKMember) {
+                        i = 1
+                    }
+                    
+                    for response in A.info[index] as! [String] {
+                        for (j, O) in data[i].options.enumerated() {
+                            if(O.text == response){
+                                data[i].options[j].count += 1
+                                break
+                            }
+                        }
+                    }
+                }
+                
+                
+                
+                for (i, D) in data.enumerated() {
+                    let roleLabel = UILabel(frame: CGRect(x: X, y: Y, width: W, height: 10))
+                    roleLabel.font = UIFont(name: "Graphik-Medium", size: 10)
+                    CHANGE_LABEL_HEIGHT(label: roleLabel, text: D.text)
+                    if(i==0) {
+                        roleLabel.textColor = UIColor.black.withAlphaComponent(0.5)
+                    } else {
+                        roleLabel.textColor = COLOR_FROM_HEX("#BC1832")
+                    }
+                    questionView.addSubview(roleLabel)
+                    
+                    var valY = BOTTOM(view: roleLabel) + 15.0
+                    for O in data[i].options {
+                        let optionView = UIView(frame: CGRect(x: X, y: valY, width: W, height: 45))
+                        optionView.backgroundColor = UIColor.white
+                        optionView.layer.borderColor = COLOR_FROM_HEX("#DBD8D8").cgColor
+                        optionView.layer.borderWidth = 1.0
+                        
+                        let optionLabel = UILabel(frame: CGRect(x: 0, y: 1, width: W, height: 10))
+                        optionLabel.font = UIFont(name: "Graphik-Medium", size: 17)
+                        CHANGE_LABEL_HEIGHT(label: optionLabel, text: O.text.uppercased())
+                        optionView.addSubview(optionLabel)
+                        
+                        var mFrame = optionLabel.frame
+                        mFrame.origin.x =  10.0
+                        mFrame.origin.y = (optionView.frame.height - mFrame.height)/2
+                        optionLabel.frame = mFrame
+                        
+                        
+                        
+                        
+                        let countLabel = UILabel(frame: CGRect(x: 0, y: 1, width: W - 10.0, height: 10))
+                        countLabel.font = UIFont(name: "Graphik-Medium", size: 17)
+                        CHANGE_LABEL_HEIGHT(label: countLabel, text: String(O.count) )
+                        countLabel.textAlignment = .right
+                        optionView.addSubview(countLabel)
+                        
+                        mFrame = countLabel.frame
+                        mFrame.origin.y = (optionView.frame.height - mFrame.height)/2
+                        countLabel.frame = mFrame
+                        
+                        
+                        
+                        questionView.addSubview(optionView)
+                        valY += 45 + 10.0
+                    }
+                    
+                    Y = valY + 30.0
+                }
+                
+                
+                
+                
+
+                
+                /*
+                 Prev version
+                 
                 for A in SelectedSurvey.shared.answers {
                     if let response = A.info[index] as? Array<String> {
                         let roleLabel = UILabel(frame: CGRect(x: X, y: Y, width: W, height: 10))
@@ -232,6 +333,7 @@ class SurveyResultsViewController: BaseViewController {
                         Y = valY + 30.0
                     }
                 }
+ */
             } else if(Q.type == .yes_no) {
                 // YES / NO
                 var data = [
@@ -317,8 +419,8 @@ class SurveyResultsViewController: BaseViewController {
                     Y = BOTTOM(view: grayView) + 30.0
                 }
             } else if(Q.type == .scale) {
-                // MULTIPLE
-                var data = MultipleData(ATKMember: Avg(count: 0, value: 0), clients: Avg(count: 0, value: 0))
+                // SCALE
+                var data = ScaleData(ATKMember: Avg(count: 0, value: 0), clients: Avg(count: 0, value: 0))
                 
                 for A in SelectedSurvey.shared.answers {
                     if let response = A.info[index] as? Int {
