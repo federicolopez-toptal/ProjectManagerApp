@@ -15,6 +15,7 @@ struct basicUser {
     var email = ""
     var admin = false
     var photoLastUpdate: String?
+    var company: String?
 }
 
 class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
@@ -72,8 +73,12 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
             let email = info["email"] as! String
             let admin = info["admin"] as! Bool
             let photoLastUpdate = info["photoLastUpdate"] as? String
+            let company = info["company"] as? String
             
-            users.append( basicUser(userID: strKey, name: name, email: email, admin: admin, photoLastUpdate: photoLastUpdate) )
+            users.append( basicUser(userID: strKey,
+                                    name: name, email: email,
+                                    admin: admin, photoLastUpdate: photoLastUpdate,
+                                    company: company) )
         }
         // Users sorted by name!
         users = users.sorted { (obj1: basicUser, obj2: basicUser) -> Bool in
@@ -103,7 +108,9 @@ class UsersViewController: BaseViewController, UITableViewDelegate, UITableViewD
         
         cell.nameLabel.text = cellText
         cell.setState( usersCopy[user.userID] != nil )
-        SHOW_USER_TYPE_IN(label: cell.roleLabel, admin: user.admin, pOfficer: false, email: user.email)
+        SHOW_USER_TYPE_IN(label: cell.roleLabel,
+                          admin: user.admin, pOfficer: false,
+                          email: user.email, company: user.company)
         
         cell.photoImageView.image = nil
         FirebaseManager.shared.userPhoto(userID: user.userID, lastUpdate: user.photoLastUpdate, to: cell.photoImageView)

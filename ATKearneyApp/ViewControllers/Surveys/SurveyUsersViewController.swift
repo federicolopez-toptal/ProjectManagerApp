@@ -132,9 +132,10 @@ class SurveyUsersViewController: BaseViewController, UITableViewDelegate, UITabl
         
         let email = info["email"] as! String
         let admin = info["admin"] as! Bool
+        let company = info["company"] as? String
         SHOW_USER_TYPE_IN(label: cell.roleLabel, admin: admin,
                           pOfficer: SelectedProject.shared.hasOfficer(userID: userID),
-                          email: email)
+                          email: email, company: company)
         
         let photoLastUpdate = info["photoLastUpdate"] as? String
         FirebaseManager.shared.userPhoto(userID: userID, lastUpdate: photoLastUpdate, to: cell.photoImageView)

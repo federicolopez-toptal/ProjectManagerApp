@@ -200,7 +200,7 @@ func URL_ENCODE(_ text: String) -> String {
     return text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
 }
 
-func SHOW_USER_TYPE_IN(label: UILabel, admin: Bool, pOfficer: Bool, email: String) {
+func SHOW_USER_TYPE_IN(label: UILabel, admin: Bool, pOfficer: Bool, email: String, company: String?) {
     if(admin) {
         label.text = "ADMIN"
         label.textColor = COLOR_FROM_HEX("#BC1832")
@@ -214,6 +214,10 @@ func SHOW_USER_TYPE_IN(label: UILabel, admin: Bool, pOfficer: Bool, email: Strin
         } else {
             label.text = "CLIENT"
             label.textColor = COLOR_FROM_HEX("#919191")
+            
+            if let C = company {
+                label.text = "CLIENT - \(C.uppercased())"
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ struct User {
     var name = ""
     var phone = ""
     
+    var company: String?
     var role: String?
     var skills: String?
     var photoLastUpdate: String?
@@ -30,6 +31,7 @@ struct User {
         name = ""
         phone = ""
         
+        company = nil
         role = nil
         skills = nil
         photoLastUpdate = nil
@@ -48,6 +50,7 @@ struct User {
         phone = info["phone"] as! String
         
         // Optional fields
+        company = info["company"] as? String
         role = info["role"] as? String
         skills = info["skills"] as? String
         photoLastUpdate = info["photoLastUpdate"] as? String
@@ -62,6 +65,7 @@ struct User {
         phone = info["phone"] as! String
         
         // Optional fields
+        company = info["company"] as? String
         role = info["role"] as? String
         skills = info["skills"] as? String
         photoLastUpdate = info["photoLastUpdate"] as? String

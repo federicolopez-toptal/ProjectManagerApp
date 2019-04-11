@@ -18,6 +18,7 @@ class UserDetailsViewController: BaseViewController {
     @IBOutlet weak var userTypeLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var skillsLabel: UILabel!
     @IBOutlet weak var officerView: UIView!
@@ -85,22 +86,34 @@ class UserDetailsViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if(SelectedUser.shared.admin) {
-            userTypeLabel.text = "Admin"
+            userTypeLabel.text = "ADMIN"
+            userTypeLabel.textColor = COLOR_FROM_HEX("#BC1832")
         } else {
             if( IS_ATK_MEMBER(email: SelectedUser.shared.email) ) {
-                userTypeLabel.text = "ATK member"
+                userTypeLabel.text = "ATK MEMBER"
+                userTypeLabel.textColor = COLOR_FROM_HEX("#842D2D")
             } else {
-                userTypeLabel.text = "Client"
+                userTypeLabel.text = "CLIENT"
+                userTypeLabel.textColor = COLOR_FROM_HEX("#919191")
             }
         }
+        
         
         nameLabel.text! = SelectedUser.shared.name
         emailLabel.text! = SelectedUser.shared.email
         phoneLabel.text! = SelectedUser.shared.phone
         roleLabel.text = SelectedUser.shared.role
         skillsLabel.text = SelectedUser.shared.skills
+        
+        if( IS_ATK_MEMBER(email: SelectedUser.shared.email) ) {
+            companyLabel.text = "A.T. Kearney"
+        } else {
+            companyLabel.text = SelectedUser.shared.company
+        }
+        
+        
         
         if let roleText = roleLabel.text {
             if(roleText.isEmpty) {
@@ -120,6 +133,16 @@ class UserDetailsViewController: BaseViewController {
             skillsLabel.text = "Unspecified"
             skillsLabel.textColor = UIColor.lightGray
         }
+        if let companyText = companyLabel.text {
+            if(companyText.isEmpty) {
+                companyLabel.text = "Unspecified"
+                companyLabel.textColor = UIColor.lightGray
+            }
+        } else {
+            companyLabel.text = "Unspecified"
+            companyLabel.textColor = UIColor.lightGray
+        }
+        
         
         FirebaseManager.shared.userPhoto(userID: SelectedUser.shared.userID, lastUpdate: SelectedUser.shared.photoLastUpdate, to: photoImageView)
     }

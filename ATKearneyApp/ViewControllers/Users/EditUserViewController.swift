@@ -16,6 +16,7 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var companyTextField: CustomTextField!
     @IBOutlet weak var roleTextField: UITextField!
     @IBOutlet weak var skillsTextField: UITextField!
     
@@ -39,7 +40,18 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
         roleTextField.text = MyUser.shared.role
         skillsTextField.text = MyUser.shared.skills
         
+        if( IS_ATK_MEMBER(email: MyUser.shared.email) ) {
+            companyTextField.text = "A.T. Kearney"
+            companyTextField.textColor = UIColor.gray
+            companyTextField.isEnabled = false
+        } else {
+            companyTextField.text = MyUser.shared.company
+            companyTextField.textColor = UIColor.black
+            companyTextField.isEnabled = true
+        }
+        
         emailTextField.isEnabled = false
+        emailTextField.textColor = UIColor.gray
         photoButton.setCircularWithRadius(26)
     }
     
@@ -57,10 +69,25 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
         self.navigationController?.popViewController(animated: true)
     }
     
+    func validateForm() -> Bool {
+        if(nameTextField.text!.isEmpty || phoneTextField.text!.isEmpty) {
+            ALERT(title_ERROR, text_EMPTY_FIELDS, viewController: self)
+            return false
+        } else {
+            return true
+        }
+    }
+    
     @IBAction func saveButtonTap(_ sender: UIButton) {
+        if(!validateForm()){
+            return
+        }
+        
         showLoading(true)
         saveStep2()
         /*
+         
+         // testing: Edit email (primary key) <-- NOT COMPLETED
         if(MyUser.shared.email != emailTextField.text!) {
             FirebaseManager.shared.editUserEmail(email: emailTextField.text!) { (error) in
                 if(error != nil) {
@@ -98,6 +125,7 @@ class EditUserViewController: BaseViewController, UIImagePickerControllerDelegat
             "name": nameTextField.text!,
             "email": emailTextField.text!,
             "phone": phoneTextField.text!,
+            "company": companyTextField.text!,
             "role": roleTextField.text!,
             "skills": skillsTextField.text!,
             "photoLastUpdate": MyUser.shared.photoLastUpdate as Any
